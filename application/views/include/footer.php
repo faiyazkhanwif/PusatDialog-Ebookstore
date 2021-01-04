@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-4">
                 <div class="copy-right">
-                    <p><i class="fas fa-copyright"></i> 2021 faiyazkhanwif.inc. <br>All rights reserved</p>
+                    <p><i class="fas fa-copyright"></i> 2021 faiyazkhanwif.inc. <br>All rights reserved.</p>
                 </div>
             </div>
             <div class="col-md-4">

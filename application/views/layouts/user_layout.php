@@ -9,110 +9,89 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--==== CSS =====-->
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('resource/css/bootstrap.min.css'); ?>">
     <!-- Font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/all.css'); ?>">
-    <!-- Owl-carousel css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/owl.carousel.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('resource/css/all.css'); ?>">
     <!-- My css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/style.css'); ?>">
-    
-    <!-- jQuery min js -->
-    <script type="text/javascript" src="<?= base_url('tool/js/jquery-3.2.1.slim.min.js'); ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('resource/css/style.css'); ?>">
 
-    <title>Bookshop | User pages</title>
-    <link rel="shortcut icon" type="image/png" href="<?= base_url('tool/img/favicon.png'); ?>">
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/png" href="<?= base_url('resource/img/pdialogsmall.png'); ?>">
 </head>
 
 <body>
     <!--=========== Header area =============-->
-    <div class="header-area">
-        <div class="hearder-top">
+    <header>
+        <div class="header-top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="welcome-tx">Welcome to Online Book Shop !</div>
+                        <div class="welcome-tx">Welcome to Pusat Dialog E-Book Shop!</div>
                     </div>
                     <div class="col-md-6">
-                        <div class="social-icon">
-                            <span>Follow : </span>
-                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" title="Github"><i class="fab fa-github"></i></a>
-                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        </div>
+                        <span>
+                            <div class="smallintroicons">
+                                <a href="https://um.edu.my/" title="Universiti Malaya">Universiti Malaya</i></a>
+                                <a class = "umlogo" href="https://um.edu.my/" title="Universiti Malaya"><img src="<?= base_url('resource/img/umsmall.png');?>"></i></a>
+                            </div>
+                        </span>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="header-top-hr">
+            <hr>
         </div>
         <div class="header-mid">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="logo">
-                            <div class="lname"><a href="<?= base_url()?>home"><span><img src="<?= base_url('tool/img/favicon.png')?>"> Bookshop</span></a></div>
+                <div class="row no-gutters">
+                    <div class="col-3">
+                        <div class="main-title">
+                            <a href=""><span><img src="<?= base_url('resource/img/pdialogsmall.jpg');?>"> Pusat Dialog</span></a>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        <div class="row">
-                            <div class="col-md-9 text-center">
-                            <?php if($this->session->userdata('logged_in') == FALSE): ?>
-                                
-                                <a href="<?= base_url()?>users/login" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                                <a href="<?= base_url()?>users/registration" class="btn-login"><i class="fas fa-user-cog"></i> Register</a>
-
-                            <?php else: ?>
-                                
-                            <div class="admin-search">
-                                <?= form_open('users/search', ['id'=>'user-search'])?>
-                                    <input type="text" name="search_book" class="form-control" placeholder="Search any book">
-                                    <button type="submit"><i class="fas fa-search"></i></button>
-                              <?= form_close()?>
-                            </div>
-                                
-                            <?php endif; ?>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="ic-cart"><a href="<?= base_url()?>cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>
-                                <!--=== cart item count ===-->
-                                <?php if($this->cart->contents()): ?>
-                                <div class="cart-count">
-                                    <div><?php $rows = count($this->cart->contents());
-                                    print $rows; ?></div>
-                                </div>
-                                <?php endif; ?>
-                            </div>
+                    <div class="col-6">
+                        <div class="search-field">
+                            <input type="text" name="search_book" class="form-control" placeholder="Search">
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="search-button">
+                            <button class="btn btn-outline-info btn-rounded waves-effect" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="ic-cart">
+                            <button class="btn btn-outline-info btn-lg btn-rounded waves-effect " type="submit"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>              
                 </div>
             </div>
         </div>
-        <!--============ Menu Area =============-->
+        <!--========== Menu Area =========-->
         <div>
             <?php $this->load->view('include/menu'); ?>
         </div>
     </div>
-    <!-- ========== single header ==========-->
-    <div class="single-header-u">
-        <div class="container">
-            <span><a href="<?= base_url()?>home"><i class="fas fa-home"></i> Home</a></span>
+</header>
+<!--============ Content-area ===========-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12" style="min-height: 500px">
+            <?php $this->load->view($user_view); ?>
         </div>
     </div>
-    <!--============ Content-area ===========-->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12" style="min-height: 500px">
-                <?php $this->load->view($user_view); ?>
-            </div>
-        </div>
-    </div>
+</div>
 
 
 
-    <!--============== Footer Area ==============-->
-    <div>
-        <?php $this->load->view('include/footer'); ?>
-    </div>
+<!--============== Footer Area ==============-->
+<div>
+    <?php $this->load->view('include/footer'); ?>
+</div>

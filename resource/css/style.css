@@ -1,4 +1,7 @@
 /*========== Base CSS ==============*/
+body {
+  background-image: url(../img/background.jpg) ;
+}
 hr { 
     border-color: #004477;
     margin-top: 8px; 
@@ -182,4 +185,26 @@ a:hover {
     height: 200px;
     background-position: center;
     background-size: cover;
+}
+.my-btn {
+    margin-top: 30px;
+    box-shadow: 2px 2px #7DAECC;
+    border-radius: 15px;
+    padding: 5px 30px;
+
+}
+.my-btn-res {
+    margin-top: 30px;
+    border-color: #004477;
+    background-color: #004477;
+    color: white;
+    box-shadow: 2px 2px #7DAECC;
+    border-radius: 15px;
+    padding: 5px 30px;
+}
+.my-btn-res:hover{
+    color: white;
+    border-color:  #0082e6;
+    background-color:   #0082e6;
+    box-shadow: 2px 2px #7DAECC;
 }

@@ -7,8 +7,8 @@
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active" style="margin-right: 10px;">
-                            <a class="nav-link" href="">Home</a>
+                        <li class="nav-item" style="margin-right: 10px;">
+                            <a class="nav-link" href="<?= base_url()?>home">Home</a>
                         </li>
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link" href="#">All E-books</a>
