@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('resource/css/style.css'); ?>">
 
-    <title>Login</title>
+    <title>Account</title>
     <link rel="shortcut icon" type="image/png" href="<?= base_url('resource/img/pdialogsmall.png'); ?>">
 </head>
 
@@ -81,26 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </header>
-
-    <!-- =============== single header ===========-->
-    <div class="single-header-u">
-        <div class="container">
-            <span><a href="<?= base_url()?>home"><i class="fas fa-home"></i> Home</a></span>
-        </div>
-    </div>
-    <div class="user-menu-area">
-        <div class="container">
-            <div class="user-menu">
-            <ul>
-                <li><a href="<?= base_url()?>user-home/sell-books">Sell Books</a></li>
-                <li><a href="<?= base_url()?>user-home/myBooks">My books</a></li>
-                <li><a href="<?= base_url()?>user-home/my-orders">My orders</a></li>
-                <li><a href="<?= base_url('user-home/edit-profile/'.$this->session->userdata('id').'')?>">Edit profile</a></li>
-                <li><a href="<?= base_url()?>users/logout"><i class="fas fa-power-off"></i> Logout</a></li>
-            </ul>
-            </div>
-        </div>
-    </div>
+<main>
     <!--=========== Content-area ==========-->
     <div class="container">
         <div class="row">
@@ -109,10 +90,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
+</main>
 
-
-
+<footer>
     <!--============ Footer Area ============-->
     <div>
         <?php $this->load->view('include/footer'); ?>
     </div>
+</footer>
+<script type="text/javascript" src="<?= base_url('resource/js/jquery-3.2.1.slim.min.js'); ?>"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="<?= base_url('resource/js/bootstrap.min.js'); ?>"></script>
+<!-- Popper JS -->
+<script src="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'); ?>"></script>
+</body>
+</html>
+
+

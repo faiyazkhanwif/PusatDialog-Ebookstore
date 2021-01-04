@@ -203,6 +203,17 @@ a:hover {
     box-shadow: 2px 2px #7DAECC;
     border-radius: 15px;
     padding: 5px 30px;
+    text-decoration: none;
+}
+.my-btn-res:visited {
+      margin-top: 30px;
+      border-color: #004477;
+      background-color: #004477;
+      color: white;
+      box-shadow: 2px 2px #7DAECC;
+      border-radius: 15px;
+      padding: 5px 30px;
+      text-decoration: none;
 }
 .my-btn-res:hover{
     color: white;
