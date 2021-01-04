@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('resource/css/style.css'); ?>">
 
-    <title>Login</title>
+    <title>User</title>
     <link rel="shortcut icon" type="image/png" href="<?= base_url('resource/img/pdialogsmall.png'); ?>">
 </head>
 
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row no-gutters">
                     <div class="col-3">
                         <div class="main-title">
-                            <a href=""><span><img src="<?= base_url('resource/img/pdialogsmall.jpg');?>"> Pusat Dialog</span></a>
+                            <a href="<?= base_url()?>home"><span><img src="<?= base_url('resource/img/pdialogsmall.jpg');?>"> Pusat Dialog</span></a>
                         </div>
                     </div>
                     <div class="col-6">

@@ -186,6 +186,8 @@ a:hover {
     background-position: center;
     background-size: cover;
 }
+
+/*====== Log in ======= */
 .my-btn {
     margin-top: 30px;
     box-shadow: 2px 2px #7DAECC;
@@ -207,4 +209,9 @@ a:hover {
     border-color:  #0082e6;
     background-color:   #0082e6;
     box-shadow: 2px 2px #7DAECC;
+}
+.login-form-area .btn-lg{
+    border-radius: 15px;
+    box-shadow: 2px 2px #7DAECC;
+    padding: 10px 30px;
 }

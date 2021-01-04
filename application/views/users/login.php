@@ -21,7 +21,7 @@ if($this->session->flashdata('reg_success'))
 <div class="login-form-area">
     <div class="container">
         <div class="login-form">
-            <div class="form-header section-title" style="padding-top: 20px; border-bottom: .2px solid #BDC5CA;"><h4>Welcome to Pusat Dialog! Please login.
+            <div class="form-header section-title" style="padding-top: 20px; border-bottom: .2px solid #BDC5CA;"><h4>Welcome to Pusat Dialog! Please log in.
             </h4></div>
             <br>
             <br>
