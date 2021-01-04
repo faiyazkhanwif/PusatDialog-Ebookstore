@@ -203,7 +203,7 @@ class Users extends CI_Controller {
 			}
 			else
 			{
-				$view['user_view'] = "temp/404page";
+				$view['user_view'] = "include/404page";
 				$this->load->view('layouts/user_layout', $view);
 			}
 		}
@@ -248,7 +248,7 @@ class Users extends CI_Controller {
 		}
 		else
 		{
-			$view['user_view'] = "temp/404page";
+			$view['user_view'] = "include/404page";
 			$this->load->view('layouts/user_layout', $view);
 		}
 		
@@ -261,7 +261,7 @@ class Users extends CI_Controller {
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
 		
-		$view['user_view'] = "temp/terms";
+		$view['user_view'] = "include/terms";
 		$this->load->view('layouts/user_layout', $view);
 	}
 

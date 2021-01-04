@@ -142,7 +142,7 @@ class User_home extends CI_Controller {
 		}
 		else
 		{
-			$view['user_view'] = "temp/404page";
+			$view['user_view'] = "include/404page";
 			$this->load->view('layouts/user_home', $view);
 		}
 		
@@ -179,7 +179,7 @@ class User_home extends CI_Controller {
 			}
 			else
 			{
-				$view['user_view'] = "temp/404page";
+				$view['user_view'] = "include/404page";
 				$this->load->view('layouts/user_home', $view);
 			}
 		}

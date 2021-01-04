@@ -82,7 +82,7 @@ class admin extends CI_Controller {
 		}
 		else
 		{
-			$view['admin_view'] = "temp/404page";
+			$view['admin_view'] = "include/404page";
 			$this->load->view('layouts/admin_layout', $view);
 		}
 
@@ -109,7 +109,7 @@ class admin extends CI_Controller {
 			}
 			else
 			{
-				$view['admin_view'] = "temp/404page";
+				$view['admin_view'] = "include/404page";
 				$this->load->view('layouts/admin_layout', $view);
 			}
 
@@ -300,7 +300,7 @@ class admin extends CI_Controller {
 		}
 		else
 		{
-			$view['admin_view'] = "temp/404page";
+			$view['admin_view'] = "include/404page";
 			$this->load->view('layouts/admin_layout', $view);
 		}
 	}
@@ -344,7 +344,7 @@ class admin extends CI_Controller {
 			}
 			else
 			{
-				$view['admin_view'] = "temp/404page";
+				$view['admin_view'] = "include/404page";
 				$this->load->view('layouts/admin_layout', $view);
 			}
 
@@ -426,7 +426,7 @@ class admin extends CI_Controller {
 		}
 		else
 		{
-			$view['admin_view'] = "temp/404page";
+			$view['admin_view'] = "include/404page";
 			$this->load->view('layouts/admin_layout', $view);
 		}
 		
@@ -527,7 +527,7 @@ class admin extends CI_Controller {
 		}
 		else
 		{
-			$view['admin_view'] = "temp/404page";
+			$view['admin_view'] = "include/404page";
 			$this->load->view('layouts/admin_layout', $view);
 		}
 		
@@ -564,7 +564,7 @@ class admin extends CI_Controller {
 		}
 		else
 		{
-			$view['admin_view'] = "temp/404page";
+			$view['admin_view'] = "include/404page";
 			$this->load->view('layouts/admin_layout', $view);
 		}
 	}

@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <!--============ Footer Area ============-->
                     <div>
-                        <?php $this->load->view('temp/footer'); ?>
+                        <?php $this->load->view('include/footer'); ?>
                     </div>
                 </div>
             </div>

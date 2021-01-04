@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <!--============= Menu Area ============-->
         <div>
-            <?php $this->load->view('temp/menu'); ?>
+            <?php $this->load->view('include/menu'); ?>
         </div>
     </div>
     <!-- =============== single header ===========-->
@@ -118,5 +118,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!--============ Footer Area ============-->
     <div>
-        <?php $this->load->view('temp/footer'); ?>
+        <?php $this->load->view('include/footer'); ?>
     </div>
