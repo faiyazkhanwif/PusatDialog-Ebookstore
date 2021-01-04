@@ -27,8 +27,8 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]',
 				array(
-					'required' => 'Email field can not be empty',
-					'is_unique' => 'This email is already registered')
+					'required' => 'Email field can not be left empty.',
+					'is_unique' => 'This email is already registered.')
 			);
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
 		$this->form_validation->set_rules('repassword', 'Confirm Password',
@@ -36,7 +36,7 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('address', 'Address', 'trim|required|strip_tags[address]');
 		$this->form_validation->set_rules('city', 'City', 'trim|required|strip_tags[city]');
 		$this->form_validation->set_rules('conditionBox', 'Check box', 'trim|required',
-				array('required' => 'You have to check the box.')
+				array('required' => 'This box has to be checked in order to continue.')
 		);
 
 
@@ -56,7 +56,7 @@ class Users extends CI_Controller {
 
 			if($this->user_model->register_user())
 			{
-				$this->session->set_flashdata('reg_success', 'Your Registration is successfull.');
+				$this->session->set_flashdata('reg_success', 'Your account has been created successfully.');
 				redirect('users/login');
 			}
 			else
@@ -115,7 +115,7 @@ class Users extends CI_Controller {
 				}
 				elseif ($user_data->type == 'U') // User
 				{
-					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have Logged in successfully');
+					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have been logged in successfully');
 					redirect('home');
 				}
 			
@@ -123,7 +123,7 @@ class Users extends CI_Controller {
 
 			else
 			{
-				$this->session->set_flashdata('login_fail', '<i class="fas fa-exclamation-triangle"></i> Invalid login. The email or password that you have entered is incorrect. ');
+				$this->session->set_flashdata('login_fail', '<i class="fas fa-exclamation-triangle"></i> Invalid login credentials. The email or password that has been entered is incorrect or does not exist in our server. ');
 
 				redirect($_SERVER['HTTP_REFERER']); // Redirect at same page.
 			}
@@ -140,160 +140,8 @@ class Users extends CI_Controller {
 	}
 
 
-	public function all_books()
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-		
-		#...Pagination code start
-		$this->load->model('user_model');
-		$this->load->library('pagination');
-		$config = [
-
-			'base_url' => base_url('users/all_books'),
-			'per_page' => 18,
-			'total_rows'=>  $this->user_model->num_rows_books(),
-			'full_tag_open' => "<ul class='custom-pagination'>",
-			'full_tag_close' => "</ul>", 
-			'first_tag_open' => '<li>',
-			'first_tag_close' => '</li>',
-			'last_tag_open' => '<li>',
-			'last_tag_close' => '</li>',
-			'next_tag_open' => '<li>',
-			'next_tag_close' => '</li>',
-			'prev_tag_open' => '<li>',
-			'prev_tag_close' => '</li>',
-			'cur_tag_open' => "<li class = 'active'><a>",
-			'cur_tag_close' => '</a></li>',
-		];
-		$this->pagination->initialize($config);
-
-		$this->load->model('user_model');
-		$view['books'] = $this->user_model->get_books($config['per_page'], $this->uri->segment(3));
-
-		$view['user_view'] = "users/all_books";
-		$this->load->view('layouts/user_layout', $view);
-	}
-
-/*======== Book details info and all reviews =======*/
-	public function book_view($id)
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-
-		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[10]|htmlentities[review]');
-
-		if($this->form_validation->run() == FALSE)
-		{
-			/*=== Book Details ===*/
-			$this->load->model('admin_model');
-			$view['book_detail'] = $this->admin_model->get_book_detail($id);
-			/*=== Get reviews ===*/
-			$this->load->model('user_model');
-			$view['reviews'] = $this->user_model->get_reviews();
-
-			if($this->admin_model->get_book_detail($id))
-			{
-				$view['user_view'] = "users/book_detail";
-				$this->load->view('layouts/user_layout', $view);
-			}
-			else
-			{
-				$view['user_view'] = "include/404page";
-				$this->load->view('layouts/user_layout', $view);
-			}
-		}
-		else
-		{
-			$this->load->model('user_model');
-			$this->user_model->reviews($id);
-			redirect('users/book_view/'.$id.'');
-		}
-		
-
-	}
-
-	public function all_ebooks()
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-		
-		$this->load->model('user_model');
-		$view['ebooks'] = $this->user_model->get_ebooks();
-
-		$view['user_view'] = "users/all_ebooks";
-		$this->load->view('layouts/user_layout', $view);
-	}
-
-	public function ebook_view($id)
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-
-		$this->load->model('admin_model');
-		$view['ebook_detail'] = $this->admin_model->get_ebook_detail($id);
-
-		if($this->admin_model->get_ebook_detail($id))
-		{
-			$view['user_view'] = "users/ebook_detail";
-			$this->load->view('layouts/user_layout', $view);
-		}
-		else
-		{
-			$view['user_view'] = "include/404page";
-			$this->load->view('layouts/user_layout', $view);
-		}
-		
-	}
-
-	public function terms()
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-		
-		$view['user_view'] = "include/terms";
-		$this->load->view('layouts/user_layout', $view);
-	}
-
-
-	public function search()
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-
-
-		$this->form_validation->set_rules('search_book', "Search",'trim|required|strip_tags[search_book]');
-
-		if($this->form_validation->run() == FALSE)
-		{
-			redirect('home');
-		}
-		else
-		{
-			$query = $this->input->post('search_book');
-
-			$this->load->model('user_model');
-			$view['books'] = $this->user_model->search($query);
-
-
-			$view['user_view'] = "users/search_books";
-			$this->load->view('layouts/user_layout', $view);
-		}
-			
-	}
-
-
 
 }
+
+
+

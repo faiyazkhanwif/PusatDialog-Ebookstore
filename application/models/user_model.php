@@ -33,7 +33,6 @@ class user_model extends CI_Model
 
 		if(password_verify($password, $db_password))
 		{
-			// return $result->row(0)->id;
 			return $result->row();
 		}
 		else

@@ -12,7 +12,7 @@
             <div class="col-md-4">
                 <div class="">
                     <br>
-                    <p class="footer_des">This e-book shop is operated by Pusat Dialog for publishing their own content. No third part vendors are affliated with this e-book store other than Pusat Dialog, University Malaya.</p>
+                    <p class="footer_des">This e-book shop is operated by Pusat Dialog for publishing their own content. No third part vendors are affliated with this e-book store other than Pusat Dialog, University of Malaya.</p>
                 </div>
             </div>
             <div class="col-md-4">
