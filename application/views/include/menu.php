@@ -8,7 +8,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item" style="margin-right: 10px;">
-                            <a class="nav-link" href="<?= base_url()?>home"><i class="fas fa-home"></i> Home</a>
+                            <a class="nav-link" href="<?= base_url() ?>home"><i class="fas fa-home"></i> Home</a>
                         </li>
                         <li class="nav-item" style="margin-right: 10px;">
                             <a class="nav-link" href="#">All E-books</a>
@@ -33,18 +33,18 @@
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <?php if($this->session->userdata('logged_in') == FALSE): ?>
-                            <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url()?>users/login'" type="button">Login</button>
+                        <?php if ($this->session->userdata('logged_in') == FALSE) : ?>
+                            <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>users/login'" type="button">Login</button>
                             <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='<?= base_url() ?>users/registration'" type="button">Sign Up</button>
-                        <?php else: ?>
-                             <!-- #For admin button  -->
-                            <?php if($this->session->userdata('type') == 'A'): ?>
-                                <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url()?>admin'" type = "button"> Admin panel</button>
+                        <?php else : ?>
+                            <!-- #For admin button  -->
+                            <?php if ($this->session->userdata('type') == 'A') : ?>
+                                <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>admin'" type="button"> Admin panel</button>
                             <?php endif; ?>
                             <!-- #For user account button  -->
                             <?php $type = $this->session->userdata('type') ?>
-                            <?php if($type == 'U'): ?>
-                                <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url()?>user-home'" type = "button">My account</button>
+                            <?php if ($type == 'U') : ?>
+                                <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>user-home'" type="button">My account</button>
                             <?php endif; ?>
                         <?php endif; ?>
                     </form>

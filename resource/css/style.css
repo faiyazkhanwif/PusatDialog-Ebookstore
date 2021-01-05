@@ -16,7 +16,7 @@ a:hover {
     color: #004477;
     box-shadow: 2px 2px #7DAECC;
 }
-.btn-outline-info:hover{
+.btn-outline-info:hover {
     color: white;
     border-color: #004477;
     background-color: #004477;
@@ -29,17 +29,17 @@ a:hover {
     text-shadow: 1px 1px #7DAECC;
 }
 
-.ic-cart{
+.ic-cart {
     position: relative;
     text-align: right;
 }
-.ic-cart .btn-outline-info{
+.ic-cart .btn-outline-info {
     color: white;
     border-color: #004477;
     background-color: #004477;
     box-shadow: 2px 2px #7DAECC;
 }
-.ic-cart .btn-outline-info:hover{
+.ic-cart .btn-outline-info:hover {
     background-color: white;
     border-color: #004477;
     color: #004477;
@@ -59,26 +59,26 @@ a:hover {
     text-shadow: 2px 2px #7DAECC;
     background-color: transparent;
 }
-.header-mid a:visited{
+.header-mid a:visited {
     color: black; 
     text-shadow: 2px 2px #7DAECC;
 }
 
-.header-mid a:hover{
+.header-mid a:hover {
     color: black;
     text-shadow: 0px 0px #7DAECC;
 }
-.search-field{
+.search-field {
     padding-top: 5px;
 }
-.search-button{
+.search-button {
     padding-top: 5px;
 }
-.ic-cart .btn-outline-info{
+.ic-cart .btn-outline-info {
     width: 140px;
     border-radius: 15px;
 }
-.navbar_area .btn-outline-info{
+.navbar_area .btn-outline-info {
     border-radius: 15px;
 }
 
@@ -94,17 +94,17 @@ a:hover {
     text-shadow: 2px 2px #7DAECC;
     background-color: transparent;
 }
-.myfooter a:visited{
+.myfooter a:visited {
     color: black; 
     text-shadow: 2px 2px #7DAECC;
 }
 
-.myfooter a:hover{
+.myfooter a:hover {
     color: black;
     text-shadow: 0px 0px #7DAECC;
 }
 
-.myfooter a:hover{
+.myfooter a:hover {
     color: black;
     text-shadow: 0px 0px #7DAECC;
 }
@@ -123,7 +123,7 @@ a:hover {
 
 /*====== Carousel CSS ======= */
 
-.carousel-caption a{
+.carousel-caption a {
     font-family: Courier New;
     font-weight: bolder;
     color: white;
@@ -148,17 +148,17 @@ a:hover {
     width: 10rem;
 }
 
-.card-title{
+.card-title {
     text-align: center;
     font-weight: bold;
     font-size: 12px;
 }
-.card-text{
+.card-text {
     text-align: center;
     font-style: italic;
     font-size: 12px;
 }
-.card a{
+.card a {
     text-decoration: none;
     text-align: center;
     padding-left: 18px;
@@ -206,16 +206,16 @@ a:hover {
     text-decoration: none;
 }
 .my-btn-res:visited {
-      margin-top: 30px;
-      border-color: #004477;
-      background-color: #004477;
-      color: white;
-      box-shadow: 2px 2px #7DAECC;
-      border-radius: 15px;
-      padding: 5px 30px;
-      text-decoration: none;
+  margin-top: 30px;
+  border-color: #004477;
+  background-color: #004477;
+  color: white;
+  box-shadow: 2px 2px #7DAECC;
+  border-radius: 15px;
+  padding: 5px 30px;
+  text-decoration: none;
 }
-.my-btn-res:hover{
+.my-btn-res:hover {
     color: white;
     border-color:  #0082e6;
     background-color:   #0082e6;
@@ -226,7 +226,7 @@ a:hover {
     box-shadow: 2px 2px #7DAECC;
     padding: 10px 30px;
 }
-.success-msg{
+.success-msg {
     background-color:   #85e085;
     color: black;
     border-radius: 15px;
@@ -237,7 +237,7 @@ a:hover {
     padding-top: 12px;
     padding-bottom: 12px;
 }
-.loginsuccess{
+.loginsuccess {
     background-color:   #85e085;
     color: black;
     border-radius: 15px;
@@ -247,7 +247,7 @@ a:hover {
     opacity: 0.75;
     padding-top: 12px;
 }
-.error-msg{
+.error-msg {
     background-color:  #ff4d4d;
     color: black;
     border-radius: 15px;
@@ -257,4 +257,23 @@ a:hover {
     opacity: 0.75;
     padding-top: 12px;
     padding-bottom: 12px;
+}
+
+/*====== Admin Dashboard ======= */
+.dashboardbtn1 {
+    font-weight: bold;
+    font-family: Courier New;
+    font-size : 15px;
+    border-collapse: separate; 
+    border-radius: 25px; 
+    padding: 40px 80px;
+}
+
+.dashboardbtn2 {
+    font-weight: bold;
+    font-family: Courier New;
+    font-size : 15px;
+    border-collapse: separate; 
+    border-radius: 25px; 
+    padding: 40px 95px;
 }

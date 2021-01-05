@@ -6,19 +6,14 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
-		/*=== Load the cart library ===*/
-		$this->load->library('cart');
+
 	}
 
 	public function index()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		#Loading dynamic category between U and A.
 		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
 
-
-		$this->load->view('layouts/home_layout', $view);
+		$this->load->view('layouts/home_layout');
 	}
 }

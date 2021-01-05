@@ -6,21 +6,27 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="<?= base_url('resource/img/lawslide.jpg" alt="First slide');?>">
+      <img class="d-block w-100" src="<?= base_url('resource/img/lawslide.jpg" alt="First slide'); ?>">
       <div class="carousel-caption d-none d-md-block">
-        <a href=""><h5>Pusat dialog offers variety of E-book of different genres.</h5></a>
+        <a href="">
+          <h5>Pusat dialog offers variety of E-book of different genres.</h5>
+        </a>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?= base_url('resource/img/borrowbook.jpg" alt="Second slide');?>">
+      <img class="d-block w-100" src="<?= base_url('resource/img/borrowbook.jpg" alt="Second slide'); ?>">
       <div class="carousel-caption d-none d-md-block">
-        <a href=""><h5>You can borrow an e-book for upto 2 months!</h5></a>
+        <a href="">
+          <h5>You can borrow an e-book for upto 2 months!</h5>
+        </a>
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="<?= base_url('resource/img/researchslide.jpg');?>" alt="Third slide">
+      <img class="d-block w-100" src="<?= base_url('resource/img/researchslide.jpg'); ?>" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
-        <a href=""><h5>Check out the published works done by UM researchers.</h5></a>
+        <a href="">
+          <h5>Check out the published works done by UM researchers.</h5>
+        </a>
       </div>
     </div>
   </div>

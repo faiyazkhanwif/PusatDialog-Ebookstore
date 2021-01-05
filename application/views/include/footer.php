@@ -19,8 +19,8 @@
                 <div class="">
                     <div id="social-icon">
                         <div class="float-right">
-                            <span><a href="https://um.edu.my"><img src="<?= base_url('resource/img/pdialogsmall.png');?>"></a></span>
-                            <span><a href="https://um.edu.my"><img src="<?= base_url('resource/img/umbig.png');?>"></a></span>
+                            <span><a href="https://um.edu.my"><img src="<?= base_url('resource/img/pdialogsmall.png'); ?>"></a></span>
+                            <span><a href="https://um.edu.my"><img src="<?= base_url('resource/img/umbig.png'); ?>"></a></span>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="widget">
-                    
+
                 </div>
             </div>
             <div class="col-md-4">
@@ -39,11 +39,11 @@
             </div>
             <div class="col-md-4">
                 <div class="widget">
-                    
+
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
     </div>
 </footer>

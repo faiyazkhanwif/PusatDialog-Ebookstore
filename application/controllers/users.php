@@ -6,18 +6,14 @@ class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
-		/*=== Load the cart library ===*/
-		$this->load->library('cart');
 		
 	}
 
 	public function index()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		#Loading dynamic category between U and A.
 		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/		
+	
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
@@ -42,13 +38,11 @@ class Users extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{
-			/*=== LOAD DYNAMIC CATAGORY ===*/
+			#Loading dynamic category between U and A.
 			$this->load->model('admin_model');
-			$view['category'] = $this->admin_model->get_category();
-			/*==============================*/
 
 			$view['user_view'] = "users/reg";
-			$this->load->view('layouts/user_layout', $view);
+			$this->load->view('layouts/user_loginregister', $view);
 		}
 		else
 		{
@@ -75,13 +69,12 @@ class Users extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{
-			/*=== LOAD DYNAMIC CATAGORY ===*/
+			#Loading dynamic category between U and A.
 			$this->load->model('admin_model');
-			$view['category'] = $this->admin_model->get_category();
 			/*==============================*/
 
 			$view['user_view'] = "users/login";
-			$this->load->view('layouts/user_layout', $view);
+			$this->load->view('layouts/user_loginregister', $view);
 		}
 		else
 		{
@@ -103,19 +96,19 @@ class Users extends CI_Controller {
 					'name'		=> $user_data->name,
 					'logged_in'	=> true
 
-				); // Data keeps in SESSION
+				); // Data is kept in SESSION
 				
 				$this->session->set_userdata($login_data);
 
-				if($user_data->type == 'A') // Admin
+				if($user_data->type == 'A') // Admin category
 				{
 
 					$this->session->set_flashdata('login_success', 'Logged in successfully. You have logged in as an admin.');
 					redirect('admin/index');
 				}
-				elseif ($user_data->type == 'U') // User
+				elseif ($user_data->type == 'U') // User category
 				{
-					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have been logged in successfully');
+					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have been logged in successfully.');
 					redirect('home');
 				}
 			
@@ -125,7 +118,7 @@ class Users extends CI_Controller {
 			{
 				$this->session->set_flashdata('login_fail', '<i class="fas fa-exclamation-triangle"></i> Invalid login credentials. The email or password that has been entered is incorrect or does not exist in our server. ');
 
-				redirect($_SERVER['HTTP_REFERER']); // Redirect at same page.
+				redirect($_SERVER['HTTP_REFERER']); // Redirect to the same page.
 			}
 
 		}
