@@ -154,7 +154,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <br>
                             <br>
                             <br>
-                            <img style="height: 100px; width: 100px;" src="<?= base_url('resource/img/adminttwo.png'); ?>">
+                            
                         </div>
                     </div>
                 </div>

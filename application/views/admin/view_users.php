@@ -40,6 +40,11 @@ if ($this->session->flashdata('success')) {
     <tbody>
       <?php foreach ($users_data as $udata) : ?>
         <tr scope="row">
+        <?php print '<td>';
+          print '<a href= "' . base_url() . 'admin/user_delete/' . $udata->id . '" title= "Delete" class="btn btn-outline-danger btn-sm delete" data-confirm = "Are you sure to delete this User?"><i class="fas fa-times"></i></a>';
+
+          print '</td>';
+          ?>
           <?php print '<td>' . htmlentities($udata->id) . '</td>'; ?>
           <?php print '<td class= "text-info">' . htmlentities($udata->name) . '</td>'; ?>
           <?php print '<td>' . htmlentities($udata->contact) . '</td>'; ?>
@@ -48,11 +53,7 @@ if ($this->session->flashdata('success')) {
           <?php print '<td>' . substr(strip_tags($udata->address), 0, 80) . '</td>'; ?>
           <?php print '<td>' . htmlentities($udata->city) . '</td>'; ?>
 
-          <?php print '<td>';
-          print '<a href= "' . base_url() . 'admin/user_delete/' . $udata->id . '" title= "Delete" class="btn btn-outline-danger btn-sm delete" data-confirm = "Are you sure to delete this User?"><i class="fas fa-times"></i></a>';
 
-          print '</td>';
-          ?>
         </tr>
       <?php endforeach; ?>
     </tbody>

@@ -24,7 +24,6 @@ class admin extends CI_Controller {
 		$view['admin_view'] = "admin/admin_index";
 		$this->load->view('layouts/admin_layout', $view);
 	}
-/*======================================================
 
 
 /*==================================================
