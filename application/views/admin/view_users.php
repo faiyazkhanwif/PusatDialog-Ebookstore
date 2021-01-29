@@ -26,6 +26,7 @@ if ($this->session->flashdata('success')) {
   <table class="table table-hover jumbotron shadow">
     <thead class="thead-dark">
       <tr>
+        <th scope="col">Remove</th>
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Contact</th>
@@ -33,7 +34,6 @@ if ($this->session->flashdata('success')) {
         <th scope="col">Type</th>
         <th scope="col">Address</th>
         <th scope="col">City</th>
-        <th scope="col">Remove</th>
       </tr>
     </thead>
 

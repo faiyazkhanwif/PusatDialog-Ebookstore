@@ -11,7 +11,7 @@ class Users extends CI_Controller {
 
 	public function index()
 	{
-		#Loading dynamic category between U and A.
+		
 		$this->load->model('admin_model');
 	
 		redirect($_SERVER['HTTP_REFERER']);
@@ -38,7 +38,7 @@ class Users extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{
-			#Loading dynamic category between U and A.
+			
 			$this->load->model('admin_model');
 
 			$view['user_view'] = "users/reg";
@@ -69,9 +69,8 @@ class Users extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{
-			#Loading dynamic category between U and A.
+			
 			$this->load->model('admin_model');
-			/*==============================*/
 
 			$view['user_view'] = "users/login";
 			$this->load->view('layouts/user_loginregister', $view);

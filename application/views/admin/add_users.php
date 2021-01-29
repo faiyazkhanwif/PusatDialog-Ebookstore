@@ -40,7 +40,7 @@
             <label class="section-title" style="font-family: Helvetica; font-size: 15px; font-weight: bold" for="type">Type</label>
             <div class="form-group">
                 <?php $options = array(
-                    '' => 'Choose one from below.',
+                    '' => 'Choose one from below',
                     'U' => 'User',
                     'A' => 'Admin'
                 );

@@ -13,7 +13,7 @@ if ($this->session->flashdata('success')) {
     <div class="row">
         <div class="col-lg-6">
             <div class="user-heading ">
-                <h3 class="display-4">Welcome, <span class=" display-4" style="color: #004477"><?php print $this->session->userdata('name') ?>!</span></h3>
+                <h3 class="display-4">Welcome, <span class=" display-4" style="color: #004477"><?= htmlentities($user_details->name) ?>!</span></h3>
             </div>
         </div>
         <div class="col-lg-6">

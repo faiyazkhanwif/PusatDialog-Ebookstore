@@ -17,7 +17,7 @@ class User_home extends CI_Controller {
 
 	public function index()
 	{
-		#Loading dynamic category between U and A.
+		
 		$this->load->model('admin_model');
 
 
@@ -35,7 +35,7 @@ class User_home extends CI_Controller {
 
 	public function edit_profile($id)
 	{
-		#Loading dynamic category between U and A.
+		
 		$this->load->model('admin_model');
 
 		#getting and loading existing informations

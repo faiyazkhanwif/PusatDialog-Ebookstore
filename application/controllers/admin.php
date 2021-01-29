@@ -64,7 +64,7 @@ class admin extends CI_Controller {
 
 			if($this->admin_model->add_user())
 			{
-				$this->session->set_flashdata('success', 'User Registration is successful.');
+				$this->session->set_flashdata('success', 'User has been added successfully.');
 				redirect('admin/allUsers');
 			}
 			else
