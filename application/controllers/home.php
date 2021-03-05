@@ -12,8 +12,10 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		
+		/*=== LOAD DYNAMIC CATAGORY ===*/
 		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
 
-		$this->load->view('layouts/home_layout');
+		$this->load->view('layouts/home_layout',$view);
 	}
 }

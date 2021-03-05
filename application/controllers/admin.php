@@ -84,6 +84,117 @@ class admin extends CI_Controller {
 		redirect('admin/allUsers');
 	}
 
+/*======================================================
+					CATEGORY
+========================================================*/
+
+/*============= Category && Category List Page =========*/
+	public function category()
+	{
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+
+		$view['admin_view'] = "admin/category";
+		$this->load->view('layouts/admin_layout', $view);
+	}
+
+/*============ Category Create page =====================*/
+	public function add_category()
+	{
+		$this->form_validation->set_rules('category', 'Category name', 'trim|required|alpha_numeric_spaces');
+		$this->form_validation->set_rules('tag', 'Category tag', 'trim|required|alpha|strip_tags[tag]');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required|strip_tags[description]');
+
+		if($this->form_validation->run() == FALSE)
+		{
+			$view['admin_view'] = "admin/add_category";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+		else
+		{
+			$this->load->model('admin_model');
+			if($this->admin_model->create_category())
+			{
+				$this->session->set_flashdata('success', 'Category created successfully');
+				redirect('admin/category');
+			}
+			else
+			{
+				print $this->db->error();
+			}
+		}
+
+	}
+
+/*================ Category Detail display page ================*/
+	public function ctg_view($id)
+	{
+		$this->load->model('admin_model');
+		$view['ctg_detail'] = $this->admin_model->get_ctg_detail($id);
+
+		if($this->admin_model->get_ctg_detail($id))
+		{
+			$view['admin_view'] = "admin/ctg_view";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+		else
+		{
+			$view['admin_view'] = "temp/404page";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+
+	}
+
+/*================ Category Edit || Update ================*/
+	public function ctg_edit($id)
+	{
+		/* For geting the existing info...*/
+		$this->load->model('admin_model');
+		$view['ctg_detail'] = $this->admin_model->get_ctg_detail($id);
+
+		$this->form_validation->set_rules('category', 'Category name', 'trim|required|alpha_numeric_spaces');
+		$this->form_validation->set_rules('tag', 'Category tag', 'trim|required|alpha|strip_tags[tag]');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required|strip_tags[description]');
+
+
+		if($this->form_validation->run() == FALSE)
+		{
+			if($this->admin_model->get_ctg_detail($id))
+			{
+				$view['admin_view'] = "admin/ctg_edit";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+			else
+			{
+				$view['admin_view'] = "temp/404page";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+
+		}
+		else
+		{
+			$this->load->model('admin_model');
+			if($this->admin_model->edit_category($id, $data))
+			{
+				$this->session->set_flashdata('success', 'Category Updated successfully');
+				redirect('admin/category');
+			}
+			else
+			{
+				print $this->db->error();
+			}
+		}
+	}
+
+/*=============== Delete Category =================*/
+	public function ctg_delete($id)
+	{
+		$this->load->model('admin_model');
+		$this->admin_model->delete_category($id);
+
+		$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Category deleted successfully');
+		redirect('admin/category');
+	}
 
 
 

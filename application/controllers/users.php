@@ -132,6 +132,15 @@ class Users extends CI_Controller {
 	}
 
 
+	public function all_books()
+	{
+		/*=== LOAD DYNAMIC CATAGORY ===*/
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+		/*==============================*/
+		$this->load->view('layouts/user_layout', $view);
+	}
+
 
 }
 

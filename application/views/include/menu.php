@@ -24,11 +24,11 @@
                                 Categories
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Computer Science</a>
-                                <a class="dropdown-item" href="#">Biology</a>
-                                <a class="dropdown-item" href="#">Mathematics</a>
-                                <a class="dropdown-item" href="#">English Literature</a>
-                                <a class="dropdown-item" href="#">Social Science</a>
+                                <?php foreach($category as $ctg): ?>
+
+                                    <?php print '<a class="dropdown-item" href="'.base_url('users/all-books').'/?ctg='.$ctg->tag.'">'.$ctg->category.'</a>';?>
+
+                                <?php endforeach; ?>
                             </div>
                         </li>
                     </ul>
@@ -36,20 +36,20 @@
                         <?php if ($this->session->userdata('logged_in') == FALSE) : ?>
                             <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>users/login'" type="button">Login</button>
                             <button class="btn btn-outline-info my-2 my-sm-0" onclick="location.href='<?= base_url() ?>users/registration'" type="button">Sign Up</button>
-                        <?php else : ?>
-                            <!-- #For admin button  -->
-                            <?php if ($this->session->userdata('type') == 'A') : ?>
-                                <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>admin'" type="button"> Admin panel</button>
+                            <?php else : ?>
+                                <!-- #For admin button  -->
+                                <?php if ($this->session->userdata('type') == 'A') : ?>
+                                    <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>admin'" type="button"> Admin panel</button>
+                                <?php endif; ?>
+                                <!-- #For user account button  -->
+                                <?php $type = $this->session->userdata('type') ?>
+                                <?php if ($type == 'U') : ?>
+                                    <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>user-home'" type="button">My account</button>
+                                <?php endif; ?>
                             <?php endif; ?>
-                            <!-- #For user account button  -->
-                            <?php $type = $this->session->userdata('type') ?>
-                            <?php if ($type == 'U') : ?>
-                                <button class="btn btn-outline-info mr-sm-2" onclick="location.href='<?= base_url() ?>user-home'" type="button">My account</button>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
-</div>

@@ -18,7 +18,11 @@
 					<button type="button" class="dashboardbtn1 btn btn-dark shadow"><i class="fas fa-book"></i> <br/> Total <br/>E-books: 56</button>
 				</div>
 				<div class="col-lg-6">
-					<button type="button" class="dashboardbtn1 btn btn-info shadow"><i class="fas fa-list"></i> <br/> Total <br/>Categories: 5</button>
+					<button type="button" onclick="location.href='<?= base_url()?>admin/category'" class="dashboardbtn1 btn btn-info shadow"><i class="fas fa-list"></i> <br/> Total <br/>Categories: <?php 
+					$this->load->model('admin_model');
+					$count_category = count($this->admin_model->get_category());
+					print $count_category;
+					?></button>
 				</div>
 			</div>
 			<br>

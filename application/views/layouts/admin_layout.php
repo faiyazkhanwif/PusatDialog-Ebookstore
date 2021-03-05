@@ -94,7 +94,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     <a class="nav-link" href="#"><i class="fas fa-book"></i> Manage E-Books</a>
                                 </li>
                                 <li class="nav-item" style="margin-right: 10px;">
-                                    <a class="nav-link" href="#"><i class="far fa-list-alt"></i> Manage Categories</a>
+                                    <a class="nav-link" href="<?= base_url() ?>admin/category"><i class="far fa-list-alt"></i> Manage Categories</a>
                                 </li>
                                 <li class="nav-item" style="margin-right: 10px;">
                                     <a class="nav-link" href="<?= base_url() ?>admin/allusers"><i class="fas fa-users"></i> Manage Users</a>
