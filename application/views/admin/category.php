@@ -5,24 +5,11 @@
         print '<div class= "success-msg">'.$this->session->flashdata('success').'</div>';
     }
 ?>
-<br>
-<br>
-<div class="row">
-  <div class="col-lg-6">
-    <div class="text-left">
-      <h4 style="font-family: Trebuchet MS; font-weight: bold;">&nbsp&nbspCategory list</h4>
-    </div>
-  </div>
-  <div class="col-lg-6">
-    <div class="text-right">
-      <button style="font-family: Trebuchet MS" onclick="location.href='<?= base_url() ?>admin/add_category'" class="btn btn-dark">Add new Category <i class="fas fa-plus-circle"></i></button>
-    </div>
-  </div>
-</div>
 
+<div class="view-btn"><a href="<?= base_url()?>admin/add_category">Add new Category <i class="fas fa-plus-circle"></i></a></div>
 <br>
 <div class="container">
-	<div id="table-header" ></div>
+	<div id="table-header">Category list</div>
 	<table class="table table-hover">
   <thead class="thead-light">
     <tr>
