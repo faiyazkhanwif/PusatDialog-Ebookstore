@@ -13,9 +13,11 @@
 					<div>Publisher: <?= strip_tags($book_detail->publisher)?></div>
 					<div>Category: <?= strip_tags($book_detail->category)?></div>
 					<div class="text-success"><i class="fas fa-check-circle"></i> Stock: Available</div>
-					<div>Price: <?= strip_tags($book_detail->price)?>.TK</div>
+					<div>Price: <?= strip_tags($book_detail->price)?> RM</div>
 				</div>
-			
+			<br>
+			<br>
+			<br>
 			
 				<div><?php print '<a href="'.base_url().'cart/add_to_cart/'.$book_detail->id.'" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-cart"></i> Add to cart</a>'; ?></div>
 

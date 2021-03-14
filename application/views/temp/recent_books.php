@@ -12,7 +12,7 @@
                 <div class="book-text">
                     <div id="book-name"><?= substr(htmlentities($book->book_name),0,20) ?></div>
                     <div id="author">By <i><?= $book->author ?></i></div>
-                    <div id="price"><?= $book->price ?>.TK</div>
+                    <div id="price"><?= $book->price ?> RM</div>
                     <div id="book-details">
                         <?php print '<a href = "'.base_url().'users/book-view/'.$book->id.'">View details</a>'; ?>
                     </div>

@@ -208,7 +208,6 @@ class user_model extends CI_Model
 	public function my_published_books()
 	{
 		$this->db->where('userId', $this->session->userdata('id'));
-		$this->db->where('status', '1');
 		$query = $this->db->get('books');
 		return $query->result();
 	}
@@ -243,7 +242,6 @@ class user_model extends CI_Model
 		$string = str_replace(" ","|", $query);
 		$this->db->where("book_name RLIKE '$string'");
 
-		$this->db->where('status', 1);
 		$q = $this->db->get();
 		return $q->result();
 	}

@@ -49,15 +49,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="quantity" class="col-sm-2 col-form-label">Quantity</label>
-            <div class="col-sm-6">
-                <?= form_input(['name'=>'quantity', 'placeholder'=> 'How many books you have?', 'value'=>set_value('quantity', $book_detail->quantity), 'class'=>'form-control'])?>
-            </div>
-            <div class="col-md-4">
-                <div class="text-danger form-error"><?= form_error('quantity')?></div>
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="book_image" class="col-sm-2 col-form-label">Book image</label>
             <div class="col-sm-6">
                 <?= form_upload(['name'=>'userfile', 'class'=>'form-control'])?>
@@ -79,17 +70,6 @@
                 </div>
             <div class="col-sm-4">
                 <div class="text-danger form-error"><?= form_error('categoryId')?></div>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="status" class="col-sm-2 col-form-label">Status</label>
-            <div class="col-sm-6">
-                <select name="status" class="form-control">
-                    <option value="1">Published</option>
-                </select>
-            </div>
-            <div class="col-sm-4">
-               <div class="text-danger form-error"></div>    
             </div>
         </div>
 
