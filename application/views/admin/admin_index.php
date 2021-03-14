@@ -84,17 +84,7 @@
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-warning clickable-div" data-href="<?= base_url('admin/pending_books')?>">
-						<div>
-							<i class="fas fa-book-dead"></i>
-							<h6>Pending Books</h6>
-						</div>
-						<?php 
-				          $this->load->model('admin_model');
-				          $count_pending_books = count($this->admin_model->pending_books());
-				          print $count_pending_books;
-				          ?> 
-					</div>
+
 				</div>
 			</div>
 		</div>

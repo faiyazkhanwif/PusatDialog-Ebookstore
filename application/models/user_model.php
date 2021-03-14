@@ -52,13 +52,11 @@ class user_model extends CI_Model
 			$a = $_GET['ctg'];
 			$query = $this->db->where('category.tag', $a);
 			$this->db->order_by('books.id', 'DESC');
-			$this->db->where('books.status', 1);
 			$this->db->limit($limit, $offset);
 			$query = $this->db->get();
 			return $query->result();
 		}
 		$this->db->order_by('books.id', 'DESC');
-		$this->db->where('books.status', 1);
 		$this->db->limit($limit, $offset);
 		$query = $this->db->get();
 		return $query->result();
@@ -71,7 +69,6 @@ class user_model extends CI_Model
 		$this->db->join('books', 'books.categoryId = category.id');
 	
 		$this->db->order_by('books.id', 'DESC');
-		$this->db->where('books.status', 1);
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
@@ -80,7 +77,6 @@ class user_model extends CI_Model
 	{
 		$this->db->limit(6);
 		$this->db->order_by('id', 'DESC');
-		$this->db->where('status', 1);
 		$query = $this->db->get('books');
 		return $query->result();
 	}
@@ -90,7 +86,6 @@ class user_model extends CI_Model
 		$this->db->limit(6);
 		$this->db->where('categoryId', '1');
 		$this->db->order_by('id', 'DESC');
-		$this->db->where('status', 1);
 		$query = $this->db->get('books');
 		return $query->result();
 	}

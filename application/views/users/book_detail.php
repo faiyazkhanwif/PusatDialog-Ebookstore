@@ -15,12 +15,9 @@
 					<div class="text-success"><i class="fas fa-check-circle"></i> Stock: Available</div>
 					<div>Price: <?= strip_tags($book_detail->price)?>.TK</div>
 				</div>
-			<!--=== Restricted user to buy their own book ===-->
-			<?php if($this->session->userdata('id') != $book_detail->userId): ?>
+			
+			
 				<div><?php print '<a href="'.base_url().'cart/add_to_cart/'.$book_detail->id.'" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-cart"></i> Add to cart</a>'; ?></div>
-			<?php else: ?>
-				<div><p class="text-danger">You can't buy your books. This book is upload by you.</p></div>
-			<?php endif; ?>
 
 			</div>
 			</div>

@@ -95,8 +95,7 @@ class admin_model extends CI_Model
 
 	#...Add books
 	public function add_books()
-	{
-		$data = $this->upload->data();
+	{	$data = $this->upload->data();
 		$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
 		
 		$data = array(
@@ -105,11 +104,8 @@ class admin_model extends CI_Model
 			'author' => $this->input->post('author'),
 			'publisher' => $this->input->post('publisher'),
 			'price' => $this->input->post('price'),
-			'quantity' => $this->input->post('quantity'),
 			'categoryId' => $this->input->post('categoryId'),
-			'book_image' => $image_path,
-			'userId' => $this->session->userdata('id'),
-			'status' => $this->input->post('status')
+			'book_image' => $image_path
 		);
 
 		$insert_book = $this->db->insert('books', $data);
@@ -120,14 +116,12 @@ class admin_model extends CI_Model
 	public function get_books($limit, $offset)
 	{	
 		/*=== SQL join ===*/
-		$this->db->select('books.id, books.book_name, books.description, books.author, books.publisher, books.quantity, books.price, books.book_image, category.category, users.name');
+		$this->db->select('books.id, books.book_name, books.description, books.author, books.publisher, books.price, books.book_image, category.category');
 
 		$this->db->from('books');
 		$this->db->join('category', 'books.categoryId = category.id');
-		$this->db->join('users', 'books.userId = users.id'); // Join 3rd table
 
 		$this->db->order_by('books.id', 'DESC');
-		$this->db->where('books.status', '1');
 		$this->db->limit($limit, $offset);
 		$query = $this->db->get();
 		return $query->result();
@@ -140,14 +134,12 @@ class admin_model extends CI_Model
 		$this->db->join('books', 'books.categoryId = category.id');
 
 		$this->db->order_by('books.id', 'DESC');
-		$this->db->where('books.status', '1');
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
 	#...For count total books
 	public function count_total_books()
 	{
-		$this->db->where('status', '1');
 		$query = $this->db->get('books');
 		return $query->result();
 	}
@@ -156,10 +148,10 @@ class admin_model extends CI_Model
 	public function get_book_detail($id)
 	{
 		/*=== SQL join ===*/
-		$this->db->select('books.*, users.name, category.category');
+		$this->db->select('books.*, category.category');
 		$this->db->from('books');
 		$this->db->join('category', 'books.categoryId = category.id');
-		$this->db->join('users', 'books.userId = users.id'); // Join 3rd table
+		
 
 		$this->db->where('books.id', $id);
 		$query = $this->db->get();
