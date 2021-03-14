@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2021 at 01:51 PM
+-- Generation Time: Mar 14, 2021 at 07:26 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -45,11 +45,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `book_name`, `description`, `author`, `publisher`, `price`, `categoryId`, `book_image`, `book_file`, `create_date`) VALUES
-(15, 'PHP and Mysql', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Joel Murach', 'SPD', '450', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', '', '2019-03-14 10:59:03'),
-(22, 'PHP codeigniter for absoulate beginners', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Edounix', 'Packt', '198', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/V10586_low.png', '', '2019-03-14 20:31:23'),
-(26, 'Confidential', 'From the bestselling author of Neighborly comes a twisty novel of psychological suspense about the lies three women tell to survive, and the ones they’d kill to keep hidden.\r\n\r\nEveryone loves therapist Michael Baylor. He’s handsome. He’s respected. And he’s provided a safe place for his female patients. Now he’s dead, and a detective is casting a tight net for the murderer—because the good doctor may have done some very bad things with the women who trusted him. That’s if their stories check out.\r\n\r\nThere’s Lucinda, who struggled to process her childhood trauma even as she was falling in love with Dr. Baylor. Greer, an accomplished career woman who was torn by her sudden desire to have children, so she went to Dr. Baylor for help but may have gotten more than she bargained for. And then there’s Flora, a beautiful former patient who’d been on intimate terms with the man she called Dr. Michael for two years. Some might even say she was obsessed with him.\r\n\r\nThree women caught in a tangled web of lies and secrets. And each with a motive for murder. With so much at stake, can any of them be trusted to tell the truth?', 'Ellie Monago', 'Kindle Edition', '320', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_114.jpg', '', '2019-03-16 06:14:14'),
-(49, 'gg', 'ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg', 'gggg', 'gg', 'gg', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/k29gh4shtrl41.jpg', '', '2021-03-14 09:44:51'),
-(50, 'gg31', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww', 'gggg', 'yyyy', '43', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/2399616_03.jpg', '', '2021-03-14 12:29:01');
+(52, 'gg31', 'mmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppappppppppppppppppppppppppppppppppp', 'ggfaa', 'yyyy', '43', 3, 'http://localhost/PusatDialog-Ebookstore/uploads/image/k29gh4shtrl41.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/Common_Job_Interview_Questions.pdf', '2021-03-14 17:29:53'),
+(53, 'ttttttt', 'tevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevf', 'wd', 'gg', '45', 5, 'http://localhost/PusatDialog-Ebookstore/uploads/image/2399616_0.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/FSKTM_SEM_2_2020_2021_CLASS_TIMETABLE_(1).pdf', '2021-03-14 18:24:49');
 
 -- --------------------------------------------------------
 
@@ -274,7 +271,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `category`
