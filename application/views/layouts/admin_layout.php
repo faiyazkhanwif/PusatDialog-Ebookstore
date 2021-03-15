@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-md-6">
                         <div class="logo">
-                            <div class="lname"><a href=""><span><img src="<?= base_url('tool/img/pdialogsmall.jpg')?>"> Pusat Dialog</span> </a></div>
+                            <div class="lname"><a href="<?= base_url() ?>home"><span><img src="<?= base_url('tool/img/pdialogsmall.jpg')?>"> Pusat Dialog</span> </a></div>
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -30,15 +30,6 @@
     <div class="col-lg-7">
         <div class="user-activities">
             <div id="table-header">Your Activities</div><br>
-            <div class="user-books">
-                <?php 
-                $this->load->model('user_model');
-                $count = count($this->user_model->my_books());
-                $count_publishedBooks = count($this->user_model->my_published_books());
-                print "<b>Total Books: </b>You have uploaded total ".$count." Books.";
-                print "<p class = 'text-success'><b>Published Books: ".$count_publishedBooks."</b></p>"
-                ?>
-            </div>
             <div class="user-orders">
                 <?php 
                 $this->load->model('user_model');

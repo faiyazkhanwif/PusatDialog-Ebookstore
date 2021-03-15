@@ -18,8 +18,20 @@
 			<br>
 			<br>
 			<br>
-			
-				<div><?php print '<a href="'.base_url().'cart/add_to_cart/'.$book_detail->id.'" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-cart"></i> Add to cart</a>'; ?></div>
+			<div class="row">
+					<div class="col">
+						<?php print '<a href="'.base_url().'cart/add_to_cart/'.$book_detail->id.'" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-cart"></i> Add to cart</a>'; ?>
+					</div>
+					<div class="col">
+						<?php print '<a href = "'.base_url().'users/borrow_book/'.$book_detail->id.'" class="btn btn-outline-primary btn-sm">Borrow</a>'; ?>
+					</div>
+					<div class="col">
+						
+					</div>
+					<div class="col">
+						
+					</div>
+				</div>
 
 			</div>
 			</div>

@@ -45,9 +45,9 @@ foreach ($this->cart->contents() as $books)
       print form_input(array('name'=> $i.'[qty]', 'value'=> $books['qty'] , 'class'=>'form-control qty'));
       print '</td>';
 
-      print "<td>".$books['price'].".TK</td>";
+      print "<td>".$books['price']." RM</td>";
       
-      print "<td>".$books['subtotal'].".TK</td>";
+      print "<td>".$books['subtotal']." RM</td>";
 
       print '<td>';
       print anchor("cart/delete_cart/".$books['rowid']."", "<i class = 'fas fa-trash'></i>", ['class'=>'btn btn-outline-danger btn-sm', 'title'=>'Delete']);
@@ -62,7 +62,7 @@ foreach ($this->cart->contents() as $books)
       print "<td colspan = '3'></td>";
       print "<td><b>Shipping Fee</b></td>";
       if($this->cart->contents()){
-        print "<td>40.TK</td>";
+        print "<td>0 RM</td>";
       }
       else{
         print "<td>0.TK</td>";
@@ -82,7 +82,7 @@ foreach ($this->cart->contents() as $books)
       if($this->cart->contents())
       {
         print "<td>";
-        $shipping = 40;
+        $shipping = 0;
         print $this->cart->total() + $shipping;
         print ".TK</td>";
       }

@@ -158,7 +158,7 @@ class user_model extends CI_Model
 
 	public function add_orders()
 	{
-		$shipping = 40;
+		$shipping = 0;
 		$total = $this->cart->total();
 		$total_price = $total + $shipping;
 		
