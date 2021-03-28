@@ -10,38 +10,13 @@ if($this->session->flashdata('success'))
 	<div class="col-lg-6">
 		<div id="table-header">shipping details</div>
 		<?= form_open('checkout')?>
-			<div class="form-group">
-				<?= form_input(['name'=>'name', 'placeholder'=>'Your Name...', 'value'=>set_value('name'), 'class'=>'form-control']) ?>
-				<div class="text-danger form-error"><?= form_error('name')?></div>
-			</div>
-			<div class="form-group">
-				<?= form_input(['name'=>'email', 'placeholder'=>'Email...', 'value'=>set_value('email'), 'class'=>'form-control']) ?>
-				<div class="text-danger form-error"><?= form_error('email')?></div>
-			</div>
-			<div class="form-group">
-				<?= form_input(['name'=>'contact', 'placeholder'=>'Phone number...', 'value'=>set_value('contact'), 'class'=>'form-control']) ?>
-				<div class="text-danger form-error"><?= form_error('contact')?></div>
-			</div>
-			<div class="form-group">
-				<?= form_textarea(['name'=>'address', 'placeholder'=>'Shipping address...',  'value'=>set_value('address'), 'class'=>'form-control', 'rows'=>'5'])?>
-				<div class="text-danger form-error"><?= form_error('address')?></div>
-			</div>
-			<div class="form-group">
-				<?= form_input(['name'=>'zipcode', 'placeholder'=>'Zip code / Post code...', 'value'=>set_value('zipcode'), 'class'=>'form-control']) ?>
-				<div class="text-danger form-error"><?= form_error('zipcode')?></div>
-			</div>
-			<div class="form-group">
-				<?= form_input(['name'=>'city', 'placeholder'=>'City...', 'value'=>set_value('city'), 'class'=>'form-control']) ?>
-				<div class="text-danger form-error"><?= form_error('city')?></div>
-			</div>
-
 			<div id= "table-header">Payments methods </div>
 			<p>Now we have only option cash on delivery. Later we will connect with bKash, Rocket and other banks facility.Thanks for your supports</p>
 			
 			<div class="form-check">
 				<?= form_checkbox(['name'=>'paymentcheck', 'class'=>'form-check-input', 'value'=> TRUE]);?>
 				<label class="form-check-label" for="payment">
-					<b>Cash on delivery</b>
+					<b>Online Payment</b>
 				</label>
 				<div class="text-danger form-error"><?= form_error('paymentcheck')?></div>
 			</div>

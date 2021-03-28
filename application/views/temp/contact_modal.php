@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div><p>You can easily contact with our support team. They are waiting to support you. You can ask any types of query about this application and our policy. You can also contact if you face any types of shipping problem.</p></div>
+        <div><p>You can easily contact with our support team. </p></div>
         <div id="social-icon">
             <h6>Leave us a messege here</h6>
             <span><a href="#" title="Messenger" class="text-primary"><i class="fab fa-facebook-messenger"></i></a></span>
@@ -18,9 +18,7 @@
         </div>
         <br>
         <div>
-            <h6>Thanks & Regards</h6>
-            <a href="#" class="text-info"><b>Tahmid Nishat</b></a>
-            <p>Founder of Bookshop and E-learning.</p>
+            <h6>Thanks for using our platform.</h6>
         </div>
       </div>
       <div class="modal-footer">

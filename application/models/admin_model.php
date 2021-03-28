@@ -150,6 +150,44 @@ class admin_model extends CI_Model
 		return $query->result();
 	}
 
+
+
+
+
+
+#...Display all books
+	public function get_booksbr($limit, $offset)
+	{	
+		/*=== SQL join ===*/
+		$this->db->select('booksborrow.id, booksborrow.book_name, booksborrow.description, booksborrow.author, booksborrow.publisher, booksborrow.price, booksborrow.book_image, category.category');
+
+		$this->db->from('booksborrow');
+		$this->db->join('category', 'booksborrow.categoryId = category.id');
+
+		$this->db->order_by('booksborrow.id', 'DESC');
+		$this->db->limit($limit, $offset);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	#...For pagination
+	public function num_rows_admin_booksbr()
+	{
+		$this->db->select('*');
+		$this->db->from('category');
+		$this->db->join('booksborrow', 'booksborrow.categoryId = category.id');
+
+		$this->db->order_by('booksborrow.id', 'DESC');
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+	#...For count total books
+	public function count_total_booksbr()
+	{
+		$query = $this->db->get('booksborrow');
+		return $query->result();
+	}
+
+
 	#...Display book details
 	public function get_book_detail($id)
 	{
@@ -164,8 +202,46 @@ class admin_model extends CI_Model
 		return $query->row();		
 	}
 
+
+		#...Display bookbr details
+	public function get_bookbr_detail($id)
+	{
+		/*=== SQL join ===*/
+		$this->db->select('booksborrow.*, category.category');
+		$this->db->from('booksborrow');
+		$this->db->join('category', 'booksborrow.categoryId = category.id');
+		
+
+		$this->db->where('booksborrow.id', $id);
+		$query = $this->db->get();
+		return $query->row();		
+	}
+
 	#...Edit book info
 	public function edit_book($id, $data)
+	{
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
+		
+		$data = array(
+			'book_name' => $this->input->post('book_name'),
+			'description' => $this->input->post('description'),
+			'author' => $this->input->post('author'),
+			'publisher' => $this->input->post('publisher'),
+			'price' => $this->input->post('price'),
+			//'quantity' => $this->input->post('quantity'),
+			'categoryId' => $this->input->post('categoryId'),
+			//'book_image' => $image_path,
+			//'userId' => $this->session->userdata('id'),
+			//'status' => $this->input->post('status')
+		);
+
+		return $query = $this->db->where('id', $id)->update('books', $data);
+	}
+
+
+		#...Edit bookbr info
+	public function edit_bookbr($id, $data)
 	{
 		$data = $this->upload->data();
 		$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
@@ -183,14 +259,23 @@ class admin_model extends CI_Model
 			'status' => $this->input->post('status')
 		);
 
-		return $query = $this->db->where('id', $id)->update('books', $data);
+		return $query = $this->db->where('id', $id)->update('booksborrow', $data);
 	}
+
 
 	#...Delete book
 	public function delete_book($id)
 	{
 		$this->db->where('id', $id);
 		$this->db->delete('books');
+	}
+
+
+	#...Delete bookbr
+	public function delete_bookbr($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('booksborrow');
 	}
 
 

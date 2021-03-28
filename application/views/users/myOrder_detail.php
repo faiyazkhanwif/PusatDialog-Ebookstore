@@ -5,26 +5,11 @@
 			<div id="table-header">Order Detail</div><br>
 			<h5>Details information of Order number <?= $order_detail->orderId ?></h5>
 			<table class="table">
-				<tr>
+				<!--<tr>
 					<th>Ship Name</th>
 					<td colspan="1"><span><?= strip_tags($order_detail->ship_name) ?></span></td>
-				</tr>
-				<tr>
-					<th>Contact</th>
-					<td colspan="1"><span><?= strip_tags($order_detail->contact) ?></span></td>
-				</tr>
-				<tr>
-					<th>Email</th>
-					<td colspan="1"><span><?= strip_tags($order_detail->email) ?></span></td>
-				</tr>
-				<tr>
-					<th>Address</th>
-					<td colspan="1"><span><?= strip_tags($order_detail->address) ?></span></td>
-				</tr>
-				<tr>
-					<th>Shipping City</th>
-					<td colspan="1"><span><?= strip_tags($order_detail->city) ?></span></td>
-				</tr>
+				</tr>!-->
+
 				<tr>
 					<th>Total price</th>
 					<td colspan="1"><?= strip_tags($order_detail->total_price) ?>.TK</td>
@@ -52,10 +37,6 @@
 					<td colspan="1"><?= strip_tags($order_detail->bookId) ?></td>
 				</tr>
 				
-				<tr>
-					<th>Book Quantity</th>
-					<td colspan="1"><?= strip_tags($order_detail->quantity) ?></td>
-				</tr>
 				<tr class="border-bottom">
 					<?php
 					if($order_detail->status == 1)

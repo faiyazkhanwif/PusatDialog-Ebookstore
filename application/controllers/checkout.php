@@ -15,6 +15,7 @@ class Checkout extends CI_Controller {
 
 		/*=== Load the cart library ===*/
 		$this->load->library('cart');
+		$this->load->library('stripe_lib');
 	}
 
 	public function index()
@@ -23,13 +24,6 @@ class Checkout extends CI_Controller {
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
-
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-		$this->form_validation->set_rules('contact', 'Contact', 'trim|numeric|required|strip_tags[contact]');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|strip_tags[email]');
-		$this->form_validation->set_rules('address', 'Address', 'trim|required|strip_tags[address]');
-		$this->form_validation->set_rules('zipcode', 'Zip code or post code', 'trim|required|numeric|strip_tags[zipcode]');
-		$this->form_validation->set_rules('city', 'City', 'trim|required|strip_tags[city]');
 		$this->form_validation->set_rules('paymentcheck', 'Payment methods', 'trim|required');
 
 		if($this->form_validation->run() == FALSE)

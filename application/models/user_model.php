@@ -171,16 +171,9 @@ class user_model extends CI_Model
 
 		$data = array(
 			'userId'	=> $this->session->userdata('id'),
-			'ship_name'		=> $this->input->post('name'),
-			'address'	=> $this->input->post('address'),
-			'city' 		=> $this->input->post('city'),
-			'email'		=> $this->input->post('email'),
-			'contact' 	=> $this->input->post('contact'),
-			'zipcode'	=> $this->input->post('zipcode'),
 			'paymentcheck' => $this->input->post('paymentcheck'),
 			'total_price' => $total_price,
 			'bookId' => $books,
-			'quantity' => $quantity
 
 		);
 	}

@@ -12,10 +12,7 @@
                    </div>
                    <div class="col-md-6">
                        <div class="search-bar">
-                           <?= form_open('users/search')?>
-                               <span class="sb"><input type="search" name="search_book" placeholder="Find your books"></span>
-                               <span class="sb"><input type="submit" value="Search"></span>
-                           <?= form_close()?>
+
                        </div>
                    </div>
                </div>
@@ -30,15 +27,12 @@
                            <h2>Borrow your favourite books from us</h2>
                            <p><i class="fas fa-quote-left fq"></i> Keep reading books, but remember that a book is only a book, and you should learn to think for yourself.</p>
                            <i>– Maxim Gorky</i>
-                           <div><a href="" class="btn-buy">Borrow now <i class="fas fa-arrow-circle-right"></i></a></div>
+                           <div><a href="<?= base_url()?>users/all_books" class="btn-buy">Borrow now <i class="fas fa-arrow-circle-right"></i></a></div>
                        </div>
                    </div>
                    <div class="col-md-6">
                        <div class="search-bar">
-                           <?= form_open('users/search')?>
-                               <span class="sb"><input type="search" name="search_book" placeholder="Find your books"></span>
-                               <span class="sb"><input type="submit" value="Search"></span>
-                           <?= form_close()?>
+
                        </div>
                    </div>
                </div>
@@ -53,16 +47,11 @@
                            <h2>Pusat dialog offers variety of E-books of different genres</h2>
                            <p><i class="fas fa-quote-left fq"></i> Whenever you read a good book, somewhere in the world a door opens to allow in more light.</p>
                            <i>– Vera Nazarian</i>
-                           <div><a href="" class="btn-buy">Buy now <i class="fas fa-arrow-circle-right"></i></a></div>
+                           <div><a href="<?= base_url()?>users/all_books" class="btn-buy">Buy now <i class="fas fa-arrow-circle-right"></i></a></div>
                        </div>
                    </div>
                    <div class="col-md-6">
-                       <div class="search-bar">
-                           <?= form_open('users/search')?>
-                               <span class="sb"><input type="search" name="search_book" placeholder="Find your books"></span>
-                               <span class="sb"><input type="submit" value="Search"></span>
-                           <?= form_close()?>
-                       </div>
+
                    </div>
                </div>
                 

@@ -9,15 +9,15 @@
 <div class="container-fluid">
     <div class="books-menu">
       <ul>
-        <li><a href="<?= base_url()?>admin/books"><i class="fas fa-book"></i> all books</a></li>
-        <li><a href="<?= base_url()?>admin/add_books"><i class="fas fa-plus-circle"></i> Add new book</a></li>        
+        <li><a href="<?= base_url()?>admin/books"><i class="fas fa-book"></i> All E-books for sell</a></li>
+        <li><a href="<?= base_url()?>admin/add_books"><i class="fas fa-plus-circle"></i> Add new E-book for sell</a></li>        
       </ul>
   </div>
 </div>
 
 <br>
 <div class="container-fluid">
-	<div id="table-header">Books list</div>
+	<div id="table-header">E-Books list (For Sell)</div>
 	<table class="table table-hover">
   <thead class="thead-light">
     <tr>
@@ -43,7 +43,7 @@
       <?php print '<td><span>'.substr(strip_tags($book->description), 0, 100).'</span></td>'; ?>
       <?php print '<td><b>'.strip_tags($book->author).'</b></td>'; ?>
       <?php print '<td>'.strip_tags($book->publisher).'</td>'; ?>
-      <?php print '<td>'.strip_tags($book->price).'.TK</td>'; ?>
+      <?php print '<td>RM '.strip_tags($book->price).'</td>'; ?>
       <?php print '<td>'.ucwords(strip_tags($book->category)).'</td>'; ?>
 
       <?php print '<td><img src = "'.strip_tags($book->book_image).'" alt = "" width="50" hieght="80" </td>';?>

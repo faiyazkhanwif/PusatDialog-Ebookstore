@@ -16,7 +16,7 @@ class admin extends CI_Controller {
 
 		/*=== Load the cart library ===*/
 		$this->load->library('cart');
-		
+		$this->load->library('stripe_lib');
 	}
 
 	/*=============== Admin Index Page =================*/
@@ -237,6 +237,42 @@ class admin extends CI_Controller {
 						$this->load->view('layouts/admin_layout', $view);
 					}
 
+
+					public function booksbr()
+					{
+						$this->load->model('admin_model');
+						$this->load->library('pagination');
+						$config = [
+
+							'base_url' => base_url('admin/booksbr'),
+							'per_page' => 10,
+							'total_rows'=>  $this->admin_model->num_rows_admin_booksbr(),
+							'full_tag_open' => "<ul class='custom-pagination'>",
+							'full_tag_close' => "</ul>", 
+							'first_tag_open' => '<li>',
+							'first_tag_close' => '</li>',
+							'last_tag_open' => '<li>',
+							'last_link'=>'last',
+							'last_tag_close' => '</li>',
+							'next_tag_open' => '<li>',
+							'next_tag_close' => '</li>',
+							'prev_tag_open' => '<li>',
+							'prev_tag_close' => '</li>',
+							'cur_tag_open' => "<li class = 'active'><a>",
+							'cur_tag_close' => '</a></li>',
+						];
+						$this->pagination->initialize($config);
+
+
+						$this->load->model('admin_model');
+						$view['booksbr'] = $this->admin_model->get_booksbr($config['per_page'], $this->uri->segment(3));
+
+						$view['admin_view'] = "admin/booksbr";
+						$this->load->view('layouts/admin_layout', $view);
+					}
+
+
+
 					/*================ Add Books Page =================*/
 					public function add_books()
 					{
@@ -339,6 +375,114 @@ class admin extends CI_Controller {
 
 }
 
+
+
+
+
+
+
+					/*================ Add Books for borrow Page =================*/
+					public function add_booksbr()
+					{
+						/*=== LOAD DYNAMIC CATAGORY ===*/
+						$this->load->model('admin_model');
+						$view['category'] = $this->admin_model->get_category();
+						/*==============================*/
+
+						/*==== Image Upload validation*/
+//		$config = [
+//			'upload_path'=>'./uploads/image/',
+//			'allowed_types'=>'jpg|png',
+//			'max_size' => '400',
+//			'overwrite' => FALSE
+//			];
+
+//		$this->load->library('upload', $config);
+
+
+
+
+
+						$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
+						$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
+						$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
+						$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
+						$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
+
+						$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
+
+
+    // Cover upload
+						$config = array();
+						$config['upload_path'] = './uploads/image/';
+						$config['allowed_types'] = 'jpg|png|';
+						$config['max_size'] = '100000';
+
+    $this->load->library('upload', $config, 'coverupload'); // Create custom object for cover upload
+    $this->coverupload->initialize($config);
+    $upload_cover = $this->coverupload->do_upload('userfile');
+
+    // Catalog upload
+    $config = array();
+    $config['upload_path'] = './uploads/file/';
+    $config['allowed_types'] = 'pdf';
+    $config['max_size'] = '1000000';
+    $this->load->library('upload', $config, 'catalogupload');  // Create custom object for catalog upload
+    $this->catalogupload->initialize($config);
+    $upload_catalog = $this->catalogupload->do_upload('userfile2');
+
+
+
+
+    if(($this->form_validation->run() && $upload_cover && $upload_catalog) == FALSE)
+    {
+
+    	$view['admin_view'] = "admin/add_booksbr";
+    	$this->load->view('layouts/admin_layout', $view);
+
+    }
+    else
+    {
+		//	$this->load->model('admin_model');
+
+		//	if($this->admin_model->add_books())
+		//	{
+		//		$this->session->set_flashdata('success', 'Book added successfully');
+			//	redirect('admin/books');
+		//	}
+		//	else
+		//	{
+		//		print $this->db->error();
+		//	}
+			// Check uploads success
+    	if ($upload_cover && $upload_catalog) {
+
+      // Both Upload Success
+
+      $this->load->model('admin_model');
+
+		if($this->admin_model->add_booksbr())
+		{
+				$this->session->set_flashdata('success', 'E-Book added to borrow list successfully');
+				redirect('admin/booksbr');
+			}
+			else
+			{
+				print $this->db->error();
+			}
+    	} else {
+
+      // Error Occured in one of the uploads
+
+    		echo 'Cover upload Error : ' . $this->coverupload->display_errors() . '<br/>';
+    		echo 'Catlog upload Error : ' . $this->catalogupload->display_errors() . '<br/>';
+    	}
+
+    }
+
+
+}
+
 public function book_view($id)
 {
 	$this->load->model('admin_model');
@@ -367,25 +511,26 @@ public function book_edit($id)
 	$view['book_detail'] = $this->admin_model->get_book_detail($id);
 
 	/*==== Image Upload validation*/
-	$config = [
-		'upload_path'=>'./uploads/image/',
-		'allowed_types'=>'jpg|png',
-		'max_size' => '400',
-		'overwrite' => TRUE
-	];
+	//$config = [
+	//	'upload_path'=>'./uploads/image/',
+	//	'allowed_types'=>'jpg|png',
+	//	'max_size' => '400',
+	//	'overwrite' => TRUE
+	//];
 
-	$this->load->library('upload', $config);
+	//$this->load->library('upload', $config);
 
 	$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
 	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
 	$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
 	$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
 	$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
-	$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|numeric|strip_tags[quantity]');
+	//$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|numeric|strip_tags[quantity]');
 	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
 
-	if(($this->form_validation->run() && $this->upload->do_upload()) == FALSE)
+	//if(($this->form_validation->run() && $this->upload->do_upload()) == FALSE)
+	if($this->form_validation->run()== FALSE)
 	{
 
 		if($this->admin_model->get_book_detail($id))

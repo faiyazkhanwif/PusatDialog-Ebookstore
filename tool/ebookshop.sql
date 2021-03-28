@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2021 at 07:26 PM
+-- Generation Time: Mar 24, 2021 at 02:26 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -121,19 +121,6 @@ CREATE TABLE `orders` (
   `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending',
   `del_status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = Delivered | 0 = Not delivered'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`orderId`, `userId`, `ship_name`, `email`, `contact`, `address`, `city`, `zipcode`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `quantity`, `status`, `del_status`) VALUES
-(1, 1, 'Tahmid Nishat', 'tahmid.ni7@gmail.com', '01822597379', 'Uttara, sector#10, Road #12', 'Dhaka', '1230', '787', 1, '2019-04-12 13:54:12', '32, 27', '1, 1', '1', ''),
-(3, 1, 'Abid Mahmud Abrar', 'tahmid.ni7@gmail.com', '01683302276', 'Maheshkhali, Cox\'s Bazar', 'Cox\'s Bazar', '4710', '462', 1, '2019-04-12 13:56:22', '25', '1', '0', '0'),
-(4, 1, 'Tahmid Nishat', 'tahmid.ni7@gmail.com', '01822597379', 'None', 'Dhaka', '222', '225', 1, '2019-04-12 13:59:07', '17', '1', '1', '1'),
-(5, 19, 'MR User', 'user@system.com', '01822597379', 'Mirpur, Section #3, Road #15, Block #C, House-23', 'Dhaka', '1216', '240', 1, '2019-04-12 14:02:54', '31', '1', '1', '0'),
-(6, 19, 'MR User', 'user@system.com', '01683302276', 'Mirpur, section #10,  Road #2, Block-D', 'Dhaka', '1200', '225', 1, '2019-04-12 14:04:30', '17', '1', '0', '0'),
-(8, 19, 'Md User', 'user@system.com', '01822597379', 'Dhaka', 'Dhaka', '1230', '590', 1, '2019-04-21 15:46:10', '43, 42, 41', '1, 1, 1', '1', ''),
-(10, 1, 'Tahmid Nishat', 'tahmid.ni7@gmail.com', '01683302276', 'Uttara, sector-10, Kamarpara', 'Dhaka', '1230', '262', 1, '2019-04-26 07:03:26', '47', '1', '0', '0');
 
 -- --------------------------------------------------------
 

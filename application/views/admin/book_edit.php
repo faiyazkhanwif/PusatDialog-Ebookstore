@@ -3,7 +3,7 @@
     <div id="form-header">Update book info</div>
     <?= form_open_multipart("admin/book_edit/{$book_detail->id}")?>
         <div class="form-group row">
-            <label for="book-name" class="col-sm-2 col-form-label">Book Name</label>
+            <label for="book-name" class="col-sm-2 col-form-label">E-Book Name</label>
             <div class="col-sm-6">
                 <?= form_input(['name'=>'book_name', 'placeholder'=> 'Book Name', 'value'=>set_value('book_name', $book_detail->book_name), 'class'=>'form-control'])?>
             </div>
@@ -49,14 +49,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="book_image" class="col-sm-2 col-form-label">Book image</label>
-            <div class="col-sm-6">
-                <?= form_upload(['name'=>'userfile', 'class'=>'form-control'])?>
-                <div class="text-secondary">* Upload PNG, JPG format. Image should not be more than 400KB</div>
-            </div>
-            <div class="col-sm-4">
-               <div class="text-danger form-error"></div>    
-            </div>
+            
         </div>
         <div class="form-group row">
             <label for="category" class="col-sm-2 col-form-label">Category</label>

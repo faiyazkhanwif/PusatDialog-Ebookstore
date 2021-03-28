@@ -25,7 +25,7 @@
                         <ul id="nav">
                             <li><a href="<?= base_url()?>home">Home</a></li>
                             <li><a href="<?= base_url()?>users/all-books">All E-Books</a></li>
-                            <li><a href="<?= base_url()?>users/all-ebooks">Borrow E-books <i class="fas fa-arrow-alt-circle-right"></i></a></li>
+                           <li><a href="<?= base_url()?>users/all-ebooks">Borrow E-books <i class="fas fa-arrow-alt-circle-right"></i></a></li>
                             
                             <!-- #Button trigger modal -->
                             <li><a href = "#" data-toggle="modal" data-target="#exampleModal">Contact Us</a></li>
