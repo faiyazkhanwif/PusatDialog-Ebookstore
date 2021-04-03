@@ -786,6 +786,15 @@ public function cancle_delivery($orderId)
 	}
 }
 
+public function customize(){
+	$view['admin_view'] = "admin/customize_web";
+	$this->load->view('layouts/admin_layout', $view);
+}
+public function changelogoname(){
+	$view['admin_view'] = "admin/change_logo_name";
+	$this->load->view('layouts/admin_layout', $view);
+}
+
 
 
 }

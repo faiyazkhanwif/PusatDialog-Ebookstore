@@ -85,7 +85,7 @@
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-dark clickable-div" data-href="<?= base_url('#')?>">
+					<div class="col-admin bg-dark clickable-div" data-href="<?= base_url('admin/customize')?>">
 						<div>
 							<i class="fas fa-cog"></i>
 							<h6>Customize Website</h6>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2021 at 02:26 PM
+-- Generation Time: Apr 03, 2021 at 11:53 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -45,8 +45,26 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `book_name`, `description`, `author`, `publisher`, `price`, `categoryId`, `book_image`, `book_file`, `create_date`) VALUES
-(52, 'gg31', 'mmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppapppppppppppppppppppppppppppppppppmmmmmmmmmmmmmmmmmmmmmmkaaaaaaakkkkkkkkkkkkkkkkkkkkkkapppppppppppppappppppppppppppppppppppppppppppppp', 'ggfaa', 'yyyy', '43', 3, 'http://localhost/PusatDialog-Ebookstore/uploads/image/k29gh4shtrl41.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/Common_Job_Interview_Questions.pdf', '2021-03-14 17:29:53'),
-(53, 'ttttttt', 'tevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevftevf', 'wd', 'gg', '45', 5, 'http://localhost/PusatDialog-Ebookstore/uploads/image/2399616_0.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/FSKTM_SEM_2_2020_2021_CLASS_TIMETABLE_(1).pdf', '2021-03-14 18:24:49');
+(54, 'Test 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'LP', 'lspo', '54', 5, 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'http://localhost/PusatDialog-Ebookstore/uploads/file/sample1.pdf', '2021-03-28 02:50:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booksborrow`
+--
+
+CREATE TABLE `booksborrow` (
+  `id` int(11) NOT NULL,
+  `book_name` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `description` text CHARACTER SET latin1 NOT NULL,
+  `author` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `publisher` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `price` varchar(200) NOT NULL,
+  `categoryid` int(11) NOT NULL,
+  `book_image` varchar(200) NOT NULL,
+  `book_file` varchar(200) NOT NULL,
+  `create_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -107,33 +125,11 @@ INSERT INTO `ebooks` (`id`, `ebook_name`, `description`, `author`, `book_file`, 
 CREATE TABLE `orders` (
   `orderId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `ship_name` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `contact` varchar(200) NOT NULL,
-  `address` text NOT NULL,
-  `city` varchar(200) NOT NULL,
-  `zipcode` varchar(200) NOT NULL,
   `total_price` varchar(200) NOT NULL,
   `paymentcheck` int(11) NOT NULL,
   `dateTime` timestamp NOT NULL DEFAULT current_timestamp(),
   `bookId` text NOT NULL,
-  `quantity` text NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending',
-  `del_status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = Delivered | 0 = Not delivered'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_items`
---
-
-CREATE TABLE `order_items` (
-  `id` int(11) NOT NULL,
-  `orderId` int(11) NOT NULL,
-  `bookId` int(11) NOT NULL,
-  `price` varchar(200) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -176,8 +172,7 @@ INSERT INTO `reviews` (`id`, `review`, `bookId`, `userId`, `dateTime`) VALUES
 (45, 'A dark part of him wonders whether it would be interesting if something did happen, if they came, if he had to fight for his life…', 39, 1, '2019-04-15 04:44:11'),
 (46, 'Victor Brooks never could have imagined that he’d be on a honeymoon for one. Only here he is, taking a hard look at his life after the younger women he thought he loved walked out. The woman who volunteers to help him reflect is the last person he expects to be attracted to.!', 27, 1, '2019-04-15 05:05:12'),
 (47, 'In The Power of Habit, award-winning business reporter Charles Duhigg takes us to the thrilling edge of scientific discoveries that explain why habits exist and how they can be changed. Distilling vast amounts of information into engrossing narratives that take us from the boardrooms of Procter &amp;amp;amp;amp; Gamble to the sidelines of the NFL to the front lines of the civil rights movement, Duhigg presents a whole new understanding of human nature and its potential. At its core, The Power of Habit contains an exhilarating argument: The key to exercising regularly, losing weight, being more productive, and achieving success is understanding how habits work. As Duhigg shows, by harnessing this new science, we can transform our businesses, our communities, and our lives.', 32, 1, '2019-04-16 07:47:33'),
-(48, 'PHP stands for Hypertext Preprocessor (no, the acronym doesn\'t follow the name). It\'s an open source, server-side, scripting language used for the development of web applications. By scripting language, we mean a program that is script-based (lines of code) written for the automation of tasks', 15, 1, '2019-04-21 07:05:41'),
-(49, ' Reiciendis voluptate minima culpa pariatur, quae accusamus modi natus temporibus cupiditate aliquid officiis at sit quo dolorum fuga libero alias.', 47, 7, '2019-04-21 17:22:52');
+(48, 'PHP stands for Hypertext Preprocessor (no, the acronym doesn\'t follow the name). It\'s an open source, server-side, scripting language used for the development of web applications. By scripting language, we mean a program that is script-based (lines of code) written for the automation of tasks', 15, 1, '2019-04-21 07:05:41');
 
 -- --------------------------------------------------------
 
@@ -214,6 +209,12 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `booksborrow`
+--
+ALTER TABLE `booksborrow`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -230,12 +231,6 @@ ALTER TABLE `ebooks`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`orderId`);
-
---
--- Indexes for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `reviews`
@@ -258,7 +253,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -276,13 +271,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `order_items`
---
-ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `reviews`
