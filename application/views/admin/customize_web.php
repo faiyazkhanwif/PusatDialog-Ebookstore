@@ -1,9 +1,9 @@
 <div class="text-success">
 	<?php 
-	if($this->session->flashdata('login_success'))
-	{
-		print '<div class= "success-msg">'.$this->session->flashdata('login_success').'</div>';
-	}
+    if($this->session->flashdata('success'))
+    {
+        print '<div class= "success-msg">'.$this->session->flashdata('success').'</div>';
+    }
 	?>
 </div>
 
@@ -17,10 +17,10 @@
 		<div class="container">
 			<div class="row con-flex">
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-secondary clickable-div" data-href="<?= base_url('admin/changelogoname')?>">
+					<div class="col-admin bg-secondary clickable-div" data-href="<?= base_url('admin/changelogo')?>">
 						<div>
-							<i class="fas fa-cogs"></i>
-							<h6>Change main logo and name</h6>
+							<i class="far fa-image"></i>
+							<h6>Change main logo</h6>
 						</div>
 						
 						<?php 
@@ -31,10 +31,10 @@
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-primary clickable-div" data-href="<?= base_url('admin/category')?>">
+					<div class="col-admin bg-primary clickable-div" data-href="<?= base_url('admin/changename')?>">
 						<div>
-							<i class="fas fa-list"></i>
-							<h6>Edit header content</h6>
+							<i class="fas fa-signature"></i>
+							<h6>Edit name of the organization</h6>
 						</div>
 						<?php 
 						//$this->load->model('admin_model');

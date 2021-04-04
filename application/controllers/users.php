@@ -18,6 +18,10 @@ class Users extends CI_Controller {
 		/*=== LOAD DYNAMIC CATAGORY ===*/
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
+
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
 		/*==============================*/		
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -27,15 +31,15 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
 		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]',
-				array(
-					'required' => 'Email field can not be left empty.',
-					'is_unique' => 'This email is already registered.')
-			);
+			array(
+				'required' => 'Email field can not be left empty.',
+				'is_unique' => 'This email is already registered.')
+		);
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
 		$this->form_validation->set_rules('repassword', 'Confirm Password',
-		'trim|required|alpha_dash|min_length[3]|matches[password]');
+			'trim|required|alpha_dash|min_length[3]|matches[password]');
 		$this->form_validation->set_rules('conditionBox', 'Check box', 'trim|required',
-				array('required' => 'You have to check the box.')
+			array('required' => 'You have to check the box.')
 		);
 
 
@@ -45,6 +49,10 @@ class Users extends CI_Controller {
 			$this->load->model('admin_model');
 			$view['category'] = $this->admin_model->get_category();
 			/*==============================*/
+
+
+			$this->load->model('user_model');
+			$view['logos'] = $this->user_model->logo_generate();
 
 			$view['user_view'] = "users/reg";
 			$this->load->view('layouts/user_layout', $view);
@@ -78,6 +86,8 @@ class Users extends CI_Controller {
 			$this->load->model('admin_model');
 			$view['category'] = $this->admin_model->get_category();
 			/*==============================*/
+			$this->load->model('user_model');
+			$view['logos'] = $this->user_model->logo_generate();
 
 			$view['user_view'] = "users/login";
 			$this->load->view('layouts/user_layout', $view);
@@ -117,7 +127,7 @@ class Users extends CI_Controller {
 					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have Logged in successfully');
 					redirect('home');
 				}
-			
+
 			}
 
 			else
@@ -172,11 +182,16 @@ class Users extends CI_Controller {
 		$this->load->model('user_model');
 		$view['books'] = $this->user_model->get_books($config['per_page'], $this->uri->segment(3));
 
+
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
 		$view['user_view'] = "users/all_books";
 		$this->load->view('layouts/user_layout', $view);
 	}
 
-/*======== Book details info and all reviews =======*/
+	/*======== Book details info and all reviews =======*/
 	public function book_view($id)
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
@@ -197,17 +212,27 @@ class Users extends CI_Controller {
 
 			if($this->admin_model->get_book_detail($id))
 			{
+
+				$this->load->model('user_model');
+				$view['logos'] = $this->user_model->logo_generate();
+
 				$view['user_view'] = "users/book_detail";
 				$this->load->view('layouts/user_layout', $view);
 			}
 			else
 			{
+				$this->load->model('user_model');
+				$view['logos'] = $this->user_model->logo_generate();
+
 				$view['user_view'] = "temp/404page";
 				$this->load->view('layouts/user_layout', $view);
 			}
 		}
 		else
 		{
+			$this->load->model('user_model');
+			$view['logos'] = $this->user_model->logo_generate();
+			
 			$this->load->model('user_model');
 			$this->user_model->reviews($id);
 			redirect('users/book_view/'.$id.'');
@@ -225,6 +250,9 @@ class Users extends CI_Controller {
 		
 		$this->load->model('user_model');
 		$view['ebooks'] = $this->user_model->get_ebooks();
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
 
 		$view['user_view'] = "users/all_ebooks";
 		$this->load->view('layouts/user_layout', $view);
@@ -286,11 +314,13 @@ class Users extends CI_Controller {
 			$this->load->model('user_model');
 			$view['books'] = $this->user_model->search($query);
 
+			$this->load->model('user_model');
+			$view['logos'] = $this->user_model->logo_generate();
 
 			$view['user_view'] = "users/search_books";
 			$this->load->view('layouts/user_layout', $view);
 		}
-			
+
 	}
 
 

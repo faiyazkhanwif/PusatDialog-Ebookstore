@@ -52,7 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                     <div class="col-md-5">
                         <div class="logo">
-                            <div class="lname"><a href="<?= base_url() ?>home"><span><img src="<?= base_url('tool/img/pdialogsmall.jpg')?>"> Pusat Dialog</span> </a></div>
+                            <?php foreach($logos as $logo):?>
+                            <div class="lname"><a href="<?= base_url() ?>home"><span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> Pusat Dialog</span> </a></div>
+                            <?php endforeach;?>
                         </div>
                     </div>
                     <div class="col-md-7">

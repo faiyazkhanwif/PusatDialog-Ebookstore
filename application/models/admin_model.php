@@ -413,7 +413,7 @@ class admin_model extends CI_Model
 		return $query = $this->db->where('orderId', $orderId)->update('orders', $data);
 	}
 
-	#...cencle order delivery
+	#...cancel order delivery
 	public function cancle_delivery($orderId, $data)
 	{
 		
@@ -424,5 +424,26 @@ class admin_model extends CI_Model
 		return $query = $this->db->where('orderId', $orderId)->update('orders', $data);
 	}
 
+	public function changelogo(){
+		$this->db->empty_table('logo');
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
 
+		//$insert_logo = $this->db->insert('logo', $data);
+		//return $insert_logo;
+
+		$cover_data = $this->logoupload->data();
+		//$catlog_data = $this->catalogupload->data(); 
+		$image_path = base_url("uploads/image/".$cover_data['raw_name'].$cover_data['file_ext']);
+		//$file_path = base_url("uploads/file/".$catlog_data['raw_name'].$catlog_data['file_ext']);
+		
+		$data = array(
+			
+			'logoimg' => $image_path,
+			//'book_file' => $file_path
+		);
+
+		$insert_logo = $this->db->insert('logo', $data);
+		return $insert_logo;
+	}
 }

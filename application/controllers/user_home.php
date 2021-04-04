@@ -31,6 +31,9 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['user_details'] = $this->user_model->get_user_details($id);
 
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
 
 		$view['user_view'] = "users/user_index";
 		$this->load->view('layouts/user_home', $view);
@@ -48,7 +51,7 @@ class User_home extends CI_Controller {
 			'allowed_types'=>'jpg|png',
 			'max_size' => '400',
 			'overwrite' => FALSE
-			];
+		];
 
 		$this->load->library('upload', $config);
 
@@ -166,7 +169,7 @@ class User_home extends CI_Controller {
 		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric|strip_tags[contact]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
 		$this->form_validation->set_rules('repassword', 'Confirm Password',
-		'trim|required|alpha_dash|min_length[3]|matches[password]');
+			'trim|required|alpha_dash|min_length[3]|matches[password]');
 		$this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[80]|strip_tags[address]');
 
 		$this->form_validation->set_rules('city', 'City', 'trim|required|strip_tags[city]');

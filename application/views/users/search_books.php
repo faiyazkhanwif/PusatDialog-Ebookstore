@@ -14,7 +14,7 @@
 			<td>
 				<p class="text-info" style="font-size: 18px"><?= htmlentities($book->book_name) ?></p>
 				<p id="author">By <?= htmlentities($book->author) ?></p>
-				<p id="price">Price: <?= htmlentities($book->price) ?>.TK</p>
+				<p id="price">Price: <?= htmlentities($book->price) ?> RM</p>
 				<p><?= substr(htmlentities($book->description),0,250)?></p>
 			</td>
 			</tr>

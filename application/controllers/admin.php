@@ -24,6 +24,9 @@ class admin extends CI_Controller {
 	{
 		$this->load->model('admin_model');
 		
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
 		$view['admin_view'] = "admin/admin_index";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -36,6 +39,9 @@ class admin extends CI_Controller {
 					{
 						$this->load->model('admin_model');
 						$view['category'] = $this->admin_model->get_category();
+
+						$this->load->model('user_model');
+						$view['logos'] = $this->user_model->logo_generate();
 
 						$view['admin_view'] = "admin/category";
 						$this->load->view('layouts/admin_layout', $view);
@@ -50,6 +56,9 @@ class admin extends CI_Controller {
 
 						if($this->form_validation->run() == FALSE)
 						{
+							$this->load->model('user_model');
+							$view['logos'] = $this->user_model->logo_generate();
+
 							$view['admin_view'] = "admin/add_category";
 							$this->load->view('layouts/admin_layout', $view);
 						}
@@ -77,11 +86,17 @@ class admin extends CI_Controller {
 
 						if($this->admin_model->get_ctg_detail($id))
 						{
+							$this->load->model('user_model');
+							$view['logos'] = $this->user_model->logo_generate();
+
 							$view['admin_view'] = "admin/ctg_view";
 							$this->load->view('layouts/admin_layout', $view);
 						}
 						else
 						{
+							$this->load->model('user_model');
+							$view['logos'] = $this->user_model->logo_generate();
+
 							$view['admin_view'] = "temp/404page";
 							$this->load->view('layouts/admin_layout', $view);
 						}
@@ -104,40 +119,44 @@ class admin extends CI_Controller {
 						{
 							if($this->admin_model->get_ctg_detail($id))
 							{
+								$this->load->model('user_model');
+								$view['logos'] = $this->user_model->logo_generate();
+
 								$view['admin_view'] = "admin/ctg_edit";
 								$this->load->view('layouts/admin_layout', $view);
 							}
 							else
-							{
-								$view['admin_view'] = "temp/404page";
-								$this->load->view('layouts/admin_layout', $view);
-							}
+								{		$this->load->model('user_model');
+							$view['logos'] = $this->user_model->logo_generate();
+							$view['admin_view'] = "temp/404page";
+							$this->load->view('layouts/admin_layout', $view);
+						}
 
+					}
+					else
+					{
+						$this->load->model('admin_model');
+						if($this->admin_model->edit_category($id, $data))
+						{
+							$this->session->set_flashdata('success', 'Category Updated successfully');
+							redirect('admin/category');
 						}
 						else
 						{
-							$this->load->model('admin_model');
-							if($this->admin_model->edit_category($id, $data))
-							{
-								$this->session->set_flashdata('success', 'Category Updated successfully');
-								redirect('admin/category');
-							}
-							else
-							{
-								print $this->db->error();
-							}
+							print $this->db->error();
 						}
 					}
+				}
 
-					/*=============== Delete Category =================*/
-					public function ctg_delete($id)
-					{
-						$this->load->model('admin_model');
-						$this->admin_model->delete_category($id);
+				/*=============== Delete Category =================*/
+				public function ctg_delete($id)
+				{
+					$this->load->model('admin_model');
+					$this->admin_model->delete_category($id);
 
-						$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Category deleted successfully');
-						redirect('admin/category');
-					}
+					$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Category deleted successfully');
+					redirect('admin/category');
+				}
 
 
 
@@ -150,6 +169,9 @@ class admin extends CI_Controller {
 					{
 						$this->load->model('admin_model');
 						$view['users_data'] = $this->admin_model->get_users();
+
+						$this->load->model('user_model');
+						$view['logos'] = $this->user_model->logo_generate();
 
 						$view['admin_view'] = "admin/view_users";
 						$this->load->view('layouts/admin_layout', $view);
@@ -169,7 +191,10 @@ class admin extends CI_Controller {
 
 
 						if($this->form_validation->run() == FALSE)
-						{
+						{		
+							$this->load->model('user_model');
+							$view['logos'] = $this->user_model->logo_generate();
+
 							$view['admin_view'] = "admin/add_users";
 							$this->load->view('layouts/admin_layout', $view);
 						}
@@ -233,6 +258,9 @@ class admin extends CI_Controller {
 						$this->load->model('admin_model');
 						$view['books'] = $this->admin_model->get_books($config['per_page'], $this->uri->segment(3));
 
+						$this->load->model('user_model');
+						$view['logos'] = $this->user_model->logo_generate();
+
 						$view['admin_view'] = "admin/books";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -268,6 +296,10 @@ class admin extends CI_Controller {
 						$view['booksbr'] = $this->admin_model->get_booksbr($config['per_page'], $this->uri->segment(3));
 
 						$view['admin_view'] = "admin/booksbr";
+
+						$this->load->model('user_model');
+						$view['logos'] = $this->user_model->logo_generate();
+
 						$this->load->view('layouts/admin_layout', $view);
 					}
 
@@ -328,6 +360,8 @@ class admin extends CI_Controller {
 
     if(($this->form_validation->run() && $upload_cover && $upload_catalog) == FALSE)
     {
+    	$this->load->model('user_model');
+    	$view['logos'] = $this->user_model->logo_generate();
 
     	$view['admin_view'] = "admin/add_books";
     	$this->load->view('layouts/admin_layout', $view);
@@ -351,17 +385,17 @@ class admin extends CI_Controller {
 
       // Both Upload Success
 
-      $this->load->model('admin_model');
+    		$this->load->model('admin_model');
 
-		if($this->admin_model->add_books())
-		{
-				$this->session->set_flashdata('success', 'Book added successfully');
-				redirect('admin/books');
-			}
-			else
-			{
-				print $this->db->error();
-			}
+    		if($this->admin_model->add_books())
+    		{
+    			$this->session->set_flashdata('success', 'Book added successfully');
+    			redirect('admin/books');
+    		}
+    		else
+    		{
+    			print $this->db->error();
+    		}
     	} else {
 
       // Error Occured in one of the uploads
@@ -381,15 +415,15 @@ class admin extends CI_Controller {
 
 
 
-					/*================ Add Books for borrow Page =================*/
-					public function add_booksbr()
-					{
-						/*=== LOAD DYNAMIC CATAGORY ===*/
-						$this->load->model('admin_model');
-						$view['category'] = $this->admin_model->get_category();
-						/*==============================*/
+/*================ Add Books for borrow Page =================*/
+public function add_booksbr()
+{
+	/*=== LOAD DYNAMIC CATAGORY ===*/
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+	/*==============================*/
 
-						/*==== Image Upload validation*/
+	/*==== Image Upload validation*/
 //		$config = [
 //			'upload_path'=>'./uploads/image/',
 //			'allowed_types'=>'jpg|png',
@@ -403,20 +437,20 @@ class admin extends CI_Controller {
 
 
 
-						$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
-						$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
-						$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
-						$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-						$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
+	$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
+	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
+	$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
+	$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
+	$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
 
-						$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
+	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
 
     // Cover upload
-						$config = array();
-						$config['upload_path'] = './uploads/image/';
-						$config['allowed_types'] = 'jpg|png|';
-						$config['max_size'] = '100000';
+	$config = array();
+	$config['upload_path'] = './uploads/image/';
+	$config['allowed_types'] = 'jpg|png|';
+	$config['max_size'] = '100000';
 
     $this->load->library('upload', $config, 'coverupload'); // Create custom object for cover upload
     $this->coverupload->initialize($config);
@@ -436,6 +470,8 @@ class admin extends CI_Controller {
 
     if(($this->form_validation->run() && $upload_cover && $upload_catalog) == FALSE)
     {
+    	$this->load->model('user_model');
+    	$view['logos'] = $this->user_model->logo_generate();
 
     	$view['admin_view'] = "admin/add_booksbr";
     	$this->load->view('layouts/admin_layout', $view);
@@ -459,17 +495,17 @@ class admin extends CI_Controller {
 
       // Both Upload Success
 
-      $this->load->model('admin_model');
+    		$this->load->model('admin_model');
 
-		if($this->admin_model->add_booksbr())
-		{
-				$this->session->set_flashdata('success', 'E-Book added to borrow list successfully');
-				redirect('admin/booksbr');
-			}
-			else
-			{
-				print $this->db->error();
-			}
+    		if($this->admin_model->add_booksbr())
+    		{
+    			$this->session->set_flashdata('success', 'E-Book added to borrow list successfully');
+    			redirect('admin/booksbr');
+    		}
+    		else
+    		{
+    			print $this->db->error();
+    		}
     	} else {
 
       // Error Occured in one of the uploads
@@ -605,6 +641,9 @@ public function orders()
 	$this->load->model('admin_model');
 	$view['orders'] = $this->admin_model->get_orders();
 
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
 	$view['admin_view'] = "admin/display_orders";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -614,6 +653,9 @@ public function order_view($orderId)
 {
 	$this->load->model('admin_model');
 	$view['order_detail'] = $this->admin_model->get_order_detail($orderId);
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
 
 	if($this->admin_model->get_order_detail($orderId))
 	{
@@ -744,6 +786,9 @@ public function ready_to_deliver()
 	$this->load->model('admin_model');
 	$view['orders'] = $this->admin_model->get_orders_to_deliver();
 
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
 	$view['admin_view'] = "admin/ready_to_deliver";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -787,14 +832,113 @@ public function cancle_delivery($orderId)
 }
 
 public function customize(){
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
 	$view['admin_view'] = "admin/customize_web";
 	$this->load->view('layouts/admin_layout', $view);
 }
-public function changelogoname(){
-	$view['admin_view'] = "admin/change_logo_name";
-	$this->load->view('layouts/admin_layout', $view);
+public function changelogo(){
+	//$view['admin_view'] = "admin/change_logo";
+	//$this->load->view('layouts/admin_layout', $view);
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	/*=== LOAD DYNAMIC CATAGORY ===*/
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+	/*==============================*/
+
+	/*==== Image Upload validation*/
+	$config = array();
+	$config['upload_path'] = './uploads/image/';
+	$config['allowed_types'] = 'jpg|png|';
+	$config['max_size'] = '100000';
+
+    $this->load->library('upload', $config, 'logoupload'); // Create custom object for cover upload
+    $this->logoupload->initialize($config);
+    $upload_logo = $this->logoupload->do_upload('userfile');
+
+
+    if(($upload_logo) == FALSE)
+    {
+
+    	$view['admin_view'] = "admin/change_logo";
+    	$this->load->view('layouts/admin_layout', $view);
+
+    }
+    else
+    {
+
+    	if ($upload_logo) {
+
+      // Both Upload Success
+
+    		$this->load->model('admin_model');
+
+    		if($this->admin_model->changelogo())
+    		{
+    			$this->session->set_flashdata('success', 'Logo added successfully');
+    			redirect('admin/customize');
+    		}
+    		else
+    		{
+    			print $this->db->error();
+    		}
+    	} else {
+
+      // Error Occured in one of the uploads
+
+    		echo 'Cover upload Error : ' . $this->logoupload->display_errors() . '<br/>';
+    		//echo 'Catlog upload Error : ' . $this->catalogupload->display_errors() . '<br/>';
+    	}
+
+    }
+    //$config = [
+   // 	'upload_path'=>'./uploads/image/',
+   // 	'allowed_types'=>'jpg|png',
+   // 	'max_size' => '4000',
+   // 	'overwrite' => FALSE
+   // ];
+
+   // $this->load->library('upload', $config);
+
+
+    //if(($this->upload->do_upload()) == FALSE)
+    //{
+
+    //	$view['admin_view'] = "admin/change_logo";
+    //	$this->load->view('layouts/admin_layout', $view);
+
+    //}
+    //else
+   // {
+    //	$this->load->model('admin_model');
+//
+    //	if($this->admin_model->changelogo())
+    //	{
+    //		$this->session->set_flashdata('success', 'Logo added successfully');
+    ///		redirect('admin/books');
+    //	}
+    //	else
+    //	{
+    //		print $this->db->error();
+    //	}
+//
+   // }
+
 }
 
+public function changename(){
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+	
+	$view['admin_view'] = "admin/change_name";
+	$this->load->view('layouts/admin_layout', $view);
+
+}
 
 
 }

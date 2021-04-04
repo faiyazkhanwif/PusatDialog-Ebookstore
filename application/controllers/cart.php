@@ -17,6 +17,8 @@ class Cart extends CI_Controller {
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
 
 		$view['user_view'] = "users/myCart";
 		$this->load->view('layouts/user_layout', $view);
