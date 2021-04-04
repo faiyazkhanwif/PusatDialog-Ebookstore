@@ -464,4 +464,23 @@ class admin_model extends CI_Model
 		$insert_orgname = $this->db->insert('orgnamedb', $data);
 		return $insert_orgname;
 	}
+
+
+	public function changeftdsc(){
+		$this->db->empty_table('footerdb');
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
+
+		//$insert_logo = $this->db->insert('logo', $data);
+		//return $insert_logo;
+
+		$data = array(
+
+			'footerdsc' => $this->input->post('ft_dsc'),
+
+		);
+
+		$insert_ftdsc = $this->db->insert('footerdb', $data);
+		return $insert_ftdsc;
+	}
 }

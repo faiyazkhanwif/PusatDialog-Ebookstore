@@ -279,6 +279,14 @@ class user_model extends CI_Model
 		$query = $this->db->get('orgnamedb');
 		return $query->result();
 	}
+
+	public function ft_generate()
+	{
+		//$this->db->limit(6);
+		//$this->db->order_by('id', 'DESC');
+		$query = $this->db->get('footerdb');
+		return $query->result();
+	}
 } 
 
 ?>

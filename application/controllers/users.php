@@ -22,6 +22,9 @@ class Users extends CI_Controller {
 
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 		/*==============================*/		
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -53,6 +56,9 @@ class Users extends CI_Controller {
 
 			$this->load->model('user_model');
 			$view['logos'] = $this->user_model->logo_generate();
+
+			$this->load->model('user_model');
+			$view['dscs'] = $this->user_model->ft_generate();
 
 			$view['user_view'] = "users/reg";
 			$this->load->view('layouts/user_layout', $view);
@@ -89,6 +95,9 @@ class Users extends CI_Controller {
 			$this->load->model('user_model');
 			$view['logos'] = $this->user_model->logo_generate();
 
+
+			$this->load->model('user_model');
+			$view['dscs'] = $this->user_model->ft_generate();
 			
 			$this->load->model('user_model');
 			$view['names'] = $this->user_model->name_generate();
@@ -192,6 +201,9 @@ class Users extends CI_Controller {
 		$view['logos'] = $this->user_model->logo_generate();
 
 		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
 		$view['user_view'] = "users/all_books";
@@ -224,6 +236,9 @@ class Users extends CI_Controller {
 				$view['logos'] = $this->user_model->logo_generate();
 
 				$this->load->model('user_model');
+				$view['dscs'] = $this->user_model->ft_generate();
+
+				$this->load->model('user_model');
 				$view['names'] = $this->user_model->name_generate();
 
 				$view['user_view'] = "users/book_detail";
@@ -237,6 +252,9 @@ class Users extends CI_Controller {
 				$this->load->model('user_model');
 				$view['names'] = $this->user_model->name_generate();
 
+				$this->load->model('user_model');
+				$view['dscs'] = $this->user_model->ft_generate();
+
 				$view['user_view'] = "temp/404page";
 				$this->load->view('layouts/user_layout', $view);
 			}
@@ -245,6 +263,9 @@ class Users extends CI_Controller {
 		{
 			$this->load->model('user_model');
 			$view['logos'] = $this->user_model->logo_generate();
+
+			$this->load->model('user_model');
+			$view['dscs'] = $this->user_model->ft_generate();
 
 			$this->load->model('user_model');
 			$view['names'] = $this->user_model->name_generate();
@@ -269,6 +290,9 @@ class Users extends CI_Controller {
 
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 		$view['user_view'] = "users/all_ebooks";
 		$this->load->view('layouts/user_layout', $view);
@@ -332,6 +356,9 @@ class Users extends CI_Controller {
 
 			$this->load->model('user_model');
 			$view['logos'] = $this->user_model->logo_generate();
+
+			$this->load->model('user_model');
+			$view['dscs'] = $this->user_model->ft_generate();
 
 			$view['user_view'] = "users/search_books";
 			$this->load->view('layouts/user_layout', $view);

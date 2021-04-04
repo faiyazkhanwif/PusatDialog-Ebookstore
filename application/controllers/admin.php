@@ -30,6 +30,9 @@ class admin extends CI_Controller {
 		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 		$view['admin_view'] = "admin/admin_index";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -49,6 +52,9 @@ class admin extends CI_Controller {
 						$this->load->model('user_model');
 						$view['names'] = $this->user_model->name_generate();
 
+						$this->load->model('user_model');
+						$view['dscs'] = $this->user_model->ft_generate();
+
 						$view['admin_view'] = "admin/category";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -67,6 +73,10 @@ class admin extends CI_Controller {
 
 							$this->load->model('user_model');
 							$view['names'] = $this->user_model->name_generate();
+
+
+							$this->load->model('user_model');
+							$view['dscs'] = $this->user_model->ft_generate();
 
 							$view['admin_view'] = "admin/add_category";
 							$this->load->view('layouts/admin_layout', $view);
@@ -101,6 +111,9 @@ class admin extends CI_Controller {
 							$this->load->model('user_model');
 							$view['names'] = $this->user_model->name_generate();
 
+									$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 							$view['admin_view'] = "admin/ctg_view";
 							$this->load->view('layouts/admin_layout', $view);
 						}
@@ -111,6 +124,9 @@ class admin extends CI_Controller {
 
 							$this->load->model('user_model');
 							$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 							$view['admin_view'] = "temp/404page";
 							$this->load->view('layouts/admin_layout', $view);
@@ -140,6 +156,9 @@ class admin extends CI_Controller {
 								$this->load->model('user_model');
 								$view['names'] = $this->user_model->name_generate();
 
+										$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 								$view['admin_view'] = "admin/ctg_edit";
 								$this->load->view('layouts/admin_layout', $view);
 							}
@@ -149,6 +168,10 @@ class admin extends CI_Controller {
 
 							$this->load->model('user_model');
 							$view['names'] = $this->user_model->name_generate();
+
+
+									$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 							$view['admin_view'] = "temp/404page";
 							$this->load->view('layouts/admin_layout', $view);
@@ -198,6 +221,9 @@ class admin extends CI_Controller {
 						$this->load->model('user_model');
 						$view['names'] = $this->user_model->name_generate();
 
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 						$view['admin_view'] = "admin/view_users";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -222,6 +248,9 @@ class admin extends CI_Controller {
 
 							$this->load->model('user_model');
 							$view['names'] = $this->user_model->name_generate();
+
+									$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 							$view['admin_view'] = "admin/add_users";
 							$this->load->view('layouts/admin_layout', $view);
@@ -292,6 +321,9 @@ class admin extends CI_Controller {
 						$this->load->model('user_model');
 						$view['names'] = $this->user_model->name_generate();
 
+								$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 						$view['admin_view'] = "admin/books";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -333,6 +365,9 @@ class admin extends CI_Controller {
 
 						$this->load->model('user_model');
 						$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -399,6 +434,9 @@ class admin extends CI_Controller {
 
     	$this->load->model('user_model');
     	$view['names'] = $this->user_model->name_generate();
+
+    			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
     	$view['admin_view'] = "admin/add_books";
     	$this->load->view('layouts/admin_layout', $view);
@@ -513,6 +551,9 @@ public function add_booksbr()
     	$this->load->model('user_model');
     	$view['names'] = $this->user_model->name_generate();
 
+    			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
     	$view['admin_view'] = "admin/add_booksbr";
     	$this->load->view('layouts/admin_layout', $view);
 
@@ -572,6 +613,9 @@ public function book_view($id)
 		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 		$view['admin_view'] = "admin/book_view";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -595,6 +639,9 @@ public function book_edit($id)
 
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 	$this->load->model('user_model');
 	$view['names'] = $this->user_model->name_generate();
@@ -700,6 +747,9 @@ public function orders()
 	$this->load->model('user_model');
 	$view['names'] = $this->user_model->name_generate();
 
+			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 	$view['admin_view'] = "admin/display_orders";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -715,6 +765,9 @@ public function order_view($orderId)
 
 	$this->load->model('user_model');
 	$view['names'] = $this->user_model->name_generate();
+
+			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 	if($this->admin_model->get_order_detail($orderId))
 	{
@@ -848,6 +901,9 @@ public function ready_to_deliver()
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
 
+			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 	$view['admin_view'] = "admin/ready_to_deliver";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -897,6 +953,9 @@ public function customize(){
 	$this->load->model('user_model');
 	$view['names'] = $this->user_model->name_generate();
 
+			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 	$view['admin_view'] = "admin/customize_web";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -909,6 +968,9 @@ public function changelogo(){
 
 	$this->load->model('user_model');
 	$view['names'] = $this->user_model->name_generate();
+
+			$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 
 	/*=== LOAD DYNAMIC CATAGORY ===*/
 	$this->load->model('admin_model');
@@ -1013,6 +1075,9 @@ public function changename(){
 		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
+				$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 		$view['admin_view'] = "admin/change_name";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -1032,5 +1097,45 @@ public function changename(){
 
 }
 
+
+public function changeftdsc(){
+
+	//$this->load->model('user_model');
+	//$view['logos'] = $this->user_model->logo_generate();
+
+	//$view['admin_view'] = "admin/change_name";
+	//$this->load->view('layouts/admin_layout', $view);
+
+	$this->form_validation->set_rules('ft_dsc', 'Footer description', 'trim|required|min_length[100]|strip_tags[ft_dsc]');
+
+	if($this->form_validation->run() == FALSE)
+	{
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+				$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$view['admin_view'] = "admin/change_footerdsc";
+		$this->load->view('layouts/admin_layout', $view);
+	}
+	else
+	{
+		$this->load->model('admin_model');
+		if($this->admin_model->changeftdsc())
+		{
+			$this->session->set_flashdata('success', 'Footer description added successfully');
+			redirect('admin/customize');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
+
+}
 
 }

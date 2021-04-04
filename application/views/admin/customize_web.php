@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-success clickable-div" data-href="<?= base_url('admin/books')?>">
+					<div class="col-admin bg-success clickable-div" data-href="<?= base_url('admin/changeftdsc')?>">
 						<div>
 							<i class="fas fa-list"></i>
 							<h6>Edit footer content</h6>

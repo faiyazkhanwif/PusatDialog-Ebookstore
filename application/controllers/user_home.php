@@ -34,6 +34,9 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
+				$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 
 		$view['user_view'] = "users/user_index";
 		$this->load->view('layouts/user_home', $view);

@@ -31,6 +31,9 @@ class Home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
 		/*=== CSE Books ===*/
 		//$this->load->model('user_model');
 		//$view['cse_books'] = $this->user_model->cse_books();

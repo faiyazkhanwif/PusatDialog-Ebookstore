@@ -144,12 +144,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-md-5">
                                 <div class="widget">
                                     <div class="brand-name">
-                                        <div class="lname"><a href=""><span>Pusat Dialog E-bookshop</span></a></div>
-                                        <p>This e-book shop is operated by Pusat Dialog for publishing their own content. No third part vendors are affliated with this e-book store other than Pusat Dialog, University of Malaya.</p>
+                                        <div class="lname"><a href=""><span><?php foreach($names as $name): ?>
+
+                                        <?php print $name->orgname;?>
+
+                                        <?php endforeach; ?> E-bookshop</span></a></div>
+                                        <p><?php foreach($dscs as $dsc): ?>
+
+                                        <?php print $dsc->footerdsc;?>
+
+                                        <?php endforeach; ?></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="widget">
                                     <h3>Our Services</h3>
 
@@ -165,12 +173,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="widget">
-                                    <div id="">
-                                        <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/pdialogsmall.png'); ?>"></a></span>
-                                        <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/umbig.png'); ?>"></a></span>
-                                    </div>
+                                    <div class="brand-name">
+                                        <div class="logo">
+                                            <?php foreach($logos as $logo):?>
+                                                <span class="lname">
+                                                    <span><a href="#"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
+                                                </span>
+                                            <?php endforeach;?>
+                                            <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/umbig.png'); ?>"></a></span>
+                                        </div>
+                                    </div> 
                                 </div>
                             </div>
                         </div>

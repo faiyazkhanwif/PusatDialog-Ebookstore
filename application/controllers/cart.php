@@ -23,6 +23,9 @@ class Cart extends CI_Controller {
 		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
 		$view['user_view'] = "users/myCart";
 		$this->load->view('layouts/user_layout', $view);
 		
