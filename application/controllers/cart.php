@@ -20,6 +20,9 @@ class Cart extends CI_Controller {
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
 		$view['user_view'] = "users/myCart";
 		$this->load->view('layouts/user_layout', $view);
 		
@@ -36,14 +39,14 @@ class Cart extends CI_Controller {
 		$this->load->model('admin_model');
 		$books = $this->admin_model->get_book_detail($id);
 
-/*=============== Insert Data into cart =============*/
+		/*=============== Insert Data into cart =============*/
 		$data = array(
 
-				'id'=> $books->id,
-				'price'=> $books->price,
-				'name'=> $books->book_name,
-				'book_image'=> $books->book_image,
-				'qty'=> 1
+			'id'=> $books->id,
+			'price'=> $books->price,
+			'name'=> $books->book_name,
+			'book_image'=> $books->book_image,
+			'qty'=> 1
 		);
 
 		$this->cart->product_name_rules = '[:print:]'; #...For inserting special char
@@ -53,7 +56,7 @@ class Cart extends CI_Controller {
 		redirect($_SERVER['HTTP_REFERER']);
 
 	}
-/*=============== Update data from cart ============*/
+	/*=============== Update data from cart ============*/
 	public function update_cart()
 	{
 		$this->load->model('admin_model');
@@ -63,8 +66,8 @@ class Cart extends CI_Controller {
 		{
 			$info = array(
 
-			'rowid'=> $content['rowid'],
-			'qty' => $content['qty']
+				'rowid'=> $content['rowid'],
+				'qty' => $content['qty']
 
 			);
 			if($content['qty'] < 0)
@@ -96,11 +99,11 @@ class Cart extends CI_Controller {
 			}
 			
 		}
-			redirect('cart');
+		redirect('cart');
 	}
 
 
-/*============== Delete Data from cart ================*/
+	/*============== Delete Data from cart ================*/
 	public function delete_cart($rowid)
 	{
 		/*$this->cart->update(array('rowid'=>$rowid, 'qty'=>0));*/

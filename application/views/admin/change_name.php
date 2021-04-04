@@ -2,7 +2,7 @@
 <div class="container">
     <div class="my-form">
         <div id="form-header">Change Name of the Organization</div>
-        <?= form_open_multipart("admin/add_books")?>
+        <?= form_open_multipart("admin/changename")?>
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">Name of the organization</label>
             <div class="col-sm-6">

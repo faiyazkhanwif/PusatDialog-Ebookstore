@@ -89,6 +89,10 @@ class Users extends CI_Controller {
 			$this->load->model('user_model');
 			$view['logos'] = $this->user_model->logo_generate();
 
+			
+			$this->load->model('user_model');
+			$view['names'] = $this->user_model->name_generate();
+
 			$view['user_view'] = "users/login";
 			$this->load->view('layouts/user_layout', $view);
 		}
@@ -187,6 +191,9 @@ class Users extends CI_Controller {
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
 		$view['user_view'] = "users/all_books";
 		$this->load->view('layouts/user_layout', $view);
 	}
@@ -216,6 +223,9 @@ class Users extends CI_Controller {
 				$this->load->model('user_model');
 				$view['logos'] = $this->user_model->logo_generate();
 
+				$this->load->model('user_model');
+				$view['names'] = $this->user_model->name_generate();
+
 				$view['user_view'] = "users/book_detail";
 				$this->load->view('layouts/user_layout', $view);
 			}
@@ -223,6 +233,9 @@ class Users extends CI_Controller {
 			{
 				$this->load->model('user_model');
 				$view['logos'] = $this->user_model->logo_generate();
+
+				$this->load->model('user_model');
+				$view['names'] = $this->user_model->name_generate();
 
 				$view['user_view'] = "temp/404page";
 				$this->load->view('layouts/user_layout', $view);
@@ -232,7 +245,10 @@ class Users extends CI_Controller {
 		{
 			$this->load->model('user_model');
 			$view['logos'] = $this->user_model->logo_generate();
-			
+
+			$this->load->model('user_model');
+			$view['names'] = $this->user_model->name_generate();
+
 			$this->load->model('user_model');
 			$this->user_model->reviews($id);
 			redirect('users/book_view/'.$id.'');

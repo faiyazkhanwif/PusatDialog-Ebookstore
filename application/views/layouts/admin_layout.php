@@ -35,30 +35,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="welcome-tx">Welcome to Pusat-Dialog E-book Shop !</div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="social-icon">
-                            <a style="color: white;" href="https://um.edu.my/" title="Universiti Malaya">University of Malaya</i></a>
-                            <a class="umlogo" href="https://um.edu.my/" title="Universiti Malaya"><img src="<?= base_url('tool/img/umsmall.png'); ?>"></i></a>
+                        <div class="welcome-tx">Welcome to 
+                            <?php foreach($names as $name): ?>
+
+                                <?php print $name->orgname;?>
+
+                                <?php endforeach; ?> E-book Shop !</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="social-icon">
+                                    <a style="color: white;" href="https://um.edu.my/" title="Universiti Malaya">University of Malaya</i></a>
+                                    <a class="umlogo" href="https://um.edu.my/" title="Universiti Malaya"><img src="<?= base_url('tool/img/umsmall.png'); ?>"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="header-mid">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="logo">
-                            <?php foreach($logos as $logo):?>
-                                <div class="lname"><a href="<?= base_url() ?>home"><span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> Pusat Dialog</span> </a></div>
-                            <?php endforeach;?>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                <div class="header-mid">
+                    <div class="container">
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-6">
+                                <div class="logo">
+                                    <?php foreach($logos as $logo):?>
+                                        <div class="lname"><a href="<?= base_url() ?>home"><span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?>     
+                                        <?php foreach($names as $name): ?>
+
+                                            <?php print $name->orgname;?>
+
+                                            <?php endforeach; ?></span> </a></div>
+                                        <?php endforeach;?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-8">
                                 <!--<a href="" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login</a>
                                     <a href="" class="btn-login"><i class="fas fa-user-cog"></i> Register</a>-->
                                 </div>

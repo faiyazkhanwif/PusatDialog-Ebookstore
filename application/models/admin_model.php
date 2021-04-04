@@ -7,9 +7,9 @@ class admin_model extends CI_Model
 	{
 		$data = array(
 
-		'category' => $this->input->post('category'),
-		'description' => $this->input->post('description'),
-		'tag' => $this->input->post('tag')
+			'category' => $this->input->post('category'),
+			'description' => $this->input->post('description'),
+			'tag' => $this->input->post('tag')
 
 		);
 
@@ -37,9 +37,9 @@ class admin_model extends CI_Model
 	{
 		$data = array(
 
-		'category' => $this->input->post('category'),
-		'description' => $this->input->post('description'),
-		'tag' => $this->input->post('tag')
+			'category' => $this->input->post('category'),
+			'description' => $this->input->post('description'),
+			'tag' => $this->input->post('tag')
 
 		);
 
@@ -70,13 +70,13 @@ class admin_model extends CI_Model
 
 		$data = array(
 
-		'name'	=> $this->input->post('name'),
-		'contact'	=> $this->input->post('contact'),
-		'email'	=> $this->input->post('email'),
-		'address'	=> $this->input->post('address'),
-		'city'	=> $this->input->post('city'),
-		'password' => $encripted_pass,
-		'type' => $this->input->post('type')
+			'name'	=> $this->input->post('name'),
+			'contact'	=> $this->input->post('contact'),
+			'email'	=> $this->input->post('email'),
+			'address'	=> $this->input->post('address'),
+			'city'	=> $this->input->post('city'),
+			'password' => $encripted_pass,
+			'type' => $this->input->post('type')
 
 		);
 
@@ -445,5 +445,23 @@ class admin_model extends CI_Model
 
 		$insert_logo = $this->db->insert('logo', $data);
 		return $insert_logo;
+	}
+
+	public function changename(){
+		$this->db->empty_table('orgnamedb');
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
+
+		//$insert_logo = $this->db->insert('logo', $data);
+		//return $insert_logo;
+
+		$data = array(
+
+			'orgname' => $this->input->post('org_name'),
+
+		);
+
+		$insert_orgname = $this->db->insert('orgnamedb', $data);
+		return $insert_orgname;
 	}
 }

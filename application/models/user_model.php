@@ -10,10 +10,10 @@ class user_model extends CI_Model
 
 		$data = array(
 
-		'name'	=> $this->input->post('name'),
-		'contact'	=> $this->input->post('contact'),
-		'email'	=> $this->input->post('email'),
-		'password' => $encripted_pass
+			'name'	=> $this->input->post('name'),
+			'contact'	=> $this->input->post('contact'),
+			'email'	=> $this->input->post('email'),
+			'password' => $encripted_pass
 
 		);
 
@@ -67,7 +67,7 @@ class user_model extends CI_Model
 		$this->db->select('*');
 		$this->db->from('category');
 		$this->db->join('books', 'books.categoryId = category.id');
-	
+
 		$this->db->order_by('books.id', 'DESC');
 		$query = $this->db->get();
 		return $query->num_rows();
@@ -169,14 +169,14 @@ class user_model extends CI_Model
 			$q[] = $items['qty'];
 			$quantity = implode(', ', $q);
 
-		$data = array(
-			'userId'	=> $this->session->userdata('id'),
-			'paymentcheck' => $this->input->post('paymentcheck'),
-			'total_price' => $total_price,
-			'bookId' => $books,
+			$data = array(
+				'userId'	=> $this->session->userdata('id'),
+				'paymentcheck' => $this->input->post('paymentcheck'),
+				'total_price' => $total_price,
+				'bookId' => $books,
 
-		);
-	}
+			);
+		}
 
 		$insert_order = $this->db->insert('orders', $data);
 		return $insert_order;
@@ -252,11 +252,11 @@ class user_model extends CI_Model
 		$encripted_pass = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
 
 		$data = array(
-		'name'	=> $this->input->post('name'),
-		'contact'	=> $this->input->post('contact'),
-		'address'	=> $this->input->post('address'),
-		'city'	=> $this->input->post('city'),
-		'password' => $encripted_pass,
+			'name'	=> $this->input->post('name'),
+			'contact'	=> $this->input->post('contact'),
+			'address'	=> $this->input->post('address'),
+			'city'	=> $this->input->post('city'),
+			'password' => $encripted_pass,
 
 		);
 
@@ -272,6 +272,13 @@ class user_model extends CI_Model
 		return $query->result();
 	}
 
+	public function name_generate()
+	{
+		//$this->db->limit(6);
+		//$this->db->order_by('id', 'DESC');
+		$query = $this->db->get('orgnamedb');
+		return $query->result();
+	}
 } 
 
 ?>

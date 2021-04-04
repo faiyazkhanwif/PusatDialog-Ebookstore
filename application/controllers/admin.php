@@ -27,6 +27,9 @@ class admin extends CI_Controller {
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
 		$view['admin_view'] = "admin/admin_index";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -43,6 +46,9 @@ class admin extends CI_Controller {
 						$this->load->model('user_model');
 						$view['logos'] = $this->user_model->logo_generate();
 
+						$this->load->model('user_model');
+						$view['names'] = $this->user_model->name_generate();
+
 						$view['admin_view'] = "admin/category";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -58,6 +64,9 @@ class admin extends CI_Controller {
 						{
 							$this->load->model('user_model');
 							$view['logos'] = $this->user_model->logo_generate();
+
+							$this->load->model('user_model');
+							$view['names'] = $this->user_model->name_generate();
 
 							$view['admin_view'] = "admin/add_category";
 							$this->load->view('layouts/admin_layout', $view);
@@ -89,6 +98,9 @@ class admin extends CI_Controller {
 							$this->load->model('user_model');
 							$view['logos'] = $this->user_model->logo_generate();
 
+							$this->load->model('user_model');
+							$view['names'] = $this->user_model->name_generate();
+
 							$view['admin_view'] = "admin/ctg_view";
 							$this->load->view('layouts/admin_layout', $view);
 						}
@@ -96,6 +108,9 @@ class admin extends CI_Controller {
 						{
 							$this->load->model('user_model');
 							$view['logos'] = $this->user_model->logo_generate();
+
+							$this->load->model('user_model');
+							$view['names'] = $this->user_model->name_generate();
 
 							$view['admin_view'] = "temp/404page";
 							$this->load->view('layouts/admin_layout', $view);
@@ -122,12 +137,19 @@ class admin extends CI_Controller {
 								$this->load->model('user_model');
 								$view['logos'] = $this->user_model->logo_generate();
 
+								$this->load->model('user_model');
+								$view['names'] = $this->user_model->name_generate();
+
 								$view['admin_view'] = "admin/ctg_edit";
 								$this->load->view('layouts/admin_layout', $view);
 							}
 							else
 								{		$this->load->model('user_model');
 							$view['logos'] = $this->user_model->logo_generate();
+
+							$this->load->model('user_model');
+							$view['names'] = $this->user_model->name_generate();
+
 							$view['admin_view'] = "temp/404page";
 							$this->load->view('layouts/admin_layout', $view);
 						}
@@ -173,6 +195,9 @@ class admin extends CI_Controller {
 						$this->load->model('user_model');
 						$view['logos'] = $this->user_model->logo_generate();
 
+						$this->load->model('user_model');
+						$view['names'] = $this->user_model->name_generate();
+
 						$view['admin_view'] = "admin/view_users";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -194,6 +219,9 @@ class admin extends CI_Controller {
 						{		
 							$this->load->model('user_model');
 							$view['logos'] = $this->user_model->logo_generate();
+
+							$this->load->model('user_model');
+							$view['names'] = $this->user_model->name_generate();
 
 							$view['admin_view'] = "admin/add_users";
 							$this->load->view('layouts/admin_layout', $view);
@@ -261,6 +289,9 @@ class admin extends CI_Controller {
 						$this->load->model('user_model');
 						$view['logos'] = $this->user_model->logo_generate();
 
+						$this->load->model('user_model');
+						$view['names'] = $this->user_model->name_generate();
+
 						$view['admin_view'] = "admin/books";
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -299,6 +330,9 @@ class admin extends CI_Controller {
 
 						$this->load->model('user_model');
 						$view['logos'] = $this->user_model->logo_generate();
+
+						$this->load->model('user_model');
+						$view['names'] = $this->user_model->name_generate();
 
 						$this->load->view('layouts/admin_layout', $view);
 					}
@@ -362,6 +396,9 @@ class admin extends CI_Controller {
     {
     	$this->load->model('user_model');
     	$view['logos'] = $this->user_model->logo_generate();
+
+    	$this->load->model('user_model');
+    	$view['names'] = $this->user_model->name_generate();
 
     	$view['admin_view'] = "admin/add_books";
     	$this->load->view('layouts/admin_layout', $view);
@@ -473,6 +510,9 @@ public function add_booksbr()
     	$this->load->model('user_model');
     	$view['logos'] = $this->user_model->logo_generate();
 
+    	$this->load->model('user_model');
+    	$view['names'] = $this->user_model->name_generate();
+
     	$view['admin_view'] = "admin/add_booksbr";
     	$this->load->view('layouts/admin_layout', $view);
 
@@ -526,6 +566,12 @@ public function book_view($id)
 
 	if($this->admin_model->get_book_detail($id))
 	{
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
 		$view['admin_view'] = "admin/book_view";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -545,6 +591,13 @@ public function book_edit($id)
 	/* For geting the existing info...*/
 	$this->load->model('admin_model');
 	$view['book_detail'] = $this->admin_model->get_book_detail($id);
+
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
 
 	/*==== Image Upload validation*/
 	//$config = [
@@ -644,6 +697,9 @@ public function orders()
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
 
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
 	$view['admin_view'] = "admin/display_orders";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -656,6 +712,9 @@ public function order_view($orderId)
 
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
 
 	if($this->admin_model->get_order_detail($orderId))
 	{
@@ -835,6 +894,9 @@ public function customize(){
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
 
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
 	$view['admin_view'] = "admin/customize_web";
 	$this->load->view('layouts/admin_layout', $view);
 }
@@ -844,6 +906,9 @@ public function changelogo(){
 
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
 
 	/*=== LOAD DYNAMIC CATAGORY ===*/
 	$this->load->model('admin_model');
@@ -932,11 +997,38 @@ public function changelogo(){
 
 public function changename(){
 
-	$this->load->model('user_model');
-	$view['logos'] = $this->user_model->logo_generate();
-	
-	$view['admin_view'] = "admin/change_name";
-	$this->load->view('layouts/admin_layout', $view);
+	//$this->load->model('user_model');
+	//$view['logos'] = $this->user_model->logo_generate();
+
+	//$view['admin_view'] = "admin/change_name";
+	//$this->load->view('layouts/admin_layout', $view);
+
+	$this->form_validation->set_rules('org_name', 'Organization name', 'trim|required|alpha_numeric_spaces');
+
+	if($this->form_validation->run() == FALSE)
+	{
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$view['admin_view'] = "admin/change_name";
+		$this->load->view('layouts/admin_layout', $view);
+	}
+	else
+	{
+		$this->load->model('admin_model');
+		if($this->admin_model->changename())
+		{
+			$this->session->set_flashdata('success', 'Organization name added successfully');
+			redirect('admin/customize');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
 
 }
 
