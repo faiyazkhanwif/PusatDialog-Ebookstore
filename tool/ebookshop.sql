@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2021 at 12:21 PM
+-- Generation Time: Apr 04, 2021 at 08:03 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -131,7 +131,7 @@ CREATE TABLE `logo` (
 --
 
 INSERT INTO `logo` (`logoimg`) VALUES
-('http://localhost/PusatDialog-Ebookstore/uploads/image/uglnjxmw40941.png');
+('http://localhost/PusatDialog-Ebookstore/uploads/image/uglnjxmw409411.png');
 
 -- --------------------------------------------------------
 
@@ -148,6 +148,23 @@ CREATE TABLE `orders` (
   `bookId` text NOT NULL,
   `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orgnamedb`
+--
+
+CREATE TABLE `orgnamedb` (
+  `orgname` varchar(200) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orgnamedb`
+--
+
+INSERT INTO `orgnamedb` (`orgname`) VALUES
+('Haha Linus');
 
 -- --------------------------------------------------------
 
