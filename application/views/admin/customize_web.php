@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-dark clickable-div" data-href="<?= base_url('admin/customize')?>">
+					<div class="col-admin bg-dark clickable-div" data-href="<?= base_url('admin/changeterms')?>">
 						<div>
 							<i class="fas fa-exclamation-circle"></i>
 							<h6>Edit terms and conditions</h6>

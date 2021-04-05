@@ -1234,4 +1234,53 @@ public function changecontactdsc(){
 
 }
 
+public function changeterms(){
+
+	//$this->load->model('user_model');
+	//$view['logos'] = $this->user_model->logo_generate();
+
+	//$view['admin_view'] = "admin/change_name";
+	//$this->load->view('layouts/admin_layout', $view);
+
+	$this->form_validation->set_rules('terms_dsc', 'Terms and Conditions', 'trim|required|min_length[100]|strip_tags[terms_dsc]');
+
+	if($this->form_validation->run() == FALSE)
+	{
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate();
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+
+		$this->load->model('user_model');
+		$view['termsdscs'] = $this->user_model->terms_generate();
+
+		$view['admin_view'] = "admin/change_terms";
+		$this->load->view('layouts/admin_layout', $view);
+	}
+	else
+	{
+		$this->load->model('admin_model');
+		if($this->admin_model->changeterms())
+		{
+			$this->session->set_flashdata('success', 'Terms and Conditions added successfully');
+			redirect('admin/customize');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
+
+}
+
 }

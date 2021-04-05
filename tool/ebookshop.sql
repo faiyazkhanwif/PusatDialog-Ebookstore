@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2021 at 08:03 PM
+-- Generation Time: Apr 05, 2021 at 09:06 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -20,6 +20,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `ebookshop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aboutdb`
+--
+
+CREATE TABLE `aboutdb` (
+  `aboutdsc` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `aboutdb`
+--
+
+INSERT INTO `aboutdb` (`aboutdsc`) VALUES
+('Hey Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.');
 
 -- --------------------------------------------------------
 
@@ -95,6 +112,23 @@ INSERT INTO `category` (`id`, `category`, `description`, `tag`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contactdb`
+--
+
+CREATE TABLE `contactdb` (
+  `contactdsc` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactdb`
+--
+
+INSERT INTO `contactdb` (`contactdsc`) VALUES
+('heyBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruhBruh');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ebooks`
 --
 
@@ -119,6 +153,23 @@ INSERT INTO `ebooks` (`id`, `ebook_name`, `description`, `author`, `book_file`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `footerdb`
+--
+
+CREATE TABLE `footerdb` (
+  `footerdsc` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `footerdb`
+--
+
+INSERT INTO `footerdb` (`footerdsc`) VALUES
+('This E-book shop is operated by Pusat Dialog for publishing their own content. No third part vendors are affliated with this e-book store other than haha linus, University of Malaya.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logo`
 --
 
@@ -131,7 +182,7 @@ CREATE TABLE `logo` (
 --
 
 INSERT INTO `logo` (`logoimg`) VALUES
-('http://localhost/PusatDialog-Ebookstore/uploads/image/uglnjxmw409411.png');
+('http://localhost/PusatDialog-Ebookstore/uploads/image/pdialogsmall1.png');
 
 -- --------------------------------------------------------
 
@@ -164,7 +215,7 @@ CREATE TABLE `orgnamedb` (
 --
 
 INSERT INTO `orgnamedb` (`orgname`) VALUES
-('Haha Linus');
+('Pusat Dialog');
 
 -- --------------------------------------------------------
 
@@ -207,6 +258,23 @@ INSERT INTO `reviews` (`id`, `review`, `bookId`, `userId`, `dateTime`) VALUES
 (46, 'Victor Brooks never could have imagined that he’d be on a honeymoon for one. Only here he is, taking a hard look at his life after the younger women he thought he loved walked out. The woman who volunteers to help him reflect is the last person he expects to be attracted to.!', 27, 1, '2019-04-15 05:05:12'),
 (47, 'In The Power of Habit, award-winning business reporter Charles Duhigg takes us to the thrilling edge of scientific discoveries that explain why habits exist and how they can be changed. Distilling vast amounts of information into engrossing narratives that take us from the boardrooms of Procter &amp;amp;amp;amp; Gamble to the sidelines of the NFL to the front lines of the civil rights movement, Duhigg presents a whole new understanding of human nature and its potential. At its core, The Power of Habit contains an exhilarating argument: The key to exercising regularly, losing weight, being more productive, and achieving success is understanding how habits work. As Duhigg shows, by harnessing this new science, we can transform our businesses, our communities, and our lives.', 32, 1, '2019-04-16 07:47:33'),
 (48, 'PHP stands for Hypertext Preprocessor (no, the acronym doesn\'t follow the name). It\'s an open source, server-side, scripting language used for the development of web applications. By scripting language, we mean a program that is script-based (lines of code) written for the automation of tasks', 15, 1, '2019-04-21 07:05:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `termsdb`
+--
+
+CREATE TABLE `termsdb` (
+  `termsdsc` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `termsdb`
+--
+
+INSERT INTO `termsdb` (`termsdsc`) VALUES
+('hihihgeaiuhfg ieau faeiu haeibf aiuefaeibf alikf baefb akefbaeif gaegoisjpgheirg oews gsunjg;os ergsrdgvsdlvnsoigeo9rhg sb glsobgisurgvrogn bhsro;ugbdzkfj vsod;gn oer');
 
 -- --------------------------------------------------------
 

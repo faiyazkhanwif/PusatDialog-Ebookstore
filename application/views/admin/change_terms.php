@@ -1,13 +1,13 @@
 
 <div class="container">
     <div class="my-form">
-        <div id="form-header">Change about description</div>
-        <?= form_open_multipart("admin/changeaboutdsc")?>
+        <div id="form-header">Change Terms and Conditions</div>
+        <?= form_open_multipart("admin/changeterms")?>
         <div class="form-group row">
-            <label for="org-name" class="col-sm-2 col-form-label">About description</label>
+            <label for="org-name" class="col-sm-2 col-form-label">Terms and Conditions</label>
             <div class="col-sm-6">
-                <?php foreach($abtdscs as $abt): ?>
-                <?= form_textarea(['name'=>'about_dsc', 'placeholder'=> 'About description', 'value'=>set_value('about_dsc', $abt->aboutdsc), 'class'=>'form-control'])?>
+                <?php foreach($termsdscs as $terms): ?>
+                <?= form_textarea(['name'=>'terms_dsc', 'placeholder'=> 'Terms and Conditions', 'value'=>set_value('terms_dsc',  $terms->termsdsc), 'class'=>'form-control'])?>
                 <?php endforeach; ?>
             </div>
             <div class="col-md-4">

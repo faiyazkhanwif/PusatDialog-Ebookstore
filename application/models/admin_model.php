@@ -519,4 +519,22 @@ class admin_model extends CI_Model
 		$insert_aboutdsc = $this->db->insert('contactdb', $data);
 		return $insert_aboutdsc;
 	}
+
+	public function changeterms(){
+		$this->db->empty_table('termsdb');
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
+
+		//$insert_logo = $this->db->insert('logo', $data);
+		//return $insert_logo;
+
+		$data = array(
+
+			'termsdsc' => $this->input->post('terms_dsc'),
+
+		);
+
+		$insert_termsdsc = $this->db->insert('termsdb', $data);
+		return $insert_termsdsc;
+	}
 }

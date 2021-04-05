@@ -6,7 +6,9 @@
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">Contact description</label>
             <div class="col-sm-6">
-                <?= form_textarea(['name'=>'contact_dsc', 'placeholder'=> 'Contact description', 'value'=>set_value('contact_dsc'), 'class'=>'form-control'])?>
+                <?php foreach($contactdscs as $contact): ?>
+                    <?= form_textarea(['name'=>'contact_dsc', 'placeholder'=> 'Contact description', 'value'=>set_value('contact_dsc', $contact->contactdsc), 'class'=>'form-control'])?>
+                <?php endforeach; ?>
             </div>
             <div class="col-md-4">
                 <div class="text-danger form-error"><?= form_error('org_name')?></div>
