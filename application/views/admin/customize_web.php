@@ -58,7 +58,7 @@
 				</div>
 
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-info clickable-div" data-href="<?= base_url('admin/booksbr')?>">
+					<div class="col-admin bg-info clickable-div" data-href="<?= base_url('admin/changecontactdsc')?>">
 						<div>
 							<i class="fas fa-phone"></i>
 							<h6>Edit contact us page</h6>
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-danger clickable-div" data-href="<?= base_url('admin/orders')?>">
+					<div class="col-admin bg-danger clickable-div" data-href="<?= base_url('admin/changeaboutdsc')?>">
 						<div>
 							<i class="fas fa-address-card"></i>
 							<h6>Edit about us page</h6>

@@ -25,13 +25,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?= base_url('tool/js/jquery-3.2.1.slim.min.js'); ?>"></script>
 
     <title>Pusat Dialog E-Bookstore</title>
-    <link rel="shortcut icon" type="image/png" href="<?= base_url('tool/img/pdialogsmall.png'); ?>">
+    <?php foreach($logos as $logo):?>
+        <link rel="shortcut icon" type="image/png" href="<?php print strip_tags($logo->logoimg)?>">
+    <?php endforeach;?>
 </head>
 
 <body>
     <!--============ Header area ===========-->
     <div class="header-area">
-       <div class="hearder-top animate__animated animate__fadeInDown">
+     <div class="hearder-top animate__animated animate__fadeInDown">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">

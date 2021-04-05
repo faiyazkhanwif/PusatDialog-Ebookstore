@@ -3,19 +3,23 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">About Application</h5>
+        <h5 class="modal-title" id="exampleModalLabel">About this website</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div><p>This is an online E-Bookshop where you can buy or borrow e-books. You can find different categories of e-books in this platform</p>
-        </div>
-        <br>
+        <div><p><?php foreach($abtdscs as $abt): ?>
+
+        <?php print $abt->aboutdsc;?>
+
+        <?php endforeach; ?></p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
-      </div>
+      <br>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
     </div>
   </div>
+</div>
 </div>

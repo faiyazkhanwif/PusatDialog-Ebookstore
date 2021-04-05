@@ -34,8 +34,17 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
-				$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
 
 
 		$view['user_view'] = "users/user_index";
@@ -128,6 +137,21 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['orders'] = $this->user_model->my_orders();
 
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+
 		$view['user_view'] = "users/myOrders";
 		$this->load->view('layouts/user_home', $view);	
 	}
@@ -163,7 +187,20 @@ class User_home extends CI_Controller {
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
 
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
 		#get existing informations
 		$this->load->model('user_model');
 		$view['user_details'] = $this->user_model->get_user_details($id);

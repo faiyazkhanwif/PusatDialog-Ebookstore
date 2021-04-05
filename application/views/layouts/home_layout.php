@@ -27,9 +27,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <!-- jQuery min js -->
     <script type="text/javascript" src="<?= base_url('tool/js/jquery-3.2.1.slim.min.js'); ?>"></script>
+    
 
     <title>Pusat-Dialog E-bookstore</title>
-    <link rel="shortcut icon" type="image/png" href="<?= base_url('tool/img/pdialogsmall.png'); ?>">
+    <?php foreach($logos as $logo):?>
+        <link rel="shortcut icon" type="image/png" href="<?php print strip_tags($logo->logoimg)?>">
+    <?php endforeach;?>
 </head>
 
 <body>
@@ -202,7 +205,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <script type="text/javascript" src="<?= base_url('tool/js/all.js'); ?>"></script>
                 <script type="text/javascript" src="<?= base_url('tool/js/owl.carousel.min.js'); ?>"></script>
                 <script type="text/javascript" src="<?= base_url('tool/js/main.js'); ?>"></script>
+                <script>
+                    $(document).ready(function() {
 
-            </body>
+                        $("#owl-slideshow").owlCarousel({
 
-            </html>
+                        navigation: true, // Show next and prev buttons
+                        slideSpeed: 300,
+                        paginationSpeed: 400,
+                        singleItem: true,
+                        loop: true,
+                        autoPlay: true,
+                        autoPlaySpeed: 5000,
+                        autoPlayTimeout: 5000,
+                        autoPlayHoverPause: true
+
+                        // "singleItem:true" is a shortcut for:
+                        // items : 1, 
+                        // itemsDesktop : false,
+                        // itemsDesktopSmall : false,
+                        // itemsTablet: false,
+                        // itemsMobile : false
+
+                    });
+
+                  });
+              </script>
+
+
+          </body>
+
+          </html>

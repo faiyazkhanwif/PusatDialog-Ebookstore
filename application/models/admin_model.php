@@ -483,4 +483,40 @@ class admin_model extends CI_Model
 		$insert_ftdsc = $this->db->insert('footerdb', $data);
 		return $insert_ftdsc;
 	}
+
+	public function changeaboutdsc(){
+		$this->db->empty_table('aboutdb');
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
+
+		//$insert_logo = $this->db->insert('logo', $data);
+		//return $insert_logo;
+
+		$data = array(
+
+			'aboutdsc' => $this->input->post('about_dsc'),
+
+		);
+
+		$insert_aboutdsc = $this->db->insert('aboutdb', $data);
+		return $insert_aboutdsc;
+	}
+
+	public function changecontactdsc(){
+		$this->db->empty_table('contactdb');
+		//$data = $this->upload->data();
+		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
+
+		//$insert_logo = $this->db->insert('logo', $data);
+		//return $insert_logo;
+
+		$data = array(
+
+			'contactdsc' => $this->input->post('contact_dsc'),
+
+		);
+
+		$insert_aboutdsc = $this->db->insert('contactdb', $data);
+		return $insert_aboutdsc;
+	}
 }

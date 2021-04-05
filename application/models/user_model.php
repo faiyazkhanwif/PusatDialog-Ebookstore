@@ -287,6 +287,22 @@ class user_model extends CI_Model
 		$query = $this->db->get('footerdb');
 		return $query->result();
 	}
+
+	public function about_generate()
+	{
+		//$this->db->limit(6);
+		//$this->db->order_by('id', 'DESC');
+		$query = $this->db->get('aboutdb');
+		return $query->result();
+	}
+
+	public function contact_generate()
+	{
+		//$this->db->limit(6);
+		//$this->db->order_by('id', 'DESC');
+		$query = $this->db->get('contactdb');
+		return $query->result();
+	}
 } 
 
 ?>
