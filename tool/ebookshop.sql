@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2021 at 09:06 PM
+-- Generation Time: Apr 12, 2021 at 08:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -62,7 +62,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `book_name`, `description`, `author`, `publisher`, `price`, `categoryId`, `book_image`, `book_file`, `create_date`) VALUES
-(54, 'Test 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'LP', 'lspo', '54', 5, 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'http://localhost/PusatDialog-Ebookstore/uploads/file/sample1.pdf', '2021-03-28 02:50:54');
+(54, 'Test 1', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'LP', 'lspo', '54', 5, 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'http://localhost/PusatDialog-Ebookstore/uploads/file/sample1.pdf', '2021-03-28 02:50:54'),
+(56, 'Test 2', '&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?&quot;', 'jiji', 'hihkju', '65', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1331.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/Big-O_Algorithm_Complexity_Cheat_Sheet_(Know_Thy_Complexities!)_@ericdrowell1.pdf', '2021-04-12 18:12:03');
 
 -- --------------------------------------------------------
 
@@ -197,8 +198,17 @@ CREATE TABLE `orders` (
   `paymentcheck` int(11) NOT NULL,
   `dateTime` timestamp NOT NULL DEFAULT current_timestamp(),
   `bookId` text NOT NULL,
-  `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending'
+  `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending',
+  `txn_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `payment_status` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`, `payment_status`) VALUES
+(24, 24, '119', 1, '2021-04-12 18:19:22', '56, 54', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -279,6 +289,31 @@ INSERT INTO `termsdb` (`termsdsc`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `userorderviewonly`
+--
+
+CREATE TABLE `userorderviewonly` (
+  `id` int(11) NOT NULL,
+  `user_Id` int(11) NOT NULL,
+  `book_Id` int(11) NOT NULL,
+  `book_name` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `book_author` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `book_price` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `book_image` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `book_file` varchar(200) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userorderviewonly`
+--
+
+INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_name`, `book_author`, `book_price`, `book_image`, `book_file`) VALUES
+(9, 24, 56, 'Test 2', 'jiji', '65', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1331.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/Big-O_Algorithm_Complexity_Cheat_Sheet_(Know_Thy_Complexities!)_@ericdrowell1.pdf'),
+(10, 24, 54, 'Test 1', 'LP', '54', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'http://localhost/PusatDialog-Ebookstore/uploads/file/sample1.pdf');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -341,6 +376,12 @@ ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `userorderviewonly`
+--
+ALTER TABLE `userorderviewonly`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -355,7 +396,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -373,13 +414,19 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `userorderviewonly`
+--
+ALTER TABLE `userorderviewonly`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`

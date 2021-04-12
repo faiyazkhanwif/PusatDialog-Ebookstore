@@ -176,6 +176,17 @@ class user_model extends CI_Model
 				'bookId' => $books,
 
 			);
+			$data2 = array(
+				'user_Id'	=> $this->session->userdata('id'),
+				'book_Id' => $items['id'],
+				'book_name' => $items['name'],
+				'book_author' => $items['author'],
+				'book_price' => $items['price'],
+				'book_image' => $items['book_image'],
+				'book_file' =>$items['book_file']
+
+			);
+			$this->db->insert('userorderviewonly', $data2);
 		}
 
 		$insert_order = $this->db->insert('orders', $data);
@@ -309,6 +320,32 @@ class user_model extends CI_Model
 		//$this->db->limit(6);
 		//$this->db->order_by('id', 'DESC');
 		$query = $this->db->get('termsdb');
+		return $query->result();
+	}
+
+	public function num_rows_bought_books()
+	{
+		$id = $this->session->userdata('id');
+		$this->db->select('*');
+		$this->db->from('userorderviewonly');
+		//$this->db->join('books', 'books.categoryId = category.id');
+
+		$this->db->where('user_Id', $id);
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function get_boughtbooks($limit, $offset)
+	{	
+		/*=== SQL join ===*/
+		$id = $this->session->userdata('id');
+		$this->db->select('*');
+		$this->db->from('userorderviewonly');
+		//$this->db->join('books', 'books.categoryId = category.id');
+
+		$this->db->where('user_Id', $id);
+		$this->db->limit($limit, $offset);
+		$query = $this->db->get();
 		return $query->result();
 	}
 } 

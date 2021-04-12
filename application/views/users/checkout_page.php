@@ -8,10 +8,9 @@ if($this->session->flashdata('success'))
 <br>
 <div class="row">
 	<div class="col-lg-6">
-		<div id="table-header">shipping details</div>
 		<?= form_open('checkout')?>
 			<div id= "table-header">Payments methods </div>
-			<p>Now we have only option cash on delivery. Later we will connect with bKash, Rocket and other banks facility.Thanks for your supports</p>
+			<p>Our online payment uses stripe payment gateway which is a smart, fast and reliable online payment service.</p>
 			
 			<div class="form-check">
 				<?= form_checkbox(['name'=>'paymentcheck', 'class'=>'form-check-input', 'value'=> TRUE]);?>
@@ -21,7 +20,7 @@ if($this->session->flashdata('success'))
 				<div class="text-danger form-error"><?= form_error('paymentcheck')?></div>
 			</div>
 			
-			<br><div><p>We will contact with you with in 24 hours. Please read our shipping policy at <a href="<?= base_url()?>users/terms" target ="_blank" class="text-primary">terms and condition</a> page. If you agree with our shipping policy then place your order now.</p></div>
+			<br><div><p>We recommend to read our <a href="<?= base_url()?>users/terms" target ="_blank" class="text-primary">terms and conditions</a> before making any purchase.</p></div>
 			<div class="sub">
             <span><?= form_submit(['name'=> 'submit', 'value'=> 'Place Order', 'class'=>'btn btn-primary my-btn'])?></span>
     		</div>
@@ -35,19 +34,19 @@ if($this->session->flashdata('success'))
 
 			print "<tr>";
 			print "<th>Total Book Price</th>";
-			print "<td colspan = '2'>".$this->cart->total().".TK</td>";
+			print "<td colspan = '2'>RM ".$this->cart->total()."</td>";
 			print "</tr>";
 
 			print "<tr>";
-			$shipping = 40;
+			$shipping = 0;
 			print "<th>Shipping cost</th>";
-			print "<td colspan = '2'>".$shipping.".TK</td>";
+			print "<td colspan = '2'>".$shipping."</td>";
 			print "</tr>";
 
 			print "<tr>";
 			$payable_total = $this->cart->total() + $shipping;
 			print "<th>Total cost</th>";
-			print "<td colspan = '2'>".$payable_total.".TK</td>";
+			print "<td colspan = '2'>RM ".$payable_total."</td>";
 			print "</tr>";
 			
 			print "</table>";
@@ -67,12 +66,12 @@ if($this->session->flashdata('success'))
 				print "<td>";
 				print $books['qty'];
 				print "</td>";
-				print "<td>";
+				print "<td>RM ";
 				print $books['price'];
-				print ".TK</td>";
-				print "<td>";
+				//print " RM</td>";
+				print "<td>RM ";
 				print $books['subtotal'];
-				print ".TK</td>";
+				//print " RM</td>";
 				print "</tr>";
 			}
 

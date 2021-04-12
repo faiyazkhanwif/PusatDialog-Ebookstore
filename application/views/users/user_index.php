@@ -24,6 +24,7 @@
             <h4 class="text-info"><?= htmlentities($user_details->name) ?></h4>
             <p><i class="fas fa-envelope"></i> <?= htmlentities($user_details->email)?></p>
             <p><i class="fas fa-mobile-alt"></i> <?= htmlentities($user_details->contact)?></p>
+            <p><i class="fas fa fa-users"></i>Membership status: Pro</p>
             <p><i class="fas fa-history"></i> Joined from: <?= htmlentities(date('d-M, y', strtotime($user_details->createdate)))?></p>
         </div>
     </div>

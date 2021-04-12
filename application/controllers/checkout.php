@@ -30,6 +30,22 @@ class Checkout extends CI_Controller {
 		{
 			if($this->cart->contents())
 			{
+
+				$this->load->model('user_model');
+				$view['logos'] = $this->user_model->logo_generate();
+
+				$this->load->model('user_model');
+				$view['names'] = $this->user_model->name_generate();
+
+				$this->load->model('user_model');
+				$view['dscs'] = $this->user_model->ft_generate();
+
+				$this->load->model('user_model');
+				$view['abtdscs'] = $this->user_model->about_generate();
+
+				$this->load->model('user_model');
+				$view['contactdscs'] = $this->user_model->contact_generate();
+				
 				$view['user_view'] = "users/checkout_page";
 				$this->load->view('layouts/user_layout', $view);
 			}
@@ -62,6 +78,23 @@ class Checkout extends CI_Controller {
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
 
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate();
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
 		$view['user_view'] = "users/place_order_page";
 		$this->load->view('layouts/user_layout', $view);
 	}

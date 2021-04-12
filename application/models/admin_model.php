@@ -316,7 +316,7 @@ class admin_model extends CI_Model
 	#...Get order details
 	public function get_order_detail($orderId)
 	{
-		$this->db->select('orders.*, users.name');
+		$this->db->select('orders.*, users.name, users.contact');
 		$this->db->from('orders');
 		$this->db->join('users', 'orders.userId = users.id');
 		$this->db->where('orders.orderId', $orderId);

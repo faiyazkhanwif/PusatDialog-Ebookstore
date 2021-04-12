@@ -45,9 +45,9 @@ foreach ($this->cart->contents() as $books)
       print form_input(array('name'=> $i.'[qty]', 'value'=> $books['qty'] , 'class'=>'form-control qty'));
       print '</td>';
 
-      print "<td>".$books['price']." RM</td>";
+      print "<td> RM ".$books['price']."</td>";
       
-      print "<td>".$books['subtotal']." RM</td>";
+      print "<td> RM ".$books['subtotal']."</td>";
 
       print '<td>';
       print anchor("cart/delete_cart/".$books['rowid']."", "<i class = 'fas fa-trash'></i>", ['class'=>'btn btn-outline-danger btn-sm', 'title'=>'Delete']);
@@ -62,10 +62,10 @@ foreach ($this->cart->contents() as $books)
       print "<td colspan = '3'></td>";
       print "<td><b>Shipping Fee</b></td>";
       if($this->cart->contents()){
-        print "<td>0 RM</td>";
+        print "<td>RM 0</td>";
       }
       else{
-        print "<td>0.TK</td>";
+        print "<td>RM 0</td>";
       }
       print '</tr>';
 
@@ -81,13 +81,13 @@ foreach ($this->cart->contents() as $books)
       print "<td><b>Total</b></td>";
       if($this->cart->contents())
       {
-        print "<td>";
+        print "<td>RM ";
         $shipping = 0;
         print $this->cart->total() + $shipping;
-        print ".TK</td>";
+        print "</td>";
       }
       else{
-        print "<td>0.TK</td>";
+        print "<td>RM 0</td>";
       }
 
       print "<td>";

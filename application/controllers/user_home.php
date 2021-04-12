@@ -152,7 +152,7 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['contactdscs'] = $this->user_model->contact_generate();
 
-		$view['user_view'] = "users/myOrders";
+		$view['user_view'] = "users/bought_books";
 		$this->load->view('layouts/user_home', $view);	
 	}
 
@@ -168,6 +168,21 @@ class User_home extends CI_Controller {
 
 		if($this->admin_model->get_order_detail($orderId))
 		{
+			$this->load->model('user_model');
+			$view['logos'] = $this->user_model->logo_generate();
+
+			$this->load->model('user_model');
+			$view['names'] = $this->user_model->name_generate();
+
+			$this->load->model('user_model');
+			$view['dscs'] = $this->user_model->ft_generate(); 
+
+			$this->load->model('user_model');
+			$view['abtdscs'] = $this->user_model->about_generate(); 
+
+			$this->load->model('user_model');
+			$view['contactdscs'] = $this->user_model->contact_generate();
+
 			$view['user_view'] = "users/myOrder_detail";
 			$this->load->view('layouts/user_home', $view);
 		}
@@ -242,5 +257,54 @@ class User_home extends CI_Controller {
 			}
 		}
 	}
+
+	public function boughtbooks()
+	{
+		$this->load->model('user_model');
+		$this->load->library('pagination');
+		$config = [
+
+			'base_url' => base_url('user_home/boughtbooks'),
+			'per_page' => 10,
+			'total_rows'=>  $this->user_model->num_rows_bought_books(),
+			'full_tag_open' => "<ul class='custom-pagination'>",
+			'full_tag_close' => "</ul>", 
+			'first_tag_open' => '<li>',
+			'first_tag_close' => '</li>',
+			'last_tag_open' => '<li>',
+			'last_link'=>'last',
+			'last_tag_close' => '</li>',
+			'next_tag_open' => '<li>',
+			'next_tag_close' => '</li>',
+			'prev_tag_open' => '<li>',
+			'prev_tag_close' => '</li>',
+			'cur_tag_open' => "<li class = 'active'><a>",
+			'cur_tag_close' => '</a></li>',
+		];
+		$this->pagination->initialize($config);
+
+
+		$this->load->model('user_model');
+		$view['books'] = $this->user_model->get_boughtbooks($config['per_page'], $this->uri->segment(3));
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+
+		$view['user_view'] = "users/bought_books";
+		$this->load->view('layouts/user_home', $view);	
+	}
+
 
 }

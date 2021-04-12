@@ -54,7 +54,9 @@ class Cart extends CI_Controller {
 			'id'=> $books->id,
 			'price'=> $books->price,
 			'name'=> $books->book_name,
+			'author'=> $books->author,
 			'book_image'=> $books->book_image,
+			'book_file' => $books->book_file,
 			'qty'=> 1
 		);
 
