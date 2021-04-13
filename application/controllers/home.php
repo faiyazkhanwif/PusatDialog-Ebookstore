@@ -9,7 +9,6 @@ class Home extends CI_Controller {
 		
 		/*=== Load the cart library ===*/
 		$this->load->library('cart');
-		$this->load->library('stripe_lib');
 	}
 
 	public function index()
