@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2021 at 08:53 PM
+-- Generation Time: Apr 13, 2021 at 12:51 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -105,7 +105,6 @@ INSERT INTO `category` (`id`, `category`, `description`, `tag`) VALUES
 (1, 'Computer Science and Engineering', 'All the books from computer science and software engineering, and programming related books.', 'CSE'),
 (2, 'Civil Engineering', 'All the books from Civil Engineering and environmental science department', 'CE'),
 (3, 'Mechanical engineering', 'All the books from Mechanical engineering.', 'ME'),
-(4, 'EEE', 'All the books from Electrical and Electronics Engineering Department.', 'EEE'),
 (5, 'BBA', 'All the books from business administration.', 'BBA'),
 (6, 'Literature', 'All the novels, drama, poems, story books, and any other books of literature.', 'Literature'),
 (7, 'Others', 'Other types of books, except these category.', 'others');
@@ -208,7 +207,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`, `payment_status`) VALUES
-(24, 24, '119', 1, '2021-04-12 18:19:22', '56, 54', '0', '', '');
+(25, 24, '65', 1, '2021-04-13 04:20:15', '56', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -308,8 +307,7 @@ CREATE TABLE `userorderviewonly` (
 --
 
 INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_name`, `book_author`, `book_price`, `book_image`, `book_file`) VALUES
-(9, 24, 56, 'Test 2', 'jiji', '65', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1331.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/Big-O_Algorithm_Complexity_Cheat_Sheet_(Know_Thy_Complexities!)_@ericdrowell1.pdf'),
-(10, 24, 54, 'Test 1', 'LP', '54', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'http://localhost/PusatDialog-Ebookstore/uploads/file/sample1.pdf');
+(11, 24, 56, 'Test 2', 'jiji', '65', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1331.jpg', 'http://localhost/PusatDialog-Ebookstore/uploads/file/Big-O_Algorithm_Complexity_Cheat_Sheet_(Know_Thy_Complexities!)_@ericdrowell1.pdf');
 
 -- --------------------------------------------------------
 
@@ -332,8 +330,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `createdate`) VALUES
-(7, 'Admin', '01683302276', 'admin@gmail.com', '$2y$12$9Xf9K.OHo9RPWuWZ8SEPTeSLRZH7ephme4oeZIQIG0TWi4K0.Q60K', 'A', '2019-04-21 10:54:26'),
-(24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$JTAoXM9ll0edrYgS.V1pw.2w2mp/rYSjM/r7zpM6XQum.arjUdOhO', 'U', '2021-03-09 20:11:53');
+(7, 'Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$aLcimDnFdlf87UWrIvn5K.QkDq3oDiyCeyFF84OpkvXKYXkNC7/UK', 'A', '2019-04-21 10:54:26'),
+(24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$j/dWxmKSP6BmYPxOLPekX.QX1rR5HBuuSJST5GyI4C80Z/IfNKC.2', 'U', '2021-03-09 20:11:53');
 
 --
 -- Indexes for dumped tables
@@ -414,7 +412,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -426,7 +424,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
