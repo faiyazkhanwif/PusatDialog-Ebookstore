@@ -49,13 +49,13 @@ class User_home extends CI_Controller {
 		$view['user_view'] = "users/user_index";
 		$this->load->view('layouts/user_home', $view);
 	}
-
+/*
 	public function sell_books()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
+		
 
 		$config = [
 			'upload_path'=>'./uploads/image/',
@@ -73,7 +73,7 @@ class User_home extends CI_Controller {
 		$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
 		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|numeric|strip_tags[quantity]');
 		$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
-		/*$this->form_validation->set_rules('userfile', 'File', 'trim|required');*/
+		
 		$this->form_validation->set_rules('conditionBox', 'Check box', 'trim|required');
 
 
@@ -102,7 +102,7 @@ class User_home extends CI_Controller {
 
 		
 	}
-
+*/
 	public function myBooks()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
@@ -224,9 +224,9 @@ class User_home extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
 		$this->form_validation->set_rules('repassword', 'Confirm Password',
 			'trim|required|alpha_dash|min_length[3]|matches[password]');
-		$this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[80]|strip_tags[address]');
+		//$this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[80]|strip_tags[address]');
 
-		$this->form_validation->set_rules('city', 'City', 'trim|required|strip_tags[city]');
+		//$this->form_validation->set_rules('city', 'City', 'trim|required|strip_tags[city]');
 
 		if($this->form_validation->run() == FALSE)
 		{

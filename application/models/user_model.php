@@ -265,8 +265,6 @@ class user_model extends CI_Model
 		$data = array(
 			'name'	=> $this->input->post('name'),
 			'contact'	=> $this->input->post('contact'),
-			'address'	=> $this->input->post('address'),
-			'city'	=> $this->input->post('city'),
 			'password' => $encripted_pass,
 
 		);

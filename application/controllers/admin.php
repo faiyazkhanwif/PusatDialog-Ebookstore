@@ -1282,4 +1282,64 @@ public function changeterms(){
 
 }
 
+public function editadminprofile($id)
+	{
+		/*=== LOAD DYNAMIC CATAGORY ===*/
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+		/*==============================*/
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+		#get existing informations
+		$this->load->model('admin_model');
+		$view['user_details'] = $this->admin_model->get_user_details($id);
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
+		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric|strip_tags[contact]');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
+		$this->form_validation->set_rules('repassword', 'Confirm Password',
+			'trim|required|alpha_dash|min_length[3]|matches[password]');
+
+		if($this->form_validation->run() == FALSE)
+		{
+			if($this->user_model->get_user_details($id))
+			{
+				$view['admin_view'] = "admin/editadminprofile";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+			else
+			{
+				$view['admin_view'] = "temp/404page";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+		}
+		else
+		{
+			$this->load->model('admin_model');
+
+			if($this->admin_model->editadminprofile($id))
+			{
+				$this->session->set_flashdata('success', 'Your profile info has been updated successfully.');
+				redirect('admin');
+			}
+			else
+			{
+				print $this->db->error();
+			}
+		}
+	}
+
+
 }

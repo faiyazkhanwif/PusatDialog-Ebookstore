@@ -537,4 +537,26 @@ class admin_model extends CI_Model
 		$insert_termsdsc = $this->db->insert('termsdb', $data);
 		return $insert_termsdsc;
 	}
+
+	public function get_user_details($id)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->get('users');
+		return $query->row();
+	}
+
+	public function editadminprofile($id)
+	{
+		$options = ['cost'=> 12];
+		$encripted_pass = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
+
+		$data = array(
+			'name'	=> $this->input->post('name'),
+			'contact'	=> $this->input->post('contact'),
+			'password' => $encripted_pass,
+
+		);
+
+		return $query = $this->db->where('id', $id)->update('users', $data);
+	}
 }

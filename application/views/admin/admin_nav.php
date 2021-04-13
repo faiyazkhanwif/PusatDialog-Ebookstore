@@ -11,6 +11,7 @@
             <li><a href="<?= base_url()?>admin/orders"><i class="fas fa-cart-arrow-down"></i> Orders</a></li>
             
             <li><a href=""><i class="fas fa-cog"></i> Customize Website</a></li>
+            <li><a href="<?= base_url('admin/editadminprofile/'.$this->session->userdata('id').'')?>"><i class="fas fa-user"></i> Edit Admin Profile</a></li>
             <li><a href="<?= base_url()?>users/logout"><i class="fas fa-power-off"></i> Logout</a></li>
         </ul>
     </div>
