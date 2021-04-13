@@ -8,7 +8,6 @@ class Cart extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('cart');
-		$this->load->library('stripe_lib');
 	}
 
 	public function index()

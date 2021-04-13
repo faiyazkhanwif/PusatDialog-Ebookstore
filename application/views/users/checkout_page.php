@@ -10,7 +10,7 @@ if($this->session->flashdata('success'))
 	<div class="col-lg-6">
 		<?= form_open('checkout')?>
 			<div id= "table-header">Payments methods </div>
-			<p>Our online payment uses stripe payment gateway which is a smart, fast and reliable online payment service.</p>
+			<p>Our online payment uses --- payment gateway which is a smart, fast and reliable online payment service.</p>
 			
 			<div class="form-check">
 				<?= form_checkbox(['name'=>'paymentcheck', 'class'=>'form-check-input', 'value'=> TRUE]);?>
