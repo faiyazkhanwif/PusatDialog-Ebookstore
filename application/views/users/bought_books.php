@@ -33,7 +33,15 @@
 
 
       <?php print '<td>';
-        print '<a href= "'.strip_tags($book->book_file).'" title= "Download" class="btn btn-primary btn-sm">View</a>&nbsp';
+      //-- normal code without protection
+        //print '<a href= "'.strip_tags($book->book_file).'" title= "Download" class="btn btn-primary btn-sm">View</a>&nbsp';
+
+      //-- Testing protection using google doc
+      //$link = str_replace("view","preview","https://drive.google.com/file/d/1lwO_tNwDYzCwdQa8uUWCtcNKr667HIPJ/view?usp=sharing&embedded=true");
+      //$finallink = str_replace("drive","docs",$link);
+      //  print '<a href= "'.strip_tags($finallink).'" title= "Read" class="btn btn-primary btn-sm">Read</a>&nbsp';
+
+      print '<a href= "'.base_url().'user-home/readbook/'.$book->id.'" title= "Download" class="btn btn-primary btn-sm">View</a>&nbsp';
 
         print '</td>'; 
       ?>

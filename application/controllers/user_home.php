@@ -292,7 +292,7 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['names'] = $this->user_model->name_generate();
 
-		$this->load->model('user_model');
+		$this->load->model('user_model'); 
 		$view['dscs'] = $this->user_model->ft_generate(); 
 
 		$this->load->model('user_model');
@@ -304,6 +304,23 @@ class User_home extends CI_Controller {
 		$view['user_view'] = "users/bought_books";
 		$this->load->view('layouts/user_home', $view);	
 	}
+
+	public function readbook($id)
+	{	
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+
+		$this->load->model('user_model');
+		$view['book_detail'] = $this->user_model->get_book_detail($id);
+
+		//$view['user_view'] = "users/read_books";
+		$this->load->view('users/read_books',$view);
+}
+
 
 
 }

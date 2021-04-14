@@ -346,6 +346,21 @@ class user_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function get_book_detail($id)
+	{
+		/*=== SQL join ===*/
+		$this->db->select('books.*, category.category');
+		$this->db->from('books');
+		$this->db->join('category', 'books.categoryId = category.id');
+		
+
+		$this->db->where('books.id', $id);
+		$query = $this->db->get();
+		return $query->row();		
+	}
 } 
+
+
 
 ?>
