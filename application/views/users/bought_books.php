@@ -41,7 +41,7 @@
       //$finallink = str_replace("drive","docs",$link);
       //  print '<a href= "'.strip_tags($finallink).'" title= "Read" class="btn btn-primary btn-sm">Read</a>&nbsp';
 
-      print '<a href= "'.base_url().'user-home/readbook/'.$book->id.'" title= "Download" class="btn btn-primary btn-sm">View</a>&nbsp';
+      print '<a href= "'.base_url().'user-home/readbook/'.$book->book_Id.'" title= "Download" class="btn btn-primary btn-sm">View</a>&nbsp';
 
         print '</td>'; 
       ?>

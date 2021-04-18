@@ -281,7 +281,8 @@ class User_home extends CI_Controller {
 			'cur_tag_close' => '</a></li>',
 		];
 		$this->pagination->initialize($config);
-
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
 
 		$this->load->model('user_model');
 		$view['books'] = $this->user_model->get_boughtbooks($config['per_page'], $this->uri->segment(3));
@@ -307,6 +308,7 @@ class User_home extends CI_Controller {
 
 	public function readbook($id)
 	{	
+		//print($id);
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
@@ -319,7 +321,7 @@ class User_home extends CI_Controller {
 
 		//$view['user_view'] = "users/read_books";
 		$this->load->view('users/read_books',$view);
-}
+	}
 
 
 

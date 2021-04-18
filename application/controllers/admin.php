@@ -403,7 +403,7 @@ class admin extends CI_Controller {
 
 						$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
-
+						$this->form_validation->set_rules('userfile2', 'File link', 'trim|required|strip_tags[userfile2]');
     // Cover upload
 						$config = array();
 						$config['upload_path'] = './uploads/image/';
@@ -415,18 +415,18 @@ class admin extends CI_Controller {
     $upload_cover = $this->coverupload->do_upload('userfile');
 
     // Catalog upload
-    $config = array();
-    $config['upload_path'] = './uploads/file/';
-    $config['allowed_types'] = 'pdf';
-    $config['max_size'] = '1000000';
-    $this->load->library('upload', $config, 'catalogupload');  // Create custom object for catalog upload
-    $this->catalogupload->initialize($config);
-    $upload_catalog = $this->catalogupload->do_upload('userfile2');
+    //$config = array();
+    //$config['upload_path'] = './uploads/file/';
+    //$config['allowed_types'] = 'pdf';
+    //$config['max_size'] = '1000000';
+    //$this->load->library('upload', $config, 'catalogupload');  // Create custom object for catalog upload
+    //$this->catalogupload->initialize($config);
+   // $upload_catalog = $this->catalogupload->do_upload('userfile2');
 
 
 
 
-    if(($this->form_validation->run() && $upload_cover && $upload_catalog) == FALSE)
+    if(($this->form_validation->run() && $upload_cover) == FALSE)
     {
     	$this->load->model('user_model');
     	$view['logos'] = $this->user_model->logo_generate();
@@ -455,7 +455,7 @@ class admin extends CI_Controller {
 		//		print $this->db->error();
 		//	}
 			// Check uploads success
-    	if ($upload_cover && $upload_catalog) {
+    	if ($upload_cover) {
 
       // Both Upload Success
 
@@ -475,7 +475,7 @@ class admin extends CI_Controller {
       // Error Occured in one of the uploads
 
     		echo 'Cover upload Error : ' . $this->coverupload->display_errors() . '<br/>';
-    		echo 'Catlog upload Error : ' . $this->catalogupload->display_errors() . '<br/>';
+    		//echo 'Catlog upload Error : ' . $this->catalogupload->display_errors() . '<br/>';
     	}
 
     }
@@ -1283,63 +1283,63 @@ public function changeterms(){
 }
 
 public function editadminprofile($id)
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+{
+	/*=== LOAD DYNAMIC CATAGORY ===*/
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+	/*==============================*/
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate(); 
+	$this->load->model('user_model');
+	$view['dscs'] = $this->user_model->ft_generate(); 
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
+	$this->load->model('user_model');
+	$view['contactdscs'] = $this->user_model->contact_generate();
 		#get existing informations
-		$this->load->model('admin_model');
-		$view['user_details'] = $this->admin_model->get_user_details($id);
+	$this->load->model('admin_model');
+	$view['user_details'] = $this->admin_model->get_user_details($id);
 
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric|strip_tags[contact]');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
-		$this->form_validation->set_rules('repassword', 'Confirm Password',
-			'trim|required|alpha_dash|min_length[3]|matches[password]');
+	$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
+	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric|strip_tags[contact]');
+	$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
+	$this->form_validation->set_rules('repassword', 'Confirm Password',
+		'trim|required|alpha_dash|min_length[3]|matches[password]');
 
-		if($this->form_validation->run() == FALSE)
+	if($this->form_validation->run() == FALSE)
+	{
+		if($this->user_model->get_user_details($id))
 		{
-			if($this->user_model->get_user_details($id))
-			{
-				$view['admin_view'] = "admin/editadminprofile";
-				$this->load->view('layouts/admin_layout', $view);
-			}
-			else
-			{
-				$view['admin_view'] = "temp/404page";
-				$this->load->view('layouts/admin_layout', $view);
-			}
+			$view['admin_view'] = "admin/editadminprofile";
+			$this->load->view('layouts/admin_layout', $view);
 		}
 		else
 		{
-			$this->load->model('admin_model');
-
-			if($this->admin_model->editadminprofile($id))
-			{
-				$this->session->set_flashdata('success', 'Your profile info has been updated successfully.');
-				redirect('admin');
-			}
-			else
-			{
-				print $this->db->error();
-			}
+			$view['admin_view'] = "temp/404page";
+			$this->load->view('layouts/admin_layout', $view);
 		}
 	}
+	else
+	{
+		$this->load->model('admin_model');
+
+		if($this->admin_model->editadminprofile($id))
+		{
+			$this->session->set_flashdata('success', 'Your profile info has been updated successfully.');
+			redirect('admin');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
+}
 
 
 }

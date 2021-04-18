@@ -397,6 +397,15 @@ class Users extends CI_Controller {
 			$this->load->model('user_model');
 			$view['dscs'] = $this->user_model->ft_generate();
 
+			$this->load->model('user_model');
+			$view['names'] = $this->user_model->name_generate();
+
+			$this->load->model('user_model');
+			$view['abtdscs'] = $this->user_model->about_generate(); 
+
+			$this->load->model('user_model');
+			$view['contactdscs'] = $this->user_model->contact_generate(); 
+
 			$view['user_view'] = "users/search_books";
 			$this->load->view('layouts/user_layout', $view);
 		}

@@ -36,19 +36,19 @@
         <div class="form-group row">
             <label for="author" class="col-sm-2 col-form-label">Author</label>
             <div class="col-sm-6">
-               <?= form_input(['name'=>'author', 'placeholder'=> 'Author Name', 'value'=>set_value('author'), 'class'=>'form-control'])?>
-           </div>
-           <div class="col-md-4">
+             <?= form_input(['name'=>'author', 'placeholder'=> 'Author Name', 'value'=>set_value('author'), 'class'=>'form-control'])?>
+         </div>
+         <div class="col-md-4">
             <div class="text-danger form-error"><?= form_error('author')?></div>
         </div>
     </div>
     <div class="form-group row">
         <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
         <div class="col-sm-6">
-           <?= form_input(['name'=>'publisher', 'placeholder'=> 'Publisher Name', 'value'=>set_value('publisher'), 'class'=>'form-control'])?>
+         <?= form_input(['name'=>'publisher', 'placeholder'=> 'Publisher Name', 'value'=>set_value('publisher'), 'class'=>'form-control'])?>
 
-       </div>
-       <div class="col-md-4">
+     </div>
+     <div class="col-md-4">
         <div class="text-danger form-error"><?= form_error('publisher')?></div>
     </div>
 </div>
@@ -86,22 +86,31 @@
     </div>
     <?php if (isset($upload_errors)) { ?>
         <div class="col-sm-4">
-         <div class="text-danger form-error"><?php echo $upload_errors; ?></div>    
-     </div>
- <?php } ?>
+           <div class="text-danger form-error"><?php echo $upload_errors; ?></div>    
+       </div>
+   <?php } ?>
 </div>
-
-        <div class="form-group row">
-            <label for="book_file" class="col-sm-2 col-form-label">E-Book File</label>
-            <div class="col-sm-6">
-                <?= form_upload(['name'=>'userfile2', 'class'=>'form-control'])?>
-                <div class="text-secondary">* Upload pdf format. file should not be more than 5MB</div>
-            </div>
-            <div class="col-sm-4">
-               <div class="text-danger form-error"></div>    
-            </div>
-        </div>
-
+<div class="form-group row">
+    <label for="description" class="col-sm-2 col-form-label">E-Book File Link</label>
+    <div class="col-sm-6">
+        <?= form_textarea(['name'=>'userfile2', 'placeholder'=>'File link from host server',  'value'=>set_value('userfile2'), 'class'=>'form-control', 'rows'=>'3'])?>
+    </div>
+    <div class="col-md-4">
+        <div class="text-danger form-error"><?= form_error('userfile2')?></div>
+    </div>
+</div>
+<!--
+<div class="form-group row">
+    <label for="book_file" class="col-sm-2 col-form-label">E-Book File</label>
+    <div class="col-sm-6">
+        // //form_upload(['name'=>'userfile2', 'class'=>'form-control'])?>
+        <div class="text-secondary">* Upload pdf format. file should not be more than 5MB</div>
+    </div>
+    <div class="col-sm-4">
+     <div class="text-danger form-error"></div>    
+ </div>
+</div>
+-->
 <div class="sub">
     <span><?= form_submit(['name'=> 'submit', 'value'=> 'Add Book', 'class'=>'btn btn-primary btn-sm my-btn'])?></span>
     <span><?= form_reset(['name'=> 'reset', 'value'=> 'Reset', 'class'=>'btn btn-danger btn-sm my-btn-res'])?></span>

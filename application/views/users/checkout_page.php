@@ -54,7 +54,7 @@ if($this->session->flashdata('success'))
 			print "<h5>Your Products</h5>";
 			print "<table class = 'table border-bottom table-hover'>";
 			print "<tr>";
-			print "<th>Image</th><th>Book Name</th><th>Quantity</th><th>Price</th><th>Subtotal</th>";
+			print "<th>Image</th><th>Book Name</th><th></th><th>Price</th><th>Subtotal</th>";
 			print "</tr>";
 			foreach ($this->cart->contents() as $books) 
 			{
@@ -64,7 +64,7 @@ if($this->session->flashdata('success'))
 				print $books['name'];
 				print "</td>";
 				print "<td>";
-				print $books['qty'];
+				//print $books['qty'];
 				print "</td>";
 				print "<td>RM ";
 				print $books['price'];

@@ -97,9 +97,9 @@ class admin_model extends CI_Model
 	public function add_books()
 	{	//$data = $this->upload->data();
 		$cover_data = $this->coverupload->data();
-		$catlog_data = $this->catalogupload->data(); 
+		//$catlog_data = $this->catalogupload->data(); 
 		$image_path = base_url("uploads/image/".$cover_data['raw_name'].$cover_data['file_ext']);
-		$file_path = base_url("uploads/file/".$catlog_data['raw_name'].$catlog_data['file_ext']);
+		//$file_path = base_url("uploads/file/".$catlog_data['raw_name'].$catlog_data['file_ext']);
 		
 		$data = array(
 			'book_name' => $this->input->post('book_name'),
@@ -111,7 +111,7 @@ class admin_model extends CI_Model
 			//'book_image' => $cover_data['full_path'],
 			//'book_file' => $catlog_data['full_path']
 			'book_image' => $image_path,
-			'book_file' => $file_path
+			'book_file' => $this->input->post('userfile2')
 		);
 
 		$insert_book = $this->db->insert('books', $data);

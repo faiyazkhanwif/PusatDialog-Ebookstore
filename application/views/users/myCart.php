@@ -20,7 +20,8 @@
     <tr>
       <th>Image</th>
       <th>Book Name</th>
-      <th>Quantity</th>
+      <th></th>
+      <!--<th>Quantity</th>-->
       <th>Price</th>
       <th>Sub total</th>
       <th>Action</th>
@@ -41,8 +42,8 @@ foreach ($this->cart->contents() as $books)
 
       print "<td>".$books['name']."</td>";
 
-      print '<td>';
-      print form_input(array('name'=> $i.'[qty]', 'value'=> $books['qty'] , 'class'=>'form-control qty'));
+     print '<td>';
+      //print form_input(array('name'=> $i.'[qty]', 'value'=> $books['qty'] , 'class'=>'form-control qty'));
       print '</td>';
 
       print "<td> RM ".$books['price']."</td>";
@@ -75,7 +76,7 @@ foreach ($this->cart->contents() as $books)
       print "</td>";
       print "<td colspan = '1'></td>";
       print "<td>";
-      print form_submit("", 'Update cart', ['class'=>'btn btn-primary btn-sm']);
+      //print form_submit("", 'Update cart', ['class'=>'btn btn-primary btn-sm']);
       print "</td>";
 
       print "<td><b>Total</b></td>";

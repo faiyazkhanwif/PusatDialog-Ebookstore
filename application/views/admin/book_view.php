@@ -19,7 +19,7 @@
 				<br>
 				<br>
 				<div>
-					<?php print '<br><h5><a href="'.strip_tags($book_detail->book_file).'" target = "_blank" class = "text-success">View or Download</a></h5>';?>
+					<?php print '<br><h5><a href="'.strip_tags($book_detail->book_file).'" target = "_blank" class = "text-success">View</a></h5>';?>
 				</div>
 			</div>
 			</div>
