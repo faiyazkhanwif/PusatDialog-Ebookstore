@@ -28,8 +28,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- jQuery min js -->
     <script type="text/javascript" src="<?= base_url('tool/js/jquery-3.2.1.slim.min.js'); ?>"></script>
     
+    <?php foreach($names as $name): ?>
 
-    <title>Pusat-Dialog E-bookstore</title>
+        <title><?php print $name->orgname;?></title>
+
+    <?php endforeach; ?>
+
+    
     <?php foreach($logos as $logo):?>
         <link rel="shortcut icon" type="image/png" href="<?php print strip_tags($logo->logoimg)?>">
     <?php endforeach;?>
@@ -229,10 +234,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     });
 
-                  });
-              </script>
+                    });
+                </script>
 
 
-          </body>
+            </body>
 
-          </html>
+            </html>
