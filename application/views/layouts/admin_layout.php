@@ -93,8 +93,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
             </div>
-            <!--============ Menu Area ===========-->
-            <!-- Admin doesn't have any menu -->
         </div>
         <!-- =========== single header ==========-->
         <div class="single-header-a">

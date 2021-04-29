@@ -51,8 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body oncontextmenu="return false;">
 	<div class="container">
 		<?php 
-		for($i=0;$i<50000;$i++){
-			echo "<div></div>";
+		for($i=0;$i<100000;$i++){
+		echo "<div></div>";
 		} 
 		?>
 		<div class="text-center">
@@ -80,17 +80,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$hexlink = ascii2hex($finallink);
 			$manipulated = str_replace(" ", "%", $hexlink);
 			//print '<iframe id="iframe" src= "<script>unescape('.strip_tags($manipulated).')</script>&embedded=true" width="100%" height="750" frameborder="0" sandbox="allow-scripts allow-same-origin"></iframe>';
-			print '<iframe id="iframe" security="restricted" src= "'.strip_tags($finallink).'&embedded=true" width="100%" height="750" frameborder="0" sandbox="allow-scripts allow-same-origin"></iframe>';
-
-
 			?>
-			
+			<div style='position:relative;'>
+				<div style='background-color: white; height: 54px; position: absolute; right: 11.5px; top:0px; width: 50px;z-index: 2147483647;'>
+					 <?php foreach($logos as $logo):?>
+					<span class="lname">
+						<span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?></span>
+					</span>
+					<?php endforeach;?>
+			    </div>
+				<?php
+				print '<iframe id="iframe" security="restricted" src= "'.strip_tags($finallink).'&embedded=true" width="100%" height="750" frameborder="0" sandbox="allow-scripts allow-same-origin"></iframe>';
+
+
+				?>
+			</div>
 		</div>
 
 	</div>
 	<?php 
-	for($i=0;$i<100000;$i++){
-		echo "<div></div>";
-	} 
+		for($i=0;$i<100000;$i++){
+	echo "<div></div>";
+		} 
 	?>
 </body>

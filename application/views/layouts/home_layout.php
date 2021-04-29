@@ -134,8 +134,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <!--============ Slider Area ===========-->
                 <div>
-                    <?php $this->load->view('temp/slider'); ?>
+                    <?php $this->load->view('temp/carousel'); ?>
                 </div>
+                <br>
                 <!--==== Recent Books ====-->
                 <div class="section-padding after-slider">
                     <div class="container">
