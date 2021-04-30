@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!--========== Header Area ===========-->
     <div class="header-area">
-        <div class="hearder-top animate__animated animate__fadeInDown">
+        <div class="header-top animate__animated animate__fadeInDown">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -66,11 +66,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
 
-                <div class="header-mid">
+                <div class="header-mid animate__animated animate__fadeInDown">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="logo">
+                                <div class="logo animate__animated animate__headShake animate__delay-2s">
                                     <?php foreach($logos as $logo):?>
                                         <div class="lname"><a href="<?= base_url() ?>home"><span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?>     
                                         <?php foreach($names as $name): ?>
@@ -117,7 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <!--========== Menu Area =========-->
-                    <div>
+                    <div class="animate__animated animate__fadeInDown">
                         <?php $this->load->view('temp/menu'); ?>
                     </div>
                 </div>
@@ -133,12 +133,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
 
                 <!--============ Slider Area ===========-->
-                <div>
+                <div class="animate__animated animate__fadeInRight">
                     <?php $this->load->view('temp/carousel'); ?>
                 </div>
                 <br>
                 <!--==== Recent Books ====-->
-                <div class="section-padding after-slider">
+                <div class="animate__animated animate__slideInLeft section-padding after-slider">
                     <div class="container">
                         <div class="section-title"><a style="color: black; text-shadow: 2px 2px #7DAECC;" href="<?= base_url()?>users/all-books">Recently Added</a></div>
                         <div><?php $this->load->view('temp/recent_books') ?></div> 
@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                 <!--============ Footer Area ============-->
-                <div class="footer-area-home">
+                <div class="footer-area-home animate__animated animate__fadeInDown">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-5">
@@ -211,32 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <script type="text/javascript" src="<?= base_url('tool/js/all.js'); ?>"></script>
                 <script type="text/javascript" src="<?= base_url('tool/js/owl.carousel.min.js'); ?>"></script>
                 <script type="text/javascript" src="<?= base_url('tool/js/main.js'); ?>"></script>
-                <script>
-                    $(document).ready(function() {
-
-                        $("#owl-slideshow").owlCarousel({
-
-                        navigation: true, // Show next and prev buttons
-                        slideSpeed: 300,
-                        paginationSpeed: 400,
-                        singleItem: true,
-                        loop: true,
-                        autoPlay: true,
-                        autoPlaySpeed: 5000,
-                        autoPlayTimeout: 5000,
-                        autoPlayHoverPause: true
-
-                        // "singleItem:true" is a shortcut for:
-                        // items : 1, 
-                        // itemsDesktop : false,
-                        // itemsDesktopSmall : false,
-                        // itemsTablet: false,
-                        // itemsMobile : false
-
-                    });
-
-                    });
-                </script>
+                
 
 
             </body>

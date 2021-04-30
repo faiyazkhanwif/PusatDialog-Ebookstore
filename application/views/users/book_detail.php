@@ -39,15 +39,6 @@
 			<br><div class="book-description"><h5>Book description</h5><hr><p><?= nl2br(htmlentities($book_detail->description)) ?></p></div>
 			<hr>
 
-		  <?php if($this->session->userdata('logged_in'))
-		  {
-			$this->load->view("users/review");
-		  }
-		  else
-		  {
-		  	print '<div><p>Please log in to write a review. <a href="'.base_url('users/login').'" class = "btn-login">Login</a></p></div>';
-		  }
-		  ?>
 
 		</div>
 		<div class="col-lg-4 col-md-3">

@@ -209,33 +209,33 @@ class user_model extends CI_Model
 		return $query->result();
 	}
 
-	public function my_published_books()
-	{
-		$this->db->where('userId', $this->session->userdata('id'));
-		$query = $this->db->get('books');
-		return $query->result();
-	}
+	//public function my_published_books()
+	//{
+	//	$this->db->where('userId', $this->session->userdata('id'));
+	//	$query = $this->db->get('books');
+	//	return $query->result();
+	//}
 
 
 	##...Get all E-books and filter category wise E-books
-	public function get_ebooks()
-	{
+	//public function get_ebooks()
+	//{
 		/*=== SQL join and Data filter ===*/
-		$this->db->select('*');
-		$this->db->from('category');
-		$this->db->join('ebooks', 'ebooks.categoryId = category.id');
-		if(isset($_GET['ctg']))
-		{
-			$a = $_GET['ctg'];
-			$query = $this->db->where('category.tag', $a);
-			$this->db->order_by('ebooks.id', 'DESC');
-			$query = $this->db->get();
-			return $query->result();
-		}
-		$this->db->order_by('ebooks.id', 'DESC');
-		$query = $this->db->get();
-		return $query->result();
-	}
+	//	$this->db->select('*');
+	//	$this->db->from('category');
+	//	$this->db->join('ebooks', 'ebooks.categoryId = category.id');
+	//	if(isset($_GET['ctg']))
+	//	{
+	//		$a = $_GET['ctg'];
+	//		$query = $this->db->where('category.tag', $a);
+	//		$this->db->order_by('ebooks.id', 'DESC');
+	//		$query = $this->db->get();
+	//		return $query->result();
+	//	}
+	//	$this->db->order_by('ebooks.id', 'DESC');
+	//	$query = $this->db->get();
+	//	return $query->result();
+	//}
 
 
 	public function search($query)
@@ -346,7 +346,12 @@ class user_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
-
+	public function myboughtbooks(){
+		$this->db->order_by('book_Id', 'DESC');
+		$this->db->where('user_Id', $this->session->userdata('id'));
+		$query = $this->db->get('userorderviewonly');
+		return $query->result();
+	}
 	public function get_book_detail($id)
 	{
 		$this->db->where('id', $id);

@@ -324,5 +324,46 @@ class User_home extends CI_Controller {
 	}
 
 
+	public function book_view($id)
+	{
+		$this->load->model('user_model');
+
+		$this->load->model('admin_model');
+		$view['book_detail'] = $this->admin_model->get_book_detail($id);
+
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model'); 
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+		$this->load->model('user_model');
+		$view['reviews'] = $this->user_model->get_reviews();
+		
+		
+		if($this->admin_model->get_book_detail($id))
+		{ 
+			$view['user_view'] = "users/book_view";
+			$this->load->view('layouts/user_home', $view);
+		}
+		else
+		{	
+			$view['user_view'] = "temp/404page";
+			$this->load->view('layouts/user_home', $view);
+		}
+	}
+
+
 
 }

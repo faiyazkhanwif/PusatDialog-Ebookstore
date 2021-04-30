@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2021 at 08:38 PM
+-- Generation Time: Apr 30, 2021 at 03:04 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -62,7 +62,7 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `book_name`, `description`, `author`, `publisher`, `price`, `categoryId`, `book_image`, `book_file`, `create_date`) VALUES
-(64, 'Life for everyone', 'Born and raised in the Bay Area, Lauren found her passion for executive search early in her career and quickly rose to the top. Lauren&#039;s combination of vetting EQ and IQ has allowed her to assemble cohesive, diverse executive teams across all stages and functions', 'Jack Barret', 'Jack Barret Publication', '70', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing', '2021-04-17 17:19:12'),
+(64, 'Life for dummies', 'Born and raised in the Bay Area, Lauren found her passion for executive search early in her career and quickly rose to the top. Lauren&amp;amp;#039;s combination of vetting EQ and IQ has allowed her to assemble cohesive, diverse executive teams across all stages and functions', 'Jack Barret', 'Jack Barret Publication', '70', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing', '2021-04-17 17:19:12'),
 (66, 'Big O notation', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test auth', 'Test auth', '53', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing', '2021-04-18 15:13:46'),
 (67, 'All about Civil Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Nora Barret', 'Nora Barret Publication', '33', 2, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing', '2021-04-18 15:15:55'),
 (68, 'Confidential kings', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jack Barret', 'Jack Barret Publication', '95', 7, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing', '2021-04-18 15:17:29'),
@@ -215,7 +215,9 @@ INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateT
 (29, 24, '70', 1, '2021-04-17 17:21:29', '64', '0', '', ''),
 (30, 25, '95', 1, '2021-04-18 15:43:12', '68', '0', '', ''),
 (31, 25, '138', 1, '2021-04-18 15:49:42', '70, 69', '0', '', ''),
-(32, 24, '87', 1, '2021-04-21 18:08:25', '71', '0', '', '');
+(32, 24, '87', 1, '2021-04-21 18:08:25', '71', '0', '', ''),
+(33, 24, '138', 1, '2021-04-29 23:14:26', '70, 66', '0', '', ''),
+(34, 25, '70', 1, '2021-04-30 00:21:28', '64', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -232,7 +234,7 @@ CREATE TABLE `orgnamedb` (
 --
 
 INSERT INTO `orgnamedb` (`orgname`) VALUES
-('Pusat Dialog');
+('Dead Web');
 
 -- --------------------------------------------------------
 
@@ -253,28 +255,9 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `review`, `bookId`, `userId`, `dateTime`) VALUES
-(18, 'From New York Times bestselling author Catherine Bybee comes a new First Wives novel about wanting a family…and finding love. Shannon Wentworth’s biological clock is ticking, and she isn’t going to let her single status keep her from having a baby.', 27, 1, '2019-03-28 19:31:34'),
-(19, 'This book serves as guide to prepare for interviews, exams, and campus work. In short, this book offers solutions to various complex data structures and algorithmic problems', 31, 1, '2019-03-28 19:32:06'),
-(20, 'After a simple introduction to discrete math, it presents common algorithms and data structures. It also outlines the principles that make computers and programming languages work.', 29, 1, '2019-03-28 19:32:26'),
-(21, 'The key to exercising regularly, losing weight, being more productive, and achieving success is understanding how habits work. As Duhigg shows, by harnessing this new science, we can transform our businesses, our communities, and our lives.', 32, 1, '2019-03-28 19:32:54'),
-(22, 'In The Power of Habit, award-winning business reporter Charles Duhigg takes us to the thrilling edge of scientific discoveries that explain why habits exist and how they can be changed.', 32, 1, '2019-03-28 19:33:17'),
-(23, 'Distilling vast amounts of information into engrossing narratives that take us from the boardrooms of Procter &amp;amp;amp; Gamble to the sidelines of the NFL to the front lines of the civil rights movement!', 32, 19, '2019-03-28 19:35:04'),
-(24, 'They strike a deal: wait three months, cool off, and see if their tropical beach attraction is worth taking up when they go back home. Unfortunately, that’s just enough time for the past to come calling. All their best-laid plans are at risk. So is the last thing Shannon expected to matter the most: her heart.', 27, 19, '2019-03-28 19:35:34'),
-(25, 'Data Structures and Algorithmic Puzzles is a solution bank for various complex problems related to data structures and algorithms.', 31, 19, '2019-03-28 19:36:14'),
-(26, 'The key to exercising regularly, losing weight, being more productive, and achieving success is understanding how habits work. As Duhigg shows, by harnessing this new science, we can transform our businesses, our communities, and our lives.', 32, 7, '2019-03-28 19:37:33'),
-(28, 'The key to exercising regularly, losing weight, being more productive, and achieving success is understanding how habits work. As Duhigg shows, by harnessing this new science, we can transform our businesses, our communities, and our lives.', 29, 7, '2019-03-28 19:38:11'),
-(29, 'A data structure is a specialized format for organizing and storing data. General data structure types include the array, the file, the record, the table, the tree, and so on. Any data structure is designed to organize data to suit a specific purpose so that it can be accessed and worked with in appropriate ways.', 31, 7, '2019-03-28 19:39:41'),
-(30, 'Etty and Dorothy survived the orphanage with the help of one another and neither sister can forget the awful betrayal of their mother, which has haunted them their whole lives. But when a shocking secret about their painful childhood comes to light, will the sisters ever be the same again?', 28, 7, '2019-03-28 19:40:49'),
-(31, 'The Wall blends the most compelling issues of our time?rising waters, rising fear, rising political division?into a suspenseful story of love, trust, and survival.', 38, 7, '2019-03-29 06:18:24'),
-(40, ' The Wall blends the most compelling issues of our time?rising waters, rising fear, rising political division?into a suspenseful story of love, trust, and survival.\r\n', 39, 7, '2019-03-29 11:19:18'),
-(41, ' A dark part of him wonders whether it would be interesting if something did happen, if they came, if he had to fight for his life…', 39, 1, '2019-03-29 11:20:06'),
-(42, 'This book is very useful for beginners, who want to be a successful programmer.', 30, 1, '2019-03-29 17:03:53'),
-(43, 'You CAN learn to program professionally. The path is there. Will you take it?', 30, 21, '2019-03-30 18:23:19'),
-(44, 'This book is awesome.', 39, 1, '2019-04-11 04:33:21'),
-(45, 'A dark part of him wonders whether it would be interesting if something did happen, if they came, if he had to fight for his life…', 39, 1, '2019-04-15 04:44:11'),
-(46, 'Victor Brooks never could have imagined that he’d be on a honeymoon for one. Only here he is, taking a hard look at his life after the younger women he thought he loved walked out. The woman who volunteers to help him reflect is the last person he expects to be attracted to.!', 27, 1, '2019-04-15 05:05:12'),
-(47, 'In The Power of Habit, award-winning business reporter Charles Duhigg takes us to the thrilling edge of scientific discoveries that explain why habits exist and how they can be changed. Distilling vast amounts of information into engrossing narratives that take us from the boardrooms of Procter &amp;amp;amp;amp; Gamble to the sidelines of the NFL to the front lines of the civil rights movement, Duhigg presents a whole new understanding of human nature and its potential. At its core, The Power of Habit contains an exhilarating argument: The key to exercising regularly, losing weight, being more productive, and achieving success is understanding how habits work. As Duhigg shows, by harnessing this new science, we can transform our businesses, our communities, and our lives.', 32, 1, '2019-04-16 07:47:33'),
-(48, 'PHP stands for Hypertext Preprocessor (no, the acronym doesn\'t follow the name). It\'s an open source, server-side, scripting language used for the development of web applications. By scripting language, we mean a program that is script-based (lines of code) written for the automation of tasks', 15, 1, '2019-04-21 07:05:41');
+(50, 'It\'s a great book!', 64, 24, '2021-04-29 23:21:59'),
+(51, 'One of the best books for learning java. Highly recommended!', 70, 25, '2021-04-30 00:20:40'),
+(52, 'Amazing thriller. Must buy!', 64, 25, '2021-04-30 00:22:13');
 
 -- --------------------------------------------------------
 
@@ -319,7 +302,10 @@ INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_name`, `book_
 (17, 25, 68, 'Confidential kings', 'Jack Barret', '95', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing'),
 (18, 25, 70, 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
 (19, 25, 69, 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
-(20, 24, 71, 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing');
+(20, 24, 71, 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing'),
+(21, 24, 70, 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
+(22, 24, 66, 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
+(23, 25, 64, 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -425,19 +411,19 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`

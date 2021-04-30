@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
     <!--=========== Header area =============-->
     <div class="header-area">
-        <div class="hearder-top animate__animated animate__fadeInDown">
+        <div class="header-top animate__animated animate__fadeInDown">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">

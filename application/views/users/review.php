@@ -6,7 +6,7 @@
              <div class="text-danger form-error"><?= form_error('review')?></div>
         </div>
         <div class="col-md-2 col-sm-2">
-            <?= form_submit(['name'=>'submit', 'value'=>'Review', 'class'=>'btn btn-success'])?>
+            <?= form_submit(['name'=>'submit', 'value'=>'Add Review', 'class'=>'btn btn-success'])?>
         </div>
     </div>
 <?= form_close()?>

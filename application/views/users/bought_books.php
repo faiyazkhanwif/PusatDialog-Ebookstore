@@ -16,7 +16,7 @@
       <th scope="col">Author</th>
       <th scope="col">Price</th>
       <th scope="col">Book Cover</th>
-      <th scope="col">Action</th>
+      <th scope="col">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
     </tr>
   </thead>
 
@@ -41,7 +41,8 @@
       //$finallink = str_replace("drive","docs",$link);
       //  print '<a href= "'.strip_tags($finallink).'" title= "Read" class="btn btn-primary btn-sm">Read</a>&nbsp';
 
-      print '<a href= "'.base_url().'user-home/readbook/'.$book->book_Id.'" title= "Download" class="btn btn-primary btn-sm">View</a>&nbsp';
+      print '<a href= "'.base_url().'user-home/readbook/'.$book->book_Id.'" title= "Read" class="btn btn-success btn-sm">Read</a>&nbsp&nbsp&nbsp';
+      print '<a href= "'.base_url().'user-home/book_view/'.$book->book_Id.'" title= "Details" class="btn btn-primary btn-sm">Details</a>&nbsp';
 
         print '</td>'; 
       ?>
