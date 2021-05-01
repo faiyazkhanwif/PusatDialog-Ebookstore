@@ -5,9 +5,9 @@
 		print '<div class= "success-msg">'.$this->session->flashdata('login_success').'</div>';
 	}
 	if($this->session->flashdata('success'))
-    {
-        print '<div class= "success-msg">'.$this->session->flashdata('success').'</div>';
-    }
+	{
+		print '<div class= "success-msg">'.$this->session->flashdata('success').'</div>';
+	}
 	?>
 </div>
 
@@ -103,7 +103,7 @@
 			<br>
 			<div class="row con-flex"> 
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-secondary clickable-div" data-href="<?= base_url('admin/editadminprofile/'.$this->session->userdata('id').'')?>">
+					<div class="col-admin bg-dark clickable-div" data-href="<?= base_url('admin/editadminprofile/'.$this->session->userdata('id').'')?>">
 						<div>
 							<i class="fas fa-user"></i>
 							<h6>Edit Admin Profile</h6>
@@ -124,7 +124,12 @@
 					
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
-					
+					<div class="col-admin bg-secondary clickable-div" data-href="<?= base_url('admin/change_password/'.$this->session->userdata('id').'')?>">
+						<div>
+							<i class="fas fa-key"></i>
+							<h6>Change admin password</h6>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

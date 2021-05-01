@@ -12,7 +12,8 @@
             
             <li><a href="<?=base_url()?>admin/customize"><i class="fas fa-cog"></i> Customize Website</a></li>
             <li><a href="<?= base_url('admin/editadminprofile/'.$this->session->userdata('id').'')?>"><i class="fas fa-user"></i> Edit Admin Profile</a></li>
-            <li><a href="<?= base_url()?>users/logout"><i class="fas fa-power-off"></i> Logout</a></li>
+            <li><a href="<?= base_url('admin/change_password/'.$this->session->userdata('id').'')?>"><i class="fas fa-key"></i> Change Admin Password</a></li>
+            <li><a class="btn-danger" href="<?= base_url()?>users/logout"><i class="fas fa-power-off"></i> Logout</a></li>
         </ul>
     </div>
 </div>

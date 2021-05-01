@@ -1312,10 +1312,7 @@ public function editadminprofile($id)
 	$view['user_details'] = $this->admin_model->get_user_details($id);
 
 	$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric|strip_tags[contact]');
-	$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
-	$this->form_validation->set_rules('repassword', 'Confirm Password',
-		'trim|required|alpha_dash|min_length[3]|matches[password]');
+	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|numeric|strip_tags[contact]');
 
 	if($this->form_validation->run() == FALSE)
 	{
@@ -1336,7 +1333,7 @@ public function editadminprofile($id)
 
 		if($this->admin_model->editadminprofile($id))
 		{
-			$this->session->set_flashdata('success', 'Your profile info has been updated successfully.');
+			$this->session->set_flashdata('success', 'Admin profile information has been updated successfully.');
 			redirect('admin');
 		}
 		else
@@ -1345,6 +1342,79 @@ public function editadminprofile($id)
 		}
 	}
 }
+
+
+	public function change_password($id)
+	{
+		/*=== LOAD DYNAMIC CATAGORY ===*/
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+		/*==============================*/
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+		#get existing informations
+		$this->load->model('user_model');
+		$view['user_details'] = $this->user_model->get_user_details($id);
+
+
+		$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|alpha_dash|min_length[4]');
+
+		$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|alpha_dash|min_length[4]');
+		$this->form_validation->set_rules('repassword', 'Confirm Password',
+			'trim|required|alpha_dash|min_length[4]|matches[newpassword]');
+
+
+		if($this->form_validation->run() == FALSE)
+		{
+			if($this->user_model->get_user_details($id))
+			{
+				$view['admin_view'] = "admin/editadminpass";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+			else
+			{
+				$view['admin_view'] = "temp/404page";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+		}
+		else
+		{
+			$cur_password = $this->input->post('oldpassword');
+			$this->load->model('admin_model');
+			$passwd = $this->user_model->getCurrPassword($id);
+
+
+			if(password_verify($cur_password, $passwd->password)){
+				if($this->user_model->changepass($id, $data))
+				{
+					$this->session->set_flashdata('success', 'Your have changed your password successfully.');
+					redirect('admin');
+				}
+				else
+				{
+					print $this->db->error();
+				}
+			}
+			else{
+				$this->session->set_flashdata('danger', 'Please enter your current password correctly.');
+				$view['admin_view'] = "admin/editadminpass";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+
+		}
+	}
 
 
 }

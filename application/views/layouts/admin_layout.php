@@ -16,8 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/bootstrap.min.css'); ?>">
     <!-- Font-awesome css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/all.css'); ?>">
-    <!-- Owl-carousel css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/owl.carousel.min.css'); ?>">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/style.css'); ?>">
     
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
     <!--========== Header area ===========-->
     <div class="header-area">
-        <div class="header-top animate__animated animate__fadeInDown">
+        <div class="header-top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -78,44 +78,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!--<a href="" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login</a>
                                     <a href="" class="btn-login"><i class="fas fa-user-cog"></i> Register</a>-->
                                 </div>
+                                <!--
                                 <div class="col-md-4">
                                     <div class="ic-cart"><a href="<?= base_url()?>/cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>
-                                    <!--=== cart item count ===-->
-                                    <?php if($this->cart->contents()): ?>
+                                    
+                                    < ?php if($this->cart->contents()): ? >
                                         <div class="cart-count">
-                                            <div><?php $rows = count($this->cart->contents());
+                                            <div>< ?php $rows = count($this->cart->contents());
                                             print $rows; ?></div>
                                         </div>
-                                    <?php endif; ?>
+                                    < ?php endif; ?>
                                 </div>
-                            </div>
+                            -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- =========== single header ==========-->
-        <div class="single-header-a">
-            <div class="container">
-                <span><a href="<?= base_url() ?>home"><i class="fas fa-home"></i> Home</a> / 
-                    <a href="<?= base_url()?>admin">Admin Dashboard</a></span>
-                </div>
+    </div>
+    <!-- =========== single header ==========-->
+    <div class="single-header-a">
+        <div class="container">
+            <span><a href="<?= base_url() ?>home"><i class="fas fa-home"></i> Home</a> / 
+                <a href="<?= base_url()?>admin">Admin Dashboard</a></span>
             </div>
-            <!--========== Content-area ==========-->
-            <div class="admin-area">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-3 admin-nav">
-                            <?php $this->load->view('admin/admin_nav'); ?>
-                        </div>
-                        <div class="col-md-10 col-sm-9">
+        </div>
+        <!--========== Content-area ==========-->
+        <div class="admin-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 col-sm-3 admin-nav">
+                        <?php $this->load->view('admin/admin_nav'); ?>
+                    </div>
+                    <div class="col-md-10 col-sm-9">
+                        <div class="animate__animated animate__bounceInRight">
                             <?php $this->load->view($admin_view); ?><br>
+                        </div>
+                        
 
-                            <!--============ Footer Area ============-->
-                            <div>
-                                <?php $this->load->view('temp/footer'); ?>
-                            </div>
+                        <!--============ Footer Area ============-->
+                        <div>
+                            <?php $this->load->view('temp/footer'); ?>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
