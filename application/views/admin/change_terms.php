@@ -2,12 +2,18 @@
 <div class="container">
     <div class="my-form">
         <div id="form-header">Change Terms and Conditions</div>
+        <?php
+        if($this->session->flashdata('danger'))
+        {
+            print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
+        }
+        ?>
         <?= form_open_multipart("admin/changeterms")?>
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">Terms and Conditions</label>
             <div class="col-sm-6">
                 <?php foreach($termsdscs as $terms): ?>
-                <?= form_textarea(['name'=>'terms_dsc', 'placeholder'=> 'Terms and Conditions', 'value'=>set_value('terms_dsc',  $terms->termsdsc), 'class'=>'form-control'])?>
+                    <?= form_textarea(['name'=>'terms_dsc', 'placeholder'=> 'Terms and Conditions', 'value'=>set_value('terms_dsc',  $terms->termsdsc), 'class'=>'form-control'])?>
                 <?php endforeach; ?>
             </div>
             <div class="col-md-4">

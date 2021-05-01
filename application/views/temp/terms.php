@@ -2,7 +2,7 @@
 <div id = "table-header" class="text-center">Terms & Conditions</div>
 <div class="section-title border-top">Terms of use</div><br>
 
-<p><?php foreach($termsdscs as $terms): ?>
+<p style="white-space: pre-line;"><?php foreach($termsdscs as $terms): ?>
 
         <?php print $terms->termsdsc;?>
 

@@ -2,6 +2,12 @@
 <div class="container">
     <div class="my-form">
         <div id="form-header">Change logo of the Organization</div>
+        <?php
+        if($this->session->flashdata('danger'))
+        {
+            print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
+        }
+        ?>
         <?= form_open_multipart("admin/changelogo")?>
 
         <div class="form-group row">
@@ -12,12 +18,12 @@
             </div>
             <?php if (isset($upload_errors)) { ?>
                 <div class="col-sm-4">
-                 <div class="text-danger form-error"><?php echo $upload_errors; ?></div>    
-             </div>
-         <?php } ?>
-     </div>
+                   <div class="text-danger form-error"><?php echo $upload_errors; ?></div>    
+               </div>
+           <?php } ?>
+       </div>
 
-     <div class="sub">
+       <div class="sub">
         <span><?= form_submit(['name'=> 'submit', 'value'=> 'Update Logo', 'class'=>'btn btn-primary btn-sm my-btn'])?></span>
 
     </div>

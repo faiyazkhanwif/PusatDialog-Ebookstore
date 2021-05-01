@@ -9,11 +9,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <div><p><?php foreach($contactdscs as $contact): ?>
+        <div style="white-space: pre-line;"><h6 class="text-primary"><?php foreach($contactdscs as $contact): ?>
 
         <?php print $contact->contactdsc;?>
 
-        <?php endforeach; ?></p>
+        <?php endforeach; ?></h6>
       </div>
     </div>
     <div class="modal-footer">

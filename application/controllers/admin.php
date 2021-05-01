@@ -1064,10 +1064,11 @@ public function changename(){
 	//$view['admin_view'] = "admin/change_name";
 	//$this->load->view('layouts/admin_layout', $view);
 
-	$this->form_validation->set_rules('org_name', 'Organization name', 'trim|required|alpha_numeric_spaces');
+	$this->form_validation->set_rules('org_name', 'Organization name', 'trim|required|min_length[1]|max_length[25]|alpha_numeric_spaces');
 
 	if($this->form_validation->run() == FALSE)
 	{
+		$this->session->set_flashdata('danger', validation_errors());
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
@@ -1105,10 +1106,11 @@ public function changeftdsc(){
 	//$view['admin_view'] = "admin/change_name";
 	//$this->load->view('layouts/admin_layout', $view);
 
-	$this->form_validation->set_rules('ft_dsc', 'Footer description', 'trim|required|min_length[100]|strip_tags[ft_dsc]');
+	$this->form_validation->set_rules('ft_dsc', 'Footer description', 'trim|required|min_length[15]|strip_tags[ft_dsc]');
 
 	if($this->form_validation->run() == FALSE)
 	{
+		$this->session->set_flashdata('danger', validation_errors());
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
@@ -1146,10 +1148,11 @@ public function changeaboutdsc(){
 	//$view['admin_view'] = "admin/change_name";
 	//$this->load->view('layouts/admin_layout', $view);
 
-	$this->form_validation->set_rules('about_dsc', 'About description', 'trim|required|min_length[100]|strip_tags[about_dsc]');
+	$this->form_validation->set_rules('about_dsc', 'About description', 'trim|required|min_length[15]|strip_tags[about_dsc]');
 
 	if($this->form_validation->run() == FALSE)
-	{
+	{	
+		$this->session->set_flashdata('danger', validation_errors());
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
@@ -1192,10 +1195,12 @@ public function changecontactdsc(){
 	//$view['admin_view'] = "admin/change_name";
 	//$this->load->view('layouts/admin_layout', $view);
 
-	$this->form_validation->set_rules('contact_dsc', 'Contact description', 'trim|required|min_length[100]|strip_tags[contact_dsc]');
+	$this->form_validation->set_rules('contact_dsc', 'Contact description', 'trim|required|min_length[15]|strip_tags[contact_dsc]');
+	
 
 	if($this->form_validation->run() == FALSE)
 	{
+		$this->session->set_flashdata('danger', validation_errors());
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
@@ -1226,7 +1231,7 @@ public function changecontactdsc(){
 			redirect('admin/customize');
 		}
 		else
-		{
+		{	
 			print $this->db->error();
 		}
 	}
@@ -1241,10 +1246,10 @@ public function changeterms(){
 	//$view['admin_view'] = "admin/change_name";
 	//$this->load->view('layouts/admin_layout', $view);
 
-	$this->form_validation->set_rules('terms_dsc', 'Terms and Conditions', 'trim|required|min_length[100]|strip_tags[terms_dsc]');
+	$this->form_validation->set_rules('terms_dsc', 'Terms and Conditions', 'trim|required|min_length[15]|strip_tags[terms_dsc]');
 
 	if($this->form_validation->run() == FALSE)
-	{
+	{	$this->session->set_flashdata('danger', validation_errors());
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 

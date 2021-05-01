@@ -3,7 +3,11 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">About this website</h5>
+        <h5 class="modal-title" id="exampleModalLabel">About <?php foreach($names as $name): ?>
+
+        <?php print $name->orgname;?>
+
+        <?php endforeach; ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

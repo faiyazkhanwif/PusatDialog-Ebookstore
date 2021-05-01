@@ -1,7 +1,14 @@
 
 <div class="container">
+
     <div class="my-form">
         <div id="form-header">Change contact description</div>
+        <?php
+        if($this->session->flashdata('danger'))
+        {
+            print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
+        }
+        ?>
         <?= form_open_multipart("admin/changecontactdsc")?>
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">Contact description</label>

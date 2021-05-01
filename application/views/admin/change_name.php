@@ -2,6 +2,12 @@
 <div class="container">
     <div class="my-form">
         <div id="form-header">Change Name of the Organization</div>
+        <?php
+        if($this->session->flashdata('danger'))
+        {
+            print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
+        }
+        ?>
         <?= form_open_multipart("admin/changename")?>
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">Name of the organization</label>
@@ -10,9 +16,9 @@
                     <?= form_input(['name'=>'org_name', 'placeholder'=> 'Organization Name', 'value'=>set_value('org_name', $name->orgname), 'class'=>'form-control'])?>
                 <?php endforeach; ?>
             </div>
-            <div class="col-md-4">
-                <div class="text-danger form-error"><?= form_error('org_name')?></div>
-            </div>
+            <!--<div class="col-md-4">
+                <div class="text-danger form-error">< ? = form_error('org_name') ? ></div>
+            </div>-->
         </div>
 
         <div class="sub">
