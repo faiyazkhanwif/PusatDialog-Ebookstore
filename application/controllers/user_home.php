@@ -219,17 +219,12 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['user_details'] = $this->user_model->get_user_details($id);
 
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric|strip_tags[contact]');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
-		$this->form_validation->set_rules('repassword', 'Confirm Password',
-			'trim|required|alpha_dash|min_length[3]|matches[password]');
-		//$this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[80]|strip_tags[address]');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[1]|strip_tags[name]');
+		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|numeric|strip_tags[contact]');
 
-		//$this->form_validation->set_rules('city', 'City', 'trim|required|strip_tags[city]');
 
 		if($this->form_validation->run() == FALSE)
-		{
+		{//$this->session->set_flashdata('danger', validation_errors());
 			if($this->user_model->get_user_details($id))
 			{
 				$view['user_view'] = "users/edit_profile";
@@ -247,7 +242,7 @@ class User_home extends CI_Controller {
 
 			if($this->user_model->edit_profile($id, $data))
 			{
-				$this->session->set_flashdata('success', 'Your profile info update successfully');
+				$this->session->set_flashdata('success', 'Your profile information has been updated successfully.');
 				redirect('user_home');
 			}
 			else
@@ -256,6 +251,81 @@ class User_home extends CI_Controller {
 			}
 		}
 	}
+
+
+	public function change_password($id)
+	{
+		/*=== LOAD DYNAMIC CATAGORY ===*/
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+		/*==============================*/
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate(); 
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+		#get existing informations
+		$this->load->model('user_model');
+		$view['user_details'] = $this->user_model->get_user_details($id);
+
+
+		$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|alpha_dash|min_length[4]');
+
+		$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|alpha_dash|min_length[4]');
+		$this->form_validation->set_rules('repassword', 'Confirm Password',
+			'trim|required|alpha_dash|min_length[4]|matches[newpassword]');
+
+
+		if($this->form_validation->run() == FALSE)
+		{
+			if($this->user_model->get_user_details($id))
+			{
+				$view['user_view'] = "users/change_password";
+				$this->load->view('layouts/user_home', $view);
+			}
+			else
+			{
+				$view['user_view'] = "temp/404page";
+				$this->load->view('layouts/user_home', $view);
+			}
+		}
+		else
+		{
+			$cur_password = $this->input->post('oldpassword');
+			$this->load->model('user_model');
+			$passwd = $this->user_model->getCurrPassword($id);
+
+
+			if(password_verify($cur_password, $passwd->password)){
+				if($this->user_model->changepass($id, $data))
+				{
+					$this->session->set_flashdata('success', 'Your have changed your password successfully.');
+					redirect('user_home');
+				}
+				else
+				{
+					print $this->db->error();
+				}
+			}
+			else{
+				$this->session->set_flashdata('danger', 'Please enter your current password correctly.');
+				$view['user_view'] = "users/change_password";
+				$this->load->view('layouts/user_home', $view);
+			}
+
+		}
+	}
+
+
 
 	public function boughtbooks()
 	{

@@ -259,19 +259,43 @@ class user_model extends CI_Model
 
 	public function edit_profile($id, $data)
 	{
-		$options = ['cost'=> 12];
-		$encripted_pass = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
+		//$options = ['cost'=> 12];
+		//$encripted_pass = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
 
 		$data = array(
 			'name'	=> $this->input->post('name'),
 			'contact'	=> $this->input->post('contact'),
-			'password' => $encripted_pass,
+			//'password' => $encripted_pass,
 
 		);
 
 		return $query = $this->db->where('id', $id)->update('users', $data);
 	}
 
+	public function getCurrPassword($id)
+	{
+	  $query = $this->db->where(['id'=>$id])
+	                    ->get('users');
+	    if($query->num_rows() > 0){
+	        return $query->row();
+	    } 
+	}
+
+
+	public function changepass($id, $data)
+	{
+		$options = ['cost'=> 12];
+		$encripted_pass = password_hash($this->input->post('newpassword'), PASSWORD_BCRYPT, $options);
+
+		$data = array(
+			//'name'	=> $this->input->post('name'),
+			//'contact'	=> $this->input->post('contact'),
+			'password' => $encripted_pass,
+
+		);
+
+		return $query = $this->db->where('id', $id)->update('users', $data);
+	}
 
 	public function logo_generate()
 	{

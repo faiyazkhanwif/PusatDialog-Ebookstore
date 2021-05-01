@@ -13,7 +13,7 @@ if($this->session->flashdata('success'))
 
 <div class="admin-index section-padding animate__animated animate__bounceInLeft">
 	<div class="user-heading text-center">
-       <h3>Welcome, <span class = "text-info"><?php print $this->session->userdata('name') ?></span></h3>
+       <h3>Welcome, <span class = "text-info"><?php print $user_details->name ?></span></h3>
 
    </div>
 </div>

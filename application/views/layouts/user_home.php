@@ -142,4 +142,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div>
                 <?php $this->load->view('temp/footer'); ?>
             </div>
-            <h1>hi</h1>

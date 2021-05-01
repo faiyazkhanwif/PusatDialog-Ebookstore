@@ -1,8 +1,10 @@
 <div class="row animate__animated animate__bounceInLeft">
-    <div class="col-lg-8">
-
+    <div class="col">
+        
+    </div>
+    <div class="col">
            <?= form_open('user_home/edit_profile/'.$this->uri->segment(3))?>
-            <div id="form-header">Edit Your Info and Password</div><br>
+            <div id="form-header">Edit Your Info</div><br>
 
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -16,22 +18,22 @@
 
                    <div class="text-danger form-error"><?= form_error('contact')?></div>
                 </div>
-    
+    <!--
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <?= form_password(['name'=>'password', 'placeholder'=>'Password...','class'=>'form-control'])?>
+                        < ?= form_password(['name'=>'password', 'placeholder'=>'Password...','class'=>'form-control'])?>
 
-                      <div class="text-danger form-error"><?= form_error('password')?></div>
+                      <div class="text-danger form-error">< ?= form_error('password')?></div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="repassword">Confirm Password</label>
-                        <?= form_password(['name'=>'repassword', 'placeholder'=>'Re-type Password...','class'=>'form-control'])?>
+                        < ?= form_password(['name'=>'repassword', 'placeholder'=>'Re-type Password...','class'=>'form-control'])?>
 
-                    <div class="text-danger form-error"><?= form_error('repassword')?></div>
+                    <div class="text-danger form-error">< ?= form_error('repassword')?></div>
                     </div>
                 </div>
-                
+    -->            
 
                 <br>
                 <div class="form-group">
@@ -40,6 +42,11 @@
                 </div>
 
             <?= form_close() ?>
+
+            <a class="btn btn-outline-danger btn-sm" href="<?= base_url('user-home/change-password/'.$this->session->userdata('id').'')?>">Change Password</a>
+    </div>
+    <div class="col">
+        
     </div>
 </div>
 <br>
