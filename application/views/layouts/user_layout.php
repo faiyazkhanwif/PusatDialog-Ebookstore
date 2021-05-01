@@ -16,8 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/bootstrap.min.css'); ?>">
     <!-- Font-awesome css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/all.css'); ?>">
-    <!-- Owl-carousel css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/owl.carousel.min.css'); ?>">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/style.css'); ?>">
     
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
     <!--=========== Header area =============-->
     <div class="header-area">
-        <div class="header-top animate__animated animate__fadeInDown">
+        <div class="header-top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -113,14 +113,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php $this->load->view('temp/menu'); ?>
                     </div>
                 </div>
-                <!-- ========== single header ==========-->
-                <div class="single-header-u">
-                    <div class="container">
-                        <span><a href="<?= base_url()?>home"><i class="fas fa-home"></i> Home</a></span>
-                    </div>
-                </div>
+
                 <!--============ Content-area ===========-->
-                <div class="container">
+                <div class="container animate__animated animate__bounceInLeft">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12" style="min-height: 500px">
                             <?php $this->load->view($user_view); ?>

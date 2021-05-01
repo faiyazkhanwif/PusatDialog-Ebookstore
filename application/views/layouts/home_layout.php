@@ -16,8 +16,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/bootstrap.min.css'); ?>">
     <!-- Font-awesome css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/all.css'); ?>">
-    <!-- Owl-carousel css -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/owl.carousel.min.css'); ?>">
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
@@ -117,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <!--========== Menu Area =========-->
-                    <div class="animate__animated animate__fadeInDown">
+                    <div class="">
                         <?php $this->load->view('temp/menu'); ?>
                     </div>
                 </div>

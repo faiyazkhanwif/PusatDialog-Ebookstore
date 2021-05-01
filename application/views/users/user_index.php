@@ -11,14 +11,14 @@ if($this->session->flashdata('success'))
 ?>
 
 
-<div class="admin-index section-padding">
+<div class="admin-index section-padding animate__animated animate__bounceInLeft">
 	<div class="user-heading text-center">
        <h3>Welcome, <span class = "text-info"><?php print $this->session->userdata('name') ?></span></h3>
 
    </div>
 </div>
 
-<div class="row">
+<div class="row animate__animated animate__jackInTheBox animate__delay-1s">
     <div class="col-lg-6">
         <div class="jumbotron shadow">
             <h5 class="" style="color: #004477">Profile details</h5>

@@ -6,7 +6,7 @@
     }
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid animate__animated animate__bounceInLeft">
 	<div id="table-header">Bought Books</div>
 	<table class="table table-hover">
   <thead class="thead-light">

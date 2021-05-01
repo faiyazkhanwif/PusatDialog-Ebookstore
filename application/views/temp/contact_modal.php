@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div style="white-space: pre-line;"><h6 class="text-primary"><?php foreach($contactdscs as $contact): ?>
+        <div style="white-space: pre-line;"><h6><?php foreach($contactdscs as $contact): ?>
 
         <?php print $contact->contactdsc;?>
 

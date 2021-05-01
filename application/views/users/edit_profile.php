@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row animate__animated animate__bounceInLeft">
     <div class="col-lg-8">
 
            <?= form_open('user_home/edit_profile/'.$this->uri->segment(3))?>
