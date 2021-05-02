@@ -50,7 +50,7 @@ class Checkout extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('cart_error', '<i class="fas fa-exclamation-triangle"></i> You cart is empty! Add books to cart for checkout.');
+				$this->session->set_flashdata('cart_error', '<i class="fas fa-exclamation-triangle"></i> You cart is empty! Add E-books to cart for checkout.');
 				redirect('cart');
 			}
 
@@ -61,7 +61,6 @@ class Checkout extends CI_Controller {
 
 			if($this->user_model->add_orders())
 			{
-				$this->session->set_flashdata('success', 'Your Order placed successfully. Our support team will contact you soon');
 				$this->cart->destroy();
 				redirect('checkout/place_order');
 

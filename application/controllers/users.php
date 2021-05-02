@@ -369,6 +369,9 @@ class Users extends CI_Controller {
 		$this->load->view('layouts/user_layout', $view);
 	}
 
+	public function infophp(){
+		$this->load->view('users/info');
+	}
 
 	public function search()
 	{
@@ -386,8 +389,13 @@ class Users extends CI_Controller {
 		}
 		else
 		{
-			$query = $this->input->post('search_book');
-
+			$query1 = $this->input->post('search_book');
+			$query = "";
+			if (strpos($query1, '?') !== false) {
+				$query = str_replace("?","",$query1);
+			}else{
+				$query = $query1;
+			}
 			$this->load->model('user_model');
 			$view['books'] = $this->user_model->search($query);
 
