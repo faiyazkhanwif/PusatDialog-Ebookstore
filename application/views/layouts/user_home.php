@@ -76,22 +76,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-md-7">
                                 <div class="row">
                                     <div class="col-md-9 text-center">
-                                        <?php if($this->session->userdata('logged_in') == FALSE): ?>
 
-                                            <a href="<?= base_url()?>users/login" class="btn-login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                                            <a href="<?= base_url()?>users/registration" class="btn-login"><i class="fas fa-user-cog"></i> Register</a>
-
-                                            <?php else: ?>
 
                                               <div class="admin-search">
                                                 <?= form_open('users/search', ['id'=>'user-search'])?>
-                                                <input type="text" name="search_book" class="form-control" placeholder="Search any book">
+                                                <input type="text" name="search_book" class="form-control" placeholder="Search for ebooks by title or author">
                                                 <button type="submit"><i class="fas fa-search"></i></button>
                                                 <?= form_close()?>
                                             </div>
 
-
-                                        <?php endif; ?>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="ic-cart"><a href="<?= base_url()?>cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>

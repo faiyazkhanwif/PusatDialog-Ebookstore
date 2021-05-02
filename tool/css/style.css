@@ -170,6 +170,23 @@ h6 {
     color: #fff;
 }
 
+.btn-log {
+    color: #fff; 
+    background: #1F51A3;
+    margin: 3px 3px;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 3px;
+    font-weight: 700;
+    border: 1px solid #1F51A3;
+    transition: .4s;
+}
+
+.btn-log:hover {
+    background-color: #fff;
+    color: #1F51A3;
+}
+
 .ic-cart a {
     color: #1F51A3;
     margin-top: 3px;

@@ -151,7 +151,7 @@ class Users extends CI_Controller {
 				}
 				elseif ($user_data->type == 'U') // User
 				{
-					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have Logged in successfully');
+					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have logged in successfully');
 					redirect('home');
 				}
 

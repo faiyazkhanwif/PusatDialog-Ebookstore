@@ -2,7 +2,7 @@
 </div><br>
 
 <?php if(!$books): ?>
-	<div><h6 class="text-danger">No books found related to your search. Search books by title.</h6></div>
+	<div><h6 class="text-danger">No books found related to your search. Search for ebooks by title or author.</h6></div>
 	<?php else: ?>
 	<table class="table table-hover table-responsive borderless">
 	<?php foreach($books as $book):?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2021 at 01:16 PM
+-- Generation Time: May 02, 2021 at 07:10 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -332,7 +332,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `createdate`) VALUES
 (7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$moTKK7bMfHZQ1.6VeQGqnOrqMlMjCBCMQvdHhbc32oCN/LuF5xJaG', 'A', '2019-04-21 10:54:26'),
 (24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$jwcEh1Se3atSef0dZSNBN.BkPBIYju83fyG0P8vq7eDXur42b3QVm', 'U', '2021-03-09 20:11:53'),
-(25, 'usertest', '93861937419', 'user@gmail.com', '$2y$12$1C4.50mOMcKWdU.s6s6VF.xfLWo1HmbMjsuYENtAhTWaZRCxodnma', 'U', '2021-04-18 15:32:34');
+(25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', '2021-04-18 15:32:34'),
+(26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', '2021-05-02 03:23:10');
 
 --
 -- Indexes for dumped tables
@@ -431,7 +432,7 @@ ALTER TABLE `userorderviewonly`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

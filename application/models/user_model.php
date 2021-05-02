@@ -245,6 +245,7 @@ class user_model extends CI_Model
 
 		$string = str_replace(" ","|", $query);
 		$this->db->where("book_name RLIKE '$string'");
+		$this->db->or_where("author RLIKE '$string'"); 
 
 		$q = $this->db->get();
 		return $q->result();
