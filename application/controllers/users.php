@@ -31,15 +31,15 @@ class Users extends CI_Controller {
 	public function registration()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|numeric');
+		$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|required|numeric');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]',
 			array(
 				'required' => 'Email field can not be left empty.',
 				'is_unique' => 'This email is already registered.')
 		);
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[3]');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]');
 		$this->form_validation->set_rules('repassword', 'Confirm Password',
-			'trim|required|alpha_dash|min_length[3]|matches[password]');
+			'trim|required|alpha_dash|min_length[4]|matches[password]');
 		$this->form_validation->set_rules('conditionBox', 'Check box', 'trim|required',
 			array('required' => 'You have to check the box.')
 		);
@@ -93,7 +93,7 @@ class Users extends CI_Controller {
 	public function login()
 	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]|alpha_dash');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|alpha_dash');
 
 		if($this->form_validation->run() == FALSE)
 		{

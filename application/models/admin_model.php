@@ -73,8 +73,6 @@ class admin_model extends CI_Model
 			'name'	=> $this->input->post('name'),
 			'contact'	=> $this->input->post('contact'),
 			'email'	=> $this->input->post('email'),
-			'address'	=> $this->input->post('address'),
-			'city'	=> $this->input->post('city'),
 			'password' => $encripted_pass,
 			'type' => $this->input->post('type')
 
@@ -578,6 +576,21 @@ class admin_model extends CI_Model
 		$data = array(
 			//'name'	=> $this->input->post('name'),
 			//'contact'	=> $this->input->post('contact'),
+			'password' => $encripted_pass,
+
+		);
+
+		return $query = $this->db->where('id', $id)->update('users', $data);
+	}
+
+	public function editotheruser($id)
+	{
+		$options = ['cost'=> 12];
+		$encripted_pass = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
+
+		$data = array(
+			'name'	=> $this->input->post('name'),
+			'contact'	=> $this->input->post('contact'),
 			'password' => $encripted_pass,
 
 		);

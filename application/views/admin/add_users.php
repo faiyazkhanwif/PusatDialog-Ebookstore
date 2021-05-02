@@ -6,32 +6,32 @@
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <?= form_input(['name'=>'name', 'placeholder'=>'Your name...', 'value'=>set_value('name'), 'class'=>'form-control'])?>
+                    <?= form_input(['name'=>'name', 'placeholder'=>'Name of the account holder', 'value'=>set_value('name'), 'class'=>'form-control'])?>
 
                     <div class="text-danger form-error"><?= form_error('name')?></div>
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact</label>
-                    <?= form_input(['name'=>'contact', 'placeholder'=>'Phone number...', 'value'=>set_value('contact'), 'class'=>'form-control'])?>
+                    <?= form_input(['name'=>'contact', 'placeholder'=>'Phone number', 'value'=>set_value('contact'), 'class'=>'form-control'])?>
 
                    <div class="text-danger form-error"><?= form_error('contact')?></div>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <?= form_input(['name'=>'email', 'placeholder'=>'Your email...', 'value'=>set_value('email'), 'class'=>'form-control'])?>
+                    <?= form_input(['name'=>'email', 'placeholder'=>'Valid email', 'value'=>set_value('email'), 'class'=>'form-control'])?>
 
                     <div class="text-danger form-error"><?= form_error('email')?></div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <?= form_password(['name'=>'password', 'placeholder'=>'Password...','class'=>'form-control'])?>
+                        <?= form_password(['name'=>'password', 'placeholder'=>'Password','class'=>'form-control'])?>
 
                       <div class="text-danger form-error"><?= form_error('password')?></div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="repassword">Confirm Password</label>
-                        <?= form_password(['name'=>'repassword', 'placeholder'=>'Re-type Password...','class'=>'form-control'])?>
+                        <?= form_password(['name'=>'repassword', 'placeholder'=>'Re-type Password','class'=>'form-control'])?>
 
                     <div class="text-danger form-error"><?= form_error('repassword')?></div>
                     </div>
@@ -40,7 +40,7 @@
                 <label for="type">Type</label>
                 <div class="form-group">
                     <?php $options = array(
-                            '' => 'Choose...',
+                            '' => 'Choose one from below:',
                             'U'=> 'User',
                             'A'=> 'Admin'
                         );

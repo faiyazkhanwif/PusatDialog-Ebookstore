@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2021 at 07:37 AM
+-- Generation Time: May 01, 2021 at 01:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -107,7 +107,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `category`, `description`, `tag`) VALUES
-(1, 'Computer Science and Engineering', 'All the books from computer science and software engineering, and programming related books.', 'CSE'),
+(1, 'Computer Science and Engineering', 'All books from computer science and software engineering along with various programming related books.', 'CSE'),
 (2, 'Civil Engineering', 'All the books from Civil Engineering and environmental science department', 'CE'),
 (3, 'Mechanical engineering', 'All the books from Mechanical engineering.', 'ME'),
 (5, 'BBA', 'All the books from business administration.', 'BBA'),
@@ -187,7 +187,7 @@ CREATE TABLE `logo` (
 --
 
 INSERT INTO `logo` (`logoimg`) VALUES
-('http://localhost/PusatDialog-Ebookstore/uploads/image/unnamed.png');
+('http://localhost/PusatDialog-Ebookstore/uploads/image/pdialogsmall2.png');
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,8 @@ INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateT
 (31, 25, '138', 1, '2021-04-18 15:49:42', '70, 69', '0', '', ''),
 (32, 24, '87', 1, '2021-04-21 18:08:25', '71', '0', '', ''),
 (33, 24, '138', 1, '2021-04-29 23:14:26', '70, 66', '0', '', ''),
-(34, 25, '70', 1, '2021-04-30 00:21:28', '64', '0', '', '');
+(34, 25, '70', 1, '2021-04-30 00:21:28', '64', '0', '', ''),
+(35, 24, '66', 1, '2021-05-01 06:55:17', '67', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -305,7 +306,8 @@ INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_name`, `book_
 (20, 24, 71, 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing'),
 (21, 24, 70, 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
 (22, 24, 66, 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
-(23, 25, 64, 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing');
+(23, 25, 64, 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
+(24, 24, 67, 'All about Civil Engineering', 'Nora Barret', '33', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -328,8 +330,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `createdate`) VALUES
-(7, 'Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$aLcimDnFdlf87UWrIvn5K.QkDq3oDiyCeyFF84OpkvXKYXkNC7/UK', 'A', '2019-04-21 10:54:26'),
-(24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$j/dWxmKSP6BmYPxOLPekX.QX1rR5HBuuSJST5GyI4C80Z/IfNKC.2', 'U', '2021-03-09 20:11:53'),
+(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$moTKK7bMfHZQ1.6VeQGqnOrqMlMjCBCMQvdHhbc32oCN/LuF5xJaG', 'A', '2019-04-21 10:54:26'),
+(24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$jwcEh1Se3atSef0dZSNBN.BkPBIYju83fyG0P8vq7eDXur42b3QVm', 'U', '2021-03-09 20:11:53'),
 (25, 'usertest', '93861937419', 'user@gmail.com', '$2y$12$1C4.50mOMcKWdU.s6s6VF.xfLWo1HmbMjsuYENtAhTWaZRCxodnma', 'U', '2021-04-18 15:32:34');
 
 --
@@ -411,7 +413,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -423,7 +425,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`
