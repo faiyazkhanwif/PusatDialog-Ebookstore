@@ -527,7 +527,7 @@ class admin extends CI_Controller {
     		}else{
     			$res = "FALSE";
     		}
-    		echo $res;
+    		//echo $res;
 
 
     		if ($res=="FALSE") {
