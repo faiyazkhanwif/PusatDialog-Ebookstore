@@ -30,8 +30,8 @@ class Users extends CI_Controller {
 
 	public function registration()
 	{
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-		$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|required|numeric');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|strip_tags[name]');
+		$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|max_length[15]|required|numeric');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]',
 			array(
 				'required' => 'Email field can not be left empty.',
@@ -238,7 +238,7 @@ class Users extends CI_Controller {
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
 
-		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[10]|htmlentities[review]');
+		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[5]|htmlentities[review]');
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -369,6 +369,9 @@ class Users extends CI_Controller {
 		$this->load->view('layouts/user_layout', $view);
 	}
 
+	public function infophp(){
+		$this->load->view('users/info');
+	}
 
 	public function search()
 	{
@@ -386,8 +389,13 @@ class Users extends CI_Controller {
 		}
 		else
 		{
-			$query = $this->input->post('search_book');
-
+			$query1 = $this->input->post('search_book');
+			$query = "";
+			if (strpos($query1, '?') !== false) {
+				$query = str_replace("?","",$query1);
+			}else{
+				$query = $query1;
+			}
 			$this->load->model('user_model');
 			$view['books'] = $this->user_model->search($query);
 

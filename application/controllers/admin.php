@@ -229,8 +229,8 @@ class admin extends CI_Controller {
 					/*=============== ADD Users By admin ===============*/
 					public function add_users()
 					{
-						$this->form_validation->set_rules('name', 'Name', 'trim|required|alpha_numeric_spaces');
-						$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|required|numeric');
+						$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|alpha_numeric_spaces');
+						$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|max_length[15]|required|numeric');
 						$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
 						$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]');
 						$this->form_validation->set_rules('repassword', 'Confirm Password',
@@ -304,8 +304,8 @@ class admin extends CI_Controller {
 						$this->load->model('admin_model');
 						$view['user_details'] = $this->admin_model->get_user_details($id);
 
-						$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-						$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|numeric|strip_tags[contact]');
+						$this->form_validation->set_rules('name', 'Name', 'trim|max_length[80]|required|strip_tags[name]');
+						$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|max_length[15]|numeric|strip_tags[contact]');
 						$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]');
 						$this->form_validation->set_rules('repassword', 'Confirm Password',
 							'trim|required|alpha_dash|min_length[4]|matches[password]');
@@ -387,6 +387,7 @@ class admin extends CI_Controller {
 					}
 
 
+
 					public function booksbr()
 					{
 						$this->load->model('admin_model');
@@ -455,10 +456,10 @@ class admin extends CI_Controller {
 
 
 						$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
-						$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[1000]|strip_tags[description]');
+						$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
 						$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
 						$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-						$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
+						$this->form_validation->set_rules('price', 'Price', 'trim|required|numeric|strip_tags[price]');
 
 						$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
@@ -473,6 +474,8 @@ class admin extends CI_Controller {
     $this->coverupload->initialize($config);
     $upload_cover = $this->coverupload->do_upload('userfile');
 
+
+
     // Catalog upload
     //$config = array();
     //$config['upload_path'] = './uploads/file/';
@@ -482,11 +485,13 @@ class admin extends CI_Controller {
     //$this->catalogupload->initialize($config);
    // $upload_catalog = $this->catalogupload->do_upload('userfile2');
 
-
+    $url = $this->input->post('userfile2');
 
 
     if(($this->form_validation->run() && $upload_cover) == FALSE)
     {
+
+    	
     	$this->load->model('user_model');
     	$view['logos'] = $this->user_model->logo_generate();
 
@@ -515,20 +520,45 @@ class admin extends CI_Controller {
 		//	}
 			// Check uploads success
     	if ($upload_cover) {
+    		$res = "TRUE";
 
+    		if (strpos($url, 'https://drive.google.com/file') !== false) {
+    			$res = "TRUE";
+    		}else{
+    			$res = "FALSE";
+    		}
+    		echo $res;
+
+
+    		if ($res=="FALSE") {
+    			$this->session->set_flashdata('danger', 'Please enter a valid link as File link.');
+    			$this->load->model('user_model');
+    			$view['logos'] = $this->user_model->logo_generate();
+
+    			$this->load->model('user_model');
+    			$view['names'] = $this->user_model->name_generate();
+
+    			$this->load->model('user_model');
+    			$view['dscs'] = $this->user_model->ft_generate();
+
+    			$view['admin_view'] = "admin/add_books";
+    			$this->load->view('layouts/admin_layout', $view);
+    		}else{
+    			$this->load->model('admin_model');
+
+    			if($this->admin_model->add_books())
+    			{
+    				$this->session->set_flashdata('success', 'Book added successfully');
+    				redirect('admin/books');
+    			}
+    			else
+    			{
+    				print $this->db->error();
+    			}
+    		}
       // Both Upload Success
 
-    		$this->load->model('admin_model');
 
-    		if($this->admin_model->add_books())
-    		{
-    			$this->session->set_flashdata('success', 'Book added successfully');
-    			redirect('admin/books');
-    		}
-    		else
-    		{
-    			print $this->db->error();
-    		}
     	} else {
 
       // Error Occured in one of the uploads
@@ -542,9 +572,10 @@ class admin extends CI_Controller {
 
 }
 
+public function link_check($url)
+{
 
-
-
+}
 
 
 
@@ -571,10 +602,10 @@ public function add_booksbr()
 
 
 	$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
-	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[1000]|strip_tags[description]');
+	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
 	$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
 	$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-	$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
+	$this->form_validation->set_rules('price', 'Price', 'trim|required|numeric|strip_tags[price]');
 
 	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
@@ -715,10 +746,10 @@ public function book_edit($id)
 	//$this->load->library('upload', $config);
 
 	$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
-	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[1000]|strip_tags[description]');
+	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
 	$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
 	$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-	$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
+	$this->form_validation->set_rules('price', 'Price', 'trim|required|numeric|strip_tags[price]');
 	//$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|numeric|strip_tags[quantity]');
 	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
@@ -765,33 +796,7 @@ public function book_delete($id)
 	redirect('admin/books');
 }
 
-/*======Pending Books =======*/
-public function pending_books()
-{
-	$this->load->model('admin_model');
-	$view['books'] = $this->admin_model->pending_books();
 
-	$view['admin_view'] = "admin/pending_books";
-	$this->load->view('layouts/admin_layout', $view);
-}
-
-public function published_books($id)
-{
-	$this->load->model('admin_model');
-	if($this->admin_model->published_books($id, $data))
-	{
-		$this->session->set_flashdata('success','Book published successfully');
-		redirect('admin/books');
-	}
-}
-public function delete_pending_books($id)
-{
-	$this->load->model('admin_model');
-	$this->admin_model->delete_book($id);
-
-	$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Book deleted successfully');
-	redirect('admin/pending_books');
-}
 
 	#...Display all orders
 public function orders()
@@ -840,26 +845,6 @@ public function order_view($orderId)
 
 }
 
-	#...Accepting order
-public function accept_order($orderId)
-{
-	$this->load->model('admin_model');
-	if($this->admin_model->accept_order($orderId, $data))
-	{
-		$this->session->set_flashdata('success','Order number '.$this->uri->segment(3).' is accepted');
-		redirect('admin/order_view/'.$this->uri->segment(3).'');
-	}
-}
-
-	#...Deleting orders
-public function delete_order($orderId)
-{
-	$this->load->model('admin_model');
-	$this->admin_model->delete_order($orderId);
-
-	$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Order number '.$this->uri->segment(3).' is deleted');
-	redirect('admin/orders');
-}
 
 
 /*======== E-BOOK ======*/
@@ -1371,7 +1356,7 @@ public function editadminprofile($id)
 	$view['user_details'] = $this->admin_model->get_user_details($id);
 
 	$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
-	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|numeric|strip_tags[contact]');
+	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|max_length[15]|numeric|strip_tags[contact]');
 
 	if($this->form_validation->run() == FALSE)
 	{

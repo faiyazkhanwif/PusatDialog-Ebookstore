@@ -1,4 +1,10 @@
 <!--=== Book Menu ===-->
+    <?php 
+    if($this->session->flashdata('danger'))
+    {
+        print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
+    }
+    ?>
 <div class="container-fluid">
     <div class="books-menu">
       <ul>
@@ -82,7 +88,7 @@
     <label for="book_image" class="col-sm-2 col-form-label">E-Book Cover</label>
     <div class="col-sm-6">
         <?= form_upload(['name'=>'userfile', 'class'=>'form-control', 'id' => 'book_image'])?>
-        <div class="text-secondary">* Upload PNG, JPG format. Image should not be more than 400KB</div>
+        <div class="text-secondary">* Upload PNG, JPG format. Image should not be more than 100MB</div>
     </div>
     <?php if (isset($upload_errors)) { ?>
         <div class="col-sm-4">
