@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2021 at 08:20 AM
+-- Generation Time: May 30, 2021 at 03:20 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -47,6 +47,7 @@ INSERT INTO `aboutdb` (`aboutdsc`) VALUES
 CREATE TABLE `books` (
   `id` int(11) NOT NULL,
   `book_name` varchar(200) NOT NULL,
+  `book_isbn` varchar(200) NOT NULL,
   `description` text NOT NULL,
   `author` varchar(200) NOT NULL,
   `publisher` varchar(200) NOT NULL,
@@ -61,15 +62,16 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `book_name`, `description`, `author`, `publisher`, `price`, `categoryId`, `book_image`, `book_file`, `create_date`) VALUES
-(64, 'Life for dummies', 'Born and raised in the Bay Area, Lauren found her passion for executive search early in her career and quickly rose to the top. Lauren&amp;amp;#039;s combination of vetting EQ and IQ has allowed her to assemble cohesive, diverse executive teams across all stages and functions', 'Jack Barret', 'Jack Barret Publication', '70', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing', '2021-04-17 17:19:12'),
-(66, 'Big O notation', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test auth', 'Test auth', '53', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing', '2021-04-18 15:13:46'),
-(67, 'All about Civil Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Nora Barret', 'Nora Barret Publication', '33', 2, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing', '2021-04-18 15:15:55'),
-(68, 'Confidential kings', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jack Barret', 'Jack Barret Publication', '95', 7, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing', '2021-04-18 15:17:29'),
-(69, 'PHP made simple', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test auth', 'Test auth', '53', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing', '2021-04-18 15:25:27'),
-(70, 'All about Java', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jimmy Johnson', 'Jimmy Publication', '85', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing', '2021-04-18 15:27:57'),
-(71, 'Operating Systems', 'I love operating systems. I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.', 'Test 2', 'Test pub', '87', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing', '2021-04-21 18:02:56'),
-(72, 'Software Architecture', '“Science is built up of facts as a house is built of stones, but an\r\naccumulation of facts is no more a science than a heap of stones\r\nis a house.” Jules Henri Poincaré (1854-1912)\r\nWhen using this quotation to open the second edition of this book I observed that it is sometimes hard not to feel that our knowledge about how\r\nto design software might sometimes feel akin to having a heap of stones. We\r\npossess a collection of observations, techniques and experiences, but finding\r\nways of putting them together to provide an organised corpus of knowledge\r\nabout how to design software is something of a challenge. The first and second\r\neditions of this book have sought to gather, classify, categorise and interpret\r\nthe available knowledge with the aim of providing some sort of structure that\r\nwill help the reader to understand and use it—and this one aims to do the\r\nsame.\r\nThe ten years that elapsed between the first and second editions of this\r\nbook saw the emergence of many new and sometimes radically different ideas\r\nabout how we might go about designing software. The software designer’s\r\ntoolbox acquired concepts such as architecture and new forms of software\r\ntechnology such as software services; there was a move away from ‘waterfall’\r\nthinking with agile methods as well as with new forms of reuse through design\r\npatterns; and there was a greater ‘standardisation’ of modelling forms with\r\nthe Unified Modeling Language (UML).\r\nIn the (rather longer) period between the second edition and this one,\r\nalthough new ideas have continued to emerge, mostly they have been less radical in their scope. Perhaps this has been partly because software developers\r\nhave also had to cope with significant changes in the context within which\r\nsoftware design takes place. It is now increasingly the case that applications\r\nmay well be developed by globally dispersed teams; make use of open source\r\ncomponents; be in the form of product lines; need to operate within a global\r\nnetwork of systems rather than in a purely local environment; and of course,\r\nincreasingly need to cope with the possibility of malicious attacks. In addition,\r\nthe growing availability of knowledge that is based upon empirical evidence is\r\nslowly giving us a better understanding of what works, when and why.', 'David Budgen', 'CRC', '78.5', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing', '2021-05-04 06:16:59');
+INSERT INTO `books` (`id`, `book_name`, `book_isbn`, `description`, `author`, `publisher`, `price`, `categoryId`, `book_image`, `book_file`, `create_date`) VALUES
+(64, 'Life for dummies', '0-3038-6314-5', 'Born and raised in the Bay Area, Lauren found her passion for executive search early in her career and quickly rose to the top. Lauren&amp;amp;#039;s combination of vetting EQ and IQ has allowed her to assemble cohesive, diverse executive teams across all stages and functions', 'Jack Barret', 'Jack Barret Publication', '70', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing', '2021-04-17 17:19:12'),
+(66, 'Big O notation', '0-3604-3155-0', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test auth', 'Test auth', '53', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing', '2021-04-18 15:13:46'),
+(67, 'All about Civil Engineering', '0-3244-3974-1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Nora Barret', 'Nora Barret Publication', '33', 2, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing', '2021-04-18 15:15:55'),
+(68, 'Confidential kings', '0-1757-5888-3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jack Barret', 'Jack Barret Publication', '95', 7, 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing', '2021-04-18 15:17:29'),
+(69, 'PHP made simple', '0-6588-9287-8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test auth', 'Test auth', '53', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing', '2021-04-18 15:25:27'),
+(70, 'All about Java', '0-5181-8483-8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jimmy Johnson', 'Jimmy Publication', '85', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing', '2021-04-18 15:27:57'),
+(71, 'Operating Systems', '0-3430-8635-2', 'I love operating systems. I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.', 'Test 2', 'Test pub', '87', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing', '2021-04-21 18:02:56'),
+(72, 'Software Architecture', '0-7948-8076-2', '“Science is built up of facts as a house is built of stones, but an\r\naccumulation of facts is no more a science than a heap of stones\r\nis a house.” Jules Henri Poincaré (1854-1912)\r\nWhen using this quotation to open the second edition of this book I observed that it is sometimes hard not to feel that our knowledge about how\r\nto design software might sometimes feel akin to having a heap of stones. We\r\npossess a collection of observations, techniques and experiences, but finding\r\nways of putting them together to provide an organised corpus of knowledge\r\nabout how to design software is something of a challenge. The first and second\r\neditions of this book have sought to gather, classify, categorise and interpret\r\nthe available knowledge with the aim of providing some sort of structure that\r\nwill help the reader to understand and use it—and this one aims to do the\r\nsame.\r\nThe ten years that elapsed between the first and second editions of this\r\nbook saw the emergence of many new and sometimes radically different ideas\r\nabout how we might go about designing software. The software designer’s\r\ntoolbox acquired concepts such as architecture and new forms of software\r\ntechnology such as software services; there was a move away from ‘waterfall’\r\nthinking with agile methods as well as with new forms of reuse through design\r\npatterns; and there was a greater ‘standardisation’ of modelling forms with\r\nthe Unified Modeling Language (UML).\r\nIn the (rather longer) period between the second edition and this one,\r\nalthough new ideas have continued to emerge, mostly they have been less radical in their scope. Perhaps this has been partly because software developers\r\nhave also had to cope with significant changes in the context within which\r\nsoftware design takes place. It is now increasingly the case that applications\r\nmay well be developed by globally dispersed teams; make use of open source\r\ncomponents; be in the form of product lines; need to operate within a global\r\nnetwork of systems rather than in a purely local environment; and of course,\r\nincreasingly need to cope with the possibility of malicious attacks. In addition,\r\nthe growing availability of knowledge that is based upon empirical evidence is\r\nslowly giving us a better understanding of what works, when and why.', 'David Budgen', 'CRC', '78.5', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing', '2021-05-04 06:16:59'),
+(73, 'TestISBN', '0-8488-4900-3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Dr. Phineas', 'test pub', '63.5', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing', '2021-05-30 12:15:45');
 
 -- --------------------------------------------------------
 
@@ -213,14 +215,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`, `payment_status`) VALUES
-(29, 24, '70', 1, '2021-04-17 17:21:29', '64', '0', '', ''),
-(30, 25, '95', 1, '2021-04-18 15:43:12', '68', '0', '', ''),
-(31, 25, '138', 1, '2021-04-18 15:49:42', '70, 69', '0', '', ''),
-(32, 24, '87', 1, '2021-04-21 18:08:25', '71', '0', '', ''),
-(33, 24, '138', 1, '2021-04-29 23:14:26', '70, 66', '0', '', ''),
-(34, 25, '70', 1, '2021-04-30 00:21:28', '64', '0', '', ''),
-(35, 24, '66', 1, '2021-05-01 06:55:17', '67', '0', '', ''),
-(36, 26, '78.5', 1, '2021-05-04 06:18:08', '72', '0', '', '');
+(29, 24, '70', 1, '2021-04-17 17:21:29', '64', '1', '', ''),
+(30, 25, '95', 1, '2021-04-18 15:43:12', '68', '1', '', ''),
+(31, 25, '138', 1, '2021-04-18 15:49:42', '70, 69', '1', '', ''),
+(32, 24, '87', 1, '2021-04-21 18:08:25', '71', '1', '', ''),
+(33, 24, '138', 1, '2021-04-29 23:14:26', '70, 66', '1', '', ''),
+(34, 25, '70', 1, '2021-04-30 00:21:28', '64', '1', '', ''),
+(35, 24, '66', 1, '2021-05-01 06:55:17', '67', '1', '', ''),
+(36, 26, '78.5', 1, '2021-05-04 06:18:08', '72', '1', '', ''),
+(37, 26, '63.5', 1, '2021-05-30 12:55:09', '73', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -290,6 +293,7 @@ CREATE TABLE `userorderviewonly` (
   `id` int(11) NOT NULL,
   `user_Id` int(11) NOT NULL,
   `book_Id` int(11) NOT NULL,
+  `book_isbn` varchar(200) CHARACTER SET latin1 NOT NULL,
   `book_name` varchar(200) CHARACTER SET latin1 NOT NULL,
   `book_author` varchar(200) CHARACTER SET latin1 NOT NULL,
   `book_price` varchar(200) CHARACTER SET latin1 NOT NULL,
@@ -301,17 +305,18 @@ CREATE TABLE `userorderviewonly` (
 -- Dumping data for table `userorderviewonly`
 --
 
-INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_name`, `book_author`, `book_price`, `book_image`, `book_file`) VALUES
-(16, 24, 64, 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
-(17, 25, 68, 'Confidential kings', 'Jack Barret', '95', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing'),
-(18, 25, 70, 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(19, 25, 69, 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
-(20, 24, 71, 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing'),
-(21, 24, 70, 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(22, 24, 66, 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
-(23, 25, 64, 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
-(24, 24, 67, 'All about Civil Engineering', 'Nora Barret', '33', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing'),
-(25, 26, 72, 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing');
+INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_isbn`, `book_name`, `book_author`, `book_price`, `book_image`, `book_file`) VALUES
+(16, 24, 64, '0-3038-6314-5', 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
+(17, 25, 68, '0-1757-5888-3', 'Confidential kings', 'Jack Barret', '95', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing'),
+(18, 25, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
+(19, 25, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
+(20, 24, 71, '0-3430-8635-2', 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing'),
+(21, 24, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
+(22, 24, 66, '0-3604-3155-0', 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
+(23, 25, 64, '0-3038-6314-5', 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
+(24, 24, 67, '0-3244-3974-1', 'All about Civil Engineering', 'Nora Barret', '33', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing'),
+(25, 26, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
+(26, 26, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -334,7 +339,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `createdate`) VALUES
-(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$moTKK7bMfHZQ1.6VeQGqnOrqMlMjCBCMQvdHhbc32oCN/LuF5xJaG', 'A', '2019-04-21 10:54:26'),
+(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$DeO/suRpQXKpx/bztSrGmu6D5sL3iK/PvaOto4WZsewprmn/.DtrC', 'A', '2019-04-21 10:54:26'),
 (24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$jwcEh1Se3atSef0dZSNBN.BkPBIYju83fyG0P8vq7eDXur42b3QVm', 'U', '2021-03-09 20:11:53'),
 (25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', '2021-04-18 15:32:34'),
 (26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', '2021-05-02 03:23:10');
@@ -400,7 +405,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -418,7 +423,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -430,7 +435,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`

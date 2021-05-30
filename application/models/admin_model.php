@@ -101,6 +101,7 @@ class admin_model extends CI_Model
 		
 		$data = array(
 			'book_name' => $this->input->post('book_name'),
+			'book_isbn' => $this->input->post('book_isbn'),
 			'description' => $this->input->post('description'),
 			'author' => $this->input->post('author'),
 			'publisher' => $this->input->post('publisher'),
@@ -120,7 +121,7 @@ class admin_model extends CI_Model
 	public function get_books($limit, $offset)
 	{	
 		/*=== SQL join ===*/
-		$this->db->select('books.id, books.book_name, books.description, books.author, books.publisher, books.price, books.book_image, category.category');
+		$this->db->select('books.id, books.book_name,books.book_isbn, books.description, books.author, books.publisher, books.price, books.book_image, category.category');
 
 		$this->db->from('books');
 		$this->db->join('category', 'books.categoryId = category.id');
@@ -223,6 +224,7 @@ class admin_model extends CI_Model
 		
 		$data = array(
 			'book_name' => $this->input->post('book_name'),
+			'book_isbn' => $this->input->post('book_isbn'),
 			'description' => $this->input->post('description'),
 			'author' => $this->input->post('author'),
 			'publisher' => $this->input->post('publisher'),

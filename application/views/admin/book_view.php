@@ -9,6 +9,7 @@
 			<div class="col-sm-8">
 				<div class="book-info">
 				<div>Book Name: <?= strip_tags($book_detail->book_name)?></div>
+				<div>ISBN: <span class="text-success"><?= strip_tags($book_detail->book_isbn)?></span></div>
 				<div>Author: <?= strip_tags($book_detail->author)?></div>
 				<div>Publisher: <?= strip_tags($book_detail->publisher)?></div>
 				<div>Category: <?= strip_tags($book_detail->category)?></div>

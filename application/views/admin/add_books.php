@@ -1,10 +1,10 @@
 <!--=== Book Menu ===-->
-    <?php 
-    if($this->session->flashdata('danger'))
-    {
-        print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
-    }
-    ?>
+<?php 
+if($this->session->flashdata('danger'))
+{
+    print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
+}
+?>
 <div class="container-fluid">
     <div class="books-menu">
       <ul>
@@ -31,6 +31,15 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="book-isbn" class="col-sm-2 col-form-label">ISBN</label>
+            <div class="col-sm-6">
+                <?= form_input(['name'=>'book_isbn', 'placeholder'=> 'Book ISBN', 'value'=>set_value('book_isbn'), 'class'=>'form-control'])?>
+            </div>
+            <div class="col-md-4">
+                <div class="text-danger form-error"><?= form_error('book_name')?></div>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-6">
                 <?= form_textarea(['name'=>'description', 'placeholder'=>'Book Description',  'value'=>set_value('description'), 'class'=>'form-control', 'rows'=>'5'])?>
@@ -42,19 +51,19 @@
         <div class="form-group row">
             <label for="author" class="col-sm-2 col-form-label">Author</label>
             <div class="col-sm-6">
-             <?= form_input(['name'=>'author', 'placeholder'=> 'Author Name', 'value'=>set_value('author'), 'class'=>'form-control'])?>
-         </div>
-         <div class="col-md-4">
+               <?= form_input(['name'=>'author', 'placeholder'=> 'Author Name', 'value'=>set_value('author'), 'class'=>'form-control'])?>
+           </div>
+           <div class="col-md-4">
             <div class="text-danger form-error"><?= form_error('author')?></div>
         </div>
     </div>
     <div class="form-group row">
         <label for="publisher" class="col-sm-2 col-form-label">Publisher</label>
         <div class="col-sm-6">
-         <?= form_input(['name'=>'publisher', 'placeholder'=> 'Publisher Name', 'value'=>set_value('publisher'), 'class'=>'form-control'])?>
+           <?= form_input(['name'=>'publisher', 'placeholder'=> 'Publisher Name', 'value'=>set_value('publisher'), 'class'=>'form-control'])?>
 
-     </div>
-     <div class="col-md-4">
+       </div>
+       <div class="col-md-4">
         <div class="text-danger form-error"><?= form_error('publisher')?></div>
     </div>
 </div>
@@ -92,9 +101,9 @@
     </div>
     <?php if (isset($upload_errors)) { ?>
         <div class="col-sm-4">
-           <div class="text-danger form-error"><?php echo $upload_errors; ?></div>    
-       </div>
-   <?php } ?>
+         <div class="text-danger form-error"><?php echo $upload_errors; ?></div>    
+     </div>
+ <?php } ?>
 </div>
 <div class="form-group row">
     <label for="description" class="col-sm-2 col-form-label">E-Book File Link</label>

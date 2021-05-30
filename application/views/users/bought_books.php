@@ -11,7 +11,7 @@
 	<table class="table table-hover">
   <thead class="thead-light">
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">ISBN</th>
       <th scope="col">Book Name</th>
       <th scope="col">Author</th>
       <th scope="col">Price</th>
@@ -24,7 +24,7 @@
   <tbody>
         <?php foreach($books as $book): ?>
     <tr>
-      <?php print '<td>'.$book->book_Id.'</td>'; ?>
+      <?php print '<td>'.$book->book_isbn.'</td>'; ?>
       <?php print '<td><a href = "'.base_url().'#" title="" class= "text-info">'.strip_tags(ucwords($book->book_name)).'</a></td>'; ?>
 
       <?php print '<td><b>'.strip_tags($book->book_author).'</b></td>'; ?>

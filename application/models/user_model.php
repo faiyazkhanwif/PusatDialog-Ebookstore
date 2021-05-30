@@ -157,7 +157,7 @@ class user_model extends CI_Model
 	}
 
 	public function add_orders()
-	{
+	{	$status = 1;
 		$shipping = 0;
 		$total = $this->cart->total();
 		$total_price = $total + $shipping;
@@ -174,12 +174,14 @@ class user_model extends CI_Model
 				'paymentcheck' => $this->input->post('paymentcheck'),
 				'total_price' => $total_price,
 				'bookId' => $books,
+				'status' => $status
 
 			);
 			$data2 = array(
 				'user_Id'	=> $this->session->userdata('id'),
 				'book_Id' => $items['id'],
 				'book_name' => $items['name'],
+				'book_isbn' => $items['isbn'],
 				'book_author' => $items['author'],
 				'book_price' => $items['price'],
 				'book_image' => $items['book_image'],
@@ -244,7 +246,8 @@ class user_model extends CI_Model
 		$this->db->from('books');
 
 		$string = str_replace(" ","|", $query);
-		$this->db->where("book_name RLIKE '$string'");
+		$this->db->where('book_isbn',$string);
+		$this->db->or_where("book_name RLIKE '$string'");
 		$this->db->or_where("author RLIKE '$string'"); 
 
 		$q = $this->db->get();
