@@ -36,7 +36,7 @@ if($this->session->flashdata('danger'))
                 <?= form_input(['name'=>'book_isbn', 'placeholder'=> 'Book ISBN', 'value'=>set_value('book_isbn'), 'class'=>'form-control'])?>
             </div>
             <div class="col-md-4">
-                <div class="text-danger form-error"><?= form_error('book_name')?></div>
+                <div class="text-danger form-error"><?= form_error('book_isbn')?></div>
             </div>
         </div>
         <div class="form-group row">
