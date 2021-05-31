@@ -7,29 +7,25 @@
 ?>
 
 <div class="container-fluid animate__animated animate__bounceInLeft">
-	<div id="table-header">Bought Books</div>
+	<div id="table-header">My Reviews</div>
 	<table class="table table-hover">
   <thead class="thead-light">
     <tr>
-      <th scope="col">ISBN</th>
       <th scope="col">Book Name</th>
-      <th scope="col">Author</th>
-      <th scope="col">Price</th>
-      <th scope="col">Book Cover</th>
-      <th scope="col">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
+      <th scope="col">Review</th>
+      <th scope="col">&nbsp&nbsp&nbsp&nbsp&nbspAction</th>
     </tr>
   </thead>
 
 
   <tbody>
-        <?php foreach($books as $book): ?>
+        <?php foreach($reviews as $review): ?>
     <tr>
-      <?php print '<td>'.$book->book_isbn.'</td>'; ?>
-      <?php print '<td><a href = "'.base_url().'#" title="" class= "text-info">'.strip_tags(ucwords($book->book_name)).'</a></td>'; ?>
+      <?php print '<td><a href = "'.base_url().'#" title="" class= "text-info">'.strip_tags(ucwords($review->bookname)).'</a></td>'; ?>
 
-      <?php print '<td><b>'.strip_tags($book->book_author).'</b></td>'; ?>
-      <?php print '<td>RM '.strip_tags($book->book_price).'</td>'; ?>
-      <?php print '<td><img src = "'.strip_tags($book->book_image).'" alt = "" width="50" height="70" </td>';?>
+      <?php print '<td>'.strip_tags($review->review).'</td>'; ?>
+
+      
 
 
       <?php print '<td>';
@@ -41,8 +37,9 @@
       //$finallink = str_replace("drive","docs",$link);
       //  print '<a href= "'.strip_tags($finallink).'" title= "Read" class="btn btn-primary btn-sm">Read</a>&nbsp';
 
-      print '<a href= "'.base_url().'user-home/readbook/'.$book->book_Id.'" title= "Read" class="btn btn-success btn-sm">Read</a>&nbsp&nbsp&nbsp';
-      print '<a href= "'.base_url().'user-home/book_view/'.$book->book_Id.'" title= "Details" class="btn btn-primary btn-sm">Details</a>&nbsp';
+      print '<a href= "'.base_url().'user-home/editreview/'.$review->id.'" title= "Edit" class="btn btn-primary btn-sm">Edit</a>&nbsp';
+      print '<a href= "'.base_url().'user-home/reviewdelete/'.$review->id.'" title= "Delete" class="btn btn-danger btn-sm delete" data-confirm = "Are you sure to delete this review?"><i class="fas fa-times"></i></a>';
+
 
         print '</td>'; 
       ?>

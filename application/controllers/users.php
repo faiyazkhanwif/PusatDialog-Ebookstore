@@ -238,7 +238,7 @@ class Users extends CI_Controller {
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
 
-		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[5]|htmlentities[review]');
+		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[1]|htmlentities[review]');
 
 		if($this->form_validation->run() == FALSE)
 		{

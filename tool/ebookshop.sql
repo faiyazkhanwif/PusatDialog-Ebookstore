@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 03:20 PM
+-- Generation Time: May 31, 2021 at 11:47 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -71,7 +71,8 @@ INSERT INTO `books` (`id`, `book_name`, `book_isbn`, `description`, `author`, `p
 (70, 'All about Java', '0-5181-8483-8', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Jimmy Johnson', 'Jimmy Publication', '85', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing', '2021-04-18 15:27:57'),
 (71, 'Operating Systems', '0-3430-8635-2', 'I love operating systems. I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.I love operating systems.', 'Test 2', 'Test pub', '87', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing', '2021-04-21 18:02:56'),
 (72, 'Software Architecture', '0-7948-8076-2', '“Science is built up of facts as a house is built of stones, but an\r\naccumulation of facts is no more a science than a heap of stones\r\nis a house.” Jules Henri Poincaré (1854-1912)\r\nWhen using this quotation to open the second edition of this book I observed that it is sometimes hard not to feel that our knowledge about how\r\nto design software might sometimes feel akin to having a heap of stones. We\r\npossess a collection of observations, techniques and experiences, but finding\r\nways of putting them together to provide an organised corpus of knowledge\r\nabout how to design software is something of a challenge. The first and second\r\neditions of this book have sought to gather, classify, categorise and interpret\r\nthe available knowledge with the aim of providing some sort of structure that\r\nwill help the reader to understand and use it—and this one aims to do the\r\nsame.\r\nThe ten years that elapsed between the first and second editions of this\r\nbook saw the emergence of many new and sometimes radically different ideas\r\nabout how we might go about designing software. The software designer’s\r\ntoolbox acquired concepts such as architecture and new forms of software\r\ntechnology such as software services; there was a move away from ‘waterfall’\r\nthinking with agile methods as well as with new forms of reuse through design\r\npatterns; and there was a greater ‘standardisation’ of modelling forms with\r\nthe Unified Modeling Language (UML).\r\nIn the (rather longer) period between the second edition and this one,\r\nalthough new ideas have continued to emerge, mostly they have been less radical in their scope. Perhaps this has been partly because software developers\r\nhave also had to cope with significant changes in the context within which\r\nsoftware design takes place. It is now increasingly the case that applications\r\nmay well be developed by globally dispersed teams; make use of open source\r\ncomponents; be in the form of product lines; need to operate within a global\r\nnetwork of systems rather than in a purely local environment; and of course,\r\nincreasingly need to cope with the possibility of malicious attacks. In addition,\r\nthe growing availability of knowledge that is based upon empirical evidence is\r\nslowly giving us a better understanding of what works, when and why.', 'David Budgen', 'CRC', '78.5', 1, 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing', '2021-05-04 06:16:59'),
-(73, 'TestISBN', '0-8488-4900-3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Dr. Phineas', 'test pub', '63.5', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing', '2021-05-30 12:15:45');
+(73, 'TestISBN', '0-8488-4900-3', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Dr. Phineas', 'test pub', '63.5', 6, 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing', '2021-05-30 12:15:45'),
+(74, 'Dummy', '0-4969-8098-X', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Test auth', 'test pub', '63', 7, 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing', '2021-05-31 18:34:03');
 
 -- --------------------------------------------------------
 
@@ -223,7 +224,8 @@ INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateT
 (34, 25, '70', 1, '2021-04-30 00:21:28', '64', '1', '', ''),
 (35, 24, '66', 1, '2021-05-01 06:55:17', '67', '1', '', ''),
 (36, 26, '78.5', 1, '2021-05-04 06:18:08', '72', '1', '', ''),
-(37, 26, '63.5', 1, '2021-05-30 12:55:09', '73', '1', '', '');
+(37, 26, '63.5', 1, '2021-05-30 12:55:09', '73', '1', '', ''),
+(38, 28, '126.5', 1, '2021-05-31 20:26:47', '74, 73', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -252,6 +254,7 @@ CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
   `review` text NOT NULL,
   `bookId` int(11) NOT NULL,
+  `bookname` varchar(200) NOT NULL,
   `userId` int(11) NOT NULL,
   `dateTime` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -260,11 +263,13 @@ CREATE TABLE `reviews` (
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`id`, `review`, `bookId`, `userId`, `dateTime`) VALUES
-(50, 'It\'s a great book!', 64, 24, '2021-04-29 23:21:59'),
-(51, 'One of the best books for learning java. Highly recommended!', 70, 25, '2021-04-30 00:20:40'),
-(52, 'Amazing thriller. Must buy!', 64, 25, '2021-04-30 00:22:13'),
-(53, 'Amazing book for learning software design and architecture.', 72, 26, '2021-05-04 06:19:29');
+INSERT INTO `reviews` (`id`, `review`, `bookId`, `bookname`, `userId`, `dateTime`) VALUES
+(50, 'It\'s a great book!', 64, 'Life for dummies', 24, '2021-04-29 23:21:59'),
+(51, 'One of the best books for learning java. Highly recommended!', 70, 'All about Java', 25, '2021-04-30 00:20:40'),
+(52, 'Amazing thriller. Must buy!', 64, 'Life for dummies', 25, '2021-04-30 00:22:13'),
+(53, 'Amazing book for learning software design and architecture.', 72, 'Software Architecture', 26, '2021-05-04 06:19:29'),
+(57, 'Helped me to learn basics of OS.', 71, 'Operating Systems', 24, '2021-05-31 21:09:22'),
+(58, 'Loved it!', 67, 'All about Civil Engineering', 24, '2021-05-31 21:22:09');
 
 -- --------------------------------------------------------
 
@@ -316,7 +321,9 @@ INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_isbn`, `book_
 (23, 25, 64, '0-3038-6314-5', 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
 (24, 24, 67, '0-3244-3974-1', 'All about Civil Engineering', 'Nora Barret', '33', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing'),
 (25, 26, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
-(26, 26, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing');
+(26, 26, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing'),
+(27, 28, 74, '0-4969-8098-X', 'Dummy', 'Test auth', '63', 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing'),
+(28, 28, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -342,7 +349,8 @@ INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `crea
 (7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$DeO/suRpQXKpx/bztSrGmu6D5sL3iK/PvaOto4WZsewprmn/.DtrC', 'A', '2019-04-21 10:54:26'),
 (24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$jwcEh1Se3atSef0dZSNBN.BkPBIYju83fyG0P8vq7eDXur42b3QVm', 'U', '2021-03-09 20:11:53'),
 (25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', '2021-04-18 15:32:34'),
-(26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', '2021-05-02 03:23:10');
+(26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', '2021-05-02 03:23:10'),
+(28, 'Vaas', '+6011567845754', 'vaas@gmail.com', '$2y$12$9DMksSN83oG2UMpv8JhtHOF3xZdadYopgGhMCjPBSfzSsN6nvAgVW', 'U', '2021-05-31 19:08:04');
 
 --
 -- Indexes for dumped tables
@@ -405,7 +413,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -423,25 +431,25 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

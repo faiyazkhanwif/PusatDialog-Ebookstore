@@ -225,24 +225,90 @@ class User_home extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{//$this->session->set_flashdata('danger', validation_errors());
-			if($this->user_model->get_user_details($id))
-			{
-				$view['user_view'] = "users/edit_profile";
-				$this->load->view('layouts/user_home', $view);
-			}
-			else
-			{
-				$view['user_view'] = "temp/404page";
-				$this->load->view('layouts/user_home', $view);
-			}
+	if($this->user_model->get_user_details($id))
+	{
+		$view['user_view'] = "users/edit_profile";
+		$this->load->view('layouts/user_home', $view);
+	}
+	else
+	{
+		$view['user_view'] = "temp/404page";
+		$this->load->view('layouts/user_home', $view);
+	}
+}
+else
+{
+	$this->load->model('user_model');
+
+	if($this->user_model->edit_profile($id, $data))
+	{
+		$this->session->set_flashdata('success', 'Your profile information has been updated successfully.');
+		redirect('user_home');
+	}
+	else
+	{
+		print $this->db->error();
+	}
+}
+}
+
+
+public function change_password($id)
+{
+	/*=== LOAD DYNAMIC CATAGORY ===*/
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+	/*==============================*/
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
+	$this->load->model('user_model');
+	$view['dscs'] = $this->user_model->ft_generate(); 
+
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
+
+	$this->load->model('user_model');
+	$view['contactdscs'] = $this->user_model->contact_generate();
+		#get existing informations
+	$this->load->model('user_model');
+	$view['user_details'] = $this->user_model->get_user_details($id);
+
+
+	$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|alpha_dash|min_length[4]');
+
+	$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|alpha_dash|min_length[4]');
+	$this->form_validation->set_rules('repassword', 'Confirm Password',
+		'trim|required|alpha_dash|min_length[4]|matches[newpassword]');
+
+
+	if($this->form_validation->run() == FALSE)
+	{
+		if($this->user_model->get_user_details($id))
+		{
+			$view['user_view'] = "users/change_password";
+			$this->load->view('layouts/user_home', $view);
 		}
 		else
 		{
-			$this->load->model('user_model');
+			$view['user_view'] = "temp/404page";
+			$this->load->view('layouts/user_home', $view);
+		}
+	}
+	else
+	{
+		$cur_password = $this->input->post('oldpassword');
+		$this->load->model('user_model');
+		$passwd = $this->user_model->getCurrPassword($id);
 
-			if($this->user_model->edit_profile($id, $data))
+
+		if(password_verify($cur_password, $passwd->password)){
+			if($this->user_model->changepass($id, $data))
 			{
-				$this->session->set_flashdata('success', 'Your profile information has been updated successfully.');
+				$this->session->set_flashdata('success', 'Your have changed your password successfully.');
 				redirect('user_home');
 			}
 			else
@@ -250,189 +316,216 @@ class User_home extends CI_Controller {
 				print $this->db->error();
 			}
 		}
-	}
-
-
-	public function change_password($id)
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
-
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
-
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate(); 
-
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
-
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
-		#get existing informations
-		$this->load->model('user_model');
-		$view['user_details'] = $this->user_model->get_user_details($id);
-
-
-		$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|alpha_dash|min_length[4]');
-
-		$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|alpha_dash|min_length[4]');
-		$this->form_validation->set_rules('repassword', 'Confirm Password',
-			'trim|required|alpha_dash|min_length[4]|matches[newpassword]');
-
-
-		if($this->form_validation->run() == FALSE)
-		{
-			if($this->user_model->get_user_details($id))
-			{
-				$view['user_view'] = "users/change_password";
-				$this->load->view('layouts/user_home', $view);
-			}
-			else
-			{
-				$view['user_view'] = "temp/404page";
-				$this->load->view('layouts/user_home', $view);
-			}
+		else{
+			$this->session->set_flashdata('danger', 'Please enter your current password correctly.');
+			$view['user_view'] = "users/change_password";
+			$this->load->view('layouts/user_home', $view);
 		}
-		else
+
+	}
+}
+
+
+
+public function boughtbooks()
+{
+	$this->load->model('user_model');
+	$this->load->library('pagination');
+	$config = [
+
+		'base_url' => base_url('user_home/boughtbooks'),
+		'per_page' => 10,
+		'total_rows'=>  $this->user_model->num_rows_bought_books(),
+		'full_tag_open' => "<ul class='custom-pagination'>",
+		'full_tag_close' => "</ul>", 
+		'first_tag_open' => '<li>',
+		'first_tag_close' => '</li>',
+		'last_tag_open' => '<li>',
+		'last_link'=>'last',
+		'last_tag_close' => '</li>',
+		'next_tag_open' => '<li>',
+		'next_tag_close' => '</li>',
+		'prev_tag_open' => '<li>',
+		'prev_tag_close' => '</li>',
+		'cur_tag_open' => "<li class = 'active'><a>",
+		'cur_tag_close' => '</a></li>',
+	];
+	$this->pagination->initialize($config);
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+
+	$this->load->model('user_model');
+	$view['books'] = $this->user_model->get_boughtbooks($config['per_page'], $this->uri->segment(3));
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
+	$this->load->model('user_model'); 
+	$view['dscs'] = $this->user_model->ft_generate(); 
+
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
+
+	$this->load->model('user_model');
+	$view['contactdscs'] = $this->user_model->contact_generate();
+
+	$view['user_view'] = "users/bought_books";
+	$this->load->view('layouts/user_home', $view);	
+}
+
+
+public function myreviews(){
+	$this->load->model('user_model');
+	
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+
+	$this->load->model('user_model');
+	$view['reviews'] = $this->user_model->my_reviews();
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
+	$this->load->model('user_model'); 
+	$view['dscs'] = $this->user_model->ft_generate(); 
+
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
+
+	$this->load->model('user_model');
+	$view['contactdscs'] = $this->user_model->contact_generate();
+
+	$view['user_view'] = "users/myreviews";
+	$this->load->view('layouts/user_home', $view);
+}
+
+public function reviewdelete($id)
+{
+	$this->load->model('user_model');
+	$this->user_model->reviewdelete($id);
+
+	$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Review deleted successfully');
+	redirect('user_home/myreviews');
+}
+public function editreview($id)
+{
+	/*=== LOAD DYNAMIC CATAGORY ===*/
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+	/*==============================*/
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
+	$this->load->model('user_model');
+	$view['dscs'] = $this->user_model->ft_generate(); 
+
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
+
+	$this->load->model('user_model');
+	$view['contactdscs'] = $this->user_model->contact_generate();
+				#get existing informations
+	$this->load->model('user_model');
+	$view['review'] = $this->user_model->get_review_details($id);
+
+	$this->form_validation->set_rules('review', 'Review', 'trim|required|strip_tags[review]');
+
+
+	if($this->form_validation->run() == FALSE)
+	{
+		if($this->user_model->get_review_details($id))
 		{
-			$cur_password = $this->input->post('oldpassword');
-			$this->load->model('user_model');
-			$passwd = $this->user_model->getCurrPassword($id);
-
-
-			if(password_verify($cur_password, $passwd->password)){
-				if($this->user_model->changepass($id, $data))
-				{
-					$this->session->set_flashdata('success', 'Your have changed your password successfully.');
-					redirect('user_home');
-				}
-				else
-				{
-					print $this->db->error();
-				}
-			}
-			else{
-				$this->session->set_flashdata('danger', 'Please enter your current password correctly.');
-				$view['user_view'] = "users/change_password";
-				$this->load->view('layouts/user_home', $view);
-			}
-
-		}
-	}
-
-
-
-	public function boughtbooks()
-	{
-		$this->load->model('user_model');
-		$this->load->library('pagination');
-		$config = [
-
-			'base_url' => base_url('user_home/boughtbooks'),
-			'per_page' => 10,
-			'total_rows'=>  $this->user_model->num_rows_bought_books(),
-			'full_tag_open' => "<ul class='custom-pagination'>",
-			'full_tag_close' => "</ul>", 
-			'first_tag_open' => '<li>',
-			'first_tag_close' => '</li>',
-			'last_tag_open' => '<li>',
-			'last_link'=>'last',
-			'last_tag_close' => '</li>',
-			'next_tag_open' => '<li>',
-			'next_tag_close' => '</li>',
-			'prev_tag_open' => '<li>',
-			'prev_tag_close' => '</li>',
-			'cur_tag_open' => "<li class = 'active'><a>",
-			'cur_tag_close' => '</a></li>',
-		];
-		$this->pagination->initialize($config);
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-
-		$this->load->model('user_model');
-		$view['books'] = $this->user_model->get_boughtbooks($config['per_page'], $this->uri->segment(3));
-
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
-
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
-
-		$this->load->model('user_model'); 
-		$view['dscs'] = $this->user_model->ft_generate(); 
-
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
-
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
-
-		$view['user_view'] = "users/bought_books";
-		$this->load->view('layouts/user_home', $view);	
-	}
-
-	public function readbook($id)
-	{	
-		//print($id);
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
-
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
-
-
-		$this->load->model('user_model');
-		$view['book_detail'] = $this->user_model->get_book_detail($id);
-
-		//$view['user_view'] = "users/read_books";
-		$this->load->view('users/read_books',$view);
-	}
-
-
-	public function book_view($id)
-	{
-		$this->load->model('user_model');
-
-		$this->load->model('admin_model');
-		$view['book_detail'] = $this->admin_model->get_book_detail($id);
-
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
-
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
-
-		$this->load->model('user_model'); 
-		$view['dscs'] = $this->user_model->ft_generate(); 
-
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
-
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
-		$this->load->model('user_model');
-		$view['reviews'] = $this->user_model->get_reviews();
-		
-		
-		if($this->admin_model->get_book_detail($id))
-		{ 
-			$view['user_view'] = "users/book_view";
+			$view['user_view'] = "users/editreview";
 			$this->load->view('layouts/user_home', $view);
 		}
 		else
-		{	
+		{
 			$view['user_view'] = "temp/404page";
 			$this->load->view('layouts/user_home', $view);
 		}
 	}
+	else
+	{
+		$this->load->model('user_model');
+
+		if($this->user_model->editreview($id))
+		{
+			$this->session->set_flashdata('success', 'Review has been updated successfully.');
+			redirect('user_home/myreviews');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
+}
+
+public function readbook($id)
+{	
+		//print($id);
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
+
+	$this->load->model('user_model');
+	$view['book_detail'] = $this->user_model->get_book_detail($id);
+
+		//$view['user_view'] = "users/read_books";
+	$this->load->view('users/read_books',$view);
+}
+
+
+public function book_view($id)
+{
+	$this->load->model('user_model');
+
+	$this->load->model('admin_model');
+	$view['book_detail'] = $this->admin_model->get_book_detail($id);
+
+	$this->load->model('admin_model');
+	$view['category'] = $this->admin_model->get_category();
+
+	$this->load->model('user_model');
+	$view['logos'] = $this->user_model->logo_generate();
+
+	$this->load->model('user_model');
+	$view['names'] = $this->user_model->name_generate();
+
+	$this->load->model('user_model'); 
+	$view['dscs'] = $this->user_model->ft_generate(); 
+
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
+
+	$this->load->model('user_model');
+	$view['contactdscs'] = $this->user_model->contact_generate();
+	$this->load->model('user_model');
+	$view['reviews'] = $this->user_model->get_reviews();
+
+
+	if($this->admin_model->get_book_detail($id))
+	{ 
+		$view['user_view'] = "users/book_view";
+		$this->load->view('layouts/user_home', $view);
+	}
+	else
+	{	
+		$view['user_view'] = "temp/404page";
+		$this->load->view('layouts/user_home', $view);
+	}
+}
 
 
 
