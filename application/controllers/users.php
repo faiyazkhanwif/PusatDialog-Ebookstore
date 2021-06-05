@@ -128,6 +128,20 @@ class Users extends CI_Controller {
 
 			$user_data = $this->user_model->login_user($email, $password);
 
+			if ($user_data->membershipstatus=="pro") {
+				$this->load->model('user_model');
+				$memdetails = $this->user_model->get_mem_details($user_data->id);
+				$expiredate = $memdetails->expiredate;
+				$todaydate = date("Y-m-d");
+				$exp = strtotime($expiredate);
+				$td = strtotime($todaydate);
+				if ($td>$exp) {
+					$this->load->model('user_model');
+					$this->user_model->removepromembership($user_data->id);
+				}
+			}
+
+
 			if($user_data)
 			{
 				$login_data = array(
@@ -176,27 +190,41 @@ class Users extends CI_Controller {
 	}
 
 	public function showpromempromo(){
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		if($this->session->userdata('logged_in') == FALSE){
+			redirect('users/login');
+		} else {
+			$this->load->model('user_model');
+			$user_details = $this->user_model->get_user_details($this->session->userdata('id'));
+			if ($user_details->membershipstatus=="pro") {
+				redirect('users/all_books');
+			}else{
+				$this->load->model('admin_model');
+				$view['category'] = $this->admin_model->get_category();
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+				$this->load->model('user_model');
+				$view['logos'] = $this->user_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+				$this->load->model('user_model');
+				$view['dscs'] = $this->user_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+				$this->load->model('user_model');
+				$view['names'] = $this->user_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+				$this->load->model('user_model');
+				$view['abtdscs'] = $this->user_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate(); 
+				$this->load->model('user_model');
+				$view['contactdscs'] = $this->user_model->contact_generate(); 
 
-		$view['user_view'] = "users/membership_promo";
-		$this->load->view('layouts/user_layout', $view);
+				$view['user_view'] = "users/membership_promo";
+				$this->load->view('layouts/user_layout', $view);
+			}
+
+		}
+
+
 	}
+
 
 
 	public function all_books()
@@ -205,7 +233,7 @@ class Users extends CI_Controller {
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
-		
+
 		#...Pagination code start
 		$this->load->model('user_model');
 		$this->load->library('pagination');
@@ -260,6 +288,19 @@ class Users extends CI_Controller {
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
+		$this->load->model('user_model');
+		$ud = $this->user_model->get_user_details($this->session->userdata('id'));
+		if ($ud->membershipstatus=="pro") {
+			$this->load->model('user_model');
+			$memdetails = $this->user_model->get_mem_details($ud->id);
+			$expiredate = $memdetails->expiredate;
+			$todaydate = date("Y-m-d");
+			$exp = strtotime($expiredate);
+			$td = strtotime($todaydate);
+			if ($td>$exp) {
+				redirect('users/logout');
+			}
+		}
 
 		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[1]|htmlentities[review]');
 
@@ -271,6 +312,8 @@ class Users extends CI_Controller {
 			/*=== Get reviews ===*/
 			$this->load->model('user_model');
 			$view['reviews'] = $this->user_model->get_reviews();
+
+			$view['user_details'] = $this->user_model->get_user_details($this->session->userdata('id'));
 
 			if($this->admin_model->get_book_detail($id))
 			{
@@ -317,52 +360,11 @@ class Users extends CI_Controller {
 			$this->user_model->reviews($id);
 			redirect('users/book_view/'.$id.'');
 		}
-		
+
 
 	}
 
-	public function all_ebooks()
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-		
-		$this->load->model('user_model');
-		$view['ebooks'] = $this->user_model->get_ebooks();
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
-
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
-
-		$view['user_view'] = "users/all_ebooks";
-		$this->load->view('layouts/user_layout', $view);
-	}
-
-	public function ebook_view($id)
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-
-		$this->load->model('admin_model');
-		$view['ebook_detail'] = $this->admin_model->get_ebook_detail($id);
-
-		if($this->admin_model->get_ebook_detail($id))
-		{
-			$view['user_view'] = "users/ebook_detail";
-			$this->load->view('layouts/user_layout', $view);
-		}
-		else
-		{
-			$view['user_view'] = "temp/404page";
-			$this->load->view('layouts/user_layout', $view);
-		}
-		
-	}
 
 	public function terms()
 	{
@@ -446,7 +448,7 @@ class Users extends CI_Controller {
 	public function viewmembershipcheckout($months){
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
-		
+
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 
@@ -484,7 +486,7 @@ class Users extends CI_Controller {
 	public function subscribeaspro($months){
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
-		
+
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 

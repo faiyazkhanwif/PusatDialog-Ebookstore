@@ -34,8 +34,15 @@ if($this->session->flashdata('success'))
                 <p style="font-family: Tahoma;"><i class="fas fa-mobile-alt"></i> Phone:&nbsp&nbsp&nbsp&nbsp<span> <?= htmlentities($user_details->contact) ?></span></p>
             </span>
             <span>
-            <p style="font-family: Tahoma;"><i class="fas fa-history"></i> Account created on: <?= htmlentities(date('d-M, y', strtotime($user_details->createdate))) ?></p>
+            <p style="font-family: Tahoma;"><i class="fas fa-history"></i> Account created on: <?= htmlentities(date('Y-m-d', strtotime($user_details->createdate))) ?></p>
             </span>
+            <p style="font-family: Tahoma;"><i class="fa fa-user-plus"></i> Membership Status: <?= htmlentities($user_details->membershipstatus) ?></p>
+            </span>
+            <?php
+                if ($user_details->membershipstatus=="pro") {
+                    print '<p style="font-family: Tahoma;"><i class="fas fa-clock"></i> Pro Membership Expire Date: '.htmlentities($mem_details->expiredate) .'</p>';
+                }
+            ?>
         </div>
 
     </div>

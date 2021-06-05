@@ -29,7 +29,7 @@ class User_home extends CI_Controller {
 		$id = $this->session->userdata('id');
 		$this->load->model('user_model');
 		$view['user_details'] = $this->user_model->get_user_details($id);
-
+		$view['mem_details'] = $this->user_model->get_mem_details($id);
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();
 

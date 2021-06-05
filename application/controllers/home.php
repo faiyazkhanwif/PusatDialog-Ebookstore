@@ -22,7 +22,11 @@ class Home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['books'] = $this->user_model->recent_books();
 
+		$this->load->model('user_model');
+		$view['mem_details'] = $this->user_model->get_mem_details($this->session->userdata('id'));
 
+		$this->load->model('user_model');
+		$view['user_details'] = $this->user_model->get_user_details($this->session->userdata('id'));
 
 		$this->load->model('user_model');
 		$view['logos'] = $this->user_model->logo_generate();

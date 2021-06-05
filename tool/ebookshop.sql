@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2021 at 11:47 PM
+-- Generation Time: Jun 06, 2021 at 12:25 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -196,6 +196,29 @@ INSERT INTO `logo` (`logoimg`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `membershiptransactions`
+--
+
+CREATE TABLE `membershiptransactions` (
+  `memtranID` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `months` int(11) NOT NULL,
+  `subscriptionfee` int(11) NOT NULL,
+  `paymentcheck` int(11) NOT NULL,
+  `transactiondate` varchar(200) CHARACTER SET latin1 NOT NULL,
+  `expiredate` varchar(200) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `membershiptransactions`
+--
+
+INSERT INTO `membershiptransactions` (`memtranID`, `userId`, `months`, `subscriptionfee`, `paymentcheck`, `transactiondate`, `expiredate`) VALUES
+(3, 28, 1, 30, 1, '2021-06-05', '2021-07-05');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -225,7 +248,9 @@ INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateT
 (35, 24, '66', 1, '2021-05-01 06:55:17', '67', '1', '', ''),
 (36, 26, '78.5', 1, '2021-05-04 06:18:08', '72', '1', '', ''),
 (37, 26, '63.5', 1, '2021-05-30 12:55:09', '73', '1', '', ''),
-(38, 28, '126.5', 1, '2021-05-31 20:26:47', '74, 73', '1', '', '');
+(38, 28, '126.5', 1, '2021-05-31 20:26:47', '74, 73', '1', '', ''),
+(39, 28, '53', 1, '2021-06-05 06:55:02', '66', '1', '', ''),
+(40, 26, '53', 1, '2021-06-05 07:08:00', '69', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -264,7 +289,7 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `review`, `bookId`, `bookname`, `userId`, `dateTime`) VALUES
-(50, 'It\'s a great book!', 64, 'Life for dummies', 24, '2021-04-29 23:21:59'),
+(50, 'Wonderful story.', 64, 'Life for dummies', 24, '2021-04-29 23:21:59'),
 (51, 'One of the best books for learning java. Highly recommended!', 70, 'All about Java', 25, '2021-04-30 00:20:40'),
 (52, 'Amazing thriller. Must buy!', 64, 'Life for dummies', 25, '2021-04-30 00:22:13'),
 (53, 'Amazing book for learning software design and architecture.', 72, 'Software Architecture', 26, '2021-05-04 06:19:29'),
@@ -323,7 +348,9 @@ INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_isbn`, `book_
 (25, 26, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
 (26, 26, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing'),
 (27, 28, 74, '0-4969-8098-X', 'Dummy', 'Test auth', '63', 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing'),
-(28, 28, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing');
+(28, 28, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing'),
+(29, 28, 66, '0-3604-3155-0', 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
+(30, 26, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -338,6 +365,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `type` varchar(20) NOT NULL DEFAULT 'U',
+  `membershipstatus` varchar(200) NOT NULL DEFAULT 'normal',
   `createdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -345,12 +373,14 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `createdate`) VALUES
-(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$DeO/suRpQXKpx/bztSrGmu6D5sL3iK/PvaOto4WZsewprmn/.DtrC', 'A', '2019-04-21 10:54:26'),
-(24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$jwcEh1Se3atSef0dZSNBN.BkPBIYju83fyG0P8vq7eDXur42b3QVm', 'U', '2021-03-09 20:11:53'),
-(25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', '2021-04-18 15:32:34'),
-(26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', '2021-05-02 03:23:10'),
-(28, 'Vaas', '+6011567845754', 'vaas@gmail.com', '$2y$12$9DMksSN83oG2UMpv8JhtHOF3xZdadYopgGhMCjPBSfzSsN6nvAgVW', 'U', '2021-05-31 19:08:04');
+INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `membershipstatus`, `createdate`) VALUES
+(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$DeO/suRpQXKpx/bztSrGmu6D5sL3iK/PvaOto4WZsewprmn/.DtrC', 'A', 'normal', '2019-04-21 10:54:26'),
+(24, 'Faiyaz Khan', '+601156432430', 'faiyazkhanwif@gmail.com', '$2y$12$jwcEh1Se3atSef0dZSNBN.BkPBIYju83fyG0P8vq7eDXur42b3QVm', 'U', 'normal', '2021-03-09 20:11:53'),
+(25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', 'normal', '2021-04-18 15:32:34'),
+(26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', 'normal', '2021-05-02 03:23:10'),
+(28, 'Vaas', '+6011567845754', 'vaas@gmail.com', '$2y$12$9DMksSN83oG2UMpv8JhtHOF3xZdadYopgGhMCjPBSfzSsN6nvAgVW', 'U', 'pro', '2021-05-31 19:08:04'),
+(30, 'Membershiptester2', '0179121482', 'mt2@gmail.com', '$2y$12$Wx5p.uKoBqTPaRcaPvE1ye2xPUK1ypTGanRv4bl6hG/4Hc0goIyzS', 'U', 'normal', '2021-06-05 19:00:20'),
+(31, 'janina', '4762474643', 'jn@gmail.com', '$2y$12$.TEF2FJCSNLMz4i6tCvU.e/hAw/NyimIfzMJ6/ihh/cSY6ctYNrKm', 'U', 'normal', '2021-06-05 21:53:52');
 
 --
 -- Indexes for dumped tables
@@ -379,6 +409,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `ebooks`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `membershiptransactions`
+--
+ALTER TABLE `membershiptransactions`
+  ADD PRIMARY KEY (`memtranID`);
 
 --
 -- Indexes for table `orders`
@@ -428,10 +464,16 @@ ALTER TABLE `ebooks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `membershiptransactions`
+--
+ALTER TABLE `membershiptransactions`
+  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -443,13 +485,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

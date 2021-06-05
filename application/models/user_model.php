@@ -173,11 +173,11 @@ public function reviewdelete($id)
 
 }
 public function editreview($id){
-		$data = array(
-			'review' => $this->input->post('review')
-		);
+	$data = array(
+		'review' => $this->input->post('review')
+	);
 
-		return $query = $this->db->where('id', $id)->update('reviews', $data);
+	return $query = $this->db->where('id', $id)->update('reviews', $data);
 }
 public function add_orders()
 {	$status = 1;
@@ -235,12 +235,12 @@ public function my_reviews()
 
 	return $query->result();
 }
-	public function get_review_details($id)
-	{
-		$this->db->where('id', $id);
-		$query = $this->db->get('reviews');
-		return $query->row();
-	}
+public function get_review_details($id)
+{
+	$this->db->where('id', $id);
+	$query = $this->db->get('reviews');
+	return $query->row();
+}
 	//public function my_published_books()
 	//{
 	//	$this->db->where('userId', $this->session->userdata('id'));
@@ -288,6 +288,12 @@ public function get_user_details($id)
 {
 	$this->db->where('id', $id);
 	$query = $this->db->get('users');
+	return $query->row();
+}
+public function get_mem_details($id)
+{
+	$this->db->where('userId', $id);
+	$query = $this->db->get('membershiptransactions');
 	return $query->row();
 }
 
@@ -415,6 +421,57 @@ public function get_book_detail($id)
 	$this->db->where('id', $id);
 	$query = $this->db->get('books');
 	return $query->row();	
+}
+
+public function subscribeaspro($months,$cost)
+{	
+	$mstring = "0months";
+	if ($months==1) {
+		$mstring = "1months";
+	} elseif ($months == 3) {
+		$mstring = "3months";
+	} elseif ($months == 6){
+		$mstring = "6months";
+	}
+
+	$date = date_create(date("Y-m-d"));
+	$currentdate = date_format($date,"Y-m-d");
+	date_add($date,date_interval_create_from_date_string($mstring));
+	$expdate = date_format($date,"Y-m-d");
+
+
+	$data = array(
+		'userId'	=> $this->session->userdata('id'),
+		'paymentcheck' => $this->input->post('paymentcheck'),
+		'subscriptionfee' => $cost,
+		'months' => $months,
+		'transactiondate' => $currentdate,
+		'expiredate' => $expdate
+	);
+
+	$this->db->insert('membershiptransactions', $data);
+
+	$status = "pro";
+	$data2 = array(
+		'membershipstatus'	=> $status,
+
+	);
+
+	return $query = $this->db->where('id', $this->session->userdata('id'))->update('users', $data2);
+
+}
+public function removepromembership($id)
+{
+	$this->db->where('userId', $id);
+	$this->db->delete('membershiptransactions');
+
+	$status = "normal";
+	$data2 = array(
+		'membershipstatus'	=> $status,
+
+	);
+
+	return $query = $this->db->where('id', $id)->update('users', $data2);
 }
 } 
 

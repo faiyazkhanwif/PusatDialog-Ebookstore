@@ -22,17 +22,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('tool/css/style.css'); ?>">
-    
+
     <!-- jQuery min js -->
     <script type="text/javascript" src="<?= base_url('tool/js/jquery-3.2.1.slim.min.js'); ?>"></script>
-    
+
     <?php foreach($names as $name): ?>
 
         <title><?php print $name->orgname;?></title>
 
     <?php endforeach; ?>
 
-    
+
     <?php foreach($logos as $logo):?>
         <link rel="shortcut icon" type="image/png" href="<?php print strip_tags($logo->logoimg)?>">
     <?php endforeach;?>
@@ -84,129 +84,129 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="col-md-9 text-center">
 
 
-                                                  <div class="admin-search">
-                                                    <?= form_open('users/search', ['id'=>'user-search'])?>
-                                                    <input type="text" name="search_book" class="form-control" placeholder="Search for ebooks by ISBN, Title or Author">
-                                                    <button type="submit"><i class="fas fa-search"></i></button>
-                                                    <?= form_close()?>
-                                                </div>
+                                          <div class="admin-search">
+                                            <?= form_open('users/search', ['id'=>'user-search'])?>
+                                            <input type="text" name="search_book" class="form-control" placeholder="Search for ebooks by ISBN, Title or Author">
+                                            <button type="submit"><i class="fas fa-search"></i></button>
+                                            <?= form_close()?>
+                                        </div>
 
 
-                                            
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="ic-cart"><a href="<?= base_url()?>cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>
-                                            <!--=== cart item count ===-->
-                                            <?php if($this->cart->contents()): ?>
-                                                <div class="cart-count">
-                                                    <div><?php $rows = count($this->cart->contents());
-                                                    print $rows; ?></div>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="ic-cart"><a href="<?= base_url()?>cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>
+                                        <!--=== cart item count ===-->
+                                        <?php if($this->cart->contents()): ?>
+                                            <div class="cart-count">
+                                                <div><?php $rows = count($this->cart->contents());
+                                                print $rows; ?></div>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--========== Menu Area =========-->
-                    <div class="">
-                        <?php $this->load->view('temp/menu'); ?>
-                    </div>
                 </div>
-                <!--=== Success msg ===-->
-                <?php 
-                if($this->session->flashdata('login_success'))
-                {
-                    print '<div class= "success-msg">';
-                    print '<div class = "container">'.$this->session->flashdata('login_success').'</div>';
-                    print '<div class="cross"><a href="" class="text-success"><i class="fas fa-times"></i></a></div>';
-                    print '</div>';
-                }
-                ?>
-
-                <!--============ Slider Area ===========-->
-                <div class="animate__animated animate__fadeInRight">
-                    <?php $this->load->view('temp/carousel'); ?>
+                <!--========== Menu Area =========-->
+                <div class="">
+                    <?php $this->load->view('temp/menu'); ?>
                 </div>
-                <br>
-                <!--==== Recent Books ====-->
-                <div class="animate__animated animate__slideInLeft section-padding after-slider">
-                    <div class="container">
-                        <div class="section-title"><a style="color: black; text-shadow: 2px 2px #7DAECC;" href="<?= base_url()?>users/all-books">Recently Added</a></div>
-                        <div><?php $this->load->view('temp/recent_books') ?></div> 
-                    </div>   
-                </div>
+            </div>
+            <!--=== Success msg ===-->
+            <?php 
+            if($this->session->flashdata('login_success'))
+            {
+                print '<div class= "success-msg">';
+                print '<div class = "container">'.$this->session->flashdata('login_success').'</div>';
+                print '<div class="cross"><a href="" class="text-success"><i class="fas fa-times"></i></a></div>';
+                print '</div>';
+            }
+            ?>
+
+            <!--============ Slider Area ===========-->
+            <div class="animate__animated animate__fadeInRight">
+                <?php $this->load->view('temp/carousel'); ?>
+            </div>
+            <br>
+            <!--==== Recent Books ====-->
+            <div class="animate__animated animate__slideInLeft section-padding after-slider">
+                <div class="container">
+                    <div class="section-title"><a style="color: black; text-shadow: 2px 2px #7DAECC;" href="<?= base_url()?>users/all-books">Recently Added</a></div>
+                    <div><?php $this->load->view('temp/recent_books') ?></div> 
+                </div>   
+            </div>
 
 
-                <!--============ Footer Area ============-->
-                <div class="footer-area-home animate__animated animate__fadeInDown">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="widget">
-                                    <div class="brand-name">
-                                        <div class="lname"><a href=""><span><?php foreach($names as $name): ?>
+            <!--============ Footer Area ============-->
+            <div class="footer-area-home animate__animated animate__fadeInDown">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="widget">
+                                <div class="brand-name">
+                                    <div class="lname"><a href=""><span><?php foreach($names as $name): ?>
 
-                                        <?php print $name->orgname;?>
+                                    <?php print $name->orgname;?>
 
-                                        <?php endforeach; ?> E-bookshop</span></a></div>
-                                        <p><?php foreach($dscs as $dsc): ?>
+                                    <?php endforeach; ?> E-bookshop</span></a></div>
+                                    <p><?php foreach($dscs as $dsc): ?>
 
-                                        <?php print $dsc->footerdsc;?>
+                                    <?php print $dsc->footerdsc;?>
 
-                                        <?php endforeach; ?></p>
-                                    </div>
+                                    <?php endforeach; ?></p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="widget">
-                                    <h3>Our Services</h3>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <h3>Our Services</h3>
 
-                                    <ul>
-                                        <li><a href="<?= base_url('users/all_books')?>">Buy E-Books</a></li>
-                                        <li><a href="<?= base_url('users/all_ebooks')?>">Borrow E-books</a></li>
-                                        <li><a href="<?= base_url('users/terms')?>">Terms and conditions</a></li>
-                                        <li><a href="#" data-toggle="modal" data-target="#aboutModal">About Us</a></li>
-                                        <?php
+                                <ul>
+                                    <li><a href="<?= base_url('users/all_books')?>">Buy E-Books</a></li>
+                                    <li><a href="<?= base_url('users/all_ebooks')?>">Borrow E-books</a></li>
+                                    <li><a href="<?= base_url('users/terms')?>">Terms and conditions</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#aboutModal">About Us</a></li>
+                                    <?php
                             #Load about model 
-                                        $this->load->view('temp/about_modal')
-                                        ?>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="widget">
-                                    <div class="brand-name">
-                                        <div class="logo">
-                                            <?php foreach($logos as $logo):?>
-                                                <span class="lname">
-                                                    <span><a href="#"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
-                                                </span>
-                                            <?php endforeach;?>
-                                            <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/umbig.png'); ?>"></a></span>
-                                        </div>
-                                    </div> 
-                                </div>
+                                    $this->load->view('temp/about_modal')
+                                    ?>
+                                </ul>
                             </div>
                         </div>
-                        <div class="copy-right">
-                            <p><i class="fas fa-copyright"></i> 2021 faiyazkhanwif.inc. <br>All rights reserved</p>
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <div class="brand-name">
+                                    <div class="logo">
+                                        <?php foreach($logos as $logo):?>
+                                            <span class="lname">
+                                                <span><a href="#"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
+                                            </span>
+                                        <?php endforeach;?>
+                                        <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/umbig.png'); ?>"></a></span>
+                                    </div>
+                                </div> 
+                            </div>
                         </div>
                     </div>
+                    <div class="copy-right">
+                        <p><i class="fas fa-copyright"></i> 2021 faiyazkhanwif.inc. <br>All rights reserved</p>
+                    </div>
                 </div>
+            </div>
 
 
-                <!-- Optional JavaScript -->
-                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                <script type="text/javascript" src="<?= base_url('tool/js/popper-1.12.9.min.js'); ?>"></script>
-                <script type="text/javascript" src="<?= base_url('tool/js/bootstrap.min.js'); ?>"></script>
-                <script type="text/javascript" src="<?= base_url('tool/js/all.js'); ?>"></script>
-                <script type="text/javascript" src="<?= base_url('tool/js/owl.carousel.min.js'); ?>"></script>
-                <script type="text/javascript" src="<?= base_url('tool/js/main.js'); ?>"></script>
-                
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script type="text/javascript" src="<?= base_url('tool/js/popper-1.12.9.min.js'); ?>"></script>
+            <script type="text/javascript" src="<?= base_url('tool/js/bootstrap.min.js'); ?>"></script>
+            <script type="text/javascript" src="<?= base_url('tool/js/all.js'); ?>"></script>
+            <script type="text/javascript" src="<?= base_url('tool/js/owl.carousel.min.js'); ?>"></script>
+            <script type="text/javascript" src="<?= base_url('tool/js/main.js'); ?>"></script>
 
 
-            </body>
 
-            </html>
+        </body>
+
+        </html>

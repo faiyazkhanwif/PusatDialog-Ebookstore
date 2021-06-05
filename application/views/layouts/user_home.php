@@ -111,7 +111,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="<?= base_url()?>">Membership</a></li>
                             <li><a href="<?= base_url()?>user-home/boughtbooks">Bought Books</a></li>
                             <li><a href="<?= base_url()?>user-home/myreviews">My Reviews</a></li>
                             <li><a href="<?= base_url('user-home/edit-profile/'.$this->session->userdata('id').'')?>">Edit profile</a></li>
