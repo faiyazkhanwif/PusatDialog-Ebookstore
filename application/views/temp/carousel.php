@@ -25,7 +25,7 @@
       <h2 style="color: white;">Read your favourite books for free!</h2>
       <p><i class="fas fa-quote-left fq"></i> Keep reading books, but remember that a book is only a book, and you should learn to think for yourself.</p>
       <i>– Maxim Gorky</i>
-      <div><a href="<?= base_url()?>users/all_books" class="btn-buy">Pro Membership <i class="fas fa-arrow-circle-right"></i></a></div>
+      <div><a href="<?= base_url()?>users/showpromempromo" class="btn-buy">Pro Membership <i class="fas fa-arrow-circle-right"></i></a></div>
       <br>
     </div>
   </div>

@@ -22,7 +22,7 @@ if($this->session->flashdata('success'))
 			
 			<br><div><p>We recommend to read our <a href="<?= base_url()?>users/terms" target ="_blank" class="text-primary">terms and conditions</a> before making any purchase.</p></div>
 			<div class="sub">
-            <span><?= form_submit(['name'=> 'submit', 'value'=> 'Place Order', 'class'=>'btn btn-primary my-btn'])?></span>
+            <span><?= form_submit(['name'=> 'submit', 'value'=> 'Purchase', 'class'=>'btn btn-primary my-btn'])?></span>
     		</div>
 		<?= form_close()?>
 	</div>

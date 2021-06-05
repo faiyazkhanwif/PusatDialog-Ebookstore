@@ -175,6 +175,29 @@ class Users extends CI_Controller {
 		redirect('home');	
 	}
 
+	public function showpromempromo(){
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate(); 
+
+		$view['user_view'] = "users/membership_promo";
+		$this->load->view('layouts/user_layout', $view);
+	}
+
 
 	public function all_books()
 	{
@@ -418,6 +441,133 @@ class Users extends CI_Controller {
 			$this->load->view('layouts/user_layout', $view);
 		}
 
+	}
+
+	public function viewmembershipcheckout($months){
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+		
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate(); 
+
+
+		$view['months'] = $months;
+		$cost = 0;
+		$view['cost'] = $cost;
+		if ($months==1) {
+			$cost = 30;
+			$view['cost'] = $cost;
+		}elseif ($months==3) {
+			$cost = 80;
+			$view['cost'] = $cost;
+		} else {
+			$cost = 150;
+			$view['cost'] = $cost;
+		}
+
+		$view['user_view'] = "users/promem_checkout_page";
+		$this->load->view('layouts/user_layout', $view);
+	}
+
+	public function subscribeaspro($months){
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+		
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate(); 
+
+		$this->form_validation->set_rules('paymentcheck', 'Payment methods', 'trim|required');
+
+		$view['months'] = $months;
+		$cost = 0;
+
+		if ($months==1) {
+			$cost = 30;
+		}elseif ($months==3) {
+			$cost = 80;
+		} else {
+			$cost = 150;
+		}
+
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->load->model('user_model');
+			$view['logos'] = $this->user_model->logo_generate();
+
+			$this->load->model('user_model');
+			$view['names'] = $this->user_model->name_generate();
+
+			$this->load->model('user_model');
+			$view['dscs'] = $this->user_model->ft_generate();
+
+			$this->load->model('user_model');
+			$view['abtdscs'] = $this->user_model->about_generate();
+
+			$this->load->model('user_model');
+			$view['contactdscs'] = $this->user_model->contact_generate();
+			$view['months'] = $months;
+			$view['cost'] = $cost;
+			$view['user_view'] = "users/promem_checkout_page";
+			$this->load->view('layouts/user_layout', $view);
+		}else{
+			$this->load->model('user_model');
+			if($this->user_model->subscribeaspro($months,$cost))
+			{
+				redirect('users/proconfirmation');
+
+			}
+		}
+
+	}
+
+	public function proconfirmation(){
+
+		$this->load->model('admin_model');
+		$view['category'] = $this->admin_model->get_category();
+
+		$this->load->model('user_model');
+		$view['logos'] = $this->user_model->logo_generate();
+
+		$this->load->model('user_model');
+		$view['names'] = $this->user_model->name_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate();
+
+		$this->load->model('user_model');
+		$view['contactdscs'] = $this->user_model->contact_generate();
+
+		$this->load->model('user_model');
+		$view['dscs'] = $this->user_model->ft_generate();
+		$view['user_view'] = "users/promem_confirmed_page";
+		$this->load->view('layouts/user_layout', $view);
 	}
 
 
