@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2021 at 04:38 PM
+-- Generation Time: Jun 06, 2021 at 08:48 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -215,7 +215,9 @@ CREATE TABLE `membershiptransactions` (
 
 INSERT INTO `membershiptransactions` (`memtranID`, `userId`, `months`, `subscriptionfee`, `paymentcheck`, `transactiondate`, `expiredate`) VALUES
 (3, 28, 1, 30, 1, '2021-06-05', '2021-07-05'),
-(17, 31, 6, 150, 1, '2021-06-06', '2021-12-06');
+(17, 31, 6, 150, 1, '2021-06-06', '2021-12-06'),
+(18, 30, 3, 80, 1, '2021-06-06', '2021-09-06'),
+(19, 32, 6, 150, 1, '2021-06-06', '2021-12-06');
 
 -- --------------------------------------------------------
 
@@ -251,7 +253,9 @@ INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateT
 (37, 26, '63.5', 1, '2021-05-30 12:55:09', '73', '1', '', ''),
 (38, 28, '126.5', 1, '2021-05-31 20:26:47', '74, 73', '1', '', ''),
 (39, 28, '53', 1, '2021-06-05 06:55:02', '66', '1', '', ''),
-(40, 26, '53', 1, '2021-06-05 07:08:00', '69', '1', '', '');
+(40, 26, '53', 1, '2021-06-05 07:08:00', '69', '1', '', ''),
+(41, 31, '85', 1, '2021-06-06 18:07:22', '70', '1', '', ''),
+(42, 32, '150', 1, '2021-06-06 18:18:48', '74, 71', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -295,7 +299,8 @@ INSERT INTO `reviews` (`id`, `review`, `bookId`, `bookname`, `userId`, `dateTime
 (52, 'Amazing thriller. Must buy!', 64, 'Life for dummies', 25, '2021-04-30 00:22:13'),
 (53, 'Amazing book for learning software design and architecture.', 72, 'Software Architecture', 26, '2021-05-04 06:19:29'),
 (57, 'Helped me to learn basics of OS.', 71, 'Operating Systems', 24, '2021-05-31 21:09:22'),
-(58, 'Loved it!', 67, 'All about Civil Engineering', 24, '2021-05-31 21:22:09');
+(58, 'Loved it!', 67, 'All about Civil Engineering', 24, '2021-05-31 21:22:09'),
+(60, 'Nice!', 74, 'Dummy', 32, '2021-06-06 18:19:40');
 
 -- --------------------------------------------------------
 
@@ -351,7 +356,10 @@ INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_isbn`, `book_
 (27, 28, 74, '0-4969-8098-X', 'Dummy', 'Test auth', '63', 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing'),
 (28, 28, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing'),
 (29, 28, 66, '0-3604-3155-0', 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
-(30, 26, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing');
+(30, 26, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
+(31, 31, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
+(32, 32, 74, '0-4969-8098-X', 'Dummy', 'Test auth', '63', 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing'),
+(33, 32, 71, '0-3430-8635-2', 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -380,8 +388,9 @@ INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `memb
 (25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', 'normal', '2021-04-18 15:32:34'),
 (26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', 'normal', '2021-05-02 03:23:10'),
 (28, 'Vaas', '+6011567845754', 'vaas@gmail.com', '$2y$12$9DMksSN83oG2UMpv8JhtHOF3xZdadYopgGhMCjPBSfzSsN6nvAgVW', 'U', 'pro', '2021-05-31 19:08:04'),
-(30, 'Membershiptester2', '0179121482', 'mt2@gmail.com', '$2y$12$Wx5p.uKoBqTPaRcaPvE1ye2xPUK1ypTGanRv4bl6hG/4Hc0goIyzS', 'U', 'normal', '2021-06-05 19:00:20'),
-(31, 'janina', '4762474643', 'jn@gmail.com', '$2y$12$.TEF2FJCSNLMz4i6tCvU.e/hAw/NyimIfzMJ6/ihh/cSY6ctYNrKm', 'U', 'pro', '2021-06-05 21:53:52');
+(30, 'Membershiptester2', '0179121482', 'mt2@gmail.com', '$2y$12$Wx5p.uKoBqTPaRcaPvE1ye2xPUK1ypTGanRv4bl6hG/4Hc0goIyzS', 'U', 'pro', '2021-06-05 19:00:20'),
+(31, 'janina', '4762474643', 'jn@gmail.com', '$2y$12$.TEF2FJCSNLMz4i6tCvU.e/hAw/NyimIfzMJ6/ihh/cSY6ctYNrKm', 'U', 'pro', '2021-06-05 21:53:52'),
+(32, 'Bug tester', '+601156432490', 'bugtester@gmail.com', '$2y$12$QPZUrSsKwGB2hAsTZaWZkOJSPR1wx1V25PEIcKdzf7j3KCubjRhya', 'U', 'pro', '2021-06-06 18:16:23');
 
 --
 -- Indexes for dumped tables
@@ -468,31 +477,31 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `membershiptransactions`
 --
 ALTER TABLE `membershiptransactions`
-  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
