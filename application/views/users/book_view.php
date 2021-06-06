@@ -1,5 +1,5 @@
 <br>
-<div class="container">
+<div class="container animate__animated animate__bounceInLeft">
 	<div class="row">
 		<div class="col-sm-8 col-xs-12" id="book-detail">
 			<div id="table-header">E-Book Detail</div>

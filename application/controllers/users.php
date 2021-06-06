@@ -288,19 +288,22 @@ class Users extends CI_Controller {
 		$this->load->model('admin_model');
 		$view['category'] = $this->admin_model->get_category();
 		/*==============================*/
-		$this->load->model('user_model');
-		$ud = $this->user_model->get_user_details($this->session->userdata('id'));
-		if ($ud->membershipstatus=="pro") {
+		if ($this->session->userdata('logged_in') == TRUE) {
 			$this->load->model('user_model');
-			$memdetails = $this->user_model->get_mem_details($ud->id);
-			$expiredate = $memdetails->expiredate;
-			$todaydate = date("Y-m-d");
-			$exp = strtotime($expiredate);
-			$td = strtotime($todaydate);
-			if ($td>$exp) {
-				redirect('users/logout');
+			$ud = $this->user_model->get_user_details($this->session->userdata('id'));
+			if ($ud->membershipstatus=="pro") {
+				$this->load->model('user_model');
+				$memdetails = $this->user_model->get_mem_details($ud->id);
+				$expiredate = $memdetails->expiredate;
+				$todaydate = date("Y-m-d");
+				$exp = strtotime($expiredate);
+				$td = strtotime($todaydate);
+				if ($td>$exp) {
+					redirect('users/logout');
+				}
 			}
 		}
+
 
 		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[1]|htmlentities[review]');
 
@@ -358,7 +361,7 @@ class Users extends CI_Controller {
 
 			$this->load->model('user_model');
 			$this->user_model->reviews($id);
-			redirect('users/book_view/'.$id.'');
+			redirect('user-home/book_view/'.$id.'');
 		}
 
 
