@@ -226,6 +226,24 @@ class admin extends CI_Controller {
 						$view['admin_view'] = "admin/view_users";
 						$this->load->view('layouts/admin_layout', $view);
 					}
+
+					public function currentpromembers()
+					{
+						$this->load->model('admin_model');
+						$view['users_data'] = $this->admin_model->get_promembers();
+
+						$this->load->model('user_model');
+						$view['logos'] = $this->user_model->logo_generate();
+
+						$this->load->model('user_model');
+						$view['names'] = $this->user_model->name_generate();
+
+						$this->load->model('user_model');
+						$view['dscs'] = $this->user_model->ft_generate();
+
+						$view['admin_view'] = "admin/view_prousers";
+						$this->load->view('layouts/admin_layout', $view);
+					}
 					/*=============== ADD Users By admin ===============*/
 					public function add_users()
 					{

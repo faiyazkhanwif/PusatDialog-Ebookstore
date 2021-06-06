@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2021 at 12:25 AM
+-- Generation Time: Jun 06, 2021 at 04:38 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -214,7 +214,8 @@ CREATE TABLE `membershiptransactions` (
 --
 
 INSERT INTO `membershiptransactions` (`memtranID`, `userId`, `months`, `subscriptionfee`, `paymentcheck`, `transactiondate`, `expiredate`) VALUES
-(3, 28, 1, 30, 1, '2021-06-05', '2021-07-05');
+(3, 28, 1, 30, 1, '2021-06-05', '2021-07-05'),
+(17, 31, 6, 150, 1, '2021-06-06', '2021-12-06');
 
 -- --------------------------------------------------------
 
@@ -380,7 +381,7 @@ INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `memb
 (26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', 'normal', '2021-05-02 03:23:10'),
 (28, 'Vaas', '+6011567845754', 'vaas@gmail.com', '$2y$12$9DMksSN83oG2UMpv8JhtHOF3xZdadYopgGhMCjPBSfzSsN6nvAgVW', 'U', 'pro', '2021-05-31 19:08:04'),
 (30, 'Membershiptester2', '0179121482', 'mt2@gmail.com', '$2y$12$Wx5p.uKoBqTPaRcaPvE1ye2xPUK1ypTGanRv4bl6hG/4Hc0goIyzS', 'U', 'normal', '2021-06-05 19:00:20'),
-(31, 'janina', '4762474643', 'jn@gmail.com', '$2y$12$.TEF2FJCSNLMz4i6tCvU.e/hAw/NyimIfzMJ6/ihh/cSY6ctYNrKm', 'U', 'normal', '2021-06-05 21:53:52');
+(31, 'janina', '4762474643', 'jn@gmail.com', '$2y$12$.TEF2FJCSNLMz4i6tCvU.e/hAw/NyimIfzMJ6/ihh/cSY6ctYNrKm', 'U', 'pro', '2021-06-05 21:53:52');
 
 --
 -- Indexes for dumped tables
@@ -467,7 +468,7 @@ ALTER TABLE `ebooks`
 -- AUTO_INCREMENT for table `membershiptransactions`
 --
 ALTER TABLE `membershiptransactions`
-  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `orders`

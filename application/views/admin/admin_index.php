@@ -35,6 +35,20 @@
 						?> 
 					</div>
 				</div>
+
+				<div class="col-lg-2 col-md-3 col-sm-4">
+					<div class="col-admin bg-info clickable-div" data-href="<?= base_url('admin/currentpromembers')?>">
+						<div>
+							<i class="fas fa-user-shield"></i>
+							<h6>Current Pro Users</h6>
+						</div>
+						<?php 
+						$this->load->model('admin_model');
+						$count_prousers = count($this->admin_model->count_total_prousers());
+						print $count_prousers;
+						?> 
+					</div>
+				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4">
 					<div class="col-admin bg-primary clickable-div" data-href="<?= base_url('admin/category')?>">
 						<div>
@@ -62,24 +76,12 @@
 					</div>
 				</div>
 
-				<div class="col-lg-2 col-md-3 col-sm-4">
-					<div class="col-admin bg-info clickable-div" data-href="<?= base_url('admin/booksbr')?>">
-						<div>
-							<i class="fas fa-desktop"></i>
-							<h6>Total E-books for Borrow</h6>
-						</div>
-						<?php 
-						$this->load->model('admin_model');
-						$count_booksbr = count($this->admin_model->count_total_booksbr());
-						print $count_booksbr;
-						?> 
-					</div>
-				</div>
+
 				<div class="col-lg-2 col-md-3 col-sm-4">
 					<div class="col-admin bg-danger clickable-div" data-href="<?= base_url('admin/orders')?>">
 						<div>
 							<i class="fas fa-shopping-cart"></i>
-							<h6>Total orders</h6>
+							<h6>Total E-book Purchases</h6>
 						</div>
 						<?php 
 						$this->load->model('admin_model');

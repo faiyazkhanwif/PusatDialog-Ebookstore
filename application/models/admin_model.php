@@ -61,6 +61,12 @@ class admin_model extends CI_Model
 		return $query->result();
 	}
 
+	public function get_promembers()
+	{
+		$query = $this->db->get('membershiptransactions');
+		return $query->result();
+	}
+
 	#...Add user
 	public function add_user()
 	{
@@ -148,7 +154,11 @@ class admin_model extends CI_Model
 		$query = $this->db->get('books');
 		return $query->result();
 	}
-
+	public function count_total_prousers()
+	{
+		$query = $this->db->get('membershiptransactions');
+		return $query->result();
+	}
 
 
 
