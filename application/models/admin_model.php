@@ -33,7 +33,7 @@ class admin_model extends CI_Model
 	}
 
 	#...Edit category
-	public function edit_category($id, $data)
+	public function edit_category($id)
 	{
 		$data = array(
 
@@ -161,42 +161,6 @@ class admin_model extends CI_Model
 	}
 
 
-
-
-
-#...Display all books
-	public function get_booksbr($limit, $offset)
-	{	
-		/*=== SQL join ===*/
-		$this->db->select('booksborrow.id, booksborrow.book_name, booksborrow.description, booksborrow.author, booksborrow.publisher, booksborrow.price, booksborrow.book_image, category.category');
-
-		$this->db->from('booksborrow');
-		$this->db->join('category', 'booksborrow.categoryId = category.id');
-
-		$this->db->order_by('booksborrow.id', 'DESC');
-		$this->db->limit($limit, $offset);
-		$query = $this->db->get();
-		return $query->result();
-	}
-	#...For pagination
-	public function num_rows_admin_booksbr()
-	{
-		$this->db->select('*');
-		$this->db->from('category');
-		$this->db->join('booksborrow', 'booksborrow.categoryId = category.id');
-
-		$this->db->order_by('booksborrow.id', 'DESC');
-		$query = $this->db->get();
-		return $query->num_rows();
-	}
-	#...For count total books
-	public function count_total_booksbr()
-	{
-		$query = $this->db->get('booksborrow');
-		return $query->result();
-	}
-
-
 	#...Display book details
 	public function get_book_detail($id)
 	{
@@ -212,22 +176,8 @@ class admin_model extends CI_Model
 	}
 
 
-		#...Display bookbr details
-	public function get_bookbr_detail($id)
-	{
-		/*=== SQL join ===*/
-		$this->db->select('booksborrow.*, category.category');
-		$this->db->from('booksborrow');
-		$this->db->join('category', 'booksborrow.categoryId = category.id');
-		
-
-		$this->db->where('booksborrow.id', $id);
-		$query = $this->db->get();
-		return $query->row();		
-	}
-
 	#...Edit book info
-	public function edit_book($id, $data)
+	public function edit_book($id)
 	{
 		//$data = $this->upload->data();
 		//$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
@@ -250,29 +200,6 @@ class admin_model extends CI_Model
 	}
 
 
-		#...Edit bookbr info
-	public function edit_bookbr($id, $data)
-	{
-		$data = $this->upload->data();
-		$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
-		
-		$data = array(
-			'book_name' => $this->input->post('book_name'),
-			'description' => $this->input->post('description'),
-			'author' => $this->input->post('author'),
-			'publisher' => $this->input->post('publisher'),
-			'price' => $this->input->post('price'),
-			'quantity' => $this->input->post('quantity'),
-			'categoryId' => $this->input->post('categoryId'),
-			'book_image' => $image_path,
-			'userId' => $this->session->userdata('id'),
-			'status' => $this->input->post('status')
-		);
-
-		return $query = $this->db->where('id', $id)->update('booksborrow', $data);
-	}
-
-
 	#...Delete book
 	public function delete_book($id)
 	{
@@ -280,40 +207,6 @@ class admin_model extends CI_Model
 		$this->db->delete('books');
 	}
 
-
-	#...Delete bookbr
-	public function delete_bookbr($id)
-	{
-		$this->db->where('id', $id);
-		$this->db->delete('booksborrow');
-	}
-
-
-	#...Get pending books
-	public function pending_books()
-	{	
-		/*=== SQL join ===*/
-		$this->db->select('books.*, users.name, category.category');
-		$this->db->from('books');
-		$this->db->join('category', 'books.categoryId = category.id');
-		$this->db->join('users', 'books.userId = users.id'); //Join 3rd table
-
-		$this->db->order_by('books.id', 'DESC');
-		$this->db->where('books.status', '0');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	#...Published books
-	public function published_books($id, $data)
-	{
-		
-		$data = array(
-			'status' => 1
-		);
-
-		return $query = $this->db->where('id', $id)->update('books', $data);
-	}
 
 	#...Get all orders
 	public function get_orders()
@@ -334,105 +227,6 @@ class admin_model extends CI_Model
 		return $query->row();
 	}
 
-	#...Accept orders
-	public function accept_order($orderId, $data)
-	{
-		
-		$data = array(
-			'status' => 1
-		);
-
-		return $query = $this->db->where('orderId', $orderId)->update('orders', $data);
-	}
-
-	#...Delete order
-	public function delete_order($orderId)
-	{
-		$this->db->where('orderId', $orderId);
-		$this->db->delete('orders');
-	}
-
-	/*==== E-Book ====*/
-	#...Add E-books
-	public function add_ebooks()
-	{
-		$data = $this->upload->data();
-		$file_path = base_url("uploads/file/".$data['raw_name'].$data['file_ext']);
-		
-		$data = array(
-			'ebook_name' => $this->input->post('ebook_name'),
-			'description' => $this->input->post('description'),
-			'author' => $this->input->post('author'),
-			'categoryId' => $this->input->post('categoryId'),
-			'book_file' => $file_path
-		);
-
-		$insert_ebook = $this->db->insert('ebooks', $data);
-		return $insert_ebook;
-	}
-
-	#...Get all e-books
-	public function get_ebooks()
-	{	
-		/*=== SQL join ===*/
-		$this->db->select('ebooks.*, category.category');
-		$this->db->from('ebooks');
-		$this->db->join('category', 'ebooks.categoryId = category.id');
-
-		$this->db->order_by('ebooks.id', 'DESC');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	#...Get E-book details
-	public function get_ebook_detail($id)
-	{
-		/*=== SQL join ===*/
-		$this->db->select('ebooks.*, category.category');
-		$this->db->from('ebooks');
-		$this->db->join('category', 'ebooks.categoryId = category.id');
-
-		$this->db->where('ebooks.id', $id);
-		$query = $this->db->get();
-		return $query->row();		
-	}
-
-	#...Delete order
-	public function delete_ebook($id)
-	{
-		$this->db->where('id', $id);
-		$this->db->delete('ebooks');
-	}
-
-	#...Get all orders ready to deliver
-	public function get_orders_to_deliver()
-	{
-		$this->db->order_by('orderId', 'DESC');
-		$this->db->where('status', '1');
-		$query = $this->db->get('orders');
-		return $query->result();
-	}
-	#...Confirm order delivery
-	public function confirm_delivery($orderId, $data)
-	{
-		
-		$data = array(
-			'del_status' => 1
-		);
-
-		return $query = $this->db->where('orderId', $orderId)->update('orders', $data);
-	}
-
-	#...cancel order delivery
-	public function cancle_delivery($orderId, $data)
-	{
-		
-		$data = array(
-			'del_status' => 0
-		);
-
-		return $query = $this->db->where('orderId', $orderId)->update('orders', $data);
-	}
 
 	public function changelogo(){
 		$this->db->empty_table('logo');
@@ -580,7 +374,7 @@ class admin_model extends CI_Model
 	}
 
 
-	public function changepass($id, $data)
+	public function changepass($id)
 	{
 		$options = ['cost'=> 12];
 		$encripted_pass = password_hash($this->input->post('newpassword'), PASSWORD_BCRYPT, $options);

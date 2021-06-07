@@ -53,7 +53,7 @@
 					<div class="col-admin bg-primary clickable-div" data-href="<?= base_url('admin/category')?>">
 						<div>
 							<i class="fas fa-list"></i>
-							<h6>Total Category</h6>
+							<h6>Total Categories</h6>
 						</div>
 						<?php 
 						$this->load->model('admin_model');
@@ -66,7 +66,7 @@
 					<div class="col-admin bg-success clickable-div" data-href="<?= base_url('admin/books')?>">
 						<div>
 							<i class="fas fa-book"></i>
-							<h6>Total E-Books for Sell</h6>
+							<h6>Total E-Books</h6>
 						</div>
 						<?php 
 						$this->load->model('admin_model');

@@ -128,22 +128,21 @@ class Users extends CI_Controller {
 
 			$user_data = $this->user_model->login_user($email, $password);
 
-			if ($user_data->membershipstatus=="pro") {
-				$this->load->model('user_model');
-				$memdetails = $this->user_model->get_mem_details($user_data->id);
-				$expiredate = $memdetails->expiredate;
-				$todaydate = date("Y-m-d");
-				$exp = strtotime($expiredate);
-				$td = strtotime($todaydate);
-				if ($td>$exp) {
-					$this->load->model('user_model');
-					$this->user_model->removepromembership($user_data->id);
-				}
-			}
-
-
 			if($user_data)
 			{
+			    
+			    if ($user_data->membershipstatus=="pro") {
+    				$this->load->model('user_model');
+    				$memdetails = $this->user_model->get_mem_details($user_data->id);
+    				$expiredate = $memdetails->expiredate;
+    				$todaydate = date("Y-m-d");
+    				$exp = strtotime($expiredate);
+    				$td = strtotime($todaydate);
+    				if ($td>$exp) {
+    					$this->load->model('user_model');
+    					$this->user_model->removepromembership($user_data->id);
+    				}
+			    }
 				$login_data = array(
 
 					'user_data' => $user_data,
@@ -305,7 +304,7 @@ class Users extends CI_Controller {
 		}
 
 
-		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[1]|htmlentities[review]');
+		$this->form_validation->set_rules('review', 'Review', 'trim|required|min_length[1]|strip_tags[review]');
 
 		if($this->form_validation->run() == FALSE)
 		{

@@ -97,7 +97,7 @@ if($this->session->flashdata('danger'))
     <label for="book_image" class="col-sm-2 col-form-label">E-Book Cover</label>
     <div class="col-sm-6">
         <?= form_upload(['name'=>'userfile', 'class'=>'form-control', 'id' => 'book_image'])?>
-        <div class="text-secondary">* Upload PNG, JPG format. Image should not be more than 100MB</div>
+        <div class="text-secondary">* Upload PNG, JPG or JPEG format.</div>
     </div>
     <?php if (isset($upload_errors)) { ?>
         <div class="col-sm-4">

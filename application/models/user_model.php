@@ -82,47 +82,6 @@ class user_model extends CI_Model
 	}
 
 
-	public function add_books()
-	{
-		$data = $this->upload->data();
-		$image_path = base_url("uploads/image/".$data['raw_name'].$data['file_ext']);
-		
-		$data = array(
-			'book_name' => $this->input->post('book_name'),
-			'description' => $this->input->post('description'),
-			'author' => $this->input->post('author'),
-			'publisher' => $this->input->post('publisher'),
-			'price' => $this->input->post('price'),
-			'quantity' => $this->input->post('quantity'),
-			'categoryId' => $this->input->post('categoryId'),
-			'book_image' => $image_path,
-			'userId' => $this->session->userdata('id'),
-		);
-
-		$insert_book = $this->db->insert('books', $data);
-		return $insert_book;
-	}
-
-
-	public function my_books()
-	{
-		/*=== SQL join ===*/
-		$this->db->select('*');
-		$this->db->from('category');
-		$this->db->join('books', 'books.categoryId = category.id');
-
-		$this->db->order_by('books.id', 'DESC');
-		$this->db->where('books.userId', $this->session->userdata('id'));
-		$query = $this->db->get();
-		return $query->result();	
-	}
-
-	public function delete_book($id)
-	{
-		$this->db->where('id', $id);
-		$this->db->delete('books');
-	}
-
 
 	public function reviews($id)
 	{   $SQL = "SELECT * FROM books WHERE id='".$id."'";
@@ -139,7 +98,7 @@ class user_model extends CI_Model
 	$bookname = "";
 	foreach ($query->result() as $row)
 	{
-		echo $row->book_name;
+		//echo $row->book_name;
 		$bookname = $row->book_name;
 
 	}
@@ -241,33 +200,6 @@ public function get_review_details($id)
 	$query = $this->db->get('reviews');
 	return $query->row();
 }
-	//public function my_published_books()
-	//{
-	//	$this->db->where('userId', $this->session->userdata('id'));
-	//	$query = $this->db->get('books');
-	//	return $query->result();
-	//}
-
-
-	##...Get all E-books and filter category wise E-books
-	//public function get_ebooks()
-	//{
-/*=== SQL join and Data filter ===*/
-	//	$this->db->select('*');
-	//	$this->db->from('category');
-	//	$this->db->join('ebooks', 'ebooks.categoryId = category.id');
-	//	if(isset($_GET['ctg']))
-	//	{
-	//		$a = $_GET['ctg'];
-	//		$query = $this->db->where('category.tag', $a);
-	//		$this->db->order_by('ebooks.id', 'DESC');
-	//		$query = $this->db->get();
-	//		return $query->result();
-	//	}
-	//	$this->db->order_by('ebooks.id', 'DESC');
-	//	$query = $this->db->get();
-	//	return $query->result();
-	//}
 
 
 public function search($query)
@@ -297,7 +229,7 @@ public function get_mem_details($id)
 	return $query->row();
 }
 
-public function edit_profile($id, $data)
+public function edit_profile($id)
 {
 		//$options = ['cost'=> 12];
 		//$encripted_pass = password_hash($this->input->post('password'), PASSWORD_BCRYPT, $options);
@@ -322,7 +254,7 @@ public function getCurrPassword($id)
 }
 
 
-public function changepass($id, $data)
+public function changepass($id)
 {
 	$options = ['cost'=> 12];
 	$encripted_pass = password_hash($this->input->post('newpassword'), PASSWORD_BCRYPT, $options);

@@ -14,7 +14,7 @@
             <label for="logo_image" class="col-sm-2 col-form-label">Main Logo</label>
             <div class="col-sm-6">
                 <?= form_upload(['name'=>'userfile', 'class'=>'form-control', 'id' => 'logo_image'])?>
-                <div class="text-secondary">* Upload PNG, JPG format.</div>
+                <div class="text-secondary">* Upload PNG, JPG or JPEG format.</div>
             </div>
             <?php if (isset($upload_errors)) { ?>
                 <div class="col-sm-4">

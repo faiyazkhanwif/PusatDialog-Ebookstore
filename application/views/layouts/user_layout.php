@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div class="col-md-6">
                                 <div class="social-icon">
-                                    <a style="color: white;" href="https://um.edu.my/" title="Universiti Malaya">University of Malaya</i></a>
+                                    <a style="color: white;" href="https://um.edu.my" title="Universiti Malaya">University of Malaya</i></a>
                                     <a class="umlogo" href="https://um.edu.my/" title="Universiti Malaya"><img src="<?= base_url('tool/img/umsmall.png'); ?>"></i></a>
                                 </div>
                             </div>

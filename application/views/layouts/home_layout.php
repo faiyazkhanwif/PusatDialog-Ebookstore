@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div class="col-md-6">
                                 <div class="social-icon">
-                                    <a style="color: white;" href="https://um.edu.my/" title="Universiti Malaya">University of Malaya</i></a>
+                                    <a style="color: white;" href="https://um.edu.my" title="Universiti Malaya">University of Malaya</i></a>
                                     <a class="umlogo" href="https://um.edu.my/" title="Universiti Malaya"><img src="<?= base_url('tool/img/umsmall.png'); ?>"></i></a>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                 <ul>
                                     <li><a href="<?= base_url('users/all_books')?>">Buy E-Books</a></li>
-                                    <li><a href="<?= base_url('users/all_ebooks')?>">Borrow E-books</a></li>
+                                    <li><a href="<?= base_url()?>users/showpromempromo">Read Books for Free <i class="fas fa-arrow-alt-circle-right"></i></a></li>
                                     <li><a href="<?= base_url('users/terms')?>">Terms and conditions</a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#aboutModal">About Us</a></li>
                                     <?php
@@ -181,7 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="logo">
                                         <?php foreach($logos as $logo):?>
                                             <span class="lname">
-                                                <span><a href="#"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
+                                                <span><a href="https://dialogue.um.edu.my"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
                                             </span>
                                         <?php endforeach;?>
                                         <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/umbig.png'); ?>"></a></span>

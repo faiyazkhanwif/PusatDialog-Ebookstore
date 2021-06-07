@@ -49,82 +49,7 @@ class User_home extends CI_Controller {
 		$view['user_view'] = "users/user_index";
 		$this->load->view('layouts/user_home', $view);
 	}
-/*
-	public function sell_books()
-	{
-		
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		
 
-		$config = [
-			'upload_path'=>'./uploads/image/',
-			'allowed_types'=>'jpg|png',
-			'max_size' => '400',
-			'overwrite' => FALSE
-		];
-
-		$this->load->library('upload', $config);
-
-		$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
-		$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
-		$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-		$this->form_validation->set_rules('price', 'Price', 'trim|required|alpha_numeric_spaces|strip_tags[price]');
-		$this->form_validation->set_rules('quantity', 'Quantity', 'trim|required|numeric|strip_tags[quantity]');
-		$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
-		
-		$this->form_validation->set_rules('conditionBox', 'Check box', 'trim|required');
-
-
-		if(($this->form_validation->run() && $this->upload->do_upload()) == FALSE)
-		{
-
-			$view['user_view'] = "users/sell_books";
-			$this->load->view('layouts/user_home', $view);
-
-		}
-		else
-		{	
-			$this->load->model('user_model');
-
-			if($this->user_model->add_books())
-			{
-				$this->session->set_flashdata('success', 'Book added successfully,this book will published by admin soon.');
-				redirect('user_home');
-			}
-			else
-			{
-				print $this->db->error();
-			}
-			redirect('user_home/myBooks');	
-		}
-
-		
-	}
-*/
-	public function myBooks()
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
-
-		$this->load->model('user_model');
-		$view['books'] = $this->user_model->my_books();
-
-		$view['user_view'] = "users/users_books";
-		$this->load->view('layouts/user_home', $view);
-	}
-
-	public function myBooks_delete($id)
-	{
-		$this->load->model('user_model');
-		$this->user_model->delete_book($id);
-
-		$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Book deleted successfully');
-		redirect('user_home/myBooks');
-	}
 
 	public function my_orders()
 	{
@@ -155,44 +80,7 @@ class User_home extends CI_Controller {
 		$this->load->view('layouts/user_home', $view);	
 	}
 
-	public function order_view($orderId)
-	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
-		/*==============================*/
 
-		$this->load->model('admin_model');
-		$view['order_detail'] = $this->admin_model->get_order_detail($orderId);
-
-		if($this->admin_model->get_order_detail($orderId))
-		{
-			$this->load->model('user_model');
-			$view['logos'] = $this->user_model->logo_generate();
-
-			$this->load->model('user_model');
-			$view['names'] = $this->user_model->name_generate();
-
-			$this->load->model('user_model');
-			$view['dscs'] = $this->user_model->ft_generate(); 
-
-			$this->load->model('user_model');
-			$view['abtdscs'] = $this->user_model->about_generate(); 
-
-			$this->load->model('user_model');
-			$view['contactdscs'] = $this->user_model->contact_generate();
-
-			$view['user_view'] = "users/myOrder_detail";
-			$this->load->view('layouts/user_home', $view);
-		}
-		else
-		{
-			$view['user_view'] = "temp/404page";
-			$this->load->view('layouts/user_home', $view);
-		}
-		
-
-	}
 
 
 	public function edit_profile($id)
@@ -240,7 +128,7 @@ else
 {
 	$this->load->model('user_model');
 
-	if($this->user_model->edit_profile($id, $data))
+	if($this->user_model->edit_profile($id))
 	{
 		$this->session->set_flashdata('success', 'Your profile information has been updated successfully.');
 		redirect('user_home');
@@ -306,7 +194,7 @@ public function change_password($id)
 
 
 		if(password_verify($cur_password, $passwd->password)){
-			if($this->user_model->changepass($id, $data))
+			if($this->user_model->changepass($id))
 			{
 				$this->session->set_flashdata('success', 'Your have changed your password successfully.');
 				redirect('user_home');

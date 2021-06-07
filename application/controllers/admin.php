@@ -32,6 +32,9 @@ class admin extends CI_Controller {
 		$this->load->model('user_model');
 		$view['dscs'] = $this->user_model->ft_generate();
 
+		$this->load->model('user_model');
+		$view['abtdscs'] = $this->user_model->about_generate(); 
+
 		$view['admin_view'] = "admin/admin_index";
 		$this->load->view('layouts/admin_layout', $view);
 	}
@@ -180,7 +183,7 @@ class admin extends CI_Controller {
 					else
 					{
 						$this->load->model('admin_model');
-						if($this->admin_model->edit_category($id, $data))
+						if($this->admin_model->edit_category($id))
 						{
 							$this->session->set_flashdata('success', 'Category Updated successfully');
 							redirect('admin/category');
@@ -278,7 +281,7 @@ class admin extends CI_Controller {
 
 							if($this->admin_model->add_user())
 							{
-								$this->session->set_flashdata('success', 'User Registration is successfull');
+								$this->session->set_flashdata('success', 'User Registration is successful');
 								redirect('admin/allUsers');
 							}
 							else
@@ -406,50 +409,6 @@ class admin extends CI_Controller {
 
 
 
-					public function booksbr()
-					{
-						$this->load->model('admin_model');
-						$this->load->library('pagination');
-						$config = [
-
-							'base_url' => base_url('admin/booksbr'),
-							'per_page' => 10,
-							'total_rows'=>  $this->admin_model->num_rows_admin_booksbr(),
-							'full_tag_open' => "<ul class='custom-pagination'>",
-							'full_tag_close' => "</ul>", 
-							'first_tag_open' => '<li>',
-							'first_tag_close' => '</li>',
-							'last_tag_open' => '<li>',
-							'last_link'=>'last',
-							'last_tag_close' => '</li>',
-							'next_tag_open' => '<li>',
-							'next_tag_close' => '</li>',
-							'prev_tag_open' => '<li>',
-							'prev_tag_close' => '</li>',
-							'cur_tag_open' => "<li class = 'active'><a>",
-							'cur_tag_close' => '</a></li>',
-						];
-						$this->pagination->initialize($config);
-
-
-						$this->load->model('admin_model');
-						$view['booksbr'] = $this->admin_model->get_booksbr($config['per_page'], $this->uri->segment(3));
-
-						$view['admin_view'] = "admin/booksbr";
-
-						$this->load->model('user_model');
-						$view['logos'] = $this->user_model->logo_generate();
-
-						$this->load->model('user_model');
-						$view['names'] = $this->user_model->name_generate();
-
-						$this->load->model('user_model');
-						$view['dscs'] = $this->user_model->ft_generate();
-
-						$this->load->view('layouts/admin_layout', $view);
-					}
-
-
 
 					/*================ Add Books Page =================*/
 					public function add_books()
@@ -490,7 +449,7 @@ class admin extends CI_Controller {
     // Cover upload
 						$config = array();
 						$config['upload_path'] = './uploads/image/';
-						$config['allowed_types'] = 'jpg|png|';
+						$config['allowed_types'] = 'jpg|png|jpeg';
 						$config['max_size'] = '100000';
 
     $this->load->library('upload', $config, 'coverupload'); // Create custom object for cover upload
@@ -554,7 +513,7 @@ class admin extends CI_Controller {
 
 
     		if ($res=="FALSE") {
-    			$this->session->set_flashdata('danger', 'Please enter a valid link as File link.');
+    			$this->session->set_flashdata('danger', 'This website uses google drive to store PDFs. Please enter a valid drive link as file link.');
     			$this->load->model('user_model');
     			$view['logos'] = $this->user_model->logo_generate();
 
@@ -601,116 +560,6 @@ public function link_check($url)
 }
 
 
-
-/*================ Add Books for borrow Page =================*/
-public function add_booksbr()
-{
-	/*=== LOAD DYNAMIC CATAGORY ===*/
-	$this->load->model('admin_model');
-	$view['category'] = $this->admin_model->get_category();
-	/*==============================*/
-
-	/*==== Image Upload validation*/
-//		$config = [
-//			'upload_path'=>'./uploads/image/',
-//			'allowed_types'=>'jpg|png',
-//			'max_size' => '400',
-//			'overwrite' => FALSE
-//			];
-
-//		$this->load->library('upload', $config);
-
-
-
-
-
-	$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
-	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
-	$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
-	$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-	$this->form_validation->set_rules('price', 'Price', 'trim|required|numeric|strip_tags[price]');
-
-	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
-
-
-    // Cover upload
-	$config = array();
-	$config['upload_path'] = './uploads/image/';
-	$config['allowed_types'] = 'jpg|png|';
-	$config['max_size'] = '100000';
-
-    $this->load->library('upload', $config, 'coverupload'); // Create custom object for cover upload
-    $this->coverupload->initialize($config);
-    $upload_cover = $this->coverupload->do_upload('userfile');
-
-    // Catalog upload
-    $config = array();
-    $config['upload_path'] = './uploads/file/';
-    $config['allowed_types'] = 'pdf';
-    $config['max_size'] = '1000000';
-    $this->load->library('upload', $config, 'catalogupload');  // Create custom object for catalog upload
-    $this->catalogupload->initialize($config);
-    $upload_catalog = $this->catalogupload->do_upload('userfile2');
-
-
-
-
-    if(($this->form_validation->run() && $upload_cover && $upload_catalog) == FALSE)
-    {
-    	$this->load->model('user_model');
-    	$view['logos'] = $this->user_model->logo_generate();
-
-    	$this->load->model('user_model');
-    	$view['names'] = $this->user_model->name_generate();
-
-    	$this->load->model('user_model');
-    	$view['dscs'] = $this->user_model->ft_generate();
-
-    	$view['admin_view'] = "admin/add_booksbr";
-    	$this->load->view('layouts/admin_layout', $view);
-
-    }
-    else
-    {
-		//	$this->load->model('admin_model');
-
-		//	if($this->admin_model->add_books())
-		//	{
-		//		$this->session->set_flashdata('success', 'Book added successfully');
-			//	redirect('admin/books');
-		//	}
-		//	else
-		//	{
-		//		print $this->db->error();
-		//	}
-			// Check uploads success
-    	if ($upload_cover && $upload_catalog) {
-
-      // Both Upload Success
-
-    		$this->load->model('admin_model');
-
-    		if($this->admin_model->add_booksbr())
-    		{
-    			$this->session->set_flashdata('success', 'E-Book added to borrow list successfully');
-    			redirect('admin/booksbr');
-    		}
-    		else
-    		{
-    			print $this->db->error();
-    		}
-    	} else {
-
-      // Error Occured in one of the uploads
-
-    		echo 'Cover upload Error : ' . $this->coverupload->display_errors() . '<br/>';
-    		echo 'Catlog upload Error : ' . $this->catalogupload->display_errors() . '<br/>';
-    	}
-
-    }
-
-
-}
 
 public function book_view($id)
 {
@@ -798,7 +647,7 @@ public function book_edit($id)
 	{
 		$this->load->model('admin_model');
 
-		if($this->admin_model->edit_book($id, $data))
+		if($this->admin_model->edit_book($id))
 		{
 			$this->session->set_flashdata('success', 'Book info update successfully');
 			redirect('admin/books');
@@ -870,149 +719,6 @@ public function order_view($orderId)
 }
 
 
-
-/*======== E-BOOK ======*/
-/*
-public function add_ebooks()
-{
-	/ *=== LOAD DYNAMIC CATAGORY ===* /
-	$this->load->model('admin_model');
-	$view['category'] = $this->admin_model->get_category();
-	/*==============================* /
-
-		#...File Upload validation
-	$config = [
-		'upload_path'=>'./uploads/file/',
-		'allowed_types'=>'pdf',
-		'max_size' => '5200',
-		'overwrite' => FALSE
-	];
-
-
-	$this->load->library('upload', $config);
-
-	$this->form_validation->set_rules('ebook_name', 'Book name', 'trim|required|strip_tags[book_name]');
-	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
-	$this->form_validation->set_rules('author', 'Author name', 'trim|required|alpha_numeric_spaces|strip_tags[author]');
-
-	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
-
-
-	if(($this->form_validation->run() && $this->upload->do_upload()) == FALSE)
-	{
-
-		$view['admin_view'] = "admin/add_ebooks";
-		$this->load->view('layouts/admin_layout', $view);
-
-	}
-	else
-	{
-		$this->load->model('admin_model');
-
-		if($this->admin_model->add_ebooks())
-		{
-			$this->session->set_flashdata('success', 'E-Book added successfully');
-			redirect('admin/ebooks');
-		}
-		else
-		{
-			print $this->db->error();
-		}
-
-	}
-
-}
-
-public function ebooks()
-{
-	$this->load->model('admin_model');
-	$view['ebooks'] = $this->admin_model->get_ebooks();
-
-	$view['admin_view'] = "admin/ebooks";
-	$this->load->view('layouts/admin_layout', $view);
-}
-
-public function ebook_view($id)
-{
-	$this->load->model('admin_model');
-	$view['ebook_detail'] = $this->admin_model->get_ebook_detail($id);
-
-	if($this->admin_model->get_ebook_detail($id))
-	{
-		$view['admin_view'] = "admin/ebook_view";
-		$this->load->view('layouts/admin_layout', $view);
-	}
-	else
-	{
-		$view['admin_view'] = "temp/404page";
-		$this->load->view('layouts/admin_layout', $view);
-	}
-
-}
-
-	#...Deleting e-books
-public function delete_ebook($id)
-{
-	$this->load->model('admin_model');
-	$this->admin_model->delete_ebook($id);
-
-	$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> E-Book deleted successfully.');
-	redirect('admin/ebooks');
-}
-
-public function ready_to_deliver()
-{
-	$this->load->model('admin_model');
-	$view['orders'] = $this->admin_model->get_orders_to_deliver();
-
-	$this->load->model('user_model');
-	$view['logos'] = $this->user_model->logo_generate();
-
-	$this->load->model('user_model');
-	$view['dscs'] = $this->user_model->ft_generate();
-
-	$view['admin_view'] = "admin/ready_to_deliver";
-	$this->load->view('layouts/admin_layout', $view);
-}
-
-public function delivery_details($orderId)
-{
-	$this->load->model('admin_model');
-	$view['order_detail'] = $this->admin_model->get_order_detail($orderId);
-
-	if($this->admin_model->get_order_detail($orderId))
-	{
-		$view['admin_view'] = "admin/delivery_details";
-		$this->load->view('layouts/admin_layout', $view);
-	}
-	else
-	{
-		$view['admin_view'] = "temp/404page";
-		$this->load->view('layouts/admin_layout', $view);
-	}
-}
-
-	#...Confirm delivery
-public function confirm_delivery($orderId)
-{
-	$this->load->model('admin_model');
-	if($this->admin_model->confirm_delivery($orderId, $data))
-	{
-		$this->session->set_flashdata('success','Order number '.$this->uri->segment(3).' is delivered successfully');
-		redirect('admin/ready_to_deliver');
-	}
-}
-
-public function cancle_delivery($orderId)
-{
-	$this->load->model('admin_model');
-	if($this->admin_model->cancle_delivery($orderId, $data))
-	{
-		$this->session->set_flashdata('success','Order number '.$this->uri->segment(3).' is cancled.');
-		redirect('admin/ready_to_deliver');
-	}
-}
-*/
 public function customize(){
 	$this->load->model('user_model');
 	$view['logos'] = $this->user_model->logo_generate();
@@ -1022,6 +728,9 @@ public function customize(){
 
 	$this->load->model('user_model');
 	$view['dscs'] = $this->user_model->ft_generate();
+
+	$this->load->model('user_model');
+	$view['abtdscs'] = $this->user_model->about_generate(); 
 
 	$view['admin_view'] = "admin/customize_web";
 	$this->load->view('layouts/admin_layout', $view);
@@ -1047,7 +756,7 @@ public function changelogo(){
 	/*==== Image Upload validation*/
 	$config = array();
 	$config['upload_path'] = './uploads/image/';
-	$config['allowed_types'] = 'jpg|png|';
+	$config['allowed_types'] = 'jpg|png|jpeg';
 	$config['max_size'] = '100000';
 
     $this->load->library('upload', $config, 'logoupload'); // Create custom object for cover upload
@@ -1465,7 +1174,7 @@ public function change_password($id)
 
 
 		if(password_verify($cur_password, $passwd->password)){
-			if($this->user_model->changepass($id, $data))
+			if($this->user_model->changepass($id))
 			{
 				$this->session->set_flashdata('success', 'Your have changed your password successfully.');
 				redirect('admin');

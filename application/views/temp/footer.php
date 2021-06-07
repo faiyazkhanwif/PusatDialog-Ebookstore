@@ -28,7 +28,7 @@
 
                         <ul>
                             <li><a href="<?= base_url('users/all_books')?>">Buy E-Books</a></li>
-                            <li><a href="<?= base_url('users/all_ebooks')?>">Borrow E-books</a></li>
+                            <li><a href="<?= base_url()?>users/showpromempromo">Read Books for Free <i class="fas fa-arrow-alt-circle-right"></i></a></li>
                             <li><a href="<?= base_url('users/terms')?>">Terms and conditions</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#aboutModal">About Us</a></li>
                             <?php
@@ -44,7 +44,7 @@
                             <div class="logo">
                                 <?php foreach($logos as $logo):?>
                                 <span class="lname">
-                                    <span><a href="#"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
+                                    <span><a href="https://dialogue.um.edu.my"><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?> </a></span>
                                 </span>
                                 <?php endforeach;?>
                                 <span><a href="https://um.edu.my"><img src="<?= base_url('tool/img/umbig.png'); ?>"></a></span>
