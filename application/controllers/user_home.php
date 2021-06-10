@@ -81,7 +81,14 @@ class User_home extends CI_Controller {
 	}
 
 
-
+	public function alpha_dash_space($fullname){
+	    if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
+	        $this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
+	        return FALSE;
+	    } else {
+	        return TRUE;
+	    }
+	}
 
 	public function edit_profile($id)
 	{
@@ -107,7 +114,7 @@ class User_home extends CI_Controller {
 		$this->load->model('user_model');
 		$view['user_details'] = $this->user_model->get_user_details($id);
 
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[1]|strip_tags[name]');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[1]|max_length[80]|strip_tags[name]|callback_alpha_dash_space');
 		$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|numeric|strip_tags[contact]');
 
 
@@ -139,7 +146,66 @@ else
 	}
 }
 }
+public function validate_strongpass($str)
+{
+	$password = trim($str);
 
+	$regex_lowercase = '/[a-z]/';
+	$regex_uppercase = '/[A-Z]/';
+	$regex_number = '/[0-9]/';
+	$regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+
+	if (empty($password))
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field is required.');
+
+		return FALSE;
+	}
+
+	if (preg_match_all($regex_lowercase, $password) < 1)
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field must be have least one lowercase letter.');
+
+		return FALSE;
+	}
+
+	if (preg_match_all($regex_uppercase, $password) < 1)
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one uppercase letter.');
+
+		return FALSE;
+	}
+
+	if (preg_match_all($regex_number, $password) < 1)
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one number.');
+
+		return FALSE;
+	}
+
+	if (preg_match_all($regex_special, $password) < 1)
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+
+		return FALSE;
+	}
+
+	if (strlen($password) < 5)
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field must be at least 5 characters in length.');
+
+		return FALSE;
+	}
+
+	if (strlen($password) > 32)
+	{
+		$this->form_validation->set_message('validate_strongpass', 'The {field} field cannot exceed 32 characters in length.');
+
+		return FALSE;
+	}
+
+	return TRUE;
+}
 
 public function change_password($id)
 {
@@ -166,11 +232,11 @@ public function change_password($id)
 	$view['user_details'] = $this->user_model->get_user_details($id);
 
 
-	$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|alpha_dash|min_length[4]');
+	$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|callback_validate_strongpass');
 
-	$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|alpha_dash|min_length[4]');
+	$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|callback_validate_strongpass');
 	$this->form_validation->set_rules('repassword', 'Confirm Password',
-		'trim|required|alpha_dash|min_length[4]|matches[newpassword]');
+		'trim|required|callback_validate_strongpass|matches[newpassword]');
 
 
 	if($this->form_validation->run() == FALSE)

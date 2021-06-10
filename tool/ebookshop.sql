@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2021 at 08:16 PM
+-- Generation Time: Jun 10, 2021 at 11:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -77,25 +77,6 @@ INSERT INTO `books` (`id`, `book_name`, `book_isbn`, `description`, `author`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booksborrow`
---
-
-CREATE TABLE `booksborrow` (
-  `id` int(11) NOT NULL,
-  `book_name` varchar(200) CHARACTER SET latin1 NOT NULL,
-  `description` text CHARACTER SET latin1 NOT NULL,
-  `author` varchar(200) CHARACTER SET latin1 NOT NULL,
-  `publisher` varchar(200) CHARACTER SET latin1 NOT NULL,
-  `price` varchar(200) NOT NULL,
-  `categoryid` int(11) NOT NULL,
-  `book_image` varchar(200) NOT NULL,
-  `book_file` varchar(200) NOT NULL,
-  `create_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `category`
 --
 
@@ -135,30 +116,6 @@ CREATE TABLE `contactdb` (
 
 INSERT INTO `contactdb` (`contactdsc`) VALUES
 ('Email: pdg@gmail.com\r\n\r\nPhone: +60112192121');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ebooks`
---
-
-CREATE TABLE `ebooks` (
-  `id` int(11) NOT NULL,
-  `ebook_name` varchar(200) NOT NULL,
-  `description` text NOT NULL,
-  `author` varchar(200) NOT NULL,
-  `book_file` varchar(500) NOT NULL,
-  `book_image` varchar(500) NOT NULL,
-  `categoryId` int(11) NOT NULL,
-  `dateTime` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ebooks`
---
-
-INSERT INTO `ebooks` (`id`, `ebook_name`, `description`, `author`, `book_file`, `book_image`, `categoryId`, `dateTime`) VALUES
-(1, 'Concept of programming languages', 'This book describes the fundamental concepts of programming languages by \r\ndiscussing the design issues of the various language constructs, examining the \r\ndesign choices for these constructs in some of the most common languages, \r\nand critically comparing design alternatives.\r\nAny serious study of programming languages requires an examination of \r\nsome related topics, among which are formal methods of describing the syntax \r\nand semantics of programming languages, which are covered in Chapter 3.\r\n\r\nAlso, implementation techniques for various language constructs must be considered: Lexical and syntax analysis are discussed in Chapter 4, and implementation of subprogram linkage is covered in Chapter 10. Implementation of \r\n\r\nsome other language constructs is discussed in various other parts of the book. The following paragraphs outline the contents of the tenth edition', 'Robart W Sebesta', 'http://localhost/PusatDialog-Ebookstore/uploads/file/0152_T_Sebesta_programming.pdf', '', 1, '2019-04-12 14:18:58');
 
 -- --------------------------------------------------------
 
@@ -210,16 +167,6 @@ CREATE TABLE `membershiptransactions` (
   `expiredate` varchar(200) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `membershiptransactions`
---
-
-INSERT INTO `membershiptransactions` (`memtranID`, `userId`, `months`, `subscriptionfee`, `paymentcheck`, `transactiondate`, `expiredate`) VALUES
-(3, 28, 1, 30, 1, '2021-06-05', '2021-07-05'),
-(17, 31, 6, 150, 1, '2021-06-06', '2021-12-06'),
-(18, 30, 3, 80, 1, '2021-06-06', '2021-09-06'),
-(19, 32, 6, 150, 1, '2021-06-06', '2021-12-06');
-
 -- --------------------------------------------------------
 
 --
@@ -234,32 +181,17 @@ CREATE TABLE `orders` (
   `dateTime` timestamp NOT NULL DEFAULT current_timestamp(),
   `bookId` text NOT NULL,
   `status` enum('1','0') NOT NULL DEFAULT '0' COMMENT '1 = accept | 0 = pending',
-  `txn_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `payment_status` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+  `txn_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`, `payment_status`) VALUES
-(29, 24, '70', 1, '2021-04-17 17:21:29', '64', '1', '', ''),
-(30, 25, '95', 1, '2021-04-18 15:43:12', '68', '1', '', ''),
-(31, 25, '138', 1, '2021-04-18 15:49:42', '70, 69', '1', '', ''),
-(32, 24, '87', 1, '2021-04-21 18:08:25', '71', '1', '', ''),
-(33, 24, '138', 1, '2021-04-29 23:14:26', '70, 66', '1', '', ''),
-(34, 25, '70', 1, '2021-04-30 00:21:28', '64', '1', '', ''),
-(35, 24, '66', 1, '2021-05-01 06:55:17', '67', '1', '', ''),
-(36, 26, '78.5', 1, '2021-05-04 06:18:08', '72', '1', '', ''),
-(37, 26, '63.5', 1, '2021-05-30 12:55:09', '73', '1', '', ''),
-(38, 28, '126.5', 1, '2021-05-31 20:26:47', '74, 73', '1', '', ''),
-(39, 28, '53', 1, '2021-06-05 06:55:02', '66', '1', '', ''),
-(40, 26, '53', 1, '2021-06-05 07:08:00', '69', '1', '', ''),
-(41, 31, '85', 1, '2021-06-06 18:07:22', '70', '1', '', ''),
-(42, 32, '150', 1, '2021-06-06 18:18:48', '74, 71', '1', '', ''),
-(43, 33, '85', 1, '2021-06-07 16:34:19', '70', '1', '', ''),
-(44, 33, '106', 1, '2021-06-07 16:35:04', '66, 69', '1', '', ''),
-(45, 33, '78.5', 1, '2021-06-07 17:16:53', '72', '1', '', '');
+INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`) VALUES
+(1, 35, '78.5', 1, '2021-06-10 19:39:08', '72', '1', '-'),
+(2, 35, '85', 1, '2021-06-10 21:06:08', '70', '1', '-'),
+(3, 36, '78.5', 1, '2021-06-10 21:46:39', '72', '1', '-');
 
 -- --------------------------------------------------------
 
@@ -298,14 +230,7 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `review`, `bookId`, `bookname`, `userId`, `dateTime`) VALUES
-(50, 'Wonderful story!', 64, 'Life for dummies', 24, '2021-04-29 23:21:59'),
-(51, 'One of the best books for learning java. Highly recommended!', 70, 'All about Java', 25, '2021-04-30 00:20:40'),
-(52, 'Amazing thriller. Must buy!', 64, 'Life for dummies', 25, '2021-04-30 00:22:13'),
-(53, 'Amazing book for learning software design and architecture.', 72, 'Software Architecture', 26, '2021-05-04 06:19:29'),
-(57, 'Helped me to learn basics of OS.', 71, 'Operating Systems', 24, '2021-05-31 21:09:22'),
-(60, 'Nice!', 74, 'Dummy', 32, '2021-06-06 18:19:40'),
-(65, 'Must read for interviews.', 66, 'Big O notation', 24, '2021-06-07 14:19:05'),
-(67, 'Tester 1 testing Big O.', 66, 'Big O notation', 33, '2021-06-07 16:42:36');
+(1, 'Informative!', 72, 'Software Architecture', 36, '2021-06-10 21:46:53');
 
 -- --------------------------------------------------------
 
@@ -347,28 +272,9 @@ CREATE TABLE `userorderviewonly` (
 --
 
 INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_isbn`, `book_name`, `book_author`, `book_price`, `book_image`, `book_file`) VALUES
-(16, 24, 64, '0-3038-6314-5', 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
-(17, 25, 68, '0-1757-5888-3', 'Confidential kings', 'Jack Barret', '95', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_1141.jpg', 'https://drive.google.com/file/d/13LCudD7rG0KdJ_-MVBwIv-2OGTZ6GMl8/view?usp=sharing'),
-(18, 25, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(19, 25, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
-(20, 24, 71, '0-3430-8635-2', 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing'),
-(21, 24, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(22, 24, 66, '0-3604-3155-0', 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
-(23, 25, 64, '0-3038-6314-5', 'Life for dummies', 'Jack Barret', '70', 'http://localhost/PusatDialog-Ebookstore/uploads/image/587508.png', 'https://drive.google.com/file/d/1ZS6lmAeBPEj2yw7rxaQocyUZGQwKJvkK/view?usp=sharing'),
-(24, 24, 67, '0-3244-3974-1', 'All about Civil Engineering', 'Nora Barret', '33', 'http://localhost/PusatDialog-Ebookstore/uploads/image/Screenshot_132.jpg', 'https://drive.google.com/file/d/1fLI284Qvwga5DT2uR48FcxvY75y4MG4h/view?usp=sharing'),
-(25, 26, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
-(26, 26, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing'),
-(27, 28, 74, '0-4969-8098-X', 'Dummy', 'Test auth', '63', 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing'),
-(28, 28, 73, '0-8488-4900-3', 'TestISBN', 'Dr. Phineas', '63.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/witcher_3_anniversary_edited.jpg', 'https://drive.google.com/file/d/12xDKJu4Z5JLvjp_M5mHP2Q4N0ifOvuF_/view?usp=sharing'),
-(29, 28, 66, '0-3604-3155-0', 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
-(30, 26, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
-(31, 31, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(32, 32, 74, '0-4969-8098-X', 'Dummy', 'Test auth', '63', 'http://localhost/PusatDialog-Ebookstore/uploads/image/pszQdhR2.jpg', 'https://drive.google.com/file/d/1kxENbU3J_rUBgN0ZwatfMsdZ0M5vQzhz/view?usp=sharing'),
-(33, 32, 71, '0-3430-8635-2', 'Operating Systems', 'Test 2', '87', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book3.jpg', 'https://drive.google.com/file/d/1wBVXyKqYLJLUFyrdfOzVhcS_dYfaWVSv/view?usp=sharing'),
-(34, 33, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(35, 33, 66, '0-3604-3155-0', 'Big O notation', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/big-o-cheat-sheet-poster.png', 'https://drive.google.com/file/d/1qwxwVF_J8BmYJYj-rqtCdZEMuq7BaV6n/view?usp=sharing'),
-(36, 33, 69, '0-6588-9287-8', 'PHP made simple', 'Test auth', '53', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book1.jpg', 'https://drive.google.com/file/d/1SnEfJsG4b4I0yuKdhECNOZsTgjgtY-ME/view?usp=sharing'),
-(37, 33, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing');
+(1, 35, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
+(3, 35, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
+(4, 36, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -393,14 +299,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `membershipstatus`, `createdate`) VALUES
 (7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$.E9.WCQylIvQx5PvvZS2ruM33JfNyTeBwOZsH10bYSPkf24it2s.C', 'A', 'normal', '2019-04-21 10:54:26'),
-(24, 'Faiyaz Khan', '+601156432411', 'faiyazkhanwif@gmail.com', '$2y$12$r/hHOMo9/sln/VaacTNzmOLKX7Mki5Md7oPnwqrnUqpx4KTsKp4d6', 'U', 'normal', '2021-03-09 20:11:53'),
-(25, 'User Shahan', '0179121482', 'user@gmail.com', '$2y$12$X3KAxaWIqxrn3xqgQjPEmeQXlMVfVwkPHr8UwUS2pkfNrFZMpq9w.', 'U', 'normal', '2021-04-18 15:32:34'),
-(26, 'Robert Bose', '+6011567845754', 'robert@gmail.com', '$2y$12$ACAOGjptvDzGzAkOUghro.vi5Q/ESAotBSI7Pz8BYpB8JyOyK5W0C', 'U', 'normal', '2021-05-02 03:23:10'),
-(28, 'Vaas', '+6011567845754', 'vaas@gmail.com', '$2y$12$9DMksSN83oG2UMpv8JhtHOF3xZdadYopgGhMCjPBSfzSsN6nvAgVW', 'U', 'pro', '2021-05-31 19:08:04'),
-(30, 'Membershiptester2', '0179121482', 'mt2@gmail.com', '$2y$12$Wx5p.uKoBqTPaRcaPvE1ye2xPUK1ypTGanRv4bl6hG/4Hc0goIyzS', 'U', 'pro', '2021-06-05 19:00:20'),
-(31, 'janina', '4762474643', 'jn@gmail.com', '$2y$12$.TEF2FJCSNLMz4i6tCvU.e/hAw/NyimIfzMJ6/ihh/cSY6ctYNrKm', 'U', 'pro', '2021-06-05 21:53:52'),
-(32, 'Bug tester', '+601156432490', 'bugtester@gmail.com', '$2y$12$QPZUrSsKwGB2hAsTZaWZkOJSPR1wx1V25PEIcKdzf7j3KCubjRhya', 'U', 'pro', '2021-06-06 18:16:23'),
-(33, 'Tester 1', '+8801791029353', 'tester1@gmail.com', '$2y$12$dT1/LNjAHdsc14jEW0W1F.Z14rwb0NuPkZhOp4/qeY2F4SfpMpFTK', 'U', 'normal', '2021-06-07 16:31:54');
+(35, 'Faheem Ibn Habib', '5321241244', 'faheemcricketlover@gmail.com', '$2y$12$cCf1cWHVwg03pNshO1QFfOy2le/05W3S.COGoArWz5S1wtBBfrEoa', 'U', 'normal', '2021-06-10 19:25:28'),
+(36, 'Faiyaz Khan', '+601121721029', 'faiyazkhan@gmail.com', '$2y$12$xLKwe6FpkD5VjBqnLYuXKOnfB62OK7hmHjff4zd6BnXxYAFmyivLC', 'U', 'normal', '2021-06-10 21:40:46');
 
 --
 -- Indexes for dumped tables
@@ -413,21 +313,9 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `booksborrow`
---
-ALTER TABLE `booksborrow`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ebooks`
---
-ALTER TABLE `ebooks`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -478,40 +366,34 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `ebooks`
---
-ALTER TABLE `ebooks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `membershiptransactions`
 --
 ALTER TABLE `membershiptransactions`
-  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

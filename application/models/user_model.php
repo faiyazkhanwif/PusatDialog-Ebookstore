@@ -82,6 +82,12 @@ class user_model extends CI_Model
 	}
 
 
+	public function delete_book($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('books');
+	}
+
 
 	public function reviews($id)
 	{   $SQL = "SELECT * FROM books WHERE id='".$id."'";
@@ -150,13 +156,14 @@ public function add_orders()
 
 		$q[] = $items['qty'];
 		$quantity = implode(', ', $q);
-
+        $txn = "-";
 		$data = array(
 			'userId'	=> $this->session->userdata('id'),
 			'paymentcheck' => $this->input->post('paymentcheck'),
 			'total_price' => $total_price,
 			'bookId' => $books,
-			'status' => $status
+			'status' => $status,
+			'txn_id' => $txn
 
 		);
 		$data2 = array(
@@ -200,6 +207,33 @@ public function get_review_details($id)
 	$query = $this->db->get('reviews');
 	return $query->row();
 }
+	//public function my_published_books()
+	//{
+	//	$this->db->where('userId', $this->session->userdata('id'));
+	//	$query = $this->db->get('books');
+	//	return $query->result();
+	//}
+
+
+	##...Get all E-books and filter category wise E-books
+	//public function get_ebooks()
+	//{
+/*=== SQL join and Data filter ===*/
+	//	$this->db->select('*');
+	//	$this->db->from('category');
+	//	$this->db->join('ebooks', 'ebooks.categoryId = category.id');
+	//	if(isset($_GET['ctg']))
+	//	{
+	//		$a = $_GET['ctg'];
+	//		$query = $this->db->where('category.tag', $a);
+	//		$this->db->order_by('ebooks.id', 'DESC');
+	//		$query = $this->db->get();
+	//		return $query->result();
+	//	}
+	//	$this->db->order_by('ebooks.id', 'DESC');
+	//	$query = $this->db->get();
+	//	return $query->result();
+	//}
 
 
 public function search($query)

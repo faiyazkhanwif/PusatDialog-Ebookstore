@@ -27,23 +27,32 @@ class Users extends CI_Controller {
 		/*==============================*/		
 		redirect($_SERVER['HTTP_REFERER']);
 	}
-
+	public function alpha_dash_space($fullname){
+	    if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
+	        $this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
+	        return FALSE;
+	    } else {
+	        return TRUE;
+	    }
+	}
 	public function registration()
 	{
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|strip_tags[name]');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|strip_tags[name]|callback_alpha_dash_space');
 		$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|max_length[15]|required|numeric');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]',
 			array(
 				'required' => 'Email field can not be left empty.',
 				'is_unique' => 'This email is already registered.')
 		);
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]');
+		//$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]|callback_validate_strongpass');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
+		//$this->form_validation->set_rules('repassword', 'Confirm Password','trim|required|alpha_dash|min_length[4]|matches[password]');
 		$this->form_validation->set_rules('repassword', 'Confirm Password',
-			'trim|required|alpha_dash|min_length[4]|matches[password]');
+			'trim|required|matches[password]|callback_validate_strongpass');
 		$this->form_validation->set_rules('conditionBox', 'Check box', 'trim|required',
 			array('required' => 'You have to check the box.')
 		);
-
+		//$this->form_validation->set_message('validate_strongpass','Password needs');
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -89,11 +98,70 @@ class Users extends CI_Controller {
 		}
 	}
 
+	public function validate_strongpass($str)
+	{
+		$password = trim($str);
 
+		$regex_lowercase = '/[a-z]/';
+		$regex_uppercase = '/[A-Z]/';
+		$regex_number = '/[0-9]/';
+		$regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+
+		if (empty($password))
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field is required.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_lowercase, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must be have least one lowercase letter.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_uppercase, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one uppercase letter.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_number, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one number.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_special, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+
+			return FALSE;
+		}
+
+		if (strlen($password) < 5)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must be at least 5 characters in length.');
+
+			return FALSE;
+		}
+
+		if (strlen($password) > 32)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field cannot exceed 32 characters in length.');
+
+			return FALSE;
+		}
+
+		return TRUE;
+	}
 	public function login()
 	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|alpha_dash');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -130,19 +198,19 @@ class Users extends CI_Controller {
 
 			if($user_data)
 			{
-			    
-			    if ($user_data->membershipstatus=="pro") {
-    				$this->load->model('user_model');
-    				$memdetails = $this->user_model->get_mem_details($user_data->id);
-    				$expiredate = $memdetails->expiredate;
-    				$todaydate = date("Y-m-d");
-    				$exp = strtotime($expiredate);
-    				$td = strtotime($todaydate);
-    				if ($td>$exp) {
-    					$this->load->model('user_model');
-    					$this->user_model->removepromembership($user_data->id);
-    				}
-			    }
+
+				if ($user_data->membershipstatus=="pro") {
+					$this->load->model('user_model');
+					$memdetails = $this->user_model->get_mem_details($user_data->id);
+					$expiredate = $memdetails->expiredate;
+					$todaydate = date("Y-m-d");
+					$exp = strtotime($expiredate);
+					$td = strtotime($todaydate);
+					if ($td>$exp) {
+						$this->load->model('user_model');
+						$this->user_model->removepromembership($user_data->id);
+					}
+				}
 				$login_data = array(
 
 					'user_data' => $user_data,

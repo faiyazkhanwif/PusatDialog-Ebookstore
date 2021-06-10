@@ -17,7 +17,74 @@ class admin extends CI_Controller {
 		/*=== Load the cart library ===*/
 		$this->load->library('cart');
 	}
+	public function alpha_dash_space($fullname){
+	    if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
+	        $this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
+	        return FALSE;
+	    } else {
+	        return TRUE;
+	    }
+	}
+	public function validate_strongpass($str)
+	{
+		$password = trim($str);
 
+		$regex_lowercase = '/[a-z]/';
+		$regex_uppercase = '/[A-Z]/';
+		$regex_number = '/[0-9]/';
+		$regex_special = '/[!@#$%^&*()\-_=+{};:,<.>§~]/';
+
+		if (empty($password))
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field is required.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_lowercase, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must be have least one lowercase letter.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_uppercase, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one uppercase letter.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_number, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one number.');
+
+			return FALSE;
+		}
+
+		if (preg_match_all($regex_special, $password) < 1)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must have at least one special character.' . ' ' . htmlentities('!@#$%^&*()\-_=+{};:,<.>§~'));
+
+			return FALSE;
+		}
+
+		if (strlen($password) < 5)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field must be at least 5 characters in length.');
+
+			return FALSE;
+		}
+
+		if (strlen($password) > 32)
+		{
+			$this->form_validation->set_message('validate_strongpass', 'The {field} field cannot exceed 32 characters in length.');
+
+			return FALSE;
+		}
+
+		return TRUE;
+	}
 	/*=============== Admin Index Page =================*/
 	public function index()
 	{
@@ -250,12 +317,12 @@ class admin extends CI_Controller {
 					/*=============== ADD Users By admin ===============*/
 					public function add_users()
 					{
-						$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|alpha_numeric_spaces');
+						$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|callback_alpha_dash_space');
 						$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|max_length[15]|required|numeric');
 						$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-						$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]');
+						$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
 						$this->form_validation->set_rules('repassword', 'Confirm Password',
-							'trim|required|alpha_dash|min_length[4]|matches[password]');
+							'trim|required|callback_validate_strongpass|matches[password]');
 						$this->form_validation->set_rules('type', 'Type','trim|required');
 						//$this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[80]|strip_tags[address]');
 						//$this->form_validation->set_rules('city', 'City', 'trim|required|alpha_numeric_spaces');
@@ -325,11 +392,11 @@ class admin extends CI_Controller {
 						$this->load->model('admin_model');
 						$view['user_details'] = $this->admin_model->get_user_details($id);
 
-						$this->form_validation->set_rules('name', 'Name', 'trim|max_length[80]|required|strip_tags[name]');
+						$this->form_validation->set_rules('name', 'Name', 'trim|max_length[80]|required|strip_tags[name]|callback_alpha_dash_space');
 						$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|max_length[15]|numeric|strip_tags[contact]');
-						$this->form_validation->set_rules('password', 'Password', 'trim|required|alpha_dash|min_length[4]');
+						$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
 						$this->form_validation->set_rules('repassword', 'Confirm Password',
-							'trim|required|alpha_dash|min_length[4]|matches[password]');
+							'trim|required|callback_validate_strongpass|matches[password]');
 
 						if($this->form_validation->run() == FALSE)
 						{
@@ -1088,7 +1155,7 @@ public function editadminprofile($id)
 	$this->load->model('admin_model');
 	$view['user_details'] = $this->admin_model->get_user_details($id);
 
-	$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]');
+	$this->form_validation->set_rules('name', 'Name', 'trim|required|strip_tags[name]|callback_alpha_dash_space');
 	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|max_length[15]|numeric|strip_tags[contact]');
 
 	if($this->form_validation->run() == FALSE)
@@ -1146,11 +1213,11 @@ public function change_password($id)
 	$view['user_details'] = $this->user_model->get_user_details($id);
 
 
-	$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required|alpha_dash|min_length[4]');
+	$this->form_validation->set_rules('oldpassword', 'Current Password', 'trim|required');
 
-	$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|alpha_dash|min_length[4]');
+	$this->form_validation->set_rules('newpassword', 'New Password', 'trim|required|callback_validate_strongpass');
 	$this->form_validation->set_rules('repassword', 'Confirm Password',
-		'trim|required|alpha_dash|min_length[4]|matches[newpassword]');
+		'trim|required|callback_validate_strongpass|matches[newpassword]');
 
 
 	if($this->form_validation->run() == FALSE)
