@@ -184,7 +184,7 @@ class admin_model extends CI_Model
 		
 		$data = array(
 			'book_name' => $this->input->post('book_name'),
-			'book_isbn' => $this->input->post('book_isbn'),
+			//'book_isbn' => $this->input->post('book_isbn'),
 			'description' => $this->input->post('description'),
 			'author' => $this->input->post('author'),
 			'publisher' => $this->input->post('publisher'),

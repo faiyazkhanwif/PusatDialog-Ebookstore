@@ -44,6 +44,7 @@
 
                     <div class="text-danger form-error"><?= form_error('repassword')?></div>
                     </div>
+                    <div class="text-secondary text-info"><i>*Password should be of 5-32 characters consisting of numbers, capital letters and special characters.</i></div>
                 </div>
                 <br>
                 <div class="form-group">

@@ -12,15 +12,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="book-name" class="col-sm-2 col-form-label">ISBN</label>
-            <div class="col-sm-6">
-                <?= form_input(['name'=>'book_isbn', 'placeholder'=> 'Book ISBN', 'value'=>set_value('book_isbn', $book_detail->book_isbn), 'class'=>'form-control'])?>
-            </div>
-            <div class="col-md-4">
-                <div class="text-danger form-error"><?= form_error('book_isbn')?></div>
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-6">
                 <?= form_textarea(['name'=>'description', 'placeholder'=>'Book Description',  'value'=>set_value('description', $book_detail->description), 'class'=>'form-control', 'rows'=>'5'])?>
