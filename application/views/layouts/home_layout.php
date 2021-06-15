@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-md-5">
                                 <div class="logo animate__animated animate__headShake animate__delay-2s">
                                     <?php foreach($logos as $logo):?>
-                                        <div class="lname"><a href="<?= base_url() ?>home"><span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?>     
+                                        <div class="lname"><a href="<?= base_url() ?>Home"><span><?php print '<img src = "'.strip_tags($logo->logoimg).'" alt = "">';?>     
                                         <?php foreach($names as $name): ?>
 
                                             <?php print $name->orgname;?>
@@ -85,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                                           <div class="admin-search">
-                                            <?= form_open('users/search', ['id'=>'user-search'])?>
+                                            <?= form_open('Users/search', ['id'=>'user-search'])?>
                                             <input type="text" name="search_book" class="form-control" placeholder="Search for ebooks by ISBN, Title or Author">
                                             <button type="submit"><i class="fas fa-search"></i></button>
                                             <?= form_close()?>
@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="ic-cart"><a href="<?= base_url()?>cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>
+                                        <div class="ic-cart"><a href="<?= base_url()?>Cart"><i class="fas fa-shopping-cart"></i> Cart</a></div>
                                         <!--=== cart item count ===-->
                                         <?php if($this->cart->contents()): ?>
                                             <div class="cart-count">
@@ -133,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--==== Recent Books ====-->
             <div class="animate__animated animate__slideInLeft section-padding after-slider">
                 <div class="container">
-                    <div class="section-title"><a style="color: black; text-shadow: 2px 2px #7DAECC;" href="<?= base_url()?>users/all-books">Recently Added</a></div>
+                    <div class="section-title"><a style="color: black; text-shadow: 2px 2px #7DAECC;" href="<?= base_url()?>Users/all-books">Recently Added</a></div>
                     <div><?php $this->load->view('temp/recent_books') ?></div> 
                 </div>   
             </div>
@@ -164,9 +164,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <h3>Our Services</h3>
 
                                 <ul>
-                                    <li><a href="<?= base_url('users/all_books')?>">Buy E-Books</a></li>
-                                    <li><a href="<?= base_url()?>users/showpromempromo">Read Books for Free <i class="fas fa-arrow-alt-circle-right"></i></a></li>
-                                    <li><a href="<?= base_url('users/terms')?>">Terms and conditions</a></li>
+                                    <li><a href="<?= base_url('Users/all_books')?>">Buy E-Books</a></li>
+                                    <li><a href="<?= base_url()?>Users/showpromempromo">Read Books for Free <i class="fas fa-arrow-alt-circle-right"></i></a></li>
+                                    <li><a href="<?= base_url('Users/terms')?>">Terms and conditions</a></li>
                                     <li><a href="#" data-toggle="modal" data-target="#aboutModal">About Us</a></li>
                                     <?php
                             #Load about model 

@@ -8,7 +8,7 @@
             print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
         }
         ?>
-        <?= form_open_multipart("admin/changelogo")?>
+        <?= form_open_multipart("Admin/changelogo")?>
 
         <div class="form-group row">
             <label for="logo_image" class="col-sm-2 col-form-label">Main Logo</label>

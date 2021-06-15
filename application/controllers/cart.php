@@ -13,23 +13,23 @@ class Cart extends CI_Controller {
 	public function index()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate();
 
 		$view['user_view'] = "users/myCart";
 		$this->load->view('layouts/user_layout', $view);
@@ -39,13 +39,13 @@ class Cart extends CI_Controller {
 	public function add_to_cart($id)
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 
 		/*=== Get Books info from database ===*/
-		$this->load->model('admin_model');
-		$books = $this->admin_model->get_book_detail($id);
+		$this->load->model('Admin_model');
+		$books = $this->Admin_model->get_book_detail($id);
 
 		/*=============== Insert Data into cart =============*/
 		$data = array(
@@ -70,7 +70,7 @@ class Cart extends CI_Controller {
 	/*=============== Update data from cart ============*/
 	public function update_cart()
 	{
-		$this->load->model('admin_model');
+		$this->load->model('Admin_model');
 		
 		$contents = $this->input->post();
 		foreach ($contents as $content) 
@@ -87,7 +87,7 @@ class Cart extends CI_Controller {
 			}
 			else 
 			{
-				/* $books = $this->admin_model->get_book_detail($id);
+				/* $books = $this->Admin_model->get_book_detail($id);
 
 				if($content['qty'] <= $books->quantity)
 				{

@@ -12,7 +12,7 @@
       <p class="card-text text-center">Read all books for free for <b>1 Month</b>!</p>
     </div>
     <div class="card-footer">
-      <div class="text-center"><a href="<?= base_url()?>users/viewmembershipcheckout/<?=1?>" type="button" class="btn btn-light">Subscribe</a></div>
+      <div class="text-center"><a href="<?= base_url()?>Users/viewmembershipcheckout/<?=1?>" type="button" class="btn btn-light">Subscribe</a></div>
     </div>
   </div>
   <div class="card text-white bg-info">
@@ -23,7 +23,7 @@
       <p class="card-text text-center">Read all books for free for <b>3 Months</b>!</p>
     </div>
     <div class="card-footer">
-      <div class="text-center"><a href="<?= base_url()?>users/viewmembershipcheckout/<?=3?>" type="button" class="btn btn-light">Subscribe</a></div>
+      <div class="text-center"><a href="<?= base_url()?>Users/viewmembershipcheckout/<?=3?>" type="button" class="btn btn-light">Subscribe</a></div>
     </div>
   </div>
   <div class="card text-white bg-primary">
@@ -34,7 +34,7 @@
       <p class="card-text text-center">Read all books for free for <b>6 Months</b>!</p>
     </div>
     <div class="card-footer">
-      <div class="text-center"><a href="<?= base_url()?>users/viewmembershipcheckout/<?=6?>" type="button" class="btn btn-light">Subscribe</a></div>
+      <div class="text-center"><a href="<?= base_url()?>Users/viewmembershipcheckout/<?=6?>" type="button" class="btn btn-light">Subscribe</a></div>
     </div>
   </div>
 </div>

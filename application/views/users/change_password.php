@@ -10,7 +10,7 @@
             print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
         }
         ?>
-        <?= form_open('user_home/change_password/'.$this->uri->segment(3))?>
+        <?= form_open('User_home/change_password/'.$this->uri->segment(3))?>
         <div id="form-header">Change Your Password</div><br>
 
         <div class="form-group">

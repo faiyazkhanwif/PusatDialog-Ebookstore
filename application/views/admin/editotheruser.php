@@ -4,7 +4,7 @@
     </div>
     <div class="col-lg-8">
 
-           <?= form_open('admin/edit_user/'.$this->uri->segment(3))?>
+           <?= form_open('Admin/edit_user/'.$this->uri->segment(3))?>
             <div id="form-header">Edit User Info and Password</div><br>
 
                 <div class="form-group">

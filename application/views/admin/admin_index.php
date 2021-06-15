@@ -29,8 +29,8 @@
 						</div>
 						
 						<?php 
-						$this->load->model('admin_model');
-						$count_users = count($this->admin_model->get_users());
+						$this->load->model('Admin_model');
+						$count_users = count($this->Admin_model->get_users());
 						print $count_users;
 						?> 
 					</div>
@@ -43,8 +43,8 @@
 							<h6>Current Pro Users</h6>
 						</div>
 						<?php 
-						$this->load->model('admin_model');
-						$count_prousers = count($this->admin_model->count_total_prousers());
+						$this->load->model('Admin_model');
+						$count_prousers = count($this->Admin_model->count_total_prousers());
 						print $count_prousers;
 						?> 
 					</div>
@@ -56,8 +56,8 @@
 							<h6>Total Categories</h6>
 						</div>
 						<?php 
-						$this->load->model('admin_model');
-						$count_category = count($this->admin_model->get_category());
+						$this->load->model('Admin_model');
+						$count_category = count($this->Admin_model->get_category());
 						print $count_category;
 						?> 
 					</div>
@@ -69,8 +69,8 @@
 							<h6>Total E-Books</h6>
 						</div>
 						<?php 
-						$this->load->model('admin_model');
-						$count_books = count($this->admin_model->count_total_books());
+						$this->load->model('Admin_model');
+						$count_books = count($this->Admin_model->count_total_books());
 						print $count_books;
 						?> 
 					</div>
@@ -84,8 +84,8 @@
 							<h6>Total E-book Purchases</h6>
 						</div>
 						<?php 
-						$this->load->model('admin_model');
-						$count_orders = count($this->admin_model->get_orders());
+						$this->load->model('Admin_model');
+						$count_orders = count($this->Admin_model->get_orders());
 						print $count_orders;
 						?> 
 					</div>
@@ -97,7 +97,7 @@
 							<h6>Customize Website</h6>
 						</div>
 						<?php 
-						$this->load->model('admin_model');
+						$this->load->model('Admin_model');
 						?> 
 					</div>
 				</div>

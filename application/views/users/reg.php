@@ -11,7 +11,7 @@
         <div class="reg-form">
             <div class="form-header">Registration Form</div>
 
-           <?= form_open('users/registration')?>
+           <?= form_open('Users/registration')?>
 
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -51,7 +51,7 @@
                     <div class="form-check">
                       <?= form_checkbox(['name'=>'conditionBox', 'class'=>'form-check-input', 'value'=> TRUE]);?>
                       <label class="form-check-label" for="term">
-                        I have agreed to Pusat Dialog's <a href="<?= base_url()?>users/terms" target ="_blank" class="text-primary">terms and conditions</a>. 
+                        I have agreed to Pusat Dialog's <a href="<?= base_url()?>Users/terms" target ="_blank" class="text-primary">terms and conditions</a>. 
                       </label>
                     </div>
                     <div class="text-danger form-error"><?= form_error('conditionBox')?></div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group" id="acc">
                     <span>Already have an account?</span>
-                    <a href="<?= base_url()?>users/login">Login now</a>
+                    <a href="<?= base_url()?>Users/login">Login now</a>
                 </div>
             <?= form_close() ?>
         </div>

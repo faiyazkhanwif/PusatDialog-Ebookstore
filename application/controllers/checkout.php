@@ -20,8 +20,8 @@ class Checkout extends CI_Controller {
 	public function index()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 		$this->form_validation->set_rules('paymentcheck', 'Payment methods', 'trim|required');
 
@@ -30,20 +30,20 @@ class Checkout extends CI_Controller {
 			if($this->cart->contents())
 			{
 
-				$this->load->model('user_model');
-				$view['logos'] = $this->user_model->logo_generate();
+				$this->load->model('User_model');
+				$view['logos'] = $this->User_model->logo_generate();
 
-				$this->load->model('user_model');
-				$view['names'] = $this->user_model->name_generate();
+				$this->load->model('User_model');
+				$view['names'] = $this->User_model->name_generate();
 
-				$this->load->model('user_model');
-				$view['dscs'] = $this->user_model->ft_generate();
+				$this->load->model('User_model');
+				$view['dscs'] = $this->User_model->ft_generate();
 
-				$this->load->model('user_model');
-				$view['abtdscs'] = $this->user_model->about_generate();
+				$this->load->model('User_model');
+				$view['abtdscs'] = $this->User_model->about_generate();
 
-				$this->load->model('user_model');
-				$view['contactdscs'] = $this->user_model->contact_generate();
+				$this->load->model('User_model');
+				$view['contactdscs'] = $this->User_model->contact_generate();
 				
 				$view['user_view'] = "users/checkout_page";
 				$this->load->view('layouts/user_layout', $view);
@@ -57,9 +57,9 @@ class Checkout extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('user_model');
+			$this->load->model('User_model');
 
-			if($this->user_model->add_orders())
+			if($this->User_model->add_orders())
 			{
 				$this->cart->destroy();
 				redirect('checkout/place_order');
@@ -72,27 +72,27 @@ class Checkout extends CI_Controller {
 	public function place_order()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate();
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate();
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 		$view['user_view'] = "users/place_order_page";
 		$this->load->view('layouts/user_layout', $view);
 	}

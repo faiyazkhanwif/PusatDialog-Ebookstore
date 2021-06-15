@@ -13,7 +13,7 @@
   }
   ?>
 
-  <?= form_open("cart/update_cart");?>
+  <?= form_open("Cart/update_cart");?>
   <?php if($this->cart->contents()): ?>
   <table class="table">
   <thead class="thead-light">
@@ -72,7 +72,7 @@ foreach ($this->cart->contents() as $books)
 
       print "<tr>";
       print "<td>";
-      print '<a href ="'.base_url('users/all_books').'" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>';
+      print '<a href ="'.base_url('Users/all_books').'" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>';
       print "</td>";
       print "<td colspan = '1'></td>";
       print "<td>";
@@ -96,11 +96,11 @@ foreach ($this->cart->contents() as $books)
       {
         if($this->session->userdata('logged_in'))
         {
-          print anchor("".base_url('checkout')."", '<i class="fas fa-check"></i> Checkout', ['class'=>'btn btn-outline-danger btn-sm']);
+          print anchor("".base_url('Checkout')."", '<i class="fas fa-check"></i> Checkout', ['class'=>'btn btn-outline-danger btn-sm']);
         }
         else
         {
-          print "<div class='text-danger'>*Please log in to checkout <a href='users/login' class='btn-login'>Login</a></div>";
+          print "<div class='text-danger'>*Please log in to checkout <a href='Users/login' class='btn-login'>Login</a></div>";
         }
       }
       print "</td>";
@@ -109,7 +109,7 @@ foreach ($this->cart->contents() as $books)
 </table>
 <?php else: ?>
   <div><h5>Your cart is empty, or you have not add any products to cart.</h5></div>
-  <div><a href ="<?= base_url('users/all_books') ?>" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-bag"></i> Continue Shopping</a></div>
+  <div><a href ="<?= base_url('Users/all_books') ?>" class="btn btn-outline-success btn-sm"><i class="fas fa-shopping-bag"></i> Continue Shopping</a></div>
 <?php endif; ?>
 
 <br>

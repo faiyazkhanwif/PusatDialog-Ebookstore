@@ -1,7 +1,7 @@
 <div class="container">
     <div class="my-form">
         <div id="form-header">Update book info</div>
-        <?= form_open_multipart("admin/book_edit/{$book_detail->id}")?>
+        <?= form_open_multipart("Admin/book_edit/{$book_detail->id}")?>
         <div class="form-group row">
             <label for="book-name" class="col-sm-2 col-form-label">E-Book Name</label>
             <div class="col-sm-6">

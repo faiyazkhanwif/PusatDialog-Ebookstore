@@ -1,7 +1,7 @@
 <div class="my-form">
     <div id="form-header">Update category</div>
     
-    <?= form_open("admin/ctg_edit/{$ctg_detail->id}")?>
+    <?= form_open("Admin/ctg_edit/{$ctg_detail->id}")?>
         <div class="form-group row">
             <label for="category-name" class="col-sm-2 col-form-label">Category Name</label>
             <div class="col-sm-6">

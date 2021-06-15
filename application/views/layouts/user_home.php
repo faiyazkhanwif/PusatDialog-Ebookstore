@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                                               <div class="admin-search">
-                                                <?= form_open('users/search', ['id'=>'user-search'])?>
+                                                <?= form_open('Users/search', ['id'=>'user-search'])?>
                                                 <input type="text" name="search_book" class="form-control" placeholder="Search for ebooks by ISBN, Title or Author">
                                                 <button type="submit"><i class="fas fa-search"></i></button>
                                                 <?= form_close()?>
@@ -111,10 +111,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="container">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="<?= base_url()?>user-home/boughtbooks">Bought Books</a></li>
-                            <li><a href="<?= base_url()?>user-home/myreviews">My Reviews</a></li>
-                            <li><a href="<?= base_url('user-home/edit-profile/'.$this->session->userdata('id').'')?>">Edit profile</a></li>
-                            <li><a href="<?= base_url()?>users/logout"><i class="fas fa-power-off"></i> Logout</a></li>
+                            <li><a href="<?= base_url()?>User-home/boughtbooks">Bought Books</a></li>
+                            <li><a href="<?= base_url()?>User-home/myreviews">My Reviews</a></li>
+                            <li><a href="<?= base_url('User-home/edit-profile/'.$this->session->userdata('id').'')?>">Edit profile</a></li>
+                            <li><a class="text-danger" href="<?= base_url()?>Users/logout"><i class="fas fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>

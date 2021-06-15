@@ -1,7 +1,7 @@
 <div class="section-title">
 <?php 
-$this->load->model('user_model');
-$count_reviews = count($this->user_model->get_reviews());
+$this->load->model('User_model');
+$count_reviews = count($this->User_model->get_reviews());
 
 print "<a href = '#collapseReview' data-toggle = 'collapse' role = 'button' aria-controls='collapseReview'><i class = 'far fa-comment'></i> Reviews : (".$count_reviews.")</a>";
 ?>

@@ -9,8 +9,8 @@ if($this->session->flashdata('success'))
 <div class="container-fluid">
   <div class="books-menu">
     <ul>
-      <li><a href="<?= base_url()?>admin/books"><i class="fas fa-book"></i> All E-books for sell</a></li>
-      <li><a href="<?= base_url()?>admin/add_books"><i class="fas fa-plus-circle"></i> Add new E-book for sell</a></li>        
+      <li><a href="<?= base_url()?>Admin/books"><i class="fas fa-book"></i> All E-books</a></li>
+      <li><a href="<?= base_url()?>Admin/add_books"><i class="fas fa-plus-circle"></i> Add new E-book</a></li>        
     </ul>
   </div>
 </div>
@@ -39,7 +39,7 @@ if($this->session->flashdata('success'))
      <?php foreach($books as $book): ?>
       <tr>
         <?php print '<td>'.$book->id.'</td>'; ?>
-        <?php print '<td><a href = "'.base_url().'admin/book_view/'.$book->id.'" title="More Description" class= "text-info">'.strip_tags(ucwords($book->book_name)).'</a></td>'; ?>
+        <?php print '<td><a href = "'.base_url().'Admin/book_view/'.$book->id.'" title="More Description" class= "text-info">'.strip_tags(ucwords($book->book_name)).'</a></td>'; ?>
         <?php print '<td class= "text-success">'.strip_tags(ucwords($book->book_isbn)).'</td>'; ?>
 
  <!--       < ?php print '<td><span>'.substr(strip_tags($book->description), 0, 100).'</span></td>'; ?> -->
@@ -52,7 +52,7 @@ if($this->session->flashdata('success'))
 
 
         <?php print '<td>';
-        print '<a href= "'.base_url().'admin/book_view/'.$book->id.'" title= "View More" class="btn btn-primary btn-sm">View</a>&nbsp';
+        print '<a href= "'.base_url().'Admin/book_view/'.$book->id.'" title= "View More" class="btn btn-primary btn-sm">View</a>&nbsp';
 
         print '</td>'; 
         ?>

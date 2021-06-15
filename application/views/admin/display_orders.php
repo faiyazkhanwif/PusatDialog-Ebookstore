@@ -32,7 +32,7 @@ if($this->session->flashdata('success'))
 
 
         <?php print '<td>';
-        print '<a href= "'.base_url().'admin/order_view/'.$order->orderId.'" title= "View Details" class="btn btn-primary btn-sm">Details</a>&nbsp';
+        print '<a href= "'.base_url().'Admin/order_view/'.$order->orderId.'" title= "View Details" class="btn btn-primary btn-sm">Details</a>&nbsp';
         print '</td>'; 
         ?>
       </tr>

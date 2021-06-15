@@ -8,8 +8,8 @@ if($this->session->flashdata('danger'))
 <div class="container-fluid">
     <div class="books-menu">
       <ul>
-        <li><a href="<?= base_url()?>admin/books"><i class="fas fa-book"></i> All E-books for sell</a></li>
-        <li><a href="<?= base_url()?>admin/add_books"><i class="fas fa-plus-circle"></i> Add new E-book for sell</a></li>
+        <li><a href="<?= base_url()?>Admin/books"><i class="fas fa-book"></i> All E-books for sell</a></li>
+        <li><a href="<?= base_url()?>Admin/add_books"><i class="fas fa-plus-circle"></i> Add new E-book for sell</a></li>
 
         
         
@@ -20,7 +20,7 @@ if($this->session->flashdata('danger'))
 <div class="container">
     <div class="my-form">
         <div id="form-header">Add new E-books for sell</div>
-        <?= form_open_multipart("admin/add_books")?>
+        <?= form_open_multipart("Admin/add_books")?>
         <div class="form-group row">
             <label for="book-name" class="col-sm-2 col-form-label">Book Name</label>
             <div class="col-sm-6">

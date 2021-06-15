@@ -3,7 +3,7 @@
         
     </div>
     <div class="col">
-           <?= form_open('user_home/edit_profile/'.$this->uri->segment(3))?>
+           <?= form_open('User_home/edit_profile/'.$this->uri->segment(3))?>
             <div id="form-header">Edit Your Info</div><br>
 
                 <div class="form-group">
@@ -43,7 +43,7 @@
 
             <?= form_close() ?>
 
-            <a class="btn btn-outline-danger btn-sm" href="<?= base_url('user-home/change-password/'.$this->session->userdata('id').'')?>">Change Password</a>
+            <a class="btn btn-outline-danger btn-sm" href="<?= base_url('User-home/change-password/'.$this->session->userdata('id').'')?>">Change Password</a>
     </div>
     <div class="col">
         

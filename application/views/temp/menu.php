@@ -13,7 +13,7 @@
                         <ul>
                             <?php foreach($category as $ctg): ?>
 
-                                <?php print '<li><a href="'.base_url('users/all-books').'/?ctg='.$ctg->tag.'">'.$ctg->category.'</a></li>';?>
+                                <?php print '<li><a href="'.base_url('Users/all-books').'/?ctg='.$ctg->tag.'">'.$ctg->category.'</a></li>';?>
 
                             <?php endforeach; ?>
                         </ul>
@@ -23,9 +23,9 @@
             <div class="col-lg-9 col-md-8">
                 <div class="menu">
                     <ul id="nav">
-                        <li><a href="<?= base_url()?>home">Home</a></li>
-                        <li><a href="<?= base_url()?>users/all-books">All E-Books</a></li>
-                        <li><a href="<?= base_url()?>users/showpromempromo">Read Books for Free <i class="fas fa-arrow-alt-circle-right"></i></a></li>
+                        <li><a href="<?= base_url()?>Home">Home</a></li>
+                        <li><a href="<?= base_url()?>Users/all-books">All E-Books</a></li>
+                        <li><a href="<?= base_url()?>Users/showpromempromo">Read Books for Free <i class="fas fa-arrow-alt-circle-right"></i></a></li>
 
                         <!-- #Button trigger modal -->
                         <li><a href = "#" data-toggle="modal" data-target="#exampleModal">Contact Us</a></li>
@@ -46,20 +46,20 @@
                                 }
                             ?>
 
-                            <a href="<?= base_url()?>users/login" class="btn-primary btn-log"><i class="fas fa-sign-in-alt"></i> Login</a>
-                            <a href="<?= base_url()?>users/registration" class="btn-primary btn-log"><i class="fas fa-user-cog"></i> Register</a>
+                            <a href="<?= base_url()?>Users/login" class="btn-primary btn-log"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            <a href="<?= base_url()?>Users/registration" class="btn-primary btn-log"><i class="fas fa-user-cog"></i> Register</a>
 
                             <?php else: ?>
 
                                <!-- #For admin button  -->
                                <?php if($this->session->userdata('type') == 'A'): ?>
-                                <li class="btn-user"><a href="<?= base_url()?>admin"><i class="fas fa-tools"></i> Admin Dashboard</a></li>
+                                <li class="btn-user"><a href="<?= base_url()?>Admin"><i class="fas fa-tools"></i> Admin Dashboard</a></li>
                             <?php endif; ?>
 
                             <!-- #For user account button  -->
                             <?php $type = $this->session->userdata('type') ?>
                             <?php if($type == 'U'): ?>
-                                <li class="btn-user"><a href="<?= base_url()?>user-home"><i class="far fa-user"></i> My account</a></li>
+                                <li class="btn-user"><a href="<?= base_url()?>User-home"><i class="far fa-user"></i> My account</a></li>
                             <?php endif; ?>
                         </div>
 

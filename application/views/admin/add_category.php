@@ -2,7 +2,7 @@
     <div class="my-form">
     <div id="form-header">Add new category</div>
     
-    <?= form_open('admin/add_category')?>
+    <?= form_open('Admin/add_category')?>
         <div class="form-group row">
             <label for="category-name" class="col-sm-2 col-form-label">Category Name</label>
             <div class="col-sm-6">

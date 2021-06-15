@@ -9,7 +9,7 @@
             print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
         }
         ?>
-        <?= form_open_multipart("admin/changeaboutdsc")?>
+        <?= form_open_multipart("Admin/changeaboutdsc")?>
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">About description</label>
             <div class="col-sm-6">

@@ -27,7 +27,7 @@
                     
                 </div>
                 <div class="col-lg-6">
-                <?= form_open('users/login');?>
+                <?= form_open('Users/login');?>
                     <div class="form-group">
                         <label for="email"><b>Your Email</b></label>
 
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group" id="acc">
                         <span>Don’t have an account?</span>
-                        <a href="<?= base_url() ?>users/registration" class= "text-info">Register now</a>
+                        <a href="<?= base_url() ?>Users/registration" class= "text-info">Register now</a>
                     </div>  
                 <?= form_close();?>
                 </div>

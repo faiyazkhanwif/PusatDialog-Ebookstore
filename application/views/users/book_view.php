@@ -21,7 +21,7 @@
 					<br>
 					<br>
 					<div>
-						<?php print '<a href= "'.base_url().'user-home/readbook/'.$book_detail->id.'" title= "Read" class="btn btn-success btn-lg">Read</a>';?>
+						<?php print '<a href= "'.base_url().'User-home/readbook/'.$book_detail->id.'" title= "Read" class="btn btn-success btn-lg">Read</a>';?>
 					</div>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 		  }
 		  else
 		  {
-		  	print '<div><p>Please log in to write a review. <a href="'.base_url('users/login').'" class = "btn-login">Login</a></p></div>';
+		  	print '<div><p>Please log in to write a review. <a href="'.base_url('Users/login').'" class = "btn-login">Login</a></p></div>';
 		  }
 		  ?>
 

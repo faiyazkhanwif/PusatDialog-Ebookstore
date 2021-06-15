@@ -14,42 +14,42 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 
 		/*=== Recent Books ===*/
-		$this->load->model('user_model');
-		$view['books'] = $this->user_model->recent_books();
+		$this->load->model('User_model');
+		$view['books'] = $this->User_model->recent_books();
 
-		$this->load->model('user_model');
-		$view['mem_details'] = $this->user_model->get_mem_details($this->session->userdata('id'));
+		$this->load->model('User_model');
+		$view['mem_details'] = $this->User_model->get_mem_details($this->session->userdata('id'));
 
-		$this->load->model('user_model');
-		$view['user_details'] = $this->user_model->get_user_details($this->session->userdata('id'));
+		$this->load->model('User_model');
+		$view['user_details'] = $this->User_model->get_user_details($this->session->userdata('id'));
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate(); 
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate(); 
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate();
 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate(); 
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 		/*=== CSE Books ===*/
-		//$this->load->model('user_model');
-		//$view['cse_books'] = $this->user_model->cse_books();
+		//$this->load->model('User_model');
+		//$view['cse_books'] = $this->User_model->cse_books();
 
 		$this->load->view('layouts/home_layout', $view);
 	}

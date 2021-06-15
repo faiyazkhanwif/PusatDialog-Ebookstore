@@ -6,7 +6,7 @@ if($this->session->flashdata('success'))
 }
 ?>
 
-<div class="view-btn"><a href="<?= base_url()?>admin/add_users">Add new user <i class="fas fa-plus-circle"></i></a></div>
+<div class="view-btn"><a href="<?= base_url()?>Admin/add_users">Add new user <i class="fas fa-plus-circle"></i></a></div>
 <br>
 <div class="container">
 	<div id="table-header">All users list</div>
@@ -33,16 +33,24 @@ if($this->session->flashdata('success'))
         <?php print '<td>'.htmlentities($udata->email).'</td>'; ?>
         <?php print '<td>'.htmlentities($udata->type).'</td>'; ?>
 
-        <?php print '<td>';
-        print '<a href= "'.base_url().'admin/edit_user/'.$udata->id.'" title= "Edit" class="btn btn-outline-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>';
+        <?php
+          $id = $this->session->userdata('id');
+          if ($id != ($udata->id)) {
+            print '<td>';
+            print '<a href= "' . base_url() . 'Admin/edit_user/' . $udata->id . '" title= "Edit" class="btn btn-outline-primary btn-sm"><i class="fas fa-pencil-alt"></i></a>';
 
-        print '</td>'; 
+            print '</td>';
+          }
         ?>
 
-        <?php print '<td>';
-        print '<a href= "'.base_url().'admin/user_delete/'.$udata->id.'" title= "Delete" class="btn btn-outline-danger btn-sm delete" data-confirm = "Are you sure to delete this User?"><i class="fas fa-times"></i></a>';
+        <?php
+          $id = $this->session->userdata('id');
+          if ($id != ($udata->id)) {
+            print '<td>';
+            print '<a href= "' . base_url() . 'Admin/user_delete/' . $udata->id . '" title= "Delete" class="btn btn-outline-danger btn-sm delete" data-confirm = "Are you sure to delete this User?"><i class="fas fa-times"></i></a>';
 
-        print '</td>'; 
+            print '</td>';
+          }
         ?>
       </tr>
     <?php endforeach; ?>

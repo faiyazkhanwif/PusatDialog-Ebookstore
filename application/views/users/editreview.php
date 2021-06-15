@@ -4,7 +4,7 @@
     </div>
     <div class="col-lg-8">
 
-           <?= form_open('user-home/editreview/'.$this->uri->segment(3))?>
+           <?= form_open('User-home/editreview/'.$this->uri->segment(3))?>
             <div id="form-header">Edit Review</div><br>
 
                 <div class="form-group">

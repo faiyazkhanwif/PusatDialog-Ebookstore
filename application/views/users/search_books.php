@@ -6,7 +6,7 @@
 	<?php else: ?>
 	<table class="table table-hover table-responsive borderless">
 	<?php foreach($books as $book):?>
-			<tr  class='clickable-row' data-href="<?= base_url('users/book_view/'.$book->id)?>">
+			<tr  class='clickable-row' data-href="<?= base_url('Users/book_view/'.$book->id)?>">
 			<td>
 			<?php print '<img src = "'.strip_tags($book->book_image).'" alt = "" height="170" width = "140">';?>	
 			</td>

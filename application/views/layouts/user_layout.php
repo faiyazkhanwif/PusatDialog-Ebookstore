@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                                                   <div class="admin-search">
-                                                    <?= form_open('users/search', ['id'=>'user-search'])?>
+                                                    <?= form_open('Users/search', ['id'=>'user-search'])?>
                                                     <input type="text" name="search_book" class="form-control" placeholder="Search for ebooks by ISBN, Title or Author">
                                                     <button type="submit"><i class="fas fa-search"></i></button>
                                                     <?= form_close()?>

@@ -34,7 +34,7 @@ if($this->session->flashdata('success'))
         <?php print '<td>'.htmlentities($udata->memtranID).'</td>'; ?>
         <?php 
         print '<td class= "text-info">'.htmlentities($udata->userId).'</td>'; 
-        $extradetails = $this->admin_model->get_user_details($udata->userId);
+        $extradetails = $this->Admin_model->get_user_details($udata->userId);
         print '<td class= "text-info">'.htmlentities($extradetails->name).'</td>';
         print '<td class= "">'.htmlentities($extradetails->contact).'</td>';
         print '<td class= "">'.htmlentities($extradetails->email).'</td>';

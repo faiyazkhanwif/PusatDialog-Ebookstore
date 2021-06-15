@@ -37,8 +37,8 @@
       //$finallink = str_replace("drive","docs",$link);
       //  print '<a href= "'.strip_tags($finallink).'" title= "Read" class="btn btn-primary btn-sm">Read</a>&nbsp';
 
-      print '<a href= "'.base_url().'user-home/editreview/'.$review->id.'" title= "Edit" class="btn btn-primary btn-sm">Edit</a>&nbsp';
-      print '<a href= "'.base_url().'user-home/reviewdelete/'.$review->id.'" title= "Delete" class="btn btn-danger btn-sm delete" data-confirm = "Are you sure to delete this review?"><i class="fas fa-times"></i></a>';
+      print '<a href= "'.base_url().'User-home/editreview/'.$review->id.'" title= "Edit" class="btn btn-primary btn-sm">Edit</a>&nbsp';
+      print '<a href= "'.base_url().'User-home/reviewdelete/'.$review->id.'" title= "Delete" class="btn btn-danger btn-sm delete" data-confirm = "Are you sure to delete this review?"><i class="fas fa-times"></i></a>';
 
 
         print '</td>'; 

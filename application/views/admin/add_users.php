@@ -2,7 +2,7 @@
 <div class="my-form">
     <div id="form-header">Add new user</div>
 
-           <?= form_open('admin/add_users')?>
+           <?= form_open('Admin/add_users')?>
 
                 <div class="form-group">
                     <label for="name">Name</label>

@@ -1,4 +1,4 @@
-<?= form_open("users/book_view/".$this->uri->segment(3)."")?>
+<?= form_open("Users/book_view/".$this->uri->segment(3)."")?>
     <div class="form-group row">
       
         <div class="col-md-10 col-sm-10">

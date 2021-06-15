@@ -25,7 +25,7 @@
         <?php foreach($books as $book): ?>
     <tr>
       <?php print '<td>'.$book->book_isbn.'</td>'; ?>
-      <?php print '<td><a href = "'.base_url().'#" title="" class= "text-info">'.strip_tags(ucwords($book->book_name)).'</a></td>'; ?>
+      <?php print '<td><a href = "'.base_url().'User-home/book_view/'.$book->book_Id.'" title="" class= "text-info">'.strip_tags(ucwords($book->book_name)).'</a></td>'; ?>
 
       <?php print '<td><b>'.strip_tags($book->book_author).'</b></td>'; ?>
       <?php print '<td>RM '.strip_tags($book->book_price).'</td>'; ?>
@@ -41,8 +41,8 @@
       //$finallink = str_replace("drive","docs",$link);
       //  print '<a href= "'.strip_tags($finallink).'" title= "Read" class="btn btn-primary btn-sm">Read</a>&nbsp';
 
-      print '<a href= "'.base_url().'user-home/readbook/'.$book->book_Id.'" title= "Read" class="btn btn-success btn-sm">Read</a>&nbsp&nbsp&nbsp';
-      print '<a href= "'.base_url().'user-home/book_view/'.$book->book_Id.'" title= "Details" class="btn btn-primary btn-sm">Details</a>&nbsp';
+      print '<a href= "'.base_url().'User-home/readbook/'.$book->book_Id.'" title= "Read" class="btn btn-success btn-sm">Read</a>&nbsp&nbsp&nbsp';
+      print '<a href= "'.base_url().'User-home/book_view/'.$book->book_Id.'" title= "Details" class="btn btn-primary btn-sm">Details</a>&nbsp';
 
         print '</td>'; 
       ?>

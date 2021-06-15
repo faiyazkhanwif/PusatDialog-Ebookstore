@@ -8,7 +8,7 @@ if($this->session->flashdata('success'))
 <br>
 <div class="row">
 	<div class="col-lg-6">
-		<?= form_open(base_url('users/subscribeaspro/'.$months))?>
+		<?= form_open(base_url('Users/subscribeaspro/'.$months))?>
 			<div id= "table-header">Payments methods </div>
 			<p>Our online payment uses --- payment gateway which is a smart, fast and reliable online payment service.</p>
 			
@@ -20,7 +20,7 @@ if($this->session->flashdata('success'))
 				<div class="text-danger form-error"><?= form_error('paymentcheck')?></div>
 			</div>
 			
-			<br><div><p>We recommend reading our <a href="<?= base_url()?>users/terms" target ="_blank" class="text-primary">terms and conditions</a> before making any purchase.</p></div>
+			<br><div><p>We recommend reading our <a href="<?= base_url()?>Users/terms" target ="_blank" class="text-primary">terms and conditions</a> before making any purchase.</p></div>
 			<div class="sub">
             <span><?= form_submit(['name'=> 'submit', 'value'=> 'Subscribe', 'class'=>'btn btn-primary my-btn'])?></span>
     		</div>

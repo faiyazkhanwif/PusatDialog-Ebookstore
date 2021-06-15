@@ -4,7 +4,7 @@
     </div>
     <div class="col-lg-5">
 
-           <?= form_open('admin/editadminprofile/'.$this->uri->segment(3))?>
+           <?= form_open('Admin/editadminprofile/'.$this->uri->segment(3))?>
             <div id="form-header">Edit Admin info</div><br>
 
                 <div class="form-group">

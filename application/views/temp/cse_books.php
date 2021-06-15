@@ -6,7 +6,7 @@
                     <?php print '<img src = "'.strip_tags($book->book_image).'" alt = "">';?>
                  <!--=== Restricted user to buy their own book ===-->
                  <?php if($this->session->userdata('id') != $book->userId): ?>   
-                    <?php print '<div id="addto-cart"><a href="'.base_url().'cart/add_to_cart/'.$book->id.'"><i class="fas fa-shopping-cart"></i> Add to cart</a></div>'; ?>
+                    <?php print '<div id="addto-cart"><a href="'.base_url().'Cart/add_to_cart/'.$book->id.'"><i class="fas fa-shopping-cart"></i> Add to cart</a></div>'; ?>
                  <?php endif; ?>
                 </div>
                 <div class="book-text">
@@ -14,7 +14,7 @@
                     <div id="author">By <i><?= $book->author ?></i></div>
                     <div id="price"><?= $book->price ?>.TK</div>
                     <div id="book-details">
-                        <?php print '<a href = "'.base_url().'users/book-view/'.$book->id.'">View details</a>'; ?>
+                        <?php print '<a href = "'.base_url().'Users/book-view/'.$book->id.'">View details</a>'; ?>
                     </div>
                 </div>
             </div>  

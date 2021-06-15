@@ -1,6 +1,6 @@
 <?php 
 
-class admin_model extends CI_Model
+class Admin_model extends CI_Model
 {
 	#...Create category
 	public function create_category()

@@ -15,15 +15,15 @@ class Users extends CI_Controller {
 	public function index()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 		/*==============================*/		
 		redirect($_SERVER['HTTP_REFERER']);
 	}
@@ -57,35 +57,35 @@ class Users extends CI_Controller {
 		if($this->form_validation->run() == FALSE)
 		{
 			/*=== LOAD DYNAMIC CATAGORY ===*/
-			$this->load->model('admin_model');
-			$view['category'] = $this->admin_model->get_category();
+			$this->load->model('Admin_model');
+			$view['category'] = $this->Admin_model->get_category();
 			/*==============================*/
 
 
-			$this->load->model('user_model');
-			$view['logos'] = $this->user_model->logo_generate();
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
 
-			$this->load->model('user_model');
-			$view['dscs'] = $this->user_model->ft_generate();
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
 
 
-			$this->load->model('user_model');
-			$view['names'] = $this->user_model->name_generate();
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
 
-			$this->load->model('user_model');
-			$view['abtdscs'] = $this->user_model->about_generate(); 
+			$this->load->model('User_model');
+			$view['abtdscs'] = $this->User_model->about_generate(); 
 
-			$this->load->model('user_model');
-			$view['contactdscs'] = $this->user_model->contact_generate(); 
+			$this->load->model('User_model');
+			$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 			$view['user_view'] = "users/reg";
 			$this->load->view('layouts/user_layout', $view);
 		}
 		else
 		{
-			$this->load->model('user_model');
+			$this->load->model('User_model');
 
-			if($this->user_model->register_user())
+			if($this->User_model->register_user())
 			{
 				$this->session->set_flashdata('reg_success', 'Your Registration is successful.');
 				redirect('users/login');
@@ -166,49 +166,49 @@ class Users extends CI_Controller {
 		if($this->form_validation->run() == FALSE)
 		{
 			/*=== LOAD DYNAMIC CATAGORY ===*/
-			$this->load->model('admin_model');
-			$view['category'] = $this->admin_model->get_category();
+			$this->load->model('Admin_model');
+			$view['category'] = $this->Admin_model->get_category();
 			/*==============================*/
-			$this->load->model('user_model');
-			$view['logos'] = $this->user_model->logo_generate();
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
 
 
-			$this->load->model('user_model');
-			$view['dscs'] = $this->user_model->ft_generate();
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
 			
-			$this->load->model('user_model');
-			$view['names'] = $this->user_model->name_generate();
-			$this->load->model('user_model');
-			$view['abtdscs'] = $this->user_model->about_generate(); 
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
+			$this->load->model('User_model');
+			$view['abtdscs'] = $this->User_model->about_generate(); 
 
-			$this->load->model('user_model');
-			$view['contactdscs'] = $this->user_model->contact_generate();
+			$this->load->model('User_model');
+			$view['contactdscs'] = $this->User_model->contact_generate();
 
 			$view['user_view'] = "users/login";
 			$this->load->view('layouts/user_layout', $view);
 		}
 		else
 		{
-			$this->load->model('user_model');
+			$this->load->model('User_model');
 
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 
-			$user_data = $this->user_model->login_user($email, $password);
+			$user_data = $this->User_model->login_user($email, $password);
 
 			if($user_data)
 			{
 
 				if ($user_data->membershipstatus=="pro") {
-					$this->load->model('user_model');
-					$memdetails = $this->user_model->get_mem_details($user_data->id);
+					$this->load->model('User_model');
+					$memdetails = $this->User_model->get_mem_details($user_data->id);
 					$expiredate = $memdetails->expiredate;
 					$todaydate = date("Y-m-d");
 					$exp = strtotime($expiredate);
 					$td = strtotime($todaydate);
 					if ($td>$exp) {
-						$this->load->model('user_model');
-						$this->user_model->removepromembership($user_data->id);
+						$this->load->model('User_model');
+						$this->User_model->removepromembership($user_data->id);
 					}
 				}
 				$login_data = array(
@@ -233,7 +233,7 @@ class Users extends CI_Controller {
 				elseif ($user_data->type == 'U') // User
 				{
 					$this->session->set_flashdata('login_success', 'Welcome, <a href = "user-home" class = "text-primary">'.$this->session->userdata('name').'</a>. You have logged in successfully');
-					redirect('home');
+					redirect('Home');
 				}
 
 			}
@@ -253,35 +253,35 @@ class Users extends CI_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('home');	
+		redirect('Home');	
 	}
 
 	public function showpromempromo(){
 		if($this->session->userdata('logged_in') == FALSE){
 			redirect('users/login');
 		} else {
-			$this->load->model('user_model');
-			$user_details = $this->user_model->get_user_details($this->session->userdata('id'));
+			$this->load->model('User_model');
+			$user_details = $this->User_model->get_user_details($this->session->userdata('id'));
 			if ($user_details->membershipstatus=="pro") {
 				redirect('users/all_books');
 			}else{
-				$this->load->model('admin_model');
-				$view['category'] = $this->admin_model->get_category();
+				$this->load->model('Admin_model');
+				$view['category'] = $this->Admin_model->get_category();
 
-				$this->load->model('user_model');
-				$view['logos'] = $this->user_model->logo_generate();
+				$this->load->model('User_model');
+				$view['logos'] = $this->User_model->logo_generate();
 
-				$this->load->model('user_model');
-				$view['dscs'] = $this->user_model->ft_generate();
+				$this->load->model('User_model');
+				$view['dscs'] = $this->User_model->ft_generate();
 
-				$this->load->model('user_model');
-				$view['names'] = $this->user_model->name_generate();
+				$this->load->model('User_model');
+				$view['names'] = $this->User_model->name_generate();
 
-				$this->load->model('user_model');
-				$view['abtdscs'] = $this->user_model->about_generate(); 
+				$this->load->model('User_model');
+				$view['abtdscs'] = $this->User_model->about_generate(); 
 
-				$this->load->model('user_model');
-				$view['contactdscs'] = $this->user_model->contact_generate(); 
+				$this->load->model('User_model');
+				$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 				$view['user_view'] = "users/membership_promo";
 				$this->load->view('layouts/user_layout', $view);
@@ -297,18 +297,18 @@ class Users extends CI_Controller {
 	public function all_books()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 
 		#...Pagination code start
-		$this->load->model('user_model');
+		$this->load->model('User_model');
 		$this->load->library('pagination');
 		$config = [
 
 			'base_url' => base_url('users/all_books'),
 			'per_page' => 18,
-			'total_rows'=>  $this->user_model->num_rows_books(),
+			'total_rows'=>  $this->User_model->num_rows_books(),
 			'full_tag_open' => "<ul class='custom-pagination'>",
 			'full_tag_close' => "</ul>", 
 			'first_tag_open' => '<li>',
@@ -324,25 +324,25 @@ class Users extends CI_Controller {
 		];
 		$this->pagination->initialize($config);
 
-		$this->load->model('user_model');
-		$view['books'] = $this->user_model->get_books($config['per_page'], $this->uri->segment(3));
+		$this->load->model('User_model');
+		$view['books'] = $this->User_model->get_books($config['per_page'], $this->uri->segment(3));
 
 
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate(); 
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 		$view['user_view'] = "users/all_books";
 		$this->load->view('layouts/user_layout', $view);
@@ -352,15 +352,15 @@ class Users extends CI_Controller {
 	public function book_view($id)
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 		if ($this->session->userdata('logged_in') == TRUE) {
-			$this->load->model('user_model');
-			$ud = $this->user_model->get_user_details($this->session->userdata('id'));
+			$this->load->model('User_model');
+			$ud = $this->User_model->get_user_details($this->session->userdata('id'));
 			if ($ud->membershipstatus=="pro") {
-				$this->load->model('user_model');
-				$memdetails = $this->user_model->get_mem_details($ud->id);
+				$this->load->model('User_model');
+				$memdetails = $this->User_model->get_mem_details($ud->id);
 				$expiredate = $memdetails->expiredate;
 				$todaydate = date("Y-m-d");
 				$exp = strtotime($expiredate);
@@ -377,39 +377,39 @@ class Users extends CI_Controller {
 		if($this->form_validation->run() == FALSE)
 		{
 			/*=== Book Details ===*/
-			$this->load->model('admin_model');
-			$view['book_detail'] = $this->admin_model->get_book_detail($id);
+			$this->load->model('Admin_model');
+			$view['book_detail'] = $this->Admin_model->get_book_detail($id);
 			/*=== Get reviews ===*/
-			$this->load->model('user_model');
-			$view['reviews'] = $this->user_model->get_reviews();
+			$this->load->model('User_model');
+			$view['reviews'] = $this->User_model->get_reviews();
 
-			$view['user_details'] = $this->user_model->get_user_details($this->session->userdata('id'));
+			$view['user_details'] = $this->User_model->get_user_details($this->session->userdata('id'));
 
-			if($this->admin_model->get_book_detail($id))
+			if($this->Admin_model->get_book_detail($id))
 			{
 
-				$this->load->model('user_model');
-				$view['logos'] = $this->user_model->logo_generate();
+				$this->load->model('User_model');
+				$view['logos'] = $this->User_model->logo_generate();
 
-				$this->load->model('user_model');
-				$view['dscs'] = $this->user_model->ft_generate();
+				$this->load->model('User_model');
+				$view['dscs'] = $this->User_model->ft_generate();
 
-				$this->load->model('user_model');
-				$view['names'] = $this->user_model->name_generate();
+				$this->load->model('User_model');
+				$view['names'] = $this->User_model->name_generate();
 
 				$view['user_view'] = "users/book_detail";
 				$this->load->view('layouts/user_layout', $view);
 			}
 			else
 			{
-				$this->load->model('user_model');
-				$view['logos'] = $this->user_model->logo_generate();
+				$this->load->model('User_model');
+				$view['logos'] = $this->User_model->logo_generate();
 
-				$this->load->model('user_model');
-				$view['names'] = $this->user_model->name_generate();
+				$this->load->model('User_model');
+				$view['names'] = $this->User_model->name_generate();
 
-				$this->load->model('user_model');
-				$view['dscs'] = $this->user_model->ft_generate();
+				$this->load->model('User_model');
+				$view['dscs'] = $this->User_model->ft_generate();
 
 				$view['user_view'] = "temp/404page";
 				$this->load->view('layouts/user_layout', $view);
@@ -417,17 +417,17 @@ class Users extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('user_model');
-			$view['logos'] = $this->user_model->logo_generate();
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
 
-			$this->load->model('user_model');
-			$view['dscs'] = $this->user_model->ft_generate();
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
 
-			$this->load->model('user_model');
-			$view['names'] = $this->user_model->name_generate();
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
 
-			$this->load->model('user_model');
-			$this->user_model->reviews($id);
+			$this->load->model('User_model');
+			$this->User_model->reviews($id);
 			redirect('user-home/book_view/'.$id.'');
 		}
 
@@ -439,26 +439,26 @@ class Users extends CI_Controller {
 	public function terms()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate(); 
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate(); 
 
-		$this->load->model('user_model');
-		$view['termsdscs'] = $this->user_model->terms_generate();
+		$this->load->model('User_model');
+		$view['termsdscs'] = $this->User_model->terms_generate();
 
 		$view['user_view'] = "temp/terms";
 		$this->load->view('layouts/user_layout', $view);
@@ -471,8 +471,8 @@ class Users extends CI_Controller {
 	public function search()
 	{
 		/*=== LOAD DYNAMIC CATAGORY ===*/
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 		/*==============================*/
 
 
@@ -491,23 +491,23 @@ class Users extends CI_Controller {
 			}else{
 				$query = $query1;
 			}
-			$this->load->model('user_model');
-			$view['books'] = $this->user_model->search($query);
+			$this->load->model('User_model');
+			$view['books'] = $this->User_model->search($query);
 
-			$this->load->model('user_model');
-			$view['logos'] = $this->user_model->logo_generate();
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
 
-			$this->load->model('user_model');
-			$view['dscs'] = $this->user_model->ft_generate();
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
 
-			$this->load->model('user_model');
-			$view['names'] = $this->user_model->name_generate();
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
 
-			$this->load->model('user_model');
-			$view['abtdscs'] = $this->user_model->about_generate(); 
+			$this->load->model('User_model');
+			$view['abtdscs'] = $this->User_model->about_generate(); 
 
-			$this->load->model('user_model');
-			$view['contactdscs'] = $this->user_model->contact_generate(); 
+			$this->load->model('User_model');
+			$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 			$view['user_view'] = "users/search_books";
 			$this->load->view('layouts/user_layout', $view);
@@ -516,23 +516,23 @@ class Users extends CI_Controller {
 	}
 
 	public function viewmembershipcheckout($months){
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate(); 
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 
 		$view['months'] = $months;
@@ -554,23 +554,23 @@ class Users extends CI_Controller {
 	}
 
 	public function subscribeaspro($months){
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate(); 
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate(); 
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate(); 
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate(); 
 
 		$this->form_validation->set_rules('paymentcheck', 'Payment methods', 'trim|required');
 
@@ -587,27 +587,27 @@ class Users extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$this->load->model('user_model');
-			$view['logos'] = $this->user_model->logo_generate();
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
 
-			$this->load->model('user_model');
-			$view['names'] = $this->user_model->name_generate();
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
 
-			$this->load->model('user_model');
-			$view['dscs'] = $this->user_model->ft_generate();
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
 
-			$this->load->model('user_model');
-			$view['abtdscs'] = $this->user_model->about_generate();
+			$this->load->model('User_model');
+			$view['abtdscs'] = $this->User_model->about_generate();
 
-			$this->load->model('user_model');
-			$view['contactdscs'] = $this->user_model->contact_generate();
+			$this->load->model('User_model');
+			$view['contactdscs'] = $this->User_model->contact_generate();
 			$view['months'] = $months;
 			$view['cost'] = $cost;
 			$view['user_view'] = "users/promem_checkout_page";
 			$this->load->view('layouts/user_layout', $view);
 		}else{
-			$this->load->model('user_model');
-			if($this->user_model->subscribeaspro($months,$cost))
+			$this->load->model('User_model');
+			if($this->User_model->subscribeaspro($months,$cost))
 			{
 				redirect('users/proconfirmation');
 
@@ -618,26 +618,26 @@ class Users extends CI_Controller {
 
 	public function proconfirmation(){
 
-		$this->load->model('admin_model');
-		$view['category'] = $this->admin_model->get_category();
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
 
-		$this->load->model('user_model');
-		$view['logos'] = $this->user_model->logo_generate();
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
 
-		$this->load->model('user_model');
-		$view['names'] = $this->user_model->name_generate();
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 
-		$this->load->model('user_model');
-		$view['abtdscs'] = $this->user_model->about_generate();
+		$this->load->model('User_model');
+		$view['abtdscs'] = $this->User_model->about_generate();
 
-		$this->load->model('user_model');
-		$view['contactdscs'] = $this->user_model->contact_generate();
+		$this->load->model('User_model');
+		$view['contactdscs'] = $this->User_model->contact_generate();
 
-		$this->load->model('user_model');
-		$view['dscs'] = $this->user_model->ft_generate();
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
 		$view['user_view'] = "users/promem_confirmed_page";
 		$this->load->view('layouts/user_layout', $view);
 	}

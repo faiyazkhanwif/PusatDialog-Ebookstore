@@ -54,8 +54,8 @@ if($this->session->flashdata('success'))
             <span>
                 <div class="user-orders">
                     <?php 
-                    $this->load->model('user_model');
-                    $count = count($this->user_model->myboughtbooks());
+                    $this->load->model('User_model');
+                    $count = count($this->User_model->myboughtbooks());
                     print "<b>Orders: </b>You have bought ".$count." books till now.";
                     ?>
                 </div>
@@ -63,8 +63,8 @@ if($this->session->flashdata('success'))
             <span>
                 <div class="user-reviews">
                     <?php 
-                    $this->load->model('user_model');
-                    $count = count($this->user_model->my_reviews());
+                    $this->load->model('User_model');
+                    $count = count($this->User_model->my_reviews());
                     print "<b>Reviews: </b>You have written ".$count." reviews of books.";
                     ?>
                 </div>

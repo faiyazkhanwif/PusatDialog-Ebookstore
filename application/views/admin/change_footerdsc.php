@@ -8,7 +8,7 @@
             print '<div class= "alert-danger">'.$this->session->flashdata('danger').'</div>';
         }
         ?>
-        <?= form_open_multipart("admin/changeftdsc")?>
+        <?= form_open_multipart("Admin/changeftdsc")?>
         <div class="form-group row">
             <label for="org-name" class="col-sm-2 col-form-label">Footer Description</label>
             <div class="col-sm-6">
