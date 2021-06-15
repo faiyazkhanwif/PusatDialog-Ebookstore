@@ -11,7 +11,7 @@
                     <label for="name">Name</label>
                     <?= form_input(['name'=>'review', 'placeholder'=>'Current Review', 'value'=>set_value('review', $review->review), 'class'=>'form-control'])?>
 
-                    <div class="text-danger form-error"><?= form_error('name')?></div>
+                    <div class="text-danger form-error"><?= form_error('review')?></div>
                 </div>
                 
                 <br>
