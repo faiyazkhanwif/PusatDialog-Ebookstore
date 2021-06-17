@@ -21,13 +21,13 @@
 <div class="login-form-area">
     <div class="container">
         <div class="login-form">
-            <div class="form-header">Login Form</div>
+            <div class="form-header">Password reset form</div>
             <div class="row">
                 <div class="col-lg-3">
                     
                 </div>
                 <div class="col-lg-6">
-                <?= form_open('Users/login');?>
+                <?= form_open('Users/resetlink');?>
                     <div class="form-group">
                         <label for="email"><b>Your Email</b></label>
 
@@ -35,26 +35,14 @@
 
                         <?= form_error('email', '<div class="text-danger">','</div>'); ?>
                     </div>
-                    <div class="form-group">
-                        <label for="password"><b>Password</b></label>
 
-                        <?= form_password(['name'=>'password','placeholder'=>'Enter your password','value'=> '', 'class'=>'form-control']);?>
-
-                        <?= form_error('password', '<div class="text-danger">','</div>'); ?>
-
-                    </div>
-                    <span>Forgot password?</span>
-                        <a href="<?= base_url() ?>Users/forgotpassword" class= "text-danger">Click here</a>
+                    <span class="text-info"><i>*If an account associated with your email exists in our record, a link for resetting your password will be sent to your email.</i></span>
+                        
                     <br>
                     <br>
-                    <div class="form-group">
-                        <?= form_submit(['name'=>'submit','value'=>'Login', 'class'=>'btn btn-primary my-btn']); ?>&nbsp
-                        <?= form_reset(['name'=> 'reset', 'value'=> 'Reset', 'class'=>'btn btn-danger my-btn-res'])?>
+                    <div class="form-group text-center">
+                        <?= form_submit(['name'=>'submit','value'=>'Reset Password', 'class'=>'btn btn-danger my-btn-res']); ?>&nbsp
                     </div>
-                    <div class="form-group" id="acc">
-                        <span>Don’t have an account?</span>
-                        <a href="<?= base_url() ?>Users/registration" class= "text-info">Register now</a>
-                    </div>  
                 <?= form_close();?>
                 </div>
                 <!--=== Login with social apps ===-->

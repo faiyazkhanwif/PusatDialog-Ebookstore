@@ -40,6 +40,30 @@ class User_model extends CI_Model
 		}
 	}
 
+	public function getmail($email){
+		$this->db->where('email', $email);
+		$result = $this->db->get('users');
+		return $result->result_array();
+	}
+	public function verifyresetpasswordcode($email,$code){
+		$this->db->where('email', $email);
+		$result = $this->db->get('users');
+		$data =  $result->result_array();
+		$name = "";
+		$toemail = "";
+		if (count($data)>0) {
+			foreach ($data as $key) {
+				$name = $key['name'];
+				$toemail = $key['email'];
+			}
+			//echo $name;
+			//echo $toemail;
+			return ($code==md5($this->config->item('salt').$name)) ? true : false;
+		}else{
+			return false;
+		}
+
+	}
 	##...Get all books and filter category wise books
 	public function get_books($limit, $offset)
 	{
@@ -156,7 +180,7 @@ public function add_orders()
 
 		$q[] = $items['qty'];
 		$quantity = implode(', ', $q);
-        $txn = "-";
+		$txn = "-";
 		$data = array(
 			'userId'	=> $this->session->userdata('id'),
 			'paymentcheck' => $this->input->post('paymentcheck'),
@@ -255,6 +279,12 @@ public function get_user_details($id)
 	$this->db->where('id', $id);
 	$query = $this->db->get('users');
 	return $query->row();
+}
+public function get_user_details_alt($email)
+{
+	$this->db->where('email', $email);
+	$query = $this->db->get('users');
+	return $query->result();
 }
 public function get_mem_details($id)
 {
