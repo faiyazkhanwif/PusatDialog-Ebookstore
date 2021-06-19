@@ -469,6 +469,16 @@ public function removepromembership($id)
 
 	return $query = $this->db->where('id', $id)->update('users', $data2);
 }
+public function readbookverification($bookid)
+{
+	$array = array('book_Id' => $bookid, 'user_Id' => $this->session->userdata('id'));
+
+	$this->db->where($array); 
+
+	$query = $this->db->get('userorderviewonly');
+	return $query->result();
+}
+
 } 
 
 

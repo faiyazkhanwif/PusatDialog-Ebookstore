@@ -641,6 +641,12 @@ class Users extends CI_Controller {
     			$this->load->model('User_model');
     			$view['names'] = $this->User_model->name_generate();
 
+                $this->load->model('User_model');
+			    $view['contactdscs'] = $this->User_model->contact_generate(); 
+
+                $this->load->model('User_model');
+			    $view['abtdscs'] = $this->User_model->about_generate();
+
     			$view['user_view'] = "users/book_detail";
     			$this->load->view('layouts/user_layout', $view);
     		}
@@ -654,6 +660,12 @@ class Users extends CI_Controller {
 
     			$this->load->model('User_model');
     			$view['dscs'] = $this->User_model->ft_generate();
+
+                $this->load->model('User_model');
+			    $view['contactdscs'] = $this->User_model->contact_generate(); 
+
+                $this->load->model('User_model');
+			    $view['abtdscs'] = $this->User_model->about_generate();
 
     			$view['user_view'] = "temp/404page";
     			$this->load->view('layouts/user_layout', $view);
@@ -669,6 +681,12 @@ class Users extends CI_Controller {
 
     		$this->load->model('User_model');
     		$view['names'] = $this->User_model->name_generate();
+
+            $this->load->model('User_model');
+			$view['contactdscs'] = $this->User_model->contact_generate(); 
+
+            $this->load->model('User_model');
+			$view['abtdscs'] = $this->User_model->about_generate();
 
     		$this->load->model('User_model');
     		$this->User_model->reviews($id);

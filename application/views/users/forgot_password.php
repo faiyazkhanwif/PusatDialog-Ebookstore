@@ -36,7 +36,7 @@
                         <?= form_error('email', '<div class="text-danger">','</div>'); ?>
                     </div>
 
-                    <span class="text-info"><i>*If an account associated with your email exists in our record, a link for resetting your password will be sent to your email.</i></span>
+                    <span class="text-info"><i>*If an account associated with your email exists in our record, a link for resetting your password will be sent to your email. It may take 30-60 seconds.</i></span>
                         
                     <br>
                     <br>

@@ -18,12 +18,12 @@ class Admin extends CI_Controller {
 		$this->load->library('cart');
 	}
 	public function alpha_dash_space($fullname){
-	    if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
-	        $this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
-	        return FALSE;
-	    } else {
-	        return TRUE;
-	    }
+		if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
+			$this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
+			return FALSE;
+		} else {
+			return TRUE;
+		}
 	}
 	public function validate_strongpass($str)
 	{
@@ -823,7 +823,7 @@ public function changelogo(){
 	/*==== Image Upload validation*/
 	$config = array();
 	$config['upload_path'] = './uploads/image/';
-	$config['allowed_types'] = 'jpg|png|jpeg';
+	$config['allowed_types'] = 'jpg|png|jpeg|gif';
 	$config['max_size'] = '100000';
 
     $this->load->library('upload', $config, 'logoupload'); // Create custom object for cover upload

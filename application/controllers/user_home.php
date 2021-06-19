@@ -82,12 +82,12 @@ class User_home extends CI_Controller {
 
 
 	public function alpha_dash_space($fullname){
-	    if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
-	        $this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
-	        return FALSE;
-	    } else {
-	        return TRUE;
-	    }
+		if (! preg_match('/^[a-zA-Z\s]+$/', $fullname)) {
+			$this->form_validation->set_message('alpha_dash_space', 'The %s field may only contain alpha characters & White spaces');
+			return FALSE;
+		} else {
+			return TRUE;
+		}
 	}
 
 	public function edit_profile($id)
@@ -426,6 +426,28 @@ public function editreview($id)
 public function readbook($id)
 {	
 		//print($id);
+	if ($this->session->userdata('logged_in') == TRUE) {
+		$this->load->model('User_model');
+		$ud = $this->User_model->get_user_details($this->session->userdata('id'));
+
+		$ownerverification = count($this->User_model->readbookverification($id));
+		if ($ownerverification<1) {
+			if ($ud->membershipstatus=="pro") {
+				$this->load->model('User_model');
+				$memdetails = $this->User_model->get_mem_details($ud->id);
+				$expiredate = $memdetails->expiredate;
+				$todaydate = date("Y-m-d");
+				$exp = strtotime($expiredate);
+				$td = strtotime($todaydate);
+				if ($td>$exp) {
+					redirect('users/logout');
+				}
+			}elseif ($ud->membershipstatus=="normal") {
+				redirect('users/logout');
+			}
+		}
+	}
+
 	$this->load->model('User_model');
 	$view['logos'] = $this->User_model->logo_generate();
 

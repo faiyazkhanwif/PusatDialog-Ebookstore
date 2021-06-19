@@ -94,6 +94,18 @@ class Admin_model extends CI_Model
 	{
 		$this->db->where('id', $id);
 		$this->db->delete('users');
+
+        $this->db->where('user_Id', $id);
+		$this->db->delete('userorderviewonly');
+
+		$this->db->where('userId', $id);
+		$this->db->delete('reviews');
+
+		$this->db->where('userId', $id);
+		$this->db->delete('orders');
+
+		$this->db->where('userId', $id);
+		$this->db->delete('membershiptransactions');
 		
 	}
 
