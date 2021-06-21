@@ -501,7 +501,7 @@ class Admin extends CI_Controller {
 
 						$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
 						//$this->form_validation->set_rules('book_isbn', 'Book ISBN', 'trim|required|strip_tags[book_isbn]');
-						$this->form_validation->set_rules('book_isbn', 'Book ISBN', 'trim|required|strip_tags[book_isbn]|is_unique[books.book_isbn]',
+						$this->form_validation->set_rules('book_isbn', 'Book ISBN', 'trim|required|strip_tags[book_isbn]|min_length[10]|max_length[13]|is_unique[books.book_isbn]',
 							array(
 								'is_unique' => 'This ISBN exists in the database.')
 						);
@@ -517,7 +517,7 @@ class Admin extends CI_Controller {
 						$config = array();
 						$config['upload_path'] = './uploads/image/';
 						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = '100000';
+						$config['max_size'] = '10000';
 
     $this->load->library('upload', $config, 'coverupload'); // Create custom object for cover upload
     $this->coverupload->initialize($config);
@@ -824,7 +824,7 @@ public function changelogo(){
 	$config = array();
 	$config['upload_path'] = './uploads/image/';
 	$config['allowed_types'] = 'jpg|png|jpeg|gif';
-	$config['max_size'] = '100000';
+	$config['max_size'] = '10000';
 
     $this->load->library('upload', $config, 'logoupload'); // Create custom object for cover upload
     $this->logoupload->initialize($config);

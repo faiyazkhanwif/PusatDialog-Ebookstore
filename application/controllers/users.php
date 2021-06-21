@@ -347,12 +347,12 @@ class Users extends CI_Controller {
 		$config['smtp_port']    = '465';
 		$config['smtp_timeout'] = '60';
 
-    	$config['smtp_user']    = 'pusatdialogsmtp@gmail.com';    //Important
-    	$config['smtp_pass']    = 'kajlzvupqmtcwhfq';  //Important
+    	$config['smtp_user']    = 'pusatdialogtemp@gmail.com';   
+    	$config['smtp_pass']    = 'ethqhltlknbgeprt';  
 
     	$config['charset']    = 'utf-8';
     	$config['newline']    = "\r\n";
-    	$config['mailtype'] = 'html'; // or html
+    	$config['mailtype'] = 'html'; 
     	$config['validation'] = TRUE;
     	$this->load->library('email');
     	$email_code = md5($this->config->item('salt').$firstname);
