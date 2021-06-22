@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2021 at 11:49 PM
+-- Generation Time: Jun 22, 2021 at 06:56 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -191,7 +191,8 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`) VALUES
 (1, 35, '78.5', 1, '2021-06-10 19:39:08', '72', '1', '-'),
 (2, 35, '85', 1, '2021-06-10 21:06:08', '70', '1', '-'),
-(3, 36, '78.5', 1, '2021-06-10 21:46:39', '72', '1', '-');
+(3, 36, '78.5', 1, '2021-06-10 21:46:39', '72', '1', '-'),
+(4, 37, '78.5', 1, '2021-06-19 08:46:22', '72', '1', '-');
 
 -- --------------------------------------------------------
 
@@ -274,7 +275,8 @@ CREATE TABLE `userorderviewonly` (
 INSERT INTO `userorderviewonly` (`id`, `user_Id`, `book_Id`, `book_isbn`, `book_name`, `book_author`, `book_price`, `book_image`, `book_file`) VALUES
 (1, 35, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
 (3, 35, 70, '0-5181-8483-8', 'All about Java', 'Jimmy Johnson', '85', 'http://localhost/PusatDialog-Ebookstore/uploads/image/book2.jpg', 'https://drive.google.com/file/d/1Em7wJ9erJihxEsRLN-Quk_F-rAotrroD/view?usp=sharing'),
-(4, 36, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing');
+(4, 36, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing'),
+(5, 37, 72, '0-7948-8076-2', 'Software Architecture', 'David Budgen', '78.5', 'http://localhost/PusatDialog-Ebookstore/uploads/image/111111121.JPG', 'https://drive.google.com/file/d/1qgHQuvVp0Iwri5WJfQdq5qnwTxrWm4Of/view?usp=sharing');
 
 -- --------------------------------------------------------
 
@@ -298,9 +300,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `membershipstatus`, `createdate`) VALUES
-(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$.E9.WCQylIvQx5PvvZS2ruM33JfNyTeBwOZsH10bYSPkf24it2s.C', 'A', 'normal', '2019-04-21 10:54:26'),
+(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$UIeiAEgVSmGN83b1l3PYpe8dauukuWNCLR5TplbU92yPKDJ4QaYHe', 'A', 'normal', '2019-04-21 10:54:26'),
 (35, 'Faheem Ibn Habib', '5321241244', 'faheemcricketlover@gmail.com', '$2y$12$cCf1cWHVwg03pNshO1QFfOy2le/05W3S.COGoArWz5S1wtBBfrEoa', 'U', 'normal', '2021-06-10 19:25:28'),
-(36, 'Faiyaz Khan', '+601121721029', 'faiyazkhan@gmail.com', '$2y$12$xLKwe6FpkD5VjBqnLYuXKOnfB62OK7hmHjff4zd6BnXxYAFmyivLC', 'U', 'normal', '2021-06-10 21:40:46');
+(36, 'Faiyaz Khan', '+601121721029', 'faiyazkhan@gmail.com', '$2y$12$xLKwe6FpkD5VjBqnLYuXKOnfB62OK7hmHjff4zd6BnXxYAFmyivLC', 'U', 'normal', '2021-06-10 21:40:46'),
+(37, 'Faiyaz pass tester', '124215353252', 'faiyazkhanwif@gmail.com', '$2y$12$F13BxsS5iIRVqK4skk0Twu4ZoLnVr9T2TjKL1DXN0iwnkfgUjnKJi', 'U', 'normal', '2021-06-16 19:12:28');
 
 --
 -- Indexes for dumped tables
@@ -369,13 +372,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `membershiptransactions`
 --
 ALTER TABLE `membershiptransactions`
-  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `memtranID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -387,13 +390,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `userorderviewonly`
 --
 ALTER TABLE `userorderviewonly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
