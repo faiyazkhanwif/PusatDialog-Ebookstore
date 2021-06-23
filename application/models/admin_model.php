@@ -215,6 +215,12 @@ class Admin_model extends CI_Model
 	#...Delete book
 	public function delete_book($id)
 	{
+		$this->db->where('book_Id', $id);
+		$this->db->delete('userorderviewonly');
+
+		$this->db->where('bookId', $id);
+		$this->db->delete('reviews');
+
 		$this->db->where('id', $id);
 		$this->db->delete('books');
 	}
