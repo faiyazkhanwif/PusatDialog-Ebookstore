@@ -1,29 +1,39 @@
-###################
-What is CodeIgniter
-###################
+##################################################
+E-book Publication borrowing and Purchasing System
+##################################################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
 
-*******************
-Release Information
-*******************
+***************
+Functionalities
+***************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+- The system shall allow the publisher to log into the system as admin.
+- The system shall allow the admin to add more admin or user accounts.
+- The system shall allow the admin to add new E-books for sale.
+- The system shall allow the admin to edit the descriptions of E-books.
+- The system shall allow the admin to delete any E-book up for sale.
+- The system shall allow the admin to categorize the E-books.
+- The system shall allow the admin to add new E-book categories.
+- The system shall allow the admin to change the website's logo, name, contact us, about us, footer description and terms and conditions.
+- The system shall allow the admin to see all orders and their details.
+- The system shall allow the admin to delete and edit other accounts.
+- The system shall allow the admin to change admin password.
+- The system shall allow the admin to see which users have pro membership.
+- The system shall allow the user to register.
+- The system shall allow the user to log into the system.
+- The system shall allow the user to edit his/her profile information.
+- The system shall allow the user to change his/her password.
+- The system shall allow the user to buy E-books.
+- The system shall allow the user to read E-books after buying.
+- The system shall allow the user to search for their preferable E-book by book name or author name.
+- The system shall allow the user to view a list of books he/she bought.
+- The system shall prevent the user from downloading E-books.
+- The system shall allow the users to add reviews of a book after they have purchased it.
+- The system shall allow the users to edit and delete the reviews they have given.
+- The system shall allow the users to see all reviews of a book.
+- The system shall allow the user to reset password using the “forgot password” feature.
+- The system shall allow the user to subscribe to pro-membership so that he/she can read all books for free until the pro membership expires.
 
-**************************
-Changelog and New Features
-**************************
-
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
 
 *******************
 Server Requirements
@@ -35,36 +45,12 @@ It should work on 5.3.7 as well, but we strongly advise you NOT to run
 such old versions of PHP, because of potential security and performance
 issues, as well as missing features.
 
-************
-Installation
-************
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+**************************
+Installation or Deployment
+**************************
 
-*******
-License
-*******
+The SQL file inside the tool folder has to be imported to phpmyadmin. Before uploading the files to the server, the “htaccess” file has to be edited to remove or edit the folder name based on the server requirement. Furthermore, the new URL has to be added inside the config.php file inside the config folder. To log in as the admin, the following login credentials can be used.
+User email: admin@gmail.com
+Password: $Testpass1$
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
