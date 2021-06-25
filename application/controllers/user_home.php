@@ -14,18 +14,16 @@ class User_home extends CI_Controller {
 			redirect('users/login');
 		}
 
-		/*=== Load the cart library ===*/
+
 		$this->load->library('cart');
 	}
 
 	public function index()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
-		/*==============================*/
-
-		#...Get User Info
+	
 		$id = $this->session->userdata('id');
 		$this->load->model('User_model');
 		$view['user_details'] = $this->User_model->get_user_details($id);
@@ -53,10 +51,10 @@ class User_home extends CI_Controller {
 
 	public function my_orders()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
-		/*==============================*/
+		
 
 		$this->load->model('User_model');
 		$view['orders'] = $this->User_model->my_orders();
@@ -92,10 +90,10 @@ class User_home extends CI_Controller {
 
 	public function edit_profile($id)
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
-		/*==============================*/
+		
 		$this->load->model('User_model');
 		$view['logos'] = $this->User_model->logo_generate();
 

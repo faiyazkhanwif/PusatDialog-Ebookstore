@@ -14,7 +14,6 @@ class Admin extends CI_Controller {
 			redirect('users/login');
 		}
 
-		/*=== Load the cart library ===*/
 		$this->load->library('cart');
 	}
 	public function alpha_dash_space($fullname){
@@ -85,7 +84,7 @@ class Admin extends CI_Controller {
 
 		return TRUE;
 	}
-	/*=============== Admin Index Page =================*/
+
 	public function index()
 	{
 		$this->load->model('Admin_model');
@@ -105,434 +104,398 @@ class Admin extends CI_Controller {
 		$view['admin_view'] = "admin/admin_index";
 		$this->load->view('layouts/admin_layout', $view);
 	}
-/*======================================================
-					CATEGORY
-					========================================================*/
-
-					/*============= Category && Category List Page =========*/
-					public function category()
-					{
-						$this->load->model('Admin_model');
-						$view['category'] = $this->Admin_model->get_category();
-
-						$this->load->model('User_model');
-						$view['logos'] = $this->User_model->logo_generate();
-
-						$this->load->model('User_model');
-						$view['names'] = $this->User_model->name_generate();
-
-						$this->load->model('User_model');
-						$view['dscs'] = $this->User_model->ft_generate();
-
-						$view['admin_view'] = "admin/category";
-						$this->load->view('layouts/admin_layout', $view);
-					}
-
-					/*============ Category Create page =====================*/
-					public function add_category()
-					{
-						$this->form_validation->set_rules('category', 'Category name', 'trim|required|alpha_numeric_spaces');
-						$this->form_validation->set_rules('tag', 'Category tag', 'trim|required|alpha|strip_tags[tag]');
-						$this->form_validation->set_rules('description', 'Description', 'trim|required|strip_tags[description]');
-
-						if($this->form_validation->run() == FALSE)
-						{
-							$this->load->model('User_model');
-							$view['logos'] = $this->User_model->logo_generate();
-
-							$this->load->model('User_model');
-							$view['names'] = $this->User_model->name_generate();
-
-
-							$this->load->model('User_model');
-							$view['dscs'] = $this->User_model->ft_generate();
-
-							$view['admin_view'] = "admin/add_category";
-							$this->load->view('layouts/admin_layout', $view);
-						}
-						else
-						{
-							$this->load->model('Admin_model');
-							if($this->Admin_model->create_category())
-							{
-								$this->session->set_flashdata('success', 'Category created successfully');
-								redirect('admin/category');
-							}
-							else
-							{
-								print $this->db->error();
-							}
-						}
-
-					}
-
-					/*================ Category Detail display page ================*/
-					public function ctg_view($id)
-					{
-						$this->load->model('Admin_model');
-						$view['ctg_detail'] = $this->Admin_model->get_ctg_detail($id);
-
-						if($this->Admin_model->get_ctg_detail($id))
-						{
-							$this->load->model('User_model');
-							$view['logos'] = $this->User_model->logo_generate();
-
-							$this->load->model('User_model');
-							$view['names'] = $this->User_model->name_generate();
-
-							$this->load->model('User_model');
-							$view['dscs'] = $this->User_model->ft_generate();
-
-							$view['admin_view'] = "admin/ctg_view";
-							$this->load->view('layouts/admin_layout', $view);
-						}
-						else
-						{
-							$this->load->model('User_model');
-							$view['logos'] = $this->User_model->logo_generate();
-
-							$this->load->model('User_model');
-							$view['names'] = $this->User_model->name_generate();
-
-							$this->load->model('User_model');
-							$view['dscs'] = $this->User_model->ft_generate();
-
-							$view['admin_view'] = "temp/404page";
-							$this->load->view('layouts/admin_layout', $view);
-						}
-
-					}
-
-					/*================ Category Edit || Update ================*/
-					public function ctg_edit($id)
-					{
-						/* For geting the existing info...*/
-						$this->load->model('Admin_model');
-						$view['ctg_detail'] = $this->Admin_model->get_ctg_detail($id);
-
-						$this->form_validation->set_rules('category', 'Category name', 'trim|required|alpha_numeric_spaces');
-						$this->form_validation->set_rules('tag', 'Category tag', 'trim|required|alpha|strip_tags[tag]');
-						$this->form_validation->set_rules('description', 'Description', 'trim|required|strip_tags[description]');
-
-
-						if($this->form_validation->run() == FALSE)
-						{
-							if($this->Admin_model->get_ctg_detail($id))
-							{
-								$this->load->model('User_model');
-								$view['logos'] = $this->User_model->logo_generate();
-
-								$this->load->model('User_model');
-								$view['names'] = $this->User_model->name_generate();
-
-								$this->load->model('User_model');
-								$view['dscs'] = $this->User_model->ft_generate();
-
-								$view['admin_view'] = "admin/ctg_edit";
-								$this->load->view('layouts/admin_layout', $view);
-							}
-							else
-								{		$this->load->model('User_model');
-							$view['logos'] = $this->User_model->logo_generate();
-
-							$this->load->model('User_model');
-							$view['names'] = $this->User_model->name_generate();
-
-
-							$this->load->model('User_model');
-							$view['dscs'] = $this->User_model->ft_generate();
-
-							$view['admin_view'] = "temp/404page";
-							$this->load->view('layouts/admin_layout', $view);
-						}
-
-					}
-					else
-					{
-						$this->load->model('Admin_model');
-						if($this->Admin_model->edit_category($id))
-						{
-							$this->session->set_flashdata('success', 'Category Updated successfully');
-							redirect('admin/category');
-						}
-						else
-						{
-							print $this->db->error();
-						}
-					}
-				}
-
-				/*=============== Delete Category =================*/
-				public function ctg_delete($id)
-				{
-					$this->load->model('Admin_model');
-					$this->Admin_model->delete_category($id);
-
-					$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Category deleted successfully');
-					redirect('admin/category');
-				}
-
-
-
-/*==================================================
-					USERS
-					====================================================*/
-
-					/*============= Display all Users ================*/
-					public function allUsers()
-					{
-						$this->load->model('Admin_model');
-						$view['users_data'] = $this->Admin_model->get_users();
-
-						$this->load->model('User_model');
-						$view['logos'] = $this->User_model->logo_generate();
-
-						$this->load->model('User_model');
-						$view['names'] = $this->User_model->name_generate();
-
-						$this->load->model('User_model');
-						$view['dscs'] = $this->User_model->ft_generate();
-
-						$view['admin_view'] = "admin/view_users";
-						$this->load->view('layouts/admin_layout', $view);
-					}
-
-					public function currentpromembers()
-					{
-						$this->load->model('Admin_model');
-						$view['users_data'] = $this->Admin_model->get_promembers();
-
-						$this->load->model('User_model');
-						$view['logos'] = $this->User_model->logo_generate();
-
-						$this->load->model('User_model');
-						$view['names'] = $this->User_model->name_generate();
-
-						$this->load->model('User_model');
-						$view['dscs'] = $this->User_model->ft_generate();
-
-						$view['admin_view'] = "admin/view_prousers";
-						$this->load->view('layouts/admin_layout', $view);
-					}
-					/*=============== ADD Users By admin ===============*/
-					public function add_users()
-					{
-						$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|callback_alpha_dash_space');
-						$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|max_length[15]|required|numeric');
-						$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-						$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
-						$this->form_validation->set_rules('repassword', 'Confirm Password',
-							'trim|required|callback_validate_strongpass|matches[password]');
-						$this->form_validation->set_rules('type', 'Type','trim|required');
-						//$this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[80]|strip_tags[address]');
-						//$this->form_validation->set_rules('city', 'City', 'trim|required|alpha_numeric_spaces');
-
-
-						if($this->form_validation->run() == FALSE)
-						{		
-							$this->load->model('User_model');
-							$view['logos'] = $this->User_model->logo_generate();
-
-							$this->load->model('User_model');
-							$view['names'] = $this->User_model->name_generate();
-
-							$this->load->model('User_model');
-							$view['dscs'] = $this->User_model->ft_generate();
-
-							$view['admin_view'] = "admin/add_users";
-							$this->load->view('layouts/admin_layout', $view);
-						}
-						else
-						{
-							$this->load->model('Admin_model');
-
-							if($this->Admin_model->add_user())
-							{
-								$this->session->set_flashdata('success', 'User Registration is successful');
-								redirect('admin/allUsers');
-							}
-							else
-							{
-								print $this->db->error();
-							}
-
-						}
-					}
-					/*=============== Delete User =================*/
-					public function user_delete($id)
-					{
-						$this->load->model('Admin_model');
-						$this->Admin_model->delete_user($id);
-
-						$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> User deleted successfully');
-						redirect('admin/allUsers');
-					}
-
-					public function edit_user($id)
-					{
-						/*=== LOAD DYNAMIC CATAGORY ===*/
-						$this->load->model('Admin_model');
-						$view['category'] = $this->Admin_model->get_category();
-						/*==============================*/
-						$this->load->model('User_model');
-						$view['logos'] = $this->User_model->logo_generate();
-
-						$this->load->model('User_model');
-						$view['names'] = $this->User_model->name_generate();
-
-						$this->load->model('User_model');
-						$view['dscs'] = $this->User_model->ft_generate(); 
-
-						$this->load->model('User_model');
-						$view['abtdscs'] = $this->User_model->about_generate(); 
-
-						$this->load->model('User_model');
-						$view['contactdscs'] = $this->User_model->contact_generate();
-				#get existing informations
-						$this->load->model('Admin_model');
-						$view['user_details'] = $this->Admin_model->get_user_details($id);
-
-						$this->form_validation->set_rules('name', 'Name', 'trim|max_length[80]|required|strip_tags[name]|callback_alpha_dash_space');
-						$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|max_length[15]|numeric|strip_tags[contact]');
-						$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
-						$this->form_validation->set_rules('repassword', 'Confirm Password',
-							'trim|required|callback_validate_strongpass|matches[password]');
-
-						if($this->form_validation->run() == FALSE)
-						{
-							if($this->User_model->get_user_details($id))
-							{
-								$view['admin_view'] = "admin/editotheruser";
-								$this->load->view('layouts/admin_layout', $view);
-							}
-							else
-							{
-								$view['admin_view'] = "temp/404page";
-								$this->load->view('layouts/admin_layout', $view);
-							}
-						}
-						else
-						{
-							$this->load->model('Admin_model');
-
-							if($this->Admin_model->editotheruser($id))
-							{
-								$this->session->set_flashdata('success', 'User profile has been updated successfully.');
-								redirect('admin');
-							}
-							else
-							{
-								print $this->db->error();
-							}
-						}
-					}
-
-
-/*=============================================
-					BOOKS
-					===============================================*/
-					/*================ Books &&  All Books list page ===============*/
-					public function books()
-					{
-						$this->load->model('Admin_model');
-						$this->load->library('pagination');
-						$config = [
-
-							'base_url' => base_url('admin/books'),
-							'per_page' => 10,
-							'total_rows'=>  $this->Admin_model->num_rows_admin_books(),
-							'full_tag_open' => "<ul class='custom-pagination'>",
-							'full_tag_close' => "</ul>", 
-							'first_tag_open' => '<li>',
-							'first_tag_close' => '</li>',
-							'last_tag_open' => '<li>',
-							'last_link'=>'last',
-							'last_tag_close' => '</li>',
-							'next_tag_open' => '<li>',
-							'next_tag_close' => '</li>',
-							'prev_tag_open' => '<li>',
-							'prev_tag_close' => '</li>',
-							'cur_tag_open' => "<li class = 'active'><a>",
-							'cur_tag_close' => '</a></li>',
-						];
-						$this->pagination->initialize($config);
-
-
-						$this->load->model('Admin_model');
-						$view['books'] = $this->Admin_model->get_books($config['per_page'], $this->uri->segment(3));
-
-						$this->load->model('User_model');
-						$view['logos'] = $this->User_model->logo_generate();
-
-						$this->load->model('User_model');
-						$view['names'] = $this->User_model->name_generate();
-
-						$this->load->model('User_model');
-						$view['dscs'] = $this->User_model->ft_generate();
-
-						$view['admin_view'] = "admin/books";
-						$this->load->view('layouts/admin_layout', $view);
-					}
-
-
-
-
-					/*================ Add Books Page =================*/
-					public function add_books()
-					{
-						/*=== LOAD DYNAMIC CATAGORY ===*/
-						$this->load->model('Admin_model');
-						$view['category'] = $this->Admin_model->get_category();
-						/*==============================*/
-
-						/*==== Image Upload validation*/
-//		$config = [
-//			'upload_path'=>'./uploads/image/',
-//			'allowed_types'=>'jpg|png',
-//			'max_size' => '400',
-//			'overwrite' => FALSE
-//			];
-
-//		$this->load->library('upload', $config);
-
-
-
-
-
-						$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
+
+	public function category()
+	{
+		$this->load->model('Admin_model');
+		$view['category'] = $this->Admin_model->get_category();
+
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
+
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
+
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
+
+		$view['admin_view'] = "admin/category";
+		$this->load->view('layouts/admin_layout', $view);
+	}
+
+	public function add_category()
+	{
+		$this->form_validation->set_rules('category', 'Category name', 'trim|required|alpha_numeric_spaces');
+		$this->form_validation->set_rules('tag', 'Category tag', 'trim|required|alpha|strip_tags[tag]');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required|strip_tags[description]');
+
+		if($this->form_validation->run() == FALSE)
+		{
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
+
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
+
+
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
+
+			$view['admin_view'] = "admin/add_category";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+		else
+		{
+			$this->load->model('Admin_model');
+			if($this->Admin_model->create_category())
+			{
+				$this->session->set_flashdata('success', 'Category created successfully');
+				redirect('admin/category');
+			}
+			else
+			{
+				print $this->db->error();
+			}
+		}
+
+	}
+
+
+	public function ctg_view($id)
+	{
+		$this->load->model('Admin_model');
+		$view['ctg_detail'] = $this->Admin_model->get_ctg_detail($id);
+
+		if($this->Admin_model->get_ctg_detail($id))
+		{
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
+
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
+
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
+
+			$view['admin_view'] = "admin/ctg_view";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+		else
+		{
+			$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
+
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
+
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
+
+			$view['admin_view'] = "temp/404page";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+
+	}
+
+
+	public function ctg_edit($id)
+	{
+
+		$this->load->model('Admin_model');
+		$view['ctg_detail'] = $this->Admin_model->get_ctg_detail($id);
+
+		$this->form_validation->set_rules('category', 'Category name', 'trim|required|alpha_numeric_spaces');
+		$this->form_validation->set_rules('tag', 'Category tag', 'trim|required|alpha|strip_tags[tag]');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required|strip_tags[description]');
+
+
+		if($this->form_validation->run() == FALSE)
+		{
+			if($this->Admin_model->get_ctg_detail($id))
+			{
+				$this->load->model('User_model');
+				$view['logos'] = $this->User_model->logo_generate();
+
+				$this->load->model('User_model');
+				$view['names'] = $this->User_model->name_generate();
+
+				$this->load->model('User_model');
+				$view['dscs'] = $this->User_model->ft_generate();
+
+				$view['admin_view'] = "admin/ctg_edit";
+				$this->load->view('layouts/admin_layout', $view);
+			}
+			else
+				{		$this->load->model('User_model');
+			$view['logos'] = $this->User_model->logo_generate();
+
+			$this->load->model('User_model');
+			$view['names'] = $this->User_model->name_generate();
+
+
+			$this->load->model('User_model');
+			$view['dscs'] = $this->User_model->ft_generate();
+
+			$view['admin_view'] = "temp/404page";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+
+	}
+	else
+	{
+		$this->load->model('Admin_model');
+		if($this->Admin_model->edit_category($id))
+		{
+			$this->session->set_flashdata('success', 'Category Updated successfully');
+			redirect('admin/category');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
+}
+
+public function ctg_delete($id)
+{
+	$this->load->model('Admin_model');
+	$this->Admin_model->delete_category($id);
+
+	$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> Category deleted successfully');
+	redirect('admin/category');
+}
+
+
+
+public function allUsers()
+{
+	$this->load->model('Admin_model');
+	$view['users_data'] = $this->Admin_model->get_users();
+
+	$this->load->model('User_model');
+	$view['logos'] = $this->User_model->logo_generate();
+
+	$this->load->model('User_model');
+	$view['names'] = $this->User_model->name_generate();
+
+	$this->load->model('User_model');
+	$view['dscs'] = $this->User_model->ft_generate();
+
+	$view['admin_view'] = "admin/view_users";
+	$this->load->view('layouts/admin_layout', $view);
+}
+
+public function currentpromembers()
+{
+	$this->load->model('Admin_model');
+	$view['users_data'] = $this->Admin_model->get_promembers();
+
+	$this->load->model('User_model');
+	$view['logos'] = $this->User_model->logo_generate();
+
+	$this->load->model('User_model');
+	$view['names'] = $this->User_model->name_generate();
+
+	$this->load->model('User_model');
+	$view['dscs'] = $this->User_model->ft_generate();
+
+	$view['admin_view'] = "admin/view_prousers";
+	$this->load->view('layouts/admin_layout', $view);
+}
+
+public function add_users()
+{
+	$this->form_validation->set_rules('name', 'Name', 'trim|required|max_length[80]|callback_alpha_dash_space');
+	$this->form_validation->set_rules('contact', 'Contact', 'trim|min_length[10]|max_length[15]|required|numeric');
+	$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
+	$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
+	$this->form_validation->set_rules('repassword', 'Confirm Password',
+		'trim|required|callback_validate_strongpass|matches[password]');
+	$this->form_validation->set_rules('type', 'Type','trim|required');
+
+
+	if($this->form_validation->run() == FALSE)
+	{		
+		$this->load->model('User_model');
+		$view['logos'] = $this->User_model->logo_generate();
+
+		$this->load->model('User_model');
+		$view['names'] = $this->User_model->name_generate();
+
+		$this->load->model('User_model');
+		$view['dscs'] = $this->User_model->ft_generate();
+
+		$view['admin_view'] = "admin/add_users";
+		$this->load->view('layouts/admin_layout', $view);
+	}
+	else
+	{
+		$this->load->model('Admin_model');
+
+		if($this->Admin_model->add_user())
+		{
+			$this->session->set_flashdata('success', 'User Registration is successful');
+			redirect('admin/allUsers');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+
+	}
+}
+
+public function user_delete($id)
+{
+	$this->load->model('Admin_model');
+	$this->Admin_model->delete_user($id);
+
+	$this->session->set_flashdata('success', '<i class= "fas fa-trash text-danger"></i> User deleted successfully');
+	redirect('admin/allUsers');
+}
+
+public function edit_user($id)
+{
+
+	$this->load->model('Admin_model');
+	$view['category'] = $this->Admin_model->get_category();
+
+	$this->load->model('User_model');
+	$view['logos'] = $this->User_model->logo_generate();
+
+	$this->load->model('User_model');
+	$view['names'] = $this->User_model->name_generate();
+
+	$this->load->model('User_model');
+	$view['dscs'] = $this->User_model->ft_generate(); 
+
+	$this->load->model('User_model');
+	$view['abtdscs'] = $this->User_model->about_generate(); 
+
+	$this->load->model('User_model');
+	$view['contactdscs'] = $this->User_model->contact_generate();
+
+	$this->load->model('Admin_model');
+	$view['user_details'] = $this->Admin_model->get_user_details($id);
+
+	$this->form_validation->set_rules('name', 'Name', 'trim|max_length[80]|required|strip_tags[name]|callback_alpha_dash_space');
+	$this->form_validation->set_rules('contact', 'Contact', 'trim|required|min_length[10]|max_length[15]|numeric|strip_tags[contact]');
+	$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_validate_strongpass');
+	$this->form_validation->set_rules('repassword', 'Confirm Password',
+		'trim|required|callback_validate_strongpass|matches[password]');
+
+	if($this->form_validation->run() == FALSE)
+	{
+		if($this->User_model->get_user_details($id))
+		{
+			$view['admin_view'] = "admin/editotheruser";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+		else
+		{
+			$view['admin_view'] = "temp/404page";
+			$this->load->view('layouts/admin_layout', $view);
+		}
+	}
+	else
+	{
+		$this->load->model('Admin_model');
+
+		if($this->Admin_model->editotheruser($id))
+		{
+			$this->session->set_flashdata('success', 'User profile has been updated successfully.');
+			redirect('admin');
+		}
+		else
+		{
+			print $this->db->error();
+		}
+	}
+}
+
+
+
+public function books()
+{
+	$this->load->model('Admin_model');
+	$this->load->library('pagination');
+	$config = [
+
+		'base_url' => base_url('admin/books'),
+		'per_page' => 10,
+		'total_rows'=>  $this->Admin_model->num_rows_admin_books(),
+		'full_tag_open' => "<ul class='custom-pagination'>",
+		'full_tag_close' => "</ul>", 
+		'first_tag_open' => '<li>',
+		'first_tag_close' => '</li>',
+		'last_tag_open' => '<li>',
+		'last_link'=>'last',
+		'last_tag_close' => '</li>',
+		'next_tag_open' => '<li>',
+		'next_tag_close' => '</li>',
+		'prev_tag_open' => '<li>',
+		'prev_tag_close' => '</li>',
+		'cur_tag_open' => "<li class = 'active'><a>",
+		'cur_tag_close' => '</a></li>',
+	];
+	$this->pagination->initialize($config);
+
+
+	$this->load->model('Admin_model');
+	$view['books'] = $this->Admin_model->get_books($config['per_page'], $this->uri->segment(3));
+
+	$this->load->model('User_model');
+	$view['logos'] = $this->User_model->logo_generate();
+
+	$this->load->model('User_model');
+	$view['names'] = $this->User_model->name_generate();
+
+	$this->load->model('User_model');
+	$view['dscs'] = $this->User_model->ft_generate();
+
+	$view['admin_view'] = "admin/books";
+	$this->load->view('layouts/admin_layout', $view);
+}
+
+
+
+
+public function add_books()
+{
+	
+	$this->load->model('Admin_model');
+	$view['category'] = $this->Admin_model->get_category();
+	
+
+
+
+
+
+	$this->form_validation->set_rules('book_name', 'Book name', 'trim|required|strip_tags[book_name]');
 						//$this->form_validation->set_rules('book_isbn', 'Book ISBN', 'trim|required|strip_tags[book_isbn]');
-						$this->form_validation->set_rules('book_isbn', 'Book ISBN', 'trim|required|strip_tags[book_isbn]|min_length[10]|max_length[13]|is_unique[books.book_isbn]',
-							array(
-								'is_unique' => 'This ISBN exists in the database.')
-						);
-						$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
-						$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
-						$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
-						$this->form_validation->set_rules('price', 'Price', 'trim|required|numeric|strip_tags[price]');
+	$this->form_validation->set_rules('book_isbn', 'Book ISBN', 'trim|required|strip_tags[book_isbn]|min_length[10]|max_length[13]|is_unique[books.book_isbn]',
+		array(
+			'is_unique' => 'This ISBN exists in the database.')
+	);
+	$this->form_validation->set_rules('description', 'Description', 'trim|required|min_length[100]|strip_tags[description]');
+	$this->form_validation->set_rules('author', 'Author name', 'trim|required|strip_tags[author]');
+	$this->form_validation->set_rules('publisher', 'Publisher name', 'trim|required|strip_tags[publisher]');
+	$this->form_validation->set_rules('price', 'Price', 'trim|required|numeric|strip_tags[price]');
 
-						$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
+	$this->form_validation->set_rules('categoryId', 'Category', 'trim|required');
 
-						$this->form_validation->set_rules('userfile2', 'File link', 'trim|required|strip_tags[userfile2]');
+	$this->form_validation->set_rules('userfile2', 'File link', 'trim|required|strip_tags[userfile2]');
     // Cover upload
-						$config = array();
-						$config['upload_path'] = './uploads/image/';
-						$config['allowed_types'] = 'jpg|png|jpeg';
-						$config['max_size'] = '10000';
+	$config = array();
+	$config['upload_path'] = './uploads/image/';
+	$config['allowed_types'] = 'jpg|png|jpeg';
+	$config['max_size'] = '10000';
 
     $this->load->library('upload', $config, 'coverupload'); // Create custom object for cover upload
     $this->coverupload->initialize($config);
     $upload_cover = $this->coverupload->do_upload('userfile');
 
 
-
-    // Catalog upload
-    //$config = array();
-    //$config['upload_path'] = './uploads/file/';
-    //$config['allowed_types'] = 'pdf';
-    //$config['max_size'] = '1000000';
-    //$this->load->library('upload', $config, 'catalogupload');  // Create custom object for catalog upload
-    //$this->catalogupload->initialize($config);
-   // $upload_catalog = $this->catalogupload->do_upload('userfile2');
 
     $url = $this->input->post('userfile2');
 
@@ -556,18 +519,6 @@ class Admin extends CI_Controller {
     }
     else
     {
-		//	$this->load->model('Admin_model');
-
-		//	if($this->Admin_model->add_books())
-		//	{
-		//		$this->session->set_flashdata('success', 'Book added successfully');
-			//	redirect('admin/books');
-		//	}
-		//	else
-		//	{
-		//		print $this->db->error();
-		//	}
-			// Check uploads success
     	if ($upload_cover) {
     		$res = "TRUE";
 
@@ -737,8 +688,6 @@ public function book_delete($id)
 }
 
 
-
-	#...Display all orders
 public function orders()
 {
 	$this->load->model('Admin_model');
@@ -757,7 +706,6 @@ public function orders()
 	$this->load->view('layouts/admin_layout', $view);
 }
 
-	#...Display Order Details
 public function order_view($orderId)
 {
 	$this->load->model('Admin_model');
@@ -1190,10 +1138,10 @@ public function editadminprofile($id)
 
 public function change_password($id)
 {
-	/*=== LOAD DYNAMIC CATAGORY ===*/
+	
 	$this->load->model('Admin_model');
 	$view['category'] = $this->Admin_model->get_category();
-	/*==============================*/
+	
 	$this->load->model('User_model');
 	$view['logos'] = $this->User_model->logo_generate();
 

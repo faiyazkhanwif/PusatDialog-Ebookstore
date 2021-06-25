@@ -6,15 +6,12 @@ class Users extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
-		/*=== Load the cart library ===*/
 		$this->load->library('cart');
 		
 	}
 
 	public function index()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
 

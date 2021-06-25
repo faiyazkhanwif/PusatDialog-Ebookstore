@@ -7,18 +7,18 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		
-		/*=== Load the cart library ===*/
+		
 		$this->load->library('cart');
 	}
 
 	public function index()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
-		/*==============================*/
+		
 
-		/*=== Recent Books ===*/
+		
 		$this->load->model('User_model');
 		$view['books'] = $this->User_model->recent_books();
 
@@ -47,9 +47,7 @@ class Home extends CI_Controller {
 		$this->load->model('User_model');
 		$view['contactdscs'] = $this->User_model->contact_generate(); 
 
-		/*=== CSE Books ===*/
-		//$this->load->model('User_model');
-		//$view['cse_books'] = $this->User_model->cse_books();
+
 
 		$this->load->view('layouts/home_layout', $view);
 	}

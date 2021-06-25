@@ -13,16 +13,14 @@ class Checkout extends CI_Controller {
 			redirect('users/login');
 		}
 
-		/*=== Load the cart library ===*/
 		$this->load->library('cart');
 	}
 
 	public function index()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
-		/*==============================*/
+
 		$this->form_validation->set_rules('paymentcheck', 'Payment methods', 'trim|required');
 
 		if($this->form_validation->run() == FALSE)
@@ -71,10 +69,10 @@ class Checkout extends CI_Controller {
 
 	public function place_order()
 	{
-		/*=== LOAD DYNAMIC CATAGORY ===*/
+		
 		$this->load->model('Admin_model');
 		$view['category'] = $this->Admin_model->get_category();
-		/*==============================*/
+		
 
 		$this->load->model('User_model');
 		$view['logos'] = $this->User_model->logo_generate();
