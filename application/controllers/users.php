@@ -347,8 +347,8 @@ class Users extends CI_Controller {
 		$config['smtp_port']    = '465';
 		$config['smtp_timeout'] = '60';
 
-    	$config['smtp_user']    = 'pusatdialogtemp@gmail.com';   
-    	$config['smtp_pass']    = 'ethqhltlknbgeprt';  
+    	$config['smtp_user']    = 'pusatdialogtemp@gmail.com';   //Use organization mail
+    	$config['smtp_pass']    = 'ethqhltlknbgeprt';  			// Use mail password or mail-application password
 
     	$config['charset']    = 'utf-8';
     	$config['newline']    = "\r\n";
