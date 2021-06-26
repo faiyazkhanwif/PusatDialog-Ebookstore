@@ -25,14 +25,14 @@ Functionalities
 - The system shall allow the user to change his/her password.
 - The system shall allow the user to buy E-books.
 - The system shall allow the user to read E-books after buying.
-- The system shall allow the user to search for their preferable E-book by book name or author name.
-- The system shall allow the user to view a list of books he/she bought.
+- The system shall allow the user to search for their preferable E-book by ISBN, E-book name or author name.
+- The system shall allow the user to view a list of E-books he/she bought.
 - The system shall prevent the user from downloading E-books.
-- The system shall allow the users to add reviews of a book after they have purchased it.
+- The system shall allow the users to add reviews of an E-book after they have purchased it.
 - The system shall allow the users to edit and delete the reviews they have given.
-- The system shall allow the users to see all reviews of a book.
+- The system shall allow the users to see all reviews of an E-book.
 - The system shall allow the user to reset password using the “forgot password” feature.
-- The system shall allow the user to subscribe to pro-membership so that he/she can read all books for free until the pro membership expires.
+- The system shall allow the user to subscribe to pro-membership so that he/she can read all E-books for free until the pro membership expires.
 
 
 *******************
