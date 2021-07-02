@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2021 at 05:36 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Jul 03, 2021 at 12:02 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -173,14 +173,6 @@ CREATE TABLE `orders` (
   `txn_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`orderId`, `userId`, `total_price`, `paymentcheck`, `dateTime`, `bookId`, `status`, `txn_id`) VALUES
-(4, 37, '78.5', 1, '2021-06-19 08:46:22', '72', '1', '-'),
-(5, 37, '53', 1, '2021-06-23 09:00:34', '69', '1', '-');
-
 -- --------------------------------------------------------
 
 --
@@ -270,8 +262,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `contact`, `email`, `password`, `type`, `membershipstatus`, `createdate`) VALUES
-(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$UIeiAEgVSmGN83b1l3PYpe8dauukuWNCLR5TplbU92yPKDJ4QaYHe', 'A', 'normal', '2020-04-21 10:54:26'),
-(37, 'Faiyaz pass tester', '124215353252', 'faiyazkhanwif@gmail.com', '$2y$12$F13BxsS5iIRVqK4skk0Twu4ZoLnVr9T2TjKL1DXN0iwnkfgUjnKJi', 'U', 'normal', '2021-06-16 19:12:28');
+(7, 'Main Admin', '+8801791029323', 'admin@gmail.com', '$2y$12$UIeiAEgVSmGN83b1l3PYpe8dauukuWNCLR5TplbU92yPKDJ4QaYHe', 'A', 'normal', '2020-04-21 10:54:26');
 
 --
 -- Indexes for dumped tables
