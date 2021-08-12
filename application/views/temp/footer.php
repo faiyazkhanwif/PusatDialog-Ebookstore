@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="widget">
-                        <h3>Our Services</h3>
+                        <h3>Quick Links</h3>
 
                         <ul>
                             <li><a href="<?= base_url('Users/all_books')?>">Buy E-Books</a></li>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="copy-right">
-                <p><i class="fas fa-copyright"></i> 2021 faiyazkhanwif.inc. <br>All rights reserved</p>
+                <p>All rights reserved</p>
             </div>
         </div>
     </div>
