@@ -88,7 +88,7 @@ class User_home extends CI_Controller {
 		}
 	}
 
-	public function edit_profile($id)
+	public function edit_profile()
 	{
 		
 		$this->load->model('Admin_model');
@@ -110,6 +110,8 @@ class User_home extends CI_Controller {
 		$view['contactdscs'] = $this->User_model->contact_generate();
 		#get existing informations
 		$this->load->model('User_model');
+
+		$id = $this->session->userdata('id');
 		$view['user_details'] = $this->User_model->get_user_details($id);
 
 		$this->form_validation->set_rules('name', 'Name', 'trim|required|min_length[1]|max_length[80]|strip_tags[name]|callback_alpha_dash_space');
@@ -205,7 +207,7 @@ public function validate_strongpass($str)
 	return TRUE;
 }
 
-public function change_password($id)
+public function change_password()
 {
 	/*=== LOAD DYNAMIC CATAGORY ===*/
 	$this->load->model('Admin_model');
@@ -227,6 +229,8 @@ public function change_password($id)
 	$view['contactdscs'] = $this->User_model->contact_generate();
 		#get existing informations
 	$this->load->model('User_model');
+
+	$id = $this->session->userdata('id');
 	$view['user_details'] = $this->User_model->get_user_details($id);
 
 

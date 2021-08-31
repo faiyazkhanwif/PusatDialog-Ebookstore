@@ -43,7 +43,7 @@
 
             <?= form_close() ?>
 
-            <a class="btn btn-outline-danger btn-sm" href="<?= base_url('User-home/change-password/'.$this->session->userdata('id').'')?>">Change Password</a>
+            <a class="btn btn-outline-danger btn-sm" href="<?= base_url('User-home/change-password/')?>">Change Password</a>
     </div>
     <div class="col">
         
